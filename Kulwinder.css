@@ -3,3 +3,13 @@
     height:900px;
     position: relative;
 animation: myanimation 5s infinite;}
+
+.navBar{
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: grey;
+    position: relative; 
+    text-align: center;}
