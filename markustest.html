@@ -10,12 +10,11 @@
     <script src="addMultipleMembers.js"></script>
 </head>
 <body onload="filterFunction()">
-    
     <header>
         <h1>TASK MANAGER</h1>
+            <button class="button" id="addTaskRevealBtn" onclick="revealAddTaskSection()">+ NEW TASK</button>
+            <button class="button" id="addMemberRevealBtn" onclick="revealAddMemberSection()">+ NEW TEAM MEMBER</button>
         
-        <button class="button" id="addTaskRevealBtn" onclick="revealAddTaskSection()">+ NEW TASK</button>
-        <button class="button" id="addMemberRevealBtn" onclick="revealAddMemberSection()">+ NEW TEAM MEMBER</button>
 
         <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn">Søk etter medlemmer</button>
