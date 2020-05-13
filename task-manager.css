@@ -104,7 +104,7 @@ main{
 }
 
 #unstartedHeading{
-    border-right: 1px solid gray;
+    border-right: 2px solid gray;
 }
 
 #ongoingHeading{
