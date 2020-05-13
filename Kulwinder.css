@@ -4,12 +4,21 @@
     position: relative;
 animation: myanimation 5s infinite;}
 
+
+header{
+    height: 80px;
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    background-color: black;}
+
+
 .navBar{
 
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: grey;
+    background-color: red;
     position: relative; 
     text-align: center;}
