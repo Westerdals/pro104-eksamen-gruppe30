@@ -1,6 +1,6 @@
 
 .dropbtn {
-  background-color: blue;
+  background-color:lightgray;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -9,7 +9,7 @@
 }
 
 .dropbtn:hover, .dropbtn:focus {
-  background-color: blue;
+  background-color: darkgray;
 }
 
 #myInput {
@@ -20,6 +20,7 @@
   padding: 14px 20px 12px 45px;
   border: none;
   border-bottom: 1px solid #ddd;
+  background-color: lightgray;
 }
 
 #myInput:focus {outline: 3px solid #ddd;}
@@ -27,7 +28,7 @@
 .dropdown {
   position: absolute;
   display: inline-block;
-  left: 1100px;
+  left: 500px;
 }
 
 .dropdown-content {
@@ -49,7 +50,13 @@
 
 .dropdown p:hover {background-color: #ddd;}
 
-.show {display: block;}
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
 
 
 #mainContainer{

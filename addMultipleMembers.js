@@ -45,6 +45,7 @@ function revealAddTaskSection() {
 
 
 
+
 function createTask(event){
     event.preventDefault();
 
@@ -97,6 +98,7 @@ function renderTaskList() {
         taskElement.innerHTML = `<div class="taskObject">
                                 <h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4>
                                 <div>${task.taskDescription}</div>
+                                <div>Teammedlem:</div>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
@@ -119,7 +121,8 @@ function renderMemberList() {
 
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
-  }
+}
+
 
 function filterFunction() {
     renderMemberList();
