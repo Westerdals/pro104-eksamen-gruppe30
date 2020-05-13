@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" type="text/css" href="task-manager.css">-->
+    <link rel="stylesheet" type="text/css" href="markustest.css">
+    
+    <title>Test</title>
+    <script src="addMultipleMembers.js"></script>
+</head>
+<body onload="filterFunction()">
+    
+    <header>
+        <h1>TASK MANAGER</h1>
+        
+        <button class="button" id="addTaskRevealBtn" onclick="revealAddTaskSection()">+ NEW TASK</button>
+        <button class="button" id="addMemberRevealBtn" onclick="revealAddMemberSection()">+ NEW TEAM MEMBER</button>
+
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Søk etter medlemmer</button>
+            <div id="myDropdown" class="dropdown-content">
+              <input type="text" placeholder="Søk" id="myInput" onkeyup="filterFunction()">
+              <p id="droptxt"></p>
+            </div>
+          </div>
+    </header>
+    
+    <section>
+        <div class="addSection" id="addTaskSection">
+    <form onsubmit="createTask(event)">
+        <label id="taskNameLabel" for="taskName">What do you need to get done?</label><br>
+
+        <input class="input" type="text" id="taskName" name="taskName" placeholder="Laundry, change tires, mealprep..." size="33"><br><br><br>
+
+        <!--<input placeholder="navn" type="text" id="memberInput">
+        <input value="Legg til" type="button" id="memberBtn"><br><br>-->
+
+        <label id="taskDescriptionLabel" for="taskDescription">Add a task description (optional)</label><br>
+
+        <textarea id="taskDescription" name="taskDescription" placeholder=""></textarea><br>
+
+        <input id="taskSubmitBtn" class="button" type="submit" value="GET IT DONE!">
+    </form>
+    </div>
+</section>
+
+    <section>
+        <div class="addSection" id="addMemberSection">
+    <form onsubmit="createMember(event)">
+        <label id="teamMemberLabel" for="teamMember">Add a team member:</label><br>
+        <input class="input" type="text" id="teamMember" name="teamMember" placeholder="John Doe" size="17"><br>
+        <input class="button" type="submit" value="ADD">
+    </form>
+</div>
+</section>
+
+    <!--<div id=tasksHeadings>
+        <h2 class="tasksHeading" id="unstartedHeading">UNSTARTED</h2>
+        <h2 class="tasksHeading" id="ongoingHeading">ONGOING</h2>
+        <h2 class="tasksHeading" id="finishedHeading">FINISHED</h2>
+    </div>
+
+    <main>
+        <div class="tasks" id="unstartedTasks"></div>
+        <div class="tasks" id="ongoingTasks"></div>
+        <div class="tasks" id="finishedTasks"></div>
+    </main>
+-->
+
+
+</body>
+</html>
