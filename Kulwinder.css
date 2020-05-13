@@ -22,3 +22,24 @@ header{
     background-color: red;
     position: relative; 
     text-align: center;}
+    .navBar li{
+        float: none;
+        display: inline-block;}
+    
+    .navBar li a{
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        color: #FFFFFF;
+        font-size: 23px;
+        width: 200px;
+        padding: 12px;
+        position: relative;}
+    
+    .navBar li a:hover{
+        background-color: black;
+    
+    -webkit-transition-duration 1.0s; 
+     -moz-transition-duration:1.0s;
+    -o-transition-duration: 1.0s;     
+        transition-duration: 1.0s;}
