@@ -13,6 +13,9 @@ header{
     background-color: black;}
 
 
+
+
+
 .navBar{
 
     list-style-type: none;
@@ -43,3 +46,27 @@ header{
      -moz-transition-duration:1.0s;
     -o-transition-duration: 1.0s;     
         transition-duration: 1.0s;}
+
+
+
+
+        /*Kopiert inn fra Team Manager*/
+        #taskSubmitBtn{
+            top: 185px;
+        }
+
+        #taskDescription{
+            width: 270px;
+            height: 50px;
+        }
+
+        #taskNameLabel{
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .input{
+            border: 0px;
+            background: transparent;
+            border-bottom: 1px solid gray;
+            font-size: 15px;
+        }

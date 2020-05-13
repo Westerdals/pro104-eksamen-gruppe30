@@ -22,6 +22,20 @@
     </nav>    
                 
      </div>  
+
+     <section>
+      <div class="addSection" id="addTaskSection">
+          <form onsubmit="createTask(event)">
+              <label id="taskNameLabel" for="taskName">What do you need to get done?</label><br>
+              <input class="input" type="text" id="taskName" name="taskName" placeholder="Laundry, change tires, mealprep..." size="33"><br><br><br>
+              <label id="taskDescriptionLabel" for="taskDescription">Add a task description (optional)</label><br>
+              <textarea id="taskDescription" name="taskDescription" placeholder=""></textarea><br>
+              <input id="taskSubmitBtn" class="button" type="submit" value="GET IT DONE!">
+          </form> 
+      </div>
+  </section>
+
+
     </div id="container">
 </body>
 </html>
