@@ -43,11 +43,25 @@
     <div class="addSection" id="addMemberSection">
          <form>
             <label id="teamMemberLabel" for="teamMember">Add a team member:</label><br>
-            <input class="input" type="text" id="teamMember" name="teamMember" placeholder="John Doe" size=""><br>
+            <input class="input" type="text" id="teamMember" name="teamMember" placeholder="John Doe" size="17"><br>
             <input class="button" type="submit" value="ADD">
         </form> 
     </div>
 </section>
+
+
+
+<div id=tasksHeadings>
+  <h2 class="tasksHeading" id="unstartedHeading">UNSTARTED</h2>
+  <h2 class="tasksHeading" id="ongoingHeading">ONGOING</h2>
+  <h2 class="tasksHeading" id="finishedHeading">FINISHED</h2>
+</div>
+
+<main>
+  <div class="tasks" id="unstartedTasks"></div>
+  <div class="tasks" id="ongoingTasks"></div>
+  <div class="tasks" id="finishedTasks"></div>
+</main>
 
 
 

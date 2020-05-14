@@ -1,5 +1,5 @@
 #container{
-    width: 1600px;
+    width: 1900px;
     height:900px;
     position: relative;
 animation: myanimation 5s infinite;}
@@ -42,7 +42,7 @@ header{
     .navBar li a:hover{
         background-color: black;
     
-    -webkit-transition-duration 1.0s; 
+    -webkit-transition-duration: 1.0s; 
      -moz-transition-duration:1.0s;
     -o-transition-duration: 1.0s;     
         transition-duration: 1.0s;}
@@ -81,4 +81,69 @@ header{
         .button:hover{
             background-color: lightgray;
         }
+
+        .taskObject{
+            position: absolute;
+            width: 380px;
+            height: 200px;
+            left: 20px;
+            top: 60px;
+            border: 2px dashed gray;
+        }
+
+
+        main{
+            position: relative;
+            z-index: 1;
+            top: 60px;
+            height: 500px;
+            width: 1350px;
+        }
         
+        .tasks{
+            position: absolute;
+            text-align: center;
+            top: 15px;
+            height: 800px;
+            width: 450px;
+        }
+        
+        #tasksHeadings{
+            position: relative;
+            width: 1351px;
+            height: 60px;
+            top: 125px;
+            border-top: 2px solid gray;
+        }
+        
+        .tasksHeading{
+            width: 450px;
+            position: absolute;
+            text-align: center;
+        }
+        
+        #unstartedHeading{
+            border-right: 2px solid gray;
+        }
+        
+        #ongoingHeading{
+            left: 450px;;
+            border-right: 1px solid gray;
+        }
+        
+        #finishedHeading{
+            left: 900px;
+        }
+        
+        #unstartedTasks{
+            border-right: 1px solid gray;
+        }
+        
+        #ongoingTasks{
+            left: 450px;
+            border-right: 1px solid gray;
+        }
+        
+        #finishedTasks{
+            left: 900px;
+        }
