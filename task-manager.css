@@ -137,3 +137,28 @@ main{
     top: 60px;
     border: 2px dashed gray;
 }
+
+.buttonIcon {
+    display: inline-block;
+    padding: 0px;
+    height: 40px;
+    width: 40px;
+}
+
+.imageIcon {
+    height: 38px;
+    width: auto;
+}
+
+#pickedIcon {
+    height: 40px;
+    padding-left: 10px;
+    width: auto;
+}
+
+#taskIcon {
+    position: absolute;
+    left: 10px;;
+    height: 40px;
+    width: auto;
+}

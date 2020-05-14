@@ -2,7 +2,7 @@ function revealAddTaskSection() {
     var addTaskRevealBtn = document.getElementById("addTaskRevealBtn");
     var addTaskSection = document.getElementById("addTaskSection");
     if (addTaskSection.style.height == "0px" || addTaskSection.style.height == "") {
-        addTaskSection.style.height = "250px";
+        addTaskSection.style.height = "300px";
         addTaskSection.style.opacity = "1";
         addTaskRevealBtn.style.backgroundColor = "lightgray";
 
@@ -43,15 +43,16 @@ function revealAddTaskSection() {
     } else {
         addMemberRevealBtn.style.backgroundColor = "";
     }
-  }
+}
 
   function createTask(event) {
     event.preventDefault();
 
     const taskName = document.querySelector("[name='taskName']").value;
     const taskDescription = document.querySelector("[name='taskDescription']").value;
+    const taskIcon = document.getElementById("pickedIcon").src;
 
-    const task = {taskName, taskDescription};
+    const task = {taskName, taskDescription, taskIcon};
     const taskList = JSON.parse(localStorage.getItem('task')) || [];
     taskList.push(task);
 
@@ -65,15 +66,17 @@ function revealAddTaskSection() {
 function renderTaskList() {
 
     const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+    console.log(taskList);
     const unstartedTasks = document.getElementById("unstartedTasks");
 
     unstartedTasks.innerHTML = "";
 
     for (const task of taskList) {
         const taskElement = document.createElement("div");
-        const {taskName, taskDescription} = task;
+        const {taskName, taskDescription, taskIcon} = task;
 
         taskElement.innerHTML = `<div class="taskObject">
+                                <img id="taskIcon" src="${task.taskIcon}">
                                 <h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4>
                                 <div>${task.taskDescription}</div>
                                 </div>`;
