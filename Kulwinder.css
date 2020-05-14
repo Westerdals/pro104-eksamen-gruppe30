@@ -110,40 +110,42 @@ header{
         
         #tasksHeadings{
             position: relative;
-            width: 1351px;
+            width: 1900px;
             height: 60px;
             top: 125px;
             border-top: 2px solid gray;
         }
         
         .tasksHeading{
-            width: 450px;
+            width: 500px;
             position: absolute;
             text-align: center;
         }
         
         #unstartedHeading{
-            border-right: 2px solid gray;
+            left: 50px;;
+            border-right: 3px solid gray;
         }
         
         #ongoingHeading{
-            left: 450px;;
+            left: 650px;;
             border-right: 1px solid gray;
         }
         
         #finishedHeading{
-            left: 900px;
+            left: 1300px;
         }
         
         #unstartedTasks{
-            border-right: 1px solid gray;
+            left: 120px;
+            border-right: 3px solid gray;
         }
         
         #ongoingTasks{
-            left: 450px;
-            border-right: 1px solid gray;
+            left: 800px;
+            border-right: 3px solid gray;
         }
         
         #finishedTasks{
-            left: 900px;
+            left: 800px;
         }
