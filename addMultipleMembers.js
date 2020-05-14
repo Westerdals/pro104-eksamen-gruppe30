@@ -49,16 +49,18 @@ function revealAddTaskSection() {
 function createTask(event){
     event.preventDefault();
 
-        //const memberInput = document.querySelector("#memberInput").value;
-        const taskName = document.querySelector("#taskName").value;
-        const taskDescription = document.querySelector("#taskDescription").value;
+    const taskList = JSON.parse(localStorage.getItem('task')) || [];
 
-        
-        const taskList = JSON.parse(localStorage.getItem('task')) || [];
-        const task = {taskName, taskDescription};
-        taskList.push(task);
+    const taskId = taskList.length;
 
-        window.localStorage.setItem('task', JSON.stringify(taskList));
+    const taskName = document.querySelector("#taskName").value;
+    const taskDescription = document.querySelector("#taskDescription").value;
+
+    
+    const task = {taskId, taskName, taskDescription};
+    taskList.push(task);
+
+    window.localStorage.setItem('task', JSON.stringify(taskList));
     
     event.target.reset();
     renderTaskList();
@@ -71,8 +73,9 @@ function createMember(event){
     const teamMember = document.querySelector("#teamMember").value;
 
     const memberList = JSON.parse(localStorage.getItem('member')) || [];
+    const memberId = memberList.length;
 
-    const member = {teamMember};
+    const member = {memberId, teamMember};
     
     memberList.push(member);
 
@@ -95,7 +98,7 @@ function renderTaskList() {
         const taskElement = document.createElement("div");
         const {taskName, taskDescription} = task;
 
-        taskElement.innerHTML = `<div class="taskObject">
+        taskElement.innerHTML = `<div id="task${task.taskId}" class="taskObject" ondrop="drop(event)" ondragover="allowDrop(event)">
                                 <h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4>
                                 <div>${task.taskDescription}</div>
                                 <div>Teammedlem:</div>
@@ -113,11 +116,27 @@ function renderMemberList() {
 
     for (const member of memberList) {
         dropTxt.innerHTML += `
-                            <p>${member.teamMember}<p>
+                            <p id="member${member.memberId}" draggable="true" ondragstart="drag(event)">${member.teamMember}<p>
                             `;
     }
 
 }
+
+function allowDrop(event){
+    event.preventDefault();
+}
+
+function drag(event){
+    event.dataTransfer.setData("text", event.target.id);
+}
+
+function drop(event){
+    event.preventDefault();
+    let data = event.dataTransfer.getData("text");
+    event.target.appendChild(document.getElementById(data));
+}
+
+
 
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
