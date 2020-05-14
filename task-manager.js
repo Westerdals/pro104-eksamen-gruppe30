@@ -6,6 +6,8 @@ function revealAddTaskSection() {
         addTaskSection.style.opacity = "1";
         addTaskRevealBtn.style.backgroundColor = "#7dd1a9";
 
+        //addTaskSection.style.position = "fixed";
+
         if (addMemberSection.style.height != "0px" || addMemberSection.style.height != "") {
             resetSection(addMemberSection);
         }
@@ -122,7 +124,7 @@ function renderTaskList() {
 
         taskElement.innerHTML = `<div class="taskObject">
                                 <h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4>
-                                <div>${task.taskDescription}</div>
+                                <p>${task.taskDescription}</p>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
