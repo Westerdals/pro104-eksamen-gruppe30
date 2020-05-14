@@ -162,3 +162,8 @@ main{
     height: 40px;
     width: auto;
 }
+
+#progressBarDiv {
+    position: absolute;
+    bottom: 1px;
+}

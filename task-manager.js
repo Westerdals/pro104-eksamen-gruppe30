@@ -51,8 +51,9 @@ function revealAddTaskSection() {
     const taskName = document.querySelector("[name='taskName']").value;
     const taskDescription = document.querySelector("[name='taskDescription']").value;
     const taskIcon = document.getElementById("pickedIcon").src;
+    const taskProgress = 40;
 
-    const task = {taskName, taskDescription, taskIcon};
+    const task = {taskName, taskDescription, taskIcon, taskProgress};
     const taskList = JSON.parse(localStorage.getItem('task')) || [];
     taskList.push(task);
 
@@ -73,12 +74,15 @@ function renderTaskList() {
 
     for (const task of taskList) {
         const taskElement = document.createElement("div");
-        const {taskName, taskDescription, taskIcon} = task;
+        const {taskName, taskDescription, taskIcon, taskProgress} = task;
 
         taskElement.innerHTML = `<div class="taskObject">
                                 <img id="taskIcon" src="${task.taskIcon}">
                                 <h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4>
                                 <div>${task.taskDescription}</div>
+                                <div id="progressBarDiv"style="width: 379px; height: 20px; border: 1px solid lightgray;">
+  <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div>
+  </div>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
