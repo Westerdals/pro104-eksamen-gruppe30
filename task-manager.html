@@ -16,6 +16,7 @@
                     <button class="headerButton" id="addTaskRevealBtn" onclick="revealAddTaskSection()">+ NEW TASK</button>
                     <button class="headerButton" id="addMemberRevealBtn" onclick="revealAddMemberSection()">+ NEW TEAM MEMBER</button>
                     <button class="headerButton" id="revealMembersBtn" onclick="revealMembersSection()">VIEW TEAM MEMBERS</button>
+                    <button class="headerButton" id="revealArchiveBtn" onclick="revealArchive()">VIEW ARCHIVE</button>
                 </header>
 
                 <section>
@@ -58,20 +59,22 @@
                     <div class="headerSection" id="membersSection"></div>
                 </section>
 
-                <div id=tasksHeadings>
-                    <h2 class="tasksHeading" id="unstartedHeading">UNSTARTED</h2>
-                    <h2 class="tasksHeading" id="ongoingHeading">ONGOING</h2>
-                    <h2 class="tasksHeading" id="finishedHeading">FINISHED</h2>
-                </div>
-
                 <main>
-                    <div class="tasks" id="unstartedTasks"></div>
-                    <div class="tasks" id="ongoingTasks"></div>
-                    <div class="tasks" id="finishedTasks"></div>
+                    <div id="tasksTable">
+                        <div id=tasksHeadings>
+                            <h2 class="tasksHeading" id="unstartedHeading">UNSTARTED</h2>
+                            <h2 class="tasksHeading" id="ongoingHeading">ONGOING</h2>
+                            <h2 class="tasksHeading" id="finishedHeading">FINISHED</h2>
+                        </div>
+                        <div class="tasks" id="unstartedTasks"></div>
+                        <div class="tasks" id="ongoingTasks"></div>
+                        <div class="tasks" id="finishedTasks"></div>
+                    </div>
+                    <div id="archive">
+                        <h2>ARCHIVE</h2>
+                    </div>
+
                 </main>
-
-
-                <footer></footer>
 
         </div>
 

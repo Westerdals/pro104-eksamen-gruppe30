@@ -72,6 +72,10 @@ header{
     left: 290px;
 }
 
+#revealArchiveBtn{
+    left: 1280px;
+}
+
 #taskDescription{
     position: absolute;
     width: 270px;
@@ -90,13 +94,12 @@ header{
 }
 
 #membersSection{
-    display: relative;
     width: 1380px;
     text-align: center;
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(100px,1fr));
     grid-auto-columns: minmax(100px,1fr);
-    grid-column-gap: 20px;
+    grid-column-gap: 0px;
     grid-auto-flow: column;
     overflow-x: auto;
 }
@@ -139,17 +142,37 @@ textarea{
     font-size: 15px;
 }
 
-main{
+#tasksTable{
     position: relative;
     z-index: 1;
     top: 80px;
+    height: 630px;
     width: 1400px;
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+}
+
+#archive{
+    position: relative;
+    z-index: 3;
+    top: 130px;
+    height: 0px;
+    width: 1400px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    border-top: 2px solid gray;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    overflow: auto;
 }
 
 .tasks{
     position: absolute;
     text-align: center;
-    top: 40px;
+    top: 98px;
     height: 630px;
     width: 450px;
     display: grid-inline;
@@ -161,7 +184,7 @@ main{
     position: relative;
     width: 1400px;
     height: 60px;
-    top: 140px;
+    top: 50px;
     border-top: 2px solid gray;
 }
 

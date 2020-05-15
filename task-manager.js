@@ -6,19 +6,15 @@ function revealAddTaskSection() {
         addTaskSection.style.opacity = "1";
         addTaskRevealBtn.style.backgroundColor = "#7dd1a9";
 
-        //addTaskSection.style.position = "fixed";
-
         if (addMemberSection.style.height != "0px" || addMemberSection.style.height != "") {
-            resetSection(addMemberSection);
+            hideSection(addMemberSection);
         }
         if (membersSection.style.height != "0px" || membersSection.style.height != "") {
-            resetSection(membersSection);
+            hideSection(membersSection);
         }
 
     } else {
-        addTaskSection.style.height = "0px";
-        addTaskSection.style.opacity = "0";
-        addTaskRevealBtn.style.backgroundColor = "";
+        hideSection(addTaskSection);
     }
   }
 
@@ -31,16 +27,14 @@ function revealAddTaskSection() {
         addMemberRevealBtn.style.backgroundColor = "#7dd1a9";
 
         if (addTaskSection.style.height != "0px" || addTaskSection.style.height != "") {
-            resetSection(addTaskSection);
+            hideSection(addTaskSection);
         }
         if (membersSection.style.height != "0px" || membersSection.style.height != "") {
-            resetSection(membersSection);
+            hideSection(membersSection);
         }
 
     } else {
-        addMemberSection.style.height = "0px";
-        addMemberSection.style.opacity = "0";
-        addMemberRevealBtn.style.backgroundColor = "";
+        hideSection(addMemberSection);
     }
   }
 
@@ -53,29 +47,51 @@ function revealAddTaskSection() {
         revealMembersBtn.style.backgroundColor = "lightgray";
 
         if (addTaskSection.style.height != "0px" || addTaskSection.style.height != "") {
-            resetSection(addTaskSection);
+            hideSection(addTaskSection);
         }
         if (addMemberSection.style.height != "0px" || addMemberSection.style.height != "") {
-            resetSection(addMemberSection);
+            hideSection(addMemberSection);
         }
 
     } else {
-        membersSection.style.height = "0px";
-        membersSection.style.opacity = "0";
-        revealMembersBtn.style.backgroundColor = "";
+        hideSection(membersSection);
     }
   }
 
-  function resetSection(section){
+  function revealArchive(){
+    var revealArchiveBtn = document.getElementById("revealArchiveBtn");
+    var archive = document.getElementById("archive");
+    if (archive.style.height == "0px" || archive.style.height == "") {
+        archive.style.height = "630px";
+        archive.style.opacity = "1";
+        revealArchiveBtn.style.left = "1249px";
+        revealArchiveBtn.innerHTML = "VIEW TASKS TABLE";
+
+       if (tasksTable.style.height != "0px" || tasksTable.style.height != "") {
+         hideSection(tasksTable);
+       }
+
+        } else {
+         hideSection(archive);
+         tasksTable.style.height = "630px";
+         tasksTable.style.opacity = "1";;
+         revealArchiveBtn.innerHTML = "VIEW ARCHIVE";
+         revealArchiveBtn.style.left = "1280px";
+    }
+  }
+
+  function hideSection(section){
     section.style.height = "0px";
     section.style.opacity = "0";
     if (section == addTaskSection){
         addTaskRevealBtn.style.backgroundColor = "";
     } else if (section == addMemberSection){
         addMemberRevealBtn.style.backgroundColor = "";
-    } else {
+    } else if (section == membersSection){
         revealMembersBtn.style.backgroundColor = "";
-    }
+    } else if (section == archive){
+        revealArchiveBtn.style.backgroundColor = "";
+    } 
   }
 
   function createTask(event) {
@@ -91,7 +107,7 @@ function revealAddTaskSection() {
     window.localStorage.setItem('task', JSON.stringify(taskList));
 
     event.target.reset();
-    resetSection(addTaskSection);
+    hideSection(addTaskSection);
     renderTaskList();
 }
 
