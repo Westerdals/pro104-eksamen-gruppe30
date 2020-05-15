@@ -78,5 +78,4 @@ function renderTaskList() {
                                 <div>${task.taskDescription}</div>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
-    }
-}
+    }}
