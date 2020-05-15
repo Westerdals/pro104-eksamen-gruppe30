@@ -15,8 +15,8 @@ button:focus, input:focus, textarea:focus, select:focus{
 
 header{
     position: fixed;
-    width: 1400px;
-    height: 120px;
+    width: 1000px;
+    height: 100px;
     z-index: 2;
     background-color: white;
 }
