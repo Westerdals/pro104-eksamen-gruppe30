@@ -19,6 +19,26 @@ header{
     background-color: white;
 }
 
+.overskrift{
+    height: 80px;
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    width: 1400;
+    animation: myanimation 5s infinite;}
+
+    @keyframes myanimation {
+        0%{background-color: #000000;}
+        20%{background-color:#FF0000;}
+        40%{background-color: #B6D4C4;}
+        50%{background-color: #E8D7CA}
+        70%{background-color: #B6D4C9;}
+        80% {background-color: #DCC4B4;}
+        90%{background-color: #E2D3D5;}
+        100%{background-color: #808080;}}
+
+
+
 .button{
     position: absolute;
     border: 1px solid gray;
