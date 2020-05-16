@@ -42,7 +42,7 @@ header{
 .button{
     position: absolute;
     border: 1px solid gray;
-    top: 90px;
+    top: 60px;
 }
 
 .button:hover{
@@ -54,7 +54,7 @@ header{
 }
 
 #addMemberRevealBtn{
-    left: 90px;
+    left: 1px;
 }
 
 #taskDescription{
@@ -160,3 +160,35 @@ main{
 
 
 
+.navBar{
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: lightgray;
+    width: 1400px;
+    height: 30px;;
+    position: relative; 
+    text-align: center;}
+    .navBar li{
+        float: none;
+        display: inline-block;}
+    
+    .navBar li a{
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        color: #FFFFFF;
+        font-size: 16px;
+        width: 100px;
+        padding: 12px;
+        position: relative;}
+    
+    .navBar li a:hover{
+        background-color: black;
+    
+    -webkit-transition-duration: 1.0s; 
+     -moz-transition-duration:1.0s;
+    -o-transition-duration: 1.0s;     
+        transition-duration: 1.0s;}
