@@ -17,10 +17,11 @@ button:focus, input:focus, textarea:focus, select:focus{
 
 header{
     position: fixed;
+    z-index: 3;
     width: 1400px;
     height: 110px;
-    z-index: 2;
     background-color: white;
+    padding-bottom: 20px;
 }
 
 .headerButton{
@@ -29,6 +30,7 @@ header{
     top: 90px;
     height: 30px;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .headerButton:hover{
@@ -41,6 +43,8 @@ header{
     top: 90px;
     height: 20px;
     font-size: 10px;
+    z-index: 2;
+    cursor: pointer;
 }
 
 .button:hover{
@@ -84,7 +88,6 @@ header{
 
 .headerSection{
     position: relative;
-    z-index: 0;
     top: 140px;
     width: 1400px;
     height: 0px;
@@ -227,6 +230,11 @@ textarea{
     margin-top: 30px;
     margin-left: 15px;
     border: 2px dashed gray;
+    cursor: pointer;
+}
+
+#taskHeading{
+    padding-top: 30px;
 }
 
 .memberObject{
@@ -236,4 +244,53 @@ textarea{
     top: 5px;
     margin-left: 15px;
     border: 2px dashed gray;
+    cursor: pointer;
+}
+
+#taskIconForm{
+    position: absolute;
+    left: 550px;
+    height: 80px;
+    width: 128px;
+    border: 1px solid gray;
+}
+
+.buttonIcon{
+    display: inline-block;
+    padding: 0px;
+    height: 40px;
+    width: 40px;
+    border: 0px;
+    cursor: pointer;
+}
+
+#activeIcon{
+    position: absolute;
+    left: 685px;
+    height: 68px;
+    width: 80px;
+    text-align: center;
+    padding-top: 12px;
+    border: 1px solid gray;
+}
+
+.buttonIcon:hover{
+    background: #adffd8;
+}
+
+.imageIcon{
+    height: 20px;
+    width: auto;
+}
+
+#pickedIcon{
+    top: 100px;
+    height: 50px;
+}
+
+#taskIcon{
+    position: absolute;
+    left: 199px;;
+    height: 40px;
+    width: auto;
 }

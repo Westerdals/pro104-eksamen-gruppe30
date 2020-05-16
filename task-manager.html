@@ -1,85 +1,124 @@
 <!DOCTYPE HTML>
 <html lang="en">
 
-    <head>
-        <title>Task Manager</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="task-manager.css">
-    </head>
+<head>
+    <title>Task Manager</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="task-manager.css">
+</head>
 
-    <body onload="renderTaskList(); renderMemberList();">
+<body onload="renderTaskList(); renderMemberList();">
 
-        <div id="mainContainer">
+    <div id="mainContainer">
 
-                <header>
-                    <h1>TASK MANAGER</h1>
-                    <button class="headerButton" id="addTaskRevealBtn" onclick="revealAddTaskSection()">+ NEW TASK</button>
-                    <button class="headerButton" id="addMemberRevealBtn" onclick="revealAddMemberSection()">+ NEW TEAM MEMBER</button>
-                    <button class="headerButton" id="revealMembersBtn" onclick="revealMembersSection()">VIEW TEAM MEMBERS</button>
-                    <button class="headerButton" id="revealArchiveBtn" onclick="revealArchive()">VIEW ARCHIVE</button>
-                </header>
+        <header id="header">
+            <h1>TASK MANAGER</h1>
+            <button class="headerButton" id="addTaskRevealBtn" onclick="revealAddTaskSection()">+ NEW TASK</button>
+            <button class="headerButton" id="addMemberRevealBtn" onclick="revealAddMemberSection()">+ NEW TEAM
+                MEMBER</button>
+            <button class="headerButton" id="revealMembersBtn" onclick="revealMembersSection()">VIEW TEAM
+                MEMBERS</button>
+            <button class="headerButton" id="revealArchiveBtn" onclick="revealArchive()">VIEW ARCHIVE</button>
+        </header>
 
-                <section>
-                    <div class="headerSection" id="addTaskSection">
-                        <form onsubmit="createTask(event)">
+        <aside>
+            <section>
+                <div class="headerSection" id="addTaskSection">
+                    <form onsubmit="createTask(event)">
 
-                            <div id="taskNameForm">
-                                <label id="taskNameLabel" for="taskName">What do you need to get done?</label><br>
-                                <input class="input" type="text" id="taskName" name="taskName" placeholder="Laundry, change tires, mealprep..." size="33"><br><br>
-                            </div>
+                        <!-- UPPER ROW -->
 
-                            <div id="taskChecklistForm">
-                                <label id="taskChecklistLabel" for="taskChecklistInput">Add a checklist</label>
-                                <input class="input" type="text" id="taskChecklistInput" name="taskChecklistInput" placeholder="">
-                                <button class="button" id="createChecklistBtn" type="button" onclick="createChecklistPoint()">+</button>
-                                <ul id="taskChecklist"></ul>
-                            </div>
-
-                            <br style="clear:both;"/>
-
-                                <label id="taskDescriptionLabel" for="taskDescription">Add a task description (optional)</label>
-                                <textarea id="taskDescription" name="taskDescription" placeholder=""></textarea><br>
-
-                            <input id="taskSubmitBtn" class="button" type="submit" value="GET IT DONE!">
-                        </form> 
-                    </div>
-                </section>
-
-                <section>
-                    <div class="headerSection" id="addMemberSection">
-                         <form onsubmit="createMember(event)">
-                            <label id="memberLabel" for="memberName">Add a team member:</label><br>
-                            <input class="input" type="text" id="memberName" name="memberName" placeholder="John Doe" size="17"><br>
-                            <input class="button" type="submit" value="ADD">
-                        </form> 
-                    </div>
-                </section>
-
-                <section>
-                    <div class="headerSection" id="membersSection"></div>
-                </section>
-
-                <main>
-                    <div id="tasksTable">
-                        <div id=tasksHeadings>
-                            <h2 class="tasksHeading" id="unstartedHeading">UNSTARTED</h2>
-                            <h2 class="tasksHeading" id="ongoingHeading">ONGOING</h2>
-                            <h2 class="tasksHeading" id="finishedHeading">FINISHED</h2>
+                        <div id="taskNameForm">
+                            <label id="taskNameLabel" for="taskName">What do you need to get done?</label><br>
+                            <input class="input" type="text" id="taskName" name="taskName"
+                                placeholder="Laundry, change tires, mealprep..." size="33"><br><br>
                         </div>
-                        <div class="tasks" id="unstartedTasks"></div>
-                        <div class="tasks" id="ongoingTasks"></div>
-                        <div class="tasks" id="finishedTasks"></div>
-                    </div>
-                    <div id="archive">
-                        <h2>ARCHIVE</h2>
-                    </div>
 
-                </main>
+                        <div id="taskChecklistForm">
+                            <label id="taskChecklistLabel" for="taskChecklistInput">Add a checklist</label>
+                            <input class="input" type="text" id="taskChecklistInput" name="taskChecklistInput"
+                                placeholder="">
+                            <button class="button" id="createChecklistBtn" type="button"
+                                onclick="createChecklistPoint()">+</button>
+                            <ul id="taskChecklist"></ul>
+                        </div>
 
-        </div>
+                        <div id="taskIconForm">
+                            <button type="button"
+                                onclick="document.getElementById('pickedIcon').src = 'icons/camera.png'" id="cameraBtn"
+                                class="buttonIcon"><img src="icons/camera.png" class="imageIcon"></button>
+                            <button type="button"
+                                onclick="document.getElementById('pickedIcon').src = 'icons/checklist.png'"
+                                id="checklistBtn" class="buttonIcon"><img src="icons/checklist.png"
+                                    class="imageIcon"></button>
+                            <button type="button"
+                                onclick="document.getElementById('pickedIcon').src = 'icons/heart.png'" id="heartBtn"
+                                class="buttonIcon"><img src="icons/heart.png" class="imageIcon"></button>
+                            <button type="button"
+                                onclick="document.getElementById('pickedIcon').src = 'icons/paper.png'" id="paperBtn"
+                                class="buttonIcon"><img src="icons/paper.png" class="imageIcon"></button>
+                            <button type="button"
+                                onclick="document.getElementById('pickedIcon').src = 'icons/question.png'"
+                                id="questionBtn" class="buttonIcon"><img src="icons/question.png"
+                                    class="imageIcon"></button>
+                            <button type="button" onclick="document.getElementById('pickedIcon').src = 'icons/star.png'"
+                                id="starBtn" class="buttonIcon" value="icons/star.png"><img src="icons/star.png"
+                                    class="imageIcon"></button>
+                        </div>
+                        <div id="activeIcon">
+                            <img name="taskIcon" id="pickedIcon" src="icons/blank.png" alt="No icon">
+                        </div>
 
-    </body>
+                        <br style="clear:both;" />
 
-    <script src="task-manager.js"></script>
-    
+                        <!-- LOWER ROW -->
+
+                        <label id="taskDescriptionLabel" for="taskDescription">Add a task description (optional)</label>
+                        <textarea id="taskDescription" name="taskDescription" placeholder=""></textarea><br>
+
+                        <input id="taskSubmitBtn" class="button" type="submit" value="GET IT DONE!">
+                    </form>
+                </div>
+            </section>
+
+            <section>
+                <div class="headerSection" id="addMemberSection">
+                    <form onsubmit="createMember(event)">
+                        <label id="memberLabel" for="memberName">Add a team member:</label><br>
+                        <input class="input" type="text" id="memberName" name="memberName" placeholder="John Doe"
+                            size="17"><br>
+                        <input class="button" type="submit" value="ADD">
+                    </form>
+                </div>
+            </section>
+
+            <section>
+                <div class="headerSection" id="membersSection"></div>
+            </section>
+        </aside>
+
+        <main>
+            <div id="tasksTable">
+                <div id=tasksHeadings>
+                    <h2 class="tasksHeading" id="unstartedHeading">UNSTARTED</h2>
+                    <h2 class="tasksHeading" id="ongoingHeading">ONGOING</h2>
+                    <h2 class="tasksHeading" id="finishedHeading">FINISHED</h2>
+                </div>
+                <div class="tasks" id="unstartedTasks"></div>
+                <div class="tasks" id="ongoingTasks"></div>
+                <div class="tasks" id="finishedTasks"></div>
+            </div>
+            <div id="archive">
+                <h2>ARCHIVE</h2>
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+
+<script src="task-manager.js"></script>
+<script src="layout.js"></script>
+
 </html>
