@@ -184,7 +184,7 @@ header{
   overflow: auto;
 }
 
-#membersDiv{
+.membersDiv{
   height: 70px;
   width: 200px;
   background-color: lightgray;
