@@ -1,142 +1,275 @@
-/**
- * Legge til flere teammedlem på en oppgave.
- * 
- * Når man opretter en oppgave ønsker vi å kunne legge til flere medlemmer på samme oppgave.
- * 
- */
 
-function revealAddTaskSection() {
-    var addTaskRevealBtn = document.getElementById("addTaskRevealBtn");
-    var addTaskSection = document.getElementById("addTaskSection");
-    if (addTaskSection.style.height == "0px" || addTaskSection.style.height == "") {
-        addTaskSection.style.height = "250px";
-        addTaskSection.style.opacity = "1";
-        addTaskRevealBtn.style.backgroundColor = "lightgray";
-
-        if (addMemberSection.style.height != "0px" || addMemberSection.style.height != "") {
-            resetSection(addMemberSection);
-        }
-    } else {
-        addTaskSection.style.height = "0px";
-        addTaskSection.style.opacity = "0";
-        addTaskRevealBtn.style.backgroundColor = "";
-    }
-  }
-
-
-  function revealAddMemberSection() {
-    var addMemberRevealBtn = document.getElementById("addMemberRevealBtn");
-    var addMemberSection = document.getElementById("addMemberSection");
-    if (addMemberSection.style.height == "0px" || addMemberSection.style.height == "") {
-        addMemberSection.style.height = "150px";
-        addMemberSection.style.opacity = "1";
-        addMemberRevealBtn.style.backgroundColor = "lightgray";
-
-        if (addTaskSection.style.height != "0px" || addTaskSection.style.height != "") {
-            resetSection(addTaskSection);
-        }
-        
-    } else {
-        addMemberSection.style.height = "0px";
-        addMemberSection.style.opacity = "0";
-        addMemberRevealBtn.style.backgroundColor = "";
-    }
-  }
-
-
-
-
-function createTask(event){
+function createTask(event) {
     event.preventDefault();
 
+
+    let task = document.querySelector("[name='task']").value;
+    task = task.toLowerCase();
     const taskList = JSON.parse(localStorage.getItem('task')) || [];
 
-    const taskId = taskList.length;
+    if (task === "") {
+        document.getElementById("task-value-check").innerHTML = "PLEASE ENTER A TASK";
+    } else {
+        document.getElementById("task-value-check").innerHTML = "";
+        document.getElementById("member-value-check").innerHTML = "";
 
-    const taskName = document.querySelector("#taskName").value;
-    const taskDescription = document.querySelector("#taskDescription").value;
 
-    
-    const task = {taskId, taskName, taskDescription};
-    taskList.push(task);
+        const tasks = { task};
+        taskList.push(tasks);
 
-    window.localStorage.setItem('task', JSON.stringify(taskList));
-    
-    event.target.reset();
-    renderTaskList();
 
+        window.localStorage.setItem('task', JSON.stringify(taskList));
+
+
+        event.target.reset();
+
+
+        renderTaskList();
+    }
 }
 
-function createMember(event){
+
+function createMember(event) {
     event.preventDefault();
 
-    const teamMember = document.querySelector("#teamMember").value;
 
-    const memberList = JSON.parse(localStorage.getItem('member')) || [];
-    const memberId = memberList.length;
+    let member = document.querySelector("[name='teamMember']").value;
+    member = member.toLowerCase();
 
-    const member = {memberId, teamMember};
+
+    if (member === "") {
+        document.getElementById("member-value-check").innerHTML = "PLEASE ENTER A TEAM MEMBER";
+    } else {
+        document.getElementById("member-value-check").innerHTML = "";
+        document.getElementById("task-value-check").innerHTML = "";
+
+
+        const members = { member };
+        const memberList = JSON.parse(localStorage.getItem('member')) || [];
+        memberList.push(members);
+
+
+        window.localStorage.setItem('member', JSON.stringify(memberList));
+
+
+        event.target.reset();
+
+
+        renderMemberList();
+    }
+}
+
+
+function assignToMember(event) {
+
+    event.preventDefault();
     
-    memberList.push(member);
 
-    window.localStorage.setItem('member', JSON.stringify(memberList));
+    const taskList = JSON.parse(localStorage.getItem('task')) || {};
+    const memberList = JSON.parse(localStorage.getItem('member')) || {};
 
-    event.target.reset();
-    //renderMemberList();
+
+    let nameMember = document.getElementById('check-member').value;
+    let nameTask = document.getElementById('check-task').value;
+    let valueCheck = document.getElementById('assign-value-check');
+
+
+    /*if (nameMember === "" && nameTask === "") {
+        valueCheck.innerHTML = "PLEASE ENTER A TASK AND A TEAM MEMBER"
+    } else if (nameMember === "") {
+        valueCheck.innerHTML = "PLEASE ENTER A TEAM MEMBER";
+    } else if (nameTask === "") {
+        valueCheck.innerHTML = "PLEASE ENTER A TASK";
+    } else {
+        valueCheck.innerHTML = "";
+
+        nameMember = nameMember.toLowerCase();
+        nameTask = nameTask.toLowerCase();
+
+
+        const assignMemberList = JSON.parse(localStorage.getItem('assignment')) || [];
+        let member;
+        let task;
+        if (nameMember != '' && nameTask != '') {
+            for (const m of memberList) {
+                if (m.member === nameMember) {
+                    member = m.member;
+                    
+                }
+            }
+            for (const a of taskList) {
+                if (a.task === nameTask) {
+                    task = a.task;
+                    
+                }
+            }
+
+
+            if (member != undefined && task != undefined) {
+                let assignToMember = { task, member };
+                assignMemberList.push(assignToMember);
+
+                window.localStorage.setItem('assignment', JSON.stringify(assignMemberList));
+            } else {
+                valueCheck.innerHTML = "PLEASE ENTER AN EXISTING TASK AND/OR TEAM MEMBER";
+            }
+            renderUpdatedTaskList();
+        }else {
+            valueCheck.innerHTML = "PLEASE ENTER AN EXISTING TASK AND/OR TEAM MEMBER";
+        }*/
+
+        if (nameTask === "") {
+            valueCheck.innerHTML = "PLEASE ENTER A TASK AND A TEAM MEMBER";
+        } else if (nameTask === "") {
+            valueCheck.innerHTML = "PLEASE ENTER A TASK";
+        } else {
+            valueCheck.innerHTML = "";
+    
+            nameMember = nameMember.toLowerCase();
+            nameTask = nameTask.toLowerCase();
+    
+    
+            const assignMemberList = JSON.parse(localStorage.getItem('assignment')) || [];
+            let task;
+            if (nameTask != '') {
+                for (const a of taskList) {
+                    if (a.task === nameTask) {
+                        task = a.task;
+                        
+                    }
+                }
+
+        if (task != undefined) {
+            let assignToMember = {task};
+            assignMemberList.push(assignToMember);
+
+            window.localStorage.setItem('assignment', JSON.stringify(assignMemberList));
+        } else {
+                valueCheck.innerHTML = "PLEASE ENTER AN EXISTING TASK AND/OR TEAM MEMBER";
+        }
+            renderUpdatedTaskList();
+        }
+
+        event.target.reset();
+    }
 
 }
 
 
 function renderTaskList() {
 
+
     const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
-    const unstartedTasks = document.getElementById("unstartedTasks");
+    const taskListOutput = document.getElementById("tasks-rendering");
 
-    unstartedTasks.innerHTML = "";
 
-    for (const task of taskList) {
-        const taskElement = document.createElement("div");
-        const {taskName, taskDescription} = task;
+    taskListOutput.innerHTML = "";
 
-        taskElement.innerHTML = `<div id="task${task.taskId}" class="taskObject" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                <h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4>
-                                <div>${task.taskDescription}</div>
-                                <div>Teammedlem:</div>
+
+    for (const a of taskList) {
+        let taskElement = document.createElement("div");
+        taskElement.innerHTML = `<div class="object-render">
+                                <h4>${a.task.charAt(0).toUpperCase() + a.task.slice(1)}</h4>
                                 </div>`;
-        unstartedTasks.appendChild(taskElement);
+        taskListOutput.appendChild(taskElement);
     }
 }
 
 function renderMemberList() {
 
+
     const memberList = JSON.parse(window.localStorage.getItem("member")) || [];
-    const dropTxt = document.getElementById("droptxt");
+    const memberListOutput = document.getElementById("members-rendering");
 
-    dropTxt.innerHTML = "";
+    memberListOutput.innerHTML = "";
 
-    for (const member of memberList) {
-        dropTxt.innerHTML += `
-                            <p id="member${member.memberId}" draggable="true" ondragstart="drag(event)">${member.teamMember}<p>
-                            `;
+
+    for (const m of memberList) {
+        let memberElement = document.createElement("div");
+        memberElement.innerHTML = `<div class="object-render">
+                                  <h4 id="drag1" draggable="true" ondragstart="drag(event)">${m.member.charAt(0).toUpperCase() + m.member.slice(1)}</h4>
+                                  </div>`;
+        memberListOutput.appendChild(memberElement);
+    }
+}
+
+
+function renderUpdatedTaskList(){
+    const assignMemberList = JSON.parse(localStorage.getItem('assignment')) || [];
+    const assignmentListOutput = document.getElementById('assignments-rendering');
+
+
+    assignmentListOutput.innerHTML = "";
+
+    for (const a of assignMemberList) {
+        let assignmentElement = document.createElement("div");
+        
+        assignmentElement.innerHTML = `<div id="assignment-object-render" class="object-render-assignments"
+                    class="containers" ondragover="allowdrop(event)">
+                    <h1>${a.task.charAt(0).toUpperCase() + a.task.slice(1)}</h1>
+                    <img src="check-mark.png" width="70px" alt="check-mark"><br>
+                    <p>medlemmer</p>
+                    <div id="membersDiv" ondrop="drop(event)" ondragover="allowdrop(event)"></div>
+                    </div>`;
+ 
+        assignmentListOutput.appendChild(assignmentElement);
     }
 
+    renderMemberNamesOnTask();
 }
 
-function allowDrop(event){
-    event.preventDefault();
+function allowdrop(ev) {
+    ev.preventDefault();
+  }
+  
+  function drag(ev) {
+    let memberInfo = ev.target.innerText;
+    ev.dataTransfer.setData("text/plain", memberInfo);
+  }
+  
+  function drop(ev) {
+    ev.preventDefault();
+
+    let taskAndMember = JSON.parse(localStorage.getItem("taskAndMember")) || [];
+    var data = ev.dataTransfer.getData("text/plain");
+
+    ev.target.append(data);
+
+    task = ev.target.parentElement.querySelector("h1").innerText;
+
+    memberInfo = data;
+
+    
+    memberAndTask = {task, memberInfo};
+    taskAndMember.push(memberAndTask);
+
+    
+    window.localStorage.setItem("taskAndMember", JSON.stringify(taskAndMember));
+
+
+
+    renderUpdatedTaskList();
+
+  }
+
+  function testClick(){
+
+  }
+
+  function renderMemberNamesOnTask(){
+
+    const taskAndMember = JSON.parse(localStorage.getItem("taskAndMember")) || [];
+    const membersDiv = document.querySelector("#membersDiv");
+
+    //membersDiv.innerHTML = "";
+    
+    for(const m of taskAndMember){
+        let htmlTxt = document.createElement("div");
+        htmlTxt.innerHTML = `${m.memberInfo}`;
+
+        membersDiv.appendChild(htmlTxt);
+    }
 }
-
-function drag(event){
-    event.dataTransfer.setData("text", event.target.id);
-}
-
-function drop(event){
-    event.preventDefault();
-    let data = event.dataTransfer.getData("text");
-    event.target.appendChild(document.getElementById(data));
-}
-
-
 
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
@@ -158,9 +291,8 @@ function filterFunction() {
         p[i].style.display = "none";
       }
     }
-  }
+}
 
-  window.onload = filterFunction;
-
-
-
+  window.onload = renderMemberList();
+  window.onload = renderTaskList();
+  window.onload = renderUpdatedTaskList();
