@@ -1,4 +1,5 @@
 
+
 function createTask(event) {
     event.preventDefault();
 
@@ -68,8 +69,6 @@ function assignToMember(event) {
     const taskList = JSON.parse(localStorage.getItem('task')) || {};
     const memberList = JSON.parse(localStorage.getItem('member')) || {};
 
-
-    let nameMember = document.getElementById('check-member').value;
     let nameTask = document.getElementById('check-task').value;
     let valueCheck = document.getElementById('assign-value-check');
 
@@ -125,7 +124,6 @@ function assignToMember(event) {
         } else {
             valueCheck.innerHTML = "";
     
-            nameMember = nameMember.toLowerCase();
             nameTask = nameTask.toLowerCase();
     
     
@@ -196,6 +194,7 @@ function renderMemberList() {
 
 function renderUpdatedTaskList(){
     const assignMemberList = JSON.parse(localStorage.getItem('assignment')) || [];
+
     const assignmentListOutput = document.getElementById('assignments-rendering');
 
 
@@ -203,20 +202,22 @@ function renderUpdatedTaskList(){
 
     for (const a of assignMemberList) {
         let assignmentElement = document.createElement("div");
-        
         assignmentElement.innerHTML = `<div id="assignment-object-render" class="object-render-assignments"
-                    class="containers" ondragover="allowdrop(event)">
+                    class="containers">
                     <h1>${a.task.charAt(0).toUpperCase() + a.task.slice(1)}</h1>
-                    <img src="check-mark.png" width="70px" alt="check-mark"><br>
+                    <br>
                     <p>medlemmer</p>
-                    <div id="membersDiv" ondrop="drop(event)" ondragover="allowdrop(event)"></div>
+                    <div class="membersDiv" ondragover="allowdrop(event)" ondrop="drop(event)"></div>
                     </div>`;
  
         assignmentListOutput.appendChild(assignmentElement);
+        
     }
 
     renderMemberNamesOnTask();
+
 }
+
 
 function allowdrop(ev) {
     ev.preventDefault();
@@ -227,18 +228,17 @@ function allowdrop(ev) {
     ev.dataTransfer.setData("text/plain", memberInfo);
   }
   
+  
   function drop(ev) {
     ev.preventDefault();
 
-    let taskAndMember = JSON.parse(localStorage.getItem("taskAndMember")) || [];
-    var data = ev.dataTransfer.getData("text/plain");
-
-    ev.target.append(data);
+    const taskAndMember = JSON.parse(localStorage.getItem("taskAndMember")) || [];
+    var memberInfo = ev.dataTransfer.getData("text/plain");
+    
 
     task = ev.target.parentElement.querySelector("h1").innerText;
 
-    memberInfo = data;
-
+    ev.target.append(memberInfo);
     
     memberAndTask = {task, memberInfo};
     taskAndMember.push(memberAndTask);
@@ -246,52 +246,27 @@ function allowdrop(ev) {
     
     window.localStorage.setItem("taskAndMember", JSON.stringify(taskAndMember));
 
-
-
     renderUpdatedTaskList();
 
   }
 
-  function testClick(){
-
-  }
 
   function renderMemberNamesOnTask(){
 
     const taskAndMember = JSON.parse(localStorage.getItem("taskAndMember")) || [];
-    const membersDiv = document.querySelector("#membersDiv");
+    let membersDiv = document.querySelector(".membersDiv");
 
-    //membersDiv.innerHTML = "";
+   //membersDiv.innerHTML = "";
     
     for(const m of taskAndMember){
         let htmlTxt = document.createElement("div");
         htmlTxt.innerHTML = `${m.memberInfo}`;
+        
 
         membersDiv.appendChild(htmlTxt);
     }
 }
 
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-
-function filterFunction() {
-    renderMemberList();
-    var input, filter, p, i;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown");
-    p = div.getElementsByTagName("p");
-    for (i = 0; i < p.length; i++) {
-      txtValue = p[i].textContent || p[i].innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        p[i].style.display = "";
-      } else {
-        p[i].style.display = "none";
-      }
-    }
-}
 
   window.onload = renderMemberList();
   window.onload = renderTaskList();
