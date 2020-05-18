@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="styleTodo.css">
+    <link rel="stylesheet" href="styleMember.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="overskrift">Task Manager</header>
+    <button id="darkModeToggle" class="darkModeToggle">
+        <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496"><path fill="currentColor" 
+            d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" transform="translate(-6 -6)"/>
+        </svg>
+      </button>
+    <form>
+        <input type="text" class="memberInput" placeholder="Add Members">
+        <button class="memberButton" type="submit">ADD</button>
+        <input type="text" class="todoInput" placeholder="Add Tasks">
+        <button class="todoButton" type="submit">ADD</button>
+        <div class="selectMember">
+        </div>
 
+        <div class="selectTodo">
+            <select name="todos" class="filterTodo">
+                <option value="all">Unstarted</option>
+                <option value="completed">Ungoing</option>
+                <option value="uncompleted">Finished</option>
+            </select>
+        </div>
+    </form>
+    
+    <div id="tasksTable">
+                <div id=tasksHeadings>
+                    <h2 class="tasksHeading" id="unstartedHeading">UNSTARTED</h2>
+                    <h2 class="tasksHeading" id="ongoingHeading">ONGOING</h2>
+                    <h2 class="tasksHeading" id="finishedHeading">FINISHED</h2>
+                </div>
+                <div class="tasks" id="unstartedTasks"></div>
+                <div class="tasks" id="ongoingTasks"></div>
+                <div class="tasks" id="finishedTasks"></div>
+            </div>
+    
+    
+    
+    
+    <div class="memberContainer">
+        <ul class="memberList">
+            <div class="member"></div>
+        </ul>
+    </div>
+    <div class="todoContainer">
+        <ul class="todoList">
+            <div class="todo"></div>
+        </ul>
+    </div>
+    
+    <script src="todoMain.js"></script>
+    <script src="memberMain.js"></script>
+    <script src="darkmode.js"></script>
+</body>
+</html>
