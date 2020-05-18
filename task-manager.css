@@ -37,6 +37,30 @@ header{
     background-color: lightgray;
 }
 
+.optionBtn{
+    position: absolute;
+    background-color: lightgray;
+    width: 140px;
+    height: 30px;
+    font-size: 15px;
+    text-align: left;
+    left: 290px;
+    color: gray;
+    border: 0px;
+}
+
+.optionBtn:hover{
+    background-color: orange;
+}
+
+#addChecklistRevealBtn{
+    top: 35px;
+}
+
+#addIconRevealBtn{
+    top: 70px;
+}
+
 .button{
     position: absolute;
     border: 1px solid gray;
@@ -52,7 +76,18 @@ header{
 }
 
 #taskSubmitBtn{
-    top: 205px;
+    top: 180px;
+    left: 10px;
+    background-color: lightgray;
+    color: gray;
+    height: 30px;
+    width: 120px;
+    font-size: 15px;
+}
+
+#taskSubmitBtn:hover{
+    border-color: orange;
+    color: orange;
 }
 
 #addTaskRevealBtn{
@@ -78,6 +113,18 @@ header{
 
 #revealArchiveBtn{
     left: 1280px;
+}
+
+#taskDescriptionForm{
+    position: absolute;
+    height: 0px;
+    opacity: 0;
+    width: 250px;
+    left: 435px;
+    padding: 10px;
+    background-color: lightgray;
+    color: gray;
+    font-size: 17px;
 }
 
 #taskDescription{
@@ -109,7 +156,7 @@ header{
 
 label{
     display: block;
-    font-family: fantasy;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 #taskNameLabel{
@@ -118,8 +165,12 @@ label{
 }
 
 #taskNameForm{
+    color: gray;
     float: left;
+    height: 200px;
+    padding: 10px;
     margin-right: 60px;
+    background-color: lightgray;
 }
 
 #taskChecklistForm{
@@ -144,6 +195,11 @@ textarea{
     border-bottom: 1px solid gray;
     font-size: 15px;
 }
+
+input::placeholder{
+    font-family: fantasy;
+}
+
 
 #tasksTable{
     position: relative;

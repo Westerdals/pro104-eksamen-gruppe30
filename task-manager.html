@@ -5,6 +5,7 @@
     <title>Task Manager</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="task-manager.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body onload="renderTaskList(); renderMemberList();">
@@ -29,11 +30,17 @@
                         <!-- UPPER ROW -->
 
                         <div id="taskNameForm">
-                            <label id="taskNameLabel" for="taskName">What do you need to get done?</label><br>
+                            <label id="taskNameLabel" for="taskName">WHAT DO YOU<br>NEED TO GET<br>DONE?</label><br>
                             <input class="input" type="text" id="taskName" name="taskName"
-                                placeholder="Laundry, change tires, mealprep..." size="33"><br><br>
+                                placeholder="Write down a task..." size="32"><br><br>
                         </div>
 
+                        <div id=optionButtons>
+                            <button class="optionBtn" id="addDescriptionRevealBtn" onmouseover="revealAddDescriptionForm()">+ DESCRIPTION</button>
+                            <button class="optionBtn" id="addChecklistRevealBtn" onmouseover="revealAddChecklistForm()">+ CHECKLIST</button>
+                            <button class="optionBtn" id="addIconRevealBtn" onmouseover="revealAddIconForm()">+ ICON</button>
+                        </div>
+<!--
                         <div id="taskChecklistForm">
                             <label id="taskChecklistLabel" for="taskChecklistInput">Add a checklist</label>
                             <input class="input" type="text" id="taskChecklistInput" name="taskChecklistInput"
@@ -41,9 +48,9 @@
                             <button class="button" id="createChecklistBtn" type="button"
                                 onclick="createChecklistPoint()">+</button>
                             <ul id="taskChecklist"></ul>
-                        </div>
+                        </div> -->
 
-                        <div id="taskIconForm">
+<!--                      <div id="taskIconForm">
                             <button type="button"
                                 onclick="document.getElementById('pickedIcon').src = 'icons/camera.png'" id="cameraBtn"
                                 class="buttonIcon"><img src="icons/camera.png" class="imageIcon"></button>
@@ -64,17 +71,19 @@
                             <button type="button" onclick="document.getElementById('pickedIcon').src = 'icons/star.png'"
                                 id="starBtn" class="buttonIcon" value="icons/star.png"><img src="icons/star.png"
                                     class="imageIcon"></button>
-                        </div>
+                            </div>--> 
+<!--
                         <div id="activeIcon">
                             <img name="taskIcon" id="pickedIcon" src="icons/blank.png" alt="No icon">
-                        </div>
+                        </div> -->
+                        
 
-                        <br style="clear:both;" />
 
                         <!-- LOWER ROW -->
-
-                        <label id="taskDescriptionLabel" for="taskDescription">Add a task description (optional)</label>
-                        <textarea id="taskDescription" name="taskDescription" placeholder=""></textarea><br>
+                        <div id="taskDescriptionForm">
+                            <label id="taskDescriptionLabel" for="taskDescription">DESCRIBE THE TASK</label>
+                            <textarea id="taskDescription" name="taskDescription" placeholder=""></textarea><br>
+                        </div>
 
                         <input id="taskSubmitBtn" class="button" type="submit" value="GET IT DONE!">
                     </form>

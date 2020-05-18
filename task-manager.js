@@ -1,6 +1,6 @@
 /*
 
-This JavaScript file contains code related to object handling, which is the main functionality of this web app.
+This JavaScript file contains code related to object handling (main functionality).
 
 */
 

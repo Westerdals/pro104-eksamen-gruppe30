@@ -1,6 +1,6 @@
 /*
 
-This JavaScript file contains code which handles the functionality of the web app's layout.
+This JavaScript file contains code which handles the functionality of the layout.
 
 */
 
@@ -84,6 +84,17 @@ function revealArchive() {
         revealArchiveBtn.innerHTML = "VIEW ARCHIVE";
         revealArchiveBtn.style.left = "1280px";
     }
+}
+
+function revealAddDescriptionForm(){
+    var addDescriptionRevealBtn = document.getElementById("addDescriptionRevealBtn");
+    var taskDescriptionForm = document.getElementById("taskDescriptionForm");
+
+    if (taskDescriptionForm.style.height == "0px" || taskDescriptionForm.style.height == ""){
+        taskDescriptionForm.style.height = "200px";
+        taskDescriptionForm.style.opacity = "1";
+
+}
 }
 
 function hideSection(section) {
