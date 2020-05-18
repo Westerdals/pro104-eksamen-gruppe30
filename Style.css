@@ -1,1 +1,236 @@
 
+:root {
+    --clr-light: linear-gradient(120deg, rgb(169,169,169),rgb(220,220,220) ,rgb(169,169,169));
+    --clr-dark: linear-gradient(120deg, rgb(26, 65, 71),  rgb(58, 15, 94));
+    --clr-primary: #dbffa2;
+    --clr-secondary: #c3fcf2;
+    --clr-accent: #ff7750;
+    color: black;
+    
+  
+    --foreground: var(--clr-dark);
+    --background: var(--clr-light);
+  
+    --ff-title: "Playfair Display", serif;
+    --ff-body: "Assistant", sans-serif;
+  }
+
+
+
+
+
+
+  
+  .darkmode {
+    --clr-light: linear-gradient(120deg, rgb(0,0,0), rgb(0,0,0));
+    --clr-dark: linear-gradient(120deg, rgb(0,0,0),  rgb(0,0,0));
+    --clr-primary: #202302;
+    --clr-secondary: #00100d;
+    --clr-accent: #ff7750;
+    color: white;
+  
+    --foreground: var(--clr-light);
+    --background: var(--clr-dark);
+  }
+  
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.overskrift{
+    height: 80px;
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    width: 1400;
+    animation: myanimation 5s infinite;}
+
+
+
+body {
+    font-family: sans-serif;
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--ff-body);
+    font-size: 18px;
+    line-height: 1.6;
+}
+header{
+    font-size: 1.5rem;
+}
+header, form{
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form input{
+    padding: 0.5rem;
+    font-size: 2rem;
+    border: none;
+    background: white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+form button {
+    padding: 0.5rem;
+    font-size: 2rem;
+    border: none;
+    background: gray;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+form button:hover{
+    background: green;
+    color: gray;
+}
+
+.trashButton {
+    background: rgb(169, 73, 248);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+.completedButton {
+    background: rgb(101, 224, 246);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border-right: 1px solid white;
+}
+.addMember {
+    background: rgb(86, 160, 64);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 1px solid white;
+}
+
+.completed{
+    text-decoration: line-through;
+    opacity: 0.3;
+}
+
+tasks{
+    position: absolute;
+    text-align: center;
+    top: 15px;
+    height: 800px;
+    width: 500px;
+}
+
+#tasksHeadings{
+    position: relative;
+    width: 1351px;
+    height: 60px;
+    top: 125px;
+    border-top: 2px solid black;
+}
+
+.tasksHeading{
+    width: 450px;
+    position: absolute;
+    text-align: center;
+}
+
+
+#unstartedHeading{
+    border-right: 5px solid black;
+}
+
+#ongoingHeading{
+    left: 450px;;
+    border-right: 5px solid black;
+}
+
+#finishedHeading{
+    left: 900px;
+}
+
+#unstartedTasks{
+    border-right: 5px solid black;
+}
+
+#ongoingTasks{
+    left: 450px;
+    border-right: 5px solid black;
+}
+
+#finishedTasks{
+    left: 900px;
+}
+
+
+
+
+
+.drop{
+    transform: translateY(5rem) rotateZ(16deg);
+    opacity: 0.3;
+}
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+}
+
+.select{
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+select{
+    color:black;
+    width: 10rem;
+    cursor: pointer;
+    padding: 1rem;
+}
+.select::after{
+    content: "\25BC";
+    position: absolute;
+    background: gray;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.select:hover::after{
+    background: violet;
+    color: gray
+}
+.darkModeToggle {
+    position: absolute;
+    z-index: 100;
+    top: 1em;
+    right: 1em;
+    color: var(--foreground);
+    border: 2px solid currentColor;
+    padding: 4px;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+  }
