@@ -127,14 +127,16 @@ header{
     background-color: lightgray;
     color: gray;
     font-size: 17px;
-    -webkit-animation: flash 1.5s;
-	animation: flash 1.5s;
 }
 
 #taskDescription{
     position: absolute;
     width: 270px;
     height: 50px;
+}
+
+#taskDescriptionPara{
+    padding-top: 150px;
 }
 
 .headerSection{
@@ -294,6 +296,12 @@ input::placeholder{
     margin-left: 15px;
     border: 2px dashed gray;
     cursor: pointer;
+    transition: height 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.taskObject:hover{
+    background-color: #f7fafa;
 }
 
 #taskHeading{
@@ -344,6 +352,7 @@ input::placeholder{
 
 #taskIcon{
     position: absolute;
+    left: 200px;
     height: 40px;
     width: auto;
 }
