@@ -184,8 +184,8 @@ function renderMemberList() {
 
     for (const m of memberList) {
         let memberElement = document.createElement("div");
-        memberElement.innerHTML = `<div class="object-render">
-                                  <h4 id="drag1" draggable="true" ondragstart="drag(event)">${m.member.charAt(0).toUpperCase() + m.member.slice(1)}</h4>
+        memberElement.innerHTML = `<div class="object-render" draggable="true" ondragstart="drag(event)">
+                                  <h4 id="drag1">${m.member.charAt(0).toUpperCase() + m.member.slice(1)}</h4>
                                   </div>`;
         memberListOutput.appendChild(memberElement);
     }
@@ -203,11 +203,11 @@ function renderUpdatedTaskList(){
     for (const a of assignMemberList) {
         let assignmentElement = document.createElement("div");
         assignmentElement.innerHTML = `<div id="assignment-object-render" class="object-render-assignments"
-                    class="containers">
+                    class="containers" ondragover="allowdrop(event)" ondrop="drop(event)">
                     <h1>${a.task.charAt(0).toUpperCase() + a.task.slice(1)}</h1>
                     <br>
                     <p>medlemmer</p>
-                    <div class="membersDiv" ondragover="allowdrop(event)" ondrop="drop(event)"></div>
+                    <div class="membersDiv"></div>
                     </div>`;
  
         assignmentListOutput.appendChild(assignmentElement);
@@ -233,7 +233,7 @@ function allowdrop(ev) {
     ev.preventDefault();
 
     const taskAndMember = JSON.parse(localStorage.getItem("taskAndMember")) || [];
-    var memberInfo = ev.dataTransfer.getData("text/plain");
+    let memberInfo = ev.dataTransfer.getData("text/plain");
     
 
     task = ev.target.parentElement.querySelector("h1").innerText;
@@ -260,12 +260,14 @@ function allowdrop(ev) {
     
     for(const m of taskAndMember){
         let htmlTxt = document.createElement("div");
-        htmlTxt.innerHTML = `${m.memberInfo}`;
+        htmlTxt.innerText = `${m.memberInfo}`;
         
 
         membersDiv.appendChild(htmlTxt);
     }
 }
+
+
 
 
   window.onload = renderMemberList();
