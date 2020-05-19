@@ -195,26 +195,30 @@ function renderMemberList() {
 function renderUpdatedTaskList(){
     const assignMemberList = JSON.parse(localStorage.getItem('assignment')) || [];
 
+    const taskId = assignMemberList.length;
+
     const assignmentListOutput = document.getElementById('assignments-rendering');
 
+    
 
     assignmentListOutput.innerHTML = "";
+    
 
     for (const a of assignMemberList) {
         let assignmentElement = document.createElement("div");
         assignmentElement.innerHTML = `<div id="assignment-object-render" class="object-render-assignments"
-                    class="containers" ondragover="allowdrop(event)" ondrop="drop(event)">
+                    class="containers" ondragover="allowdrop(event)">
                     <h1>${a.task.charAt(0).toUpperCase() + a.task.slice(1)}</h1>
                     <br>
                     <p>medlemmer</p>
-                    <div class="membersDiv"></div>
+                    <div id="membersDiv${a.taskId}" ondragover="allowdrop(event)" ondrop="drop(event)"></div>
                     </div>`;
  
         assignmentListOutput.appendChild(assignmentElement);
         
     }
 
-    renderMemberNamesOnTask();
+    //renderMemberNamesOnTask();
 
 }
 
@@ -246,6 +250,15 @@ function allowdrop(ev) {
     
     window.localStorage.setItem("taskAndMember", JSON.stringify(taskAndMember));
 
+    let membersDiv = document.getElementsByClassName("membersDiv");
+
+    for(const tm of taskAndMember){
+        let test = document.createElement("div");
+        test.innerHTML = `${tm.memberInfo}\n`;
+
+        membersDiv.appendChild(test);
+    }
+
     renderUpdatedTaskList();
 
   }
@@ -253,8 +266,13 @@ function allowdrop(ev) {
 
   function renderMemberNamesOnTask(){
 
+    const assignMemberList = JSON.parse(localStorage.getItem('assignment')) || [];
+
     const taskAndMember = JSON.parse(localStorage.getItem("taskAndMember")) || [];
-    let membersDiv = document.querySelector(".membersDiv");
+
+    for(let i = 0; i < assignMemberList; i++){
+
+    let membersDiv = document.querySelector(`#membersDiv${i}`);
 
    //membersDiv.innerHTML = "";
     
@@ -265,6 +283,8 @@ function allowdrop(ev) {
 
         membersDiv.appendChild(htmlTxt);
     }
+
+}
 }
 
 
