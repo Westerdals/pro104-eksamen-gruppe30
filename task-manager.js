@@ -86,3 +86,25 @@ function createChecklistPoint() {
     document.getElementById("taskChecklist").appendChild(li);
     document.getElementById("taskChecklistInput").value = "";
 }
+
+function createIconButtons(){
+    var icons = ["airplane", "android", "bag", "bbq", "bike", "book", "brush", "building", "cake", "camera", "car", "clock", "cloud",
+     "color-palette", "comment", "cutlery", "desktop-computer", "diagram", "drink", "earth", "envelope", "exclamation-mark", "film",
+     "fitness", "flower", "game-controller", "health", "heart", "house", "laptop", "large-brush", "light-bulb", "mic", "moon", "motorcycle", "mug",
+     "music-note", "paper-clip", "pet", "phone", "run", "school", "shopping-cart", "smartphone", "star", "store", "swim",
+     "trophy", "truck", "wrench"];
+
+    for(var i = 0; i < icons.length; i++){
+        let button = document.createElement("button");
+        button.setAttribute('type', 'button');
+        button.setAttribute('class', 'buttonIcon');
+        button.setAttribute('id', `${icons[i]}Btn`);
+        button.setAttribute('onclick', `document.getElementById("pickedIcon").src = "icons/${icons[i]}.png"`);
+        let img = document.createElement("img");
+        img.setAttribute('src', `icons/${icons[i]}.png`);
+        img.setAttribute('class', 'imageIcon');
+        img.setAttribute('alt', `${icons[i]}`);
+        button.appendChild(img)
+        taskIconForm.appendChild(button);
+    }
+}

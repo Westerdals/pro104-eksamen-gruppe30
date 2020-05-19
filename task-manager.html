@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-<body onload="renderTaskList(); renderMemberList();">
+<body onload="renderTaskList(); renderMemberList(); createIconButtons();">
 
     <div id="mainContainer">
 
@@ -26,8 +26,6 @@
             <section>
                 <div class="headerSection" id="addTaskSection">
                     <form onsubmit="createTask(event)">
-
-                        <!-- UPPER ROW -->
 
                         <div id="taskNameForm" onmouseover="hideAdditionForms()">
                             <label id="taskNameLabel" for="taskName">WHAT DO YOU<br>NEED TO GET<br>DONE?</label><br>
@@ -59,29 +57,8 @@
                         </div>
 
                         <div class="additionForm" id="taskIconForm">
-                            <button type="button"
-                                onclick="document.getElementById('pickedIcon').src = 'icons/camera.png'" id="cameraBtn"
-                                class="buttonIcon"><img src="icons/camera.png" class="imageIcon"></button>
-                            <button type="button"
-                                onclick="document.getElementById('pickedIcon').src = 'icons/checklist.png'"
-                                id="checklistBtn" class="buttonIcon"><img src="icons/checklist.png"
-                                    class="imageIcon"></button>
-                            <button type="button"
-                                onclick="document.getElementById('pickedIcon').src = 'icons/heart.png'" id="heartBtn"
-                                class="buttonIcon"><img src="icons/heart.png" class="imageIcon"></button>
-                            <button type="button"
-                                onclick="document.getElementById('pickedIcon').src = 'icons/paper.png'" id="paperBtn"
-                                class="buttonIcon"><img src="icons/paper.png" class="imageIcon"></button>
-                            <button type="button"
-                                onclick="document.getElementById('pickedIcon').src = 'icons/question.png'"
-                                id="questionBtn" class="buttonIcon"><img src="icons/question.png"
-                                    class="imageIcon"></button>
-                            <button type="button" onclick="document.getElementById('pickedIcon').src = 'icons/star.png'"
-                                id="starBtn" class="buttonIcon" value="icons/star.png"><img src="icons/star.png"
-                                    class="imageIcon"></button>
-
                             <div id="activeIcon">
-                                <img name="taskIcon" id="pickedIcon" src="icons/blank.png" alt="No icon">
+                                <img name="taskIcon" id="pickedIcon" src="icons/default.png" alt="chosen-icon">
                             </div>
                         </div>
 
