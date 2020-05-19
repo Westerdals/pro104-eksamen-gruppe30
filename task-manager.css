@@ -26,18 +26,19 @@ header{
 
 .headerButton{
     position: absolute;
-    border: 1px solid gray;
+    border: 0px;
     top: 90px;
     height: 30px;
     font-size: 15px;
     cursor: pointer;
+    color: gray;
 }
 
 .headerButton:hover{
     background-color: lightgray;
 }
 
-.optionBtn{
+.additionBtn{
     position: absolute;
     background-color: lightgray;
     width: 140px;
@@ -47,10 +48,6 @@ header{
     left: 290px;
     color: gray;
     border: 0px;
-}
-
-.optionBtn:hover{
-    background-color: orange;
 }
 
 #addChecklistRevealBtn{
@@ -91,40 +88,47 @@ header{
 }
 
 #addTaskRevealBtn{
-    background-color: #adffd8;
+    background-color: lightgray;
 }
 
 #addTaskRevealBtn:hover{
-    background-color: #7dd1a9;
+    background-color: orange;
 }
 
 #addMemberRevealBtn{
     left: 110px;
-    background-color: #adffd8;
+    background-color: lightgray;
 }
 
 #addMemberRevealBtn:hover{
-    background-color: #7dd1a9;
+    background-color: orange;
 }
 
 #revealMembersBtn{
+    background-color: lightgray;
     left: 290px;
+}
+
+#revealMembersBtn:hover{
+    background-color: orange;
 }
 
 #revealArchiveBtn{
     left: 1280px;
 }
 
-#taskDescriptionForm{
+.additionForm{
     position: absolute;
-    height: 0px;
-    opacity: 0;
-    width: 250px;
     left: 435px;
+    height: 0px;
+    width: 250px;
+    opacity: 0;
     padding: 10px;
     background-color: lightgray;
     color: gray;
     font-size: 17px;
+    -webkit-animation: flash 1.5s;
+	animation: flash 1.5s;
 }
 
 #taskDescription{
@@ -165,7 +169,7 @@ label{
 }
 
 #taskNameForm{
-    color: gray;
+    color: rgb(131, 124, 124);
     float: left;
     height: 200px;
     padding: 10px;
@@ -178,10 +182,13 @@ label{
 }
 
 #createChecklistBtn{
-    top: 1px;
-    left: 460px;
+    top: 60px;
+    left: 10px;
     font-size: 13px;
     font-weight: 700;
+    border: 0px;
+    background: lightgray;
+    color: gray;
 }
 
 textarea{
@@ -303,35 +310,26 @@ input::placeholder{
     cursor: pointer;
 }
 
-#taskIconForm{
-    position: absolute;
-    left: 550px;
-    height: 80px;
-    width: 128px;
-    border: 1px solid gray;
-}
-
 .buttonIcon{
     display: inline-block;
-    padding: 0px;
     height: 40px;
     width: 40px;
     border: 0px;
     cursor: pointer;
+    background: lightgray;
 }
 
 #activeIcon{
     position: absolute;
-    left: 685px;
+    top: 130px;
     height: 68px;
     width: 80px;
     text-align: center;
     padding-top: 12px;
-    border: 1px solid gray;
 }
 
 .buttonIcon:hover{
-    background: #adffd8;
+    background: orange;
 }
 
 .imageIcon{
@@ -346,7 +344,6 @@ input::placeholder{
 
 #taskIcon{
     position: absolute;
-    left: 199px;;
     height: 40px;
     width: auto;
 }

@@ -10,7 +10,7 @@ function revealAddTaskSection() {
     if (addTaskSection.style.height == "0px" || addTaskSection.style.height == "") {
         addTaskSection.style.height = "250px";
         addTaskSection.style.opacity = "1";
-        addTaskRevealBtn.style.backgroundColor = "#7dd1a9";
+        addTaskRevealBtn.style.backgroundColor = "orange";
 
         if (addMemberSection.style.height != "0px" || addMemberSection.style.height != "") {
             hideSection(addMemberSection);
@@ -22,6 +22,7 @@ function revealAddTaskSection() {
     } else {
         hideSection(addTaskSection);
     }
+    window.setTimeout(hideAdditionForms, 1000);
 }
 
 function revealAddMemberSection() {
@@ -30,7 +31,7 @@ function revealAddMemberSection() {
     if (addMemberSection.style.height == "0px" || addMemberSection.style.height == "") {
         addMemberSection.style.height = "150px";
         addMemberSection.style.opacity = "1";
-        addMemberRevealBtn.style.backgroundColor = "#7dd1a9";
+        addMemberRevealBtn.style.backgroundColor = "orange";
 
         if (addTaskSection.style.height != "0px" || addTaskSection.style.height != "") {
             hideSection(addTaskSection);
@@ -42,6 +43,7 @@ function revealAddMemberSection() {
     } else {
         hideSection(addMemberSection);
     }
+    window.setTimeout(hideAdditionForms, 1000);
 }
 
 function revealMembersSection() {
@@ -50,7 +52,7 @@ function revealMembersSection() {
     if (membersSection.style.height == "0px" || membersSection.style.height == "") {
         membersSection.style.height = "110px";
         membersSection.style.opacity = "1";
-        revealMembersBtn.style.backgroundColor = "lightgray";
+        revealMembersBtn.style.backgroundColor = "orange";
 
         if (addTaskSection.style.height != "0px" || addTaskSection.style.height != "") {
             hideSection(addTaskSection);
@@ -62,6 +64,7 @@ function revealMembersSection() {
     } else {
         hideSection(membersSection);
     }
+    window.setTimeout(hideAdditionForms, 1000);
 }
 
 function revealArchive() {
@@ -87,14 +90,64 @@ function revealArchive() {
 }
 
 function revealAddDescriptionForm(){
-    var addDescriptionRevealBtn = document.getElementById("addDescriptionRevealBtn");
     var taskDescriptionForm = document.getElementById("taskDescriptionForm");
+    var addDescriptionRevealBtn = document.getElementById("addDescriptionRevealBtn");
 
     if (taskDescriptionForm.style.height == "0px" || taskDescriptionForm.style.height == ""){
         taskDescriptionForm.style.height = "200px";
         taskDescriptionForm.style.opacity = "1";
+        addDescriptionRevealBtn.style.backgroundColor = "orange";
 
+        if (taskChecklistForm.style.height != "0px" || taskChecklistForm.style.height != "") {
+            hideSection(taskChecklistForm);
+        }
+        if (taskIconForm.style.height != "0px" || taskIconForm.style.height != "") {
+            hideSection(taskIconForm);
+        }
+
+    } else {
+        hideSection(taskDescriptionForm);
+    }
 }
+
+function revealAddChecklistForm(){
+    var taskChecklistForm = document.getElementById("taskChecklistForm");
+
+    if (taskChecklistForm.style.height == "0px" || taskChecklistForm.style.height == ""){
+        taskChecklistForm.style.height = "200px";
+        taskChecklistForm.style.opacity = "1";
+        addChecklistRevealBtn.style.backgroundColor = "orange";
+
+        if (taskDescriptionForm.style.height != "0px" || taskDescriptionForm.style.height != "") {
+            hideSection(taskDescriptionForm);
+        }
+        if (taskIconForm.style.height != "0px" || taskIconForm.style.height != "") {
+            hideSection(taskIconForm);
+        }
+
+    } else {
+        hideSection(taskChecklistForm);
+    }
+}
+
+function revealAddIconForm(){
+    var taskIconForm = document.getElementById("taskIconForm");
+
+    if (taskIconForm.style.height == "0px" || taskIconForm.style.height == ""){
+        taskIconForm.style.height = "200px";
+        taskIconForm.style.opacity = "1";
+        addIconRevealBtn.style.backgroundColor = "orange";
+
+        if (taskDescriptionForm.style.height != "0px" || taskDescriptionForm.style.height != "") {
+            hideSection(taskDescriptionForm);
+        }
+        if (taskChecklistForm.style.height != "0px" || taskChecklistForm.style.height != "") {
+            hideSection(taskChecklistForm);
+        }
+
+    } else {
+        hideSection(taskIconForm);
+    }
 }
 
 function hideSection(section) {
@@ -108,5 +161,17 @@ function hideSection(section) {
         revealMembersBtn.style.backgroundColor = "";
     } else if (section == archive) {
         revealArchiveBtn.style.backgroundColor = "";
+    } else if (section == taskDescriptionForm){
+        addDescriptionRevealBtn.style.backgroundColor = "";
+    } else if (section == taskChecklistForm){
+        addChecklistRevealBtn.style.backgroundColor = "";
+    } else if (section == taskIconForm){
+        addIconRevealBtn.style.backgroundColor = "";
     }
+}
+
+function hideAdditionForms(){
+    hideSection(taskDescriptionForm);
+    hideSection(taskChecklistForm);
+    hideSection(taskIconForm);
 }
