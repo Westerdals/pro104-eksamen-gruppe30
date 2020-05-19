@@ -51,12 +51,16 @@
 
                         <div class="additionForm" id="taskChecklistForm">
                             <label id="taskChecklistLabel" for="taskChecklistInput">ADD A CHECKLIST</label>
-                            <input class="input" type="text" id="taskChecklistInput" name="taskChecklistInput"
-                                placeholder="">
-                            <button class="button" id="createChecklistBtn" type="button"
-                                onclick="createChecklistPoint()">+</button>
+                            <input type="text" id="taskChecklistInput" name="taskChecklistInput"
+                                placeholder="To do list...">
+                            <span class="button" id="createChecklistBtn"
+                                onclick="createChecklistPoint()">Add</span>
+                            
                             <ul id="taskChecklist"></ul>
+                            
+                            
                         </div>
+                        
 
                         <div class="additionForm" id="taskIconForm">
                             <button type="button"
@@ -79,7 +83,10 @@
                             <button type="button" onclick="document.getElementById('pickedIcon').src = 'icons/star.png'"
                                 id="starBtn" class="buttonIcon" value="icons/star.png"><img src="icons/star.png"
                                     class="imageIcon"></button>
+                           
 
+                            
+                            
                             <div id="activeIcon">
                                 <img name="taskIcon" id="pickedIcon" src="icons/blank.png" alt="No icon">
                             </div>
