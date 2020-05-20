@@ -67,55 +67,10 @@ function assignToMember(event) {
     
 
     const taskList = JSON.parse(localStorage.getItem('task')) || {};
-    const memberList = JSON.parse(localStorage.getItem('member')) || {};
 
     let nameTask = document.getElementById('check-task').value;
     let valueCheck = document.getElementById('assign-value-check');
 
-
-    /*if (nameMember === "" && nameTask === "") {
-        valueCheck.innerHTML = "PLEASE ENTER A TASK AND A TEAM MEMBER"
-    } else if (nameMember === "") {
-        valueCheck.innerHTML = "PLEASE ENTER A TEAM MEMBER";
-    } else if (nameTask === "") {
-        valueCheck.innerHTML = "PLEASE ENTER A TASK";
-    } else {
-        valueCheck.innerHTML = "";
-
-        nameMember = nameMember.toLowerCase();
-        nameTask = nameTask.toLowerCase();
-
-
-        const assignMemberList = JSON.parse(localStorage.getItem('assignment')) || [];
-        let member;
-        let task;
-        if (nameMember != '' && nameTask != '') {
-            for (const m of memberList) {
-                if (m.member === nameMember) {
-                    member = m.member;
-                    
-                }
-            }
-            for (const a of taskList) {
-                if (a.task === nameTask) {
-                    task = a.task;
-                    
-                }
-            }
-
-
-            if (member != undefined && task != undefined) {
-                let assignToMember = { task, member };
-                assignMemberList.push(assignToMember);
-
-                window.localStorage.setItem('assignment', JSON.stringify(assignMemberList));
-            } else {
-                valueCheck.innerHTML = "PLEASE ENTER AN EXISTING TASK AND/OR TEAM MEMBER";
-            }
-            renderUpdatedTaskList();
-        }else {
-            valueCheck.innerHTML = "PLEASE ENTER AN EXISTING TASK AND/OR TEAM MEMBER";
-        }*/
 
         if (nameTask === "") {
             valueCheck.innerHTML = "PLEASE ENTER A TASK AND A TEAM MEMBER";
@@ -195,8 +150,6 @@ function renderMemberList() {
 function renderUpdatedTaskList(){
     const assignMemberList = JSON.parse(localStorage.getItem('assignment')) || [];
 
-    const taskId = assignMemberList.length;
-
     const assignmentListOutput = document.getElementById('assignments-rendering');
 
     
@@ -211,14 +164,12 @@ function renderUpdatedTaskList(){
                     <h1>${a.task.charAt(0).toUpperCase() + a.task.slice(1)}</h1>
                     <br>
                     <p>medlemmer</p>
-                    <div id="membersDiv${a.taskId}" ondragover="allowdrop(event)" ondrop="drop(event)"></div>
+                    <div class="membersDiv" onload="drop(ev)" ondragover="allowdrop(event)" ondrop="drop(event)"></div>
                     </div>`;
  
         assignmentListOutput.appendChild(assignmentElement);
         
     }
-
-    //renderMemberNamesOnTask();
 
 }
 
@@ -242,7 +193,11 @@ function allowdrop(ev) {
 
     task = ev.target.parentElement.querySelector("h1").innerText;
 
-    ev.target.append(memberInfo);
+    const makeDiv = document.createElement("div");
+
+    makeDiv.innerHTML = `<div>${memberInfo}<br></div>`;
+
+    ev.target.append(makeDiv);
     
     memberAndTask = {task, memberInfo};
     taskAndMember.push(memberAndTask);
@@ -250,45 +205,8 @@ function allowdrop(ev) {
     
     window.localStorage.setItem("taskAndMember", JSON.stringify(taskAndMember));
 
-    let membersDiv = document.getElementsByClassName("membersDiv");
-
-    for(const tm of taskAndMember){
-        let test = document.createElement("div");
-        test.innerHTML = `${tm.memberInfo}\n`;
-
-        membersDiv.appendChild(test);
-    }
-
-    renderUpdatedTaskList();
-
-  }
-
-
-  function renderMemberNamesOnTask(){
-
-    const assignMemberList = JSON.parse(localStorage.getItem('assignment')) || [];
-
-    const taskAndMember = JSON.parse(localStorage.getItem("taskAndMember")) || [];
-
-    for(let i = 0; i < assignMemberList; i++){
-
-    let membersDiv = document.querySelector(`#membersDiv${i}`);
-
-   //membersDiv.innerHTML = "";
     
-    for(const m of taskAndMember){
-        let htmlTxt = document.createElement("div");
-        htmlTxt.innerText = `${m.memberInfo}`;
-        
-
-        membersDiv.appendChild(htmlTxt);
-    }
-
-}
-}
-
-
-
+  }
 
   window.onload = renderMemberList();
   window.onload = renderTaskList();
