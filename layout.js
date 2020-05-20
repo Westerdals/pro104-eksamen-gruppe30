@@ -10,14 +10,13 @@ function revealAddTaskSection() {
     if (addTaskSection.style.height == "0px" || addTaskSection.style.height == "") {
         addTaskSection.style.height = "250px";
         addTaskSection.style.opacity = "1";
-        addTaskSection.style.display = "";
         addTaskRevealBtn.style.backgroundColor = "orange";
 
         if (addMemberSection.style.height != "0px" || addMemberSection.style.height != "") {
-            setTimeout(hideSection(addMemberSection),1000);
+            hideSection(addMemberSection);
         }
         if (membersSection.style.height != "0px" || membersSection.style.height != "") {
-            setTimeout(hideSection(membersSection),1000);
+            hideSection(membersSection);
         }
 
     } else {
@@ -32,7 +31,6 @@ function revealAddMemberSection() {
     if (addMemberSection.style.height == "0px" || addMemberSection.style.height == "") {
         addMemberSection.style.height = "200px";
         addMemberSection.style.opacity = "1";
-        addMemberSection.style.display = "";
         addMemberRevealBtn.style.backgroundColor = "orange";
 
         if (addTaskSection.style.height != "0px" || addTaskSection.style.height != "") {
@@ -54,7 +52,6 @@ function revealMembersSection() {
     if (membersSection.style.height == "0px" || membersSection.style.height == "") {
         membersSection.style.height = "150px";
         membersSection.style.opacity = "1";
-        membersSection.style.display = "";
         revealMembersBtn.style.backgroundColor = "orange";
 
         if (addTaskSection.style.height != "0px" || addTaskSection.style.height != "") {
@@ -76,7 +73,6 @@ function revealArchive() {
     if (archive.style.height == "0px" || archive.style.height == "") {
         archive.style.height = "630px";
         archive.style.opacity = "1";
-        archive.style.display = "";
         revealArchiveBtn.style.left = "1249px";
         revealArchiveBtn.innerHTML = "VIEW TASKS TABLE";
 
@@ -87,8 +83,7 @@ function revealArchive() {
     } else {
         hideSection(archive);
         tasksTable.style.height = "630px";
-        tasksTable.style.opacity = "1";
-        tasksTable.style.display = "";
+        tasksTable.style.opacity = "1";;
         revealArchiveBtn.innerHTML = "VIEW ARCHIVE";
         revealArchiveBtn.style.left = "1280px";
     }
@@ -101,7 +96,6 @@ function revealAddDescriptionForm(){
     if (taskDescriptionForm.style.height == "0px" || taskDescriptionForm.style.height == ""){
         taskDescriptionForm.style.height = "200px";
         taskDescriptionForm.style.opacity = "1";
-        taskDescriptionForm.style.display = "";
         addDescriptionRevealBtn.style.backgroundColor = "orange";
 
         if (taskChecklistForm.style.height != "0px" || taskChecklistForm.style.height != "") {
@@ -122,7 +116,6 @@ function revealAddChecklistForm(){
     if (taskChecklistForm.style.height == "0px" || taskChecklistForm.style.height == ""){
         taskChecklistForm.style.height = "200px";
         taskChecklistForm.style.opacity = "1";
-        taskChecklistForm.style.display = "";
         addChecklistRevealBtn.style.backgroundColor = "orange";
 
         if (taskDescriptionForm.style.height != "0px" || taskDescriptionForm.style.height != "") {
@@ -143,7 +136,6 @@ function revealAddIconForm(){
     if (taskIconForm.style.height == "0px" || taskIconForm.style.height == ""){
         taskIconForm.style.height = "200px";
         taskIconForm.style.opacity = "1";
-        taskIconForm.style.display = "";
         addIconRevealBtn.style.backgroundColor = "orange";
 
         if (taskDescriptionForm.style.height != "0px" || taskDescriptionForm.style.height != "") {
@@ -170,7 +162,6 @@ function expandTask(object){
 function hideSection(section) {
     section.style.height = "0px";
     section.style.opacity = "0";
-    section.style.display = "none";
     if (section == addTaskSection) {
         addTaskRevealBtn.style.backgroundColor = "";
     } else if (section == addMemberSection) {
@@ -193,5 +184,3 @@ function hideAdditionForms(){
     hideSection(taskChecklistForm);
     hideSection(taskIconForm);
 }
-
-
