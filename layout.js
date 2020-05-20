@@ -29,7 +29,11 @@ function revealAddMemberSection() {
     var addMemberRevealBtn = document.getElementById("addMemberRevealBtn");
     var addMemberSection = document.getElementById("addMemberSection");
     if (addMemberSection.style.height == "0px" || addMemberSection.style.height == "") {
+<<<<<<< HEAD
         addMemberSection.style.height = "150px";
+=======
+        addMemberSection.style.height = "200px";
+>>>>>>> master
         addMemberSection.style.opacity = "1";
         addMemberRevealBtn.style.backgroundColor = "orange";
 
@@ -50,7 +54,11 @@ function revealMembersSection() {
     var revealMembersBtn = document.getElementById("revealMembersBtn");
     var membersSection = document.getElementById("membersSection");
     if (membersSection.style.height == "0px" || membersSection.style.height == "") {
+<<<<<<< HEAD
         membersSection.style.height = "110px";
+=======
+        membersSection.style.height = "150px";
+>>>>>>> master
         membersSection.style.opacity = "1";
         revealMembersBtn.style.backgroundColor = "orange";
 
@@ -183,4 +191,8 @@ function hideAdditionForms(){
     hideSection(taskDescriptionForm);
     hideSection(taskChecklistForm);
     hideSection(taskIconForm);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master
