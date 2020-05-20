@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-<body onload="renderTaskList(); renderMemberList();">
+<body>
 
     <div id="mainContainer">
 
@@ -34,12 +34,13 @@
                             <input class="input" type="text" id="taskName" name="taskName"
                                 placeholder="Write down a task..." size="32"><br><br>
                         </div>
-
+                        <!--
                         <div id=optionButtons>
                             <button class="optionBtn" id="addDescriptionRevealBtn" onmouseover="revealAddDescriptionForm()">+ DESCRIPTION</button>
                             <button class="optionBtn" id="addChecklistRevealBtn" onmouseover="revealAddChecklistForm()">+ CHECKLIST</button>
                             <button class="optionBtn" id="addIconRevealBtn" onmouseover="revealAddIconForm()">+ ICON</button>
                         </div>
+                    -->
 <!--
                         <div id="taskChecklistForm">
                             <label id="taskChecklistLabel" for="taskChecklistInput">Add a checklist</label>
@@ -80,12 +81,13 @@
 
 
                         <!-- LOWER ROW -->
-                        <div id="taskDescriptionForm">
+                        <!--<div id="taskDescriptionForm">
                             <label id="taskDescriptionLabel" for="taskDescription">DESCRIBE THE TASK</label>
                             <textarea id="taskDescription" name="taskDescription" placeholder=""></textarea><br>
                         </div>
 
                         <input id="taskSubmitBtn" class="button" type="submit" value="GET IT DONE!">
+                    -->
                     </form>
                 </div>
             </section>
@@ -113,9 +115,9 @@
                     <h2 class="tasksHeading" id="ongoingHeading">ONGOING</h2>
                     <h2 class="tasksHeading" id="finishedHeading">FINISHED</h2>
                 </div>
-                <div class="tasks" id="unstartedTasks"></div>
-                <div class="tasks" id="ongoingTasks"></div>
-                <div class="tasks" id="finishedTasks"></div>
+                <div class="tasks" id="unstartedTasks" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="tasks" id="ongoingTasks" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="tasks" id="finishedTasks" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
             </div>
             <div id="archive">
                 <h2>ARCHIVE</h2>

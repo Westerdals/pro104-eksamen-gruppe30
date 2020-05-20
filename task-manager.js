@@ -4,14 +4,17 @@ This JavaScript file contains code related to object handling (main functionalit
 
 */
 
+
+
 function createTask(event) {
     event.preventDefault();
 
     const taskName = document.querySelector("[name='taskName']").value;
-    const taskDescription = document.querySelector("[name='taskDescription']").value;
-    const taskIcon = document.getElementById("pickedIcon").src;
+    //const taskDescription = document.querySelector("[name='taskDescription']").value;
+    //const taskIcon = document.getElementById("pickedIcon").src;
 
-    const task = { taskName, taskDescription, taskIcon };
+    //const task = { taskName, taskDescription, taskIcon };
+    const task = { taskName}
     const taskList = JSON.parse(localStorage.getItem('task')) || [];
     taskList.push(task);
 
@@ -45,18 +48,60 @@ function renderTaskList() {
 
     unstartedTasks.innerHTML = "";
 
+    //<img id="taskIcon" src="${task.taskIcon}">
+    //<p>${task.taskDescription}</p>
+    //const { taskName, taskDescription, taskIcon } = task;
+
+
     for (const task of taskList) {
         const taskElement = document.createElement("div");
-        const { taskName, taskDescription, taskIcon } = task;
+        taskElement.className = "taskElement";
+        taskElement.id = "taskElement";
 
-        taskElement.innerHTML = `<div class="taskObject">
-                                <img id="taskIcon" src="${task.taskIcon}">
-                                <div id="taskHeading"><h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
-                                <p>${task.taskDescription}</p>
+        taskElement.draggable = true;
+        taskElement.ondragstart = drag(event);
+
+        let {taskName} = task;
+
+        taskElement.innerHTML = `<div id="outputTask" class="taskObject">
+                                <div id="taskHeading"><h4>${taskName}</h4></div>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
 }
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+  }
+  
+  function drag(ev) {
+    let taskInfo = ev.target.innerHTML;
+    ev.dataTransfer.setData("text", taskInfo);
+  }
+  
+  
+  function drop(ev) {
+    ev.preventDefault();
+
+    const taskOngoing = JSON.parse(localStorage.getItem("taskOngoing")) || [];
+    let taskInfo = ev.dataTransfer.getData("text");
+    
+
+    //const makeDiv = document.createElement("div");
+
+    //makeDiv.innerHTML = `${taskInfo}`;
+
+    ev.target.appendChild(taskInfo);
+    
+    ongoingTasks = {taskInfo};
+    taskOngoing.push(ongoingTasks);
+
+    
+    window.localStorage.setItem("taskOngoing", JSON.stringify(taskOngoing));
+
+    
+  }
 
 function renderMemberList() {
 
@@ -76,7 +121,7 @@ function renderMemberList() {
     }
 }
 
-function createChecklistPoint() {
+/*function createChecklistPoint() {
 
     var li = document.createElement("li");
     var checklistInput = document.getElementById("taskChecklistInput").value;
@@ -85,4 +130,9 @@ function createChecklistPoint() {
 
     document.getElementById("taskChecklist").appendChild(li);
     document.getElementById("taskChecklistInput").value = "";
-}
+}*/
+
+
+
+window.onload = renderTaskList(); 
+window.onload = renderMemberList();

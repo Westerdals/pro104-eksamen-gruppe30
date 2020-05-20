@@ -164,7 +164,7 @@ function renderUpdatedTaskList(){
                     <h1>${a.task.charAt(0).toUpperCase() + a.task.slice(1)}</h1>
                     <br>
                     <p>medlemmer</p>
-                    <div class="membersDiv" onload="drop(ev)" ondragover="allowdrop(event)" ondrop="drop(event)"></div>
+                    <div class="membersDiv" ondragover="allowdrop(event)" ondrop="drop(event)"></div>
                     </div>`;
  
         assignmentListOutput.appendChild(assignmentElement);
