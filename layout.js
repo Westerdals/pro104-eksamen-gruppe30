@@ -10,6 +10,7 @@ function revealAddTaskSection() {
     if (addTaskSection.style.height == "0px" || addTaskSection.style.height == "") {
         addTaskSection.style.height = "250px";
         addTaskSection.style.opacity = "1";
+        addTaskSection.style.display = "block";
         addTaskRevealBtn.style.backgroundColor = "orange";
 
         if (addMemberSection.style.height != "0px" || addMemberSection.style.height != "") {
@@ -31,6 +32,7 @@ function revealAddMemberSection() {
     if (addMemberSection.style.height == "0px" || addMemberSection.style.height == "") {
         addMemberSection.style.height = "200px";
         addMemberSection.style.opacity = "1";
+        addMemberSection.style.display = "block";
         addMemberRevealBtn.style.backgroundColor = "orange";
 
         if (addTaskSection.style.height != "0px" || addTaskSection.style.height != "") {
@@ -52,6 +54,7 @@ function revealMembersSection() {
     if (membersSection.style.height == "0px" || membersSection.style.height == "") {
         membersSection.style.height = "150px";
         membersSection.style.opacity = "1";
+        membersSection.style.display = "";
         revealMembersBtn.style.backgroundColor = "orange";
 
         if (addTaskSection.style.height != "0px" || addTaskSection.style.height != "") {
@@ -73,6 +76,7 @@ function revealArchive() {
     if (archive.style.height == "0px" || archive.style.height == "") {
         archive.style.height = "630px";
         archive.style.opacity = "1";
+        archive.style.display = "block";
         revealArchiveBtn.style.left = "1249px";
         revealArchiveBtn.innerHTML = "VIEW TASKS TABLE";
 
@@ -96,6 +100,7 @@ function revealAddDescriptionForm(){
     if (taskDescriptionForm.style.height == "0px" || taskDescriptionForm.style.height == ""){
         taskDescriptionForm.style.height = "200px";
         taskDescriptionForm.style.opacity = "1";
+        taskDescriptionForm.style.display = "block";
         addDescriptionRevealBtn.style.backgroundColor = "orange";
 
         if (taskChecklistForm.style.height != "0px" || taskChecklistForm.style.height != "") {
@@ -116,6 +121,7 @@ function revealAddChecklistForm(){
     if (taskChecklistForm.style.height == "0px" || taskChecklistForm.style.height == ""){
         taskChecklistForm.style.height = "200px";
         taskChecklistForm.style.opacity = "1";
+        taskChecklistForm.style.display = "block";
         addChecklistRevealBtn.style.backgroundColor = "orange";
 
         if (taskDescriptionForm.style.height != "0px" || taskDescriptionForm.style.height != "") {
@@ -136,6 +142,7 @@ function revealAddIconForm(){
     if (taskIconForm.style.height == "0px" || taskIconForm.style.height == ""){
         taskIconForm.style.height = "200px";
         taskIconForm.style.opacity = "1";
+        taskIconForm.style.display = "block";
         addIconRevealBtn.style.backgroundColor = "orange";
 
         if (taskDescriptionForm.style.height != "0px" || taskDescriptionForm.style.height != "") {
@@ -162,6 +169,7 @@ function expandTask(object){
 function hideSection(section) {
     section.style.height = "0px";
     section.style.opacity = "0";
+    section.style.display = "none";
     if (section == addTaskSection) {
         addTaskRevealBtn.style.backgroundColor = "";
     } else if (section == addMemberSection) {
