@@ -29,7 +29,7 @@ function revealAddMemberSection() {
     var addMemberRevealBtn = document.getElementById("addMemberRevealBtn");
     var addMemberSection = document.getElementById("addMemberSection");
     if (addMemberSection.style.height == "0px" || addMemberSection.style.height == "") {
-        addMemberSection.style.height = "150px";
+        addMemberSection.style.height = "200px";
         addMemberSection.style.opacity = "1";
         addMemberRevealBtn.style.backgroundColor = "orange";
 
@@ -50,7 +50,7 @@ function revealMembersSection() {
     var revealMembersBtn = document.getElementById("revealMembersBtn");
     var membersSection = document.getElementById("membersSection");
     if (membersSection.style.height == "0px" || membersSection.style.height == "") {
-        membersSection.style.height = "110px";
+        membersSection.style.height = "150px";
         membersSection.style.opacity = "1";
         revealMembersBtn.style.backgroundColor = "orange";
 

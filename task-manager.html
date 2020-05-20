@@ -6,14 +6,15 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="task-manager.css">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 
-<body onload="renderTaskList(); renderMemberList(); createIconButtons();">
+<body onload="renderTaskList(); createIconButtons(); createMemberSlots();">
 
     <div id="mainContainer">
 
         <header id="header">
-            <h1>TASK MANAGER</h1>
+            <h1>Task Manager</h1>
             <button class="headerButton" id="addTaskRevealBtn" onclick="revealAddTaskSection()">+ NEW TASK</button>
             <button class="headerButton" id="addMemberRevealBtn" onclick="revealAddMemberSection()">+ NEW TEAM
                 MEMBER</button>
@@ -70,10 +71,12 @@
             <section>
                 <div class="headerSection" id="addMemberSection">
                     <form onsubmit="createMember(event)">
-                        <label id="memberLabel" for="memberName">Add a team member:</label><br>
-                        <input class="input" type="text" id="memberName" name="memberName" placeholder="John Doe"
-                            size="17"><br>
-                        <input class="button" type="submit" value="ADD">
+                        <div id="addMemberForm">
+                            <label id="memberLabel" for="memberName">ADD A TEAM MEMBER</label><br>
+                            <input class="input" type="text" id="memberName" name="memberName" placeholder="John Doe"
+                                size="32"><br>
+                            <input id="memberSubmitBtn" class="button" type="submit" value="ADD">
+                        </div>
                     </form>
                 </div>
             </section>

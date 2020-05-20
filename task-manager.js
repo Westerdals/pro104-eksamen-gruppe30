@@ -61,18 +61,23 @@ function renderTaskList() {
 function renderMemberList() {
 
     const memberList = JSON.parse(window.localStorage.getItem("member")) || [];
-    const membersSection = document.getElementById("membersSection");
+    const memberSlots = document.getElementsByClassName("memberSlot");
+    var counter = -1;
 
-    membersSection.innerHTML = "";
-
-    for (const member of memberList) {
-        const memberElement = document.createElement("div");
-        const { memberName } = member;
-
-        memberElement.innerHTML = `<div class="memberObject">
-                                <h4>${member.memberName}</h4>
-                                </div>`;
-        membersSection.appendChild(memberElement);
+    for (var i = 0; i < memberSlots.length; i++){ 
+        memberSlots[i].innerHTML = "";
+    }
+        for (const member of memberList) {
+            const memberElement = document.createElement("div");
+            const { memberName } = member;
+            counter++;
+            memberElement.innerHTML = `<div class="memberObject">
+                                      <img src="images/member.png" alt="member" width="45" height="45">
+                                      <h4>${member.memberName}</h4>
+                                      </div>`; 
+            memberSlots[counter].appendChild(memberElement);
+            memberSlots[counter].style.border = "1px solid gray";
+            memberSlots[counter].style.backgroundColor = "#f7fafa";
     }
 }
 
@@ -85,6 +90,16 @@ function createChecklistPoint() {
 
     document.getElementById("taskChecklist").appendChild(li);
     document.getElementById("taskChecklistInput").value = "";
+}
+
+function createMemberSlots(){
+
+    for(var i = 0; i < 11; i++){
+        var memberSlot = document.createElement("div");
+        memberSlot.setAttribute('class', 'memberSlot');
+        membersSection.appendChild(memberSlot);
+    }
+    renderMemberList();
 }
 
 function createIconButtons(){
