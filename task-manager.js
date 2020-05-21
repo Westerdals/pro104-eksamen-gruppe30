@@ -29,7 +29,7 @@ function adjustText(header, description) {
 
 function createTask(event) {
     event.preventDefault();
-    document.getElementById("currentCount").innerHTML = "0";
+    document.getElementById("currentCount").innerHTML = "0 ";
 
     const taskList = JSON.parse(localStorage.getItem('task')) || [];
     const taskName = document.querySelector("[name='taskName']").value;
@@ -69,6 +69,7 @@ function createMember(event) {
 
 function renderTaskList() {
 
+    document.getElementById("pickedIcon").src="icons/default.png";
     const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
     const unstartedTasks = document.getElementById("unstartedTasks");
 
