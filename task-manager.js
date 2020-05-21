@@ -118,19 +118,3 @@ function createIconButtons(){
         taskIconForm.appendChild(button);
     }
 }
-
-function adjustText(size) {
-    var textToAdjust = document.getElementsByClassName("adjustText");
-
-    for (var i = 0; i < textToAdjust.length; i++) {
-        textToAdjust[i].style.fontSize = size;
-    }
-}
-
-function adjustHeader(size) {
-    var textToAdjust = document.getElementsByClassName("adjustHeader");
-
-    for (var i = 0; i < textToAdjust.length; i++) {
-        textToAdjust[i].style.fontSize = size;
-    }
-}

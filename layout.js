@@ -52,11 +52,12 @@ function revealAddMemberSection() {
 
 function revealSettings() {
     var settingsSection = document.getElementById("settingsSection");
-    var revealSettingsSectionBtn = document.getElementById("revealSettingsBtn");
+    var revealSettingsBtn = document.getElementById("revealSettingsBtn");
 
     if (settingsSection.style.height == "0px" || settingsSection.style.height == "") {
         settingsSection.style.height = "150px";
         settingsSection.style.opacity = "1";
+        revealSettingsBtn.style.color = "orange";
 
         if (addTaskSection.style.height != "0px" || addTaskSection.style.height != "") {
             hideSection(addTaskSection);
@@ -67,6 +68,9 @@ function revealSettings() {
         if (membersSection.style.height != "0px" || membersSection.style.height != "") {
             hideSection(membersSection);
         }
+
+    } else {
+        hideSection(settingsSection);
     }
 }
 
@@ -100,11 +104,12 @@ function revealMembersSection() {
 function revealArchive() {
     var archive = document.getElementById("archive");
     var revealArchiveBtn = document.getElementById("revealArchiveBtn");
+    var revealSettingsBtn = document.getElementById("revealSettingsBtn");
 
     if (archive.style.height == "0px" || archive.style.height == "") {
         archive.style.height = "630px";
         archive.style.opacity = "1";
-        revealArchiveBtn.style.left = "1249px";
+        revealSettingsBtn.style.right = "170px";
         revealArchiveBtn.innerHTML = "VIEW TASKS TABLE";
 
         if (tasksTable.style.height != "0px" || tasksTable.style.height != "") {
@@ -114,9 +119,9 @@ function revealArchive() {
     } else {
         hideSection(archive);
         tasksTable.style.height = "630px";
-        tasksTable.style.opacity = "1";;
+        tasksTable.style.opacity = "1";
         revealArchiveBtn.innerHTML = "VIEW ARCHIVE";
-        revealArchiveBtn.style.left = "1280px";
+        revealSettingsBtn.style.right = "130px";
     }
 }
 
@@ -227,6 +232,9 @@ function hideSection(section) {
         case membersSection:
             revealMembersBtn.style.backgroundColor = "";
             break;
+        case settingsSection:
+            revealSettingsBtn.style.color = "";
+            break;
         case archive:
             revealArchiveBtn.style.backgroundColor = "";
             break;
@@ -265,12 +273,28 @@ function hideAdditionInputs(form){
             taskChecklistInput.style.display = "none";
             createChecklistBtn.style.display = "none"
             break;
-            
+
         case taskIconForm:
             var buttonIcons = document.getElementsByClassName("buttonIcon")
             for(var i = 0; i < buttonIcons.length; i++){
                 buttonIcons[i].style.display = "none";
             }
             break;
+    }
+}
+
+function adjustText(size) {
+    var textToAdjust = document.getElementsByClassName("adjustText");
+
+    for (var i = 0; i < textToAdjust.length; i++) {
+        textToAdjust[i].style.fontSize = size;
+    }
+}
+
+function adjustHeader(size) {
+    var textToAdjust = document.getElementsByClassName("adjustHeader");
+
+    for (var i = 0; i < textToAdjust.length; i++) {
+        textToAdjust[i].style.fontSize = size;
     }
 }

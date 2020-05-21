@@ -128,10 +128,9 @@ header{
     background-color: orange;
 }
 
-
 #revealArchiveBtn{
     background-color: whitesmoke;
-    left: 1280px;
+    right: 0px;
 }
 
 #revealArchiveBtn:hover{

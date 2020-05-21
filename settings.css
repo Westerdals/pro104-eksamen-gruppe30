@@ -12,6 +12,12 @@
     background-color: lightgray;
     color: gray;
 }
+
+#adjustTextBiggerBtn:hover{
+    color: orange;
+    border-color: orange;
+}
+
 #adjustTextStandardBtn {
     background-color: whitesmoke;
     border: 1px solid gray;
@@ -25,12 +31,17 @@
     z-index: 2;
     background-color: lightgray;
     color: gray;
+}
 
+#adjustTextStandardBtn:hover{
+    color: orange;
+    border-color: orange;
 }
 
 #revealSettingsBtn {
-    left: 1180px;
+    right: 130px;
     background-color: whitesmoke;
+    transition: right 0.2s ease-in-out;
 }
 
 #revealSettingsBtn:hover {
