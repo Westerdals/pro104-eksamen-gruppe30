@@ -1,73 +1,12 @@
-<<<<<<< HEAD
-function revealAddTaskSection() {
-    var addTaskRevealBtn = document.getElementById("addTaskRevealBtn");
-    var addTaskSection = document.getElementById("addTaskSection");
-    if (addTaskSection.style.height == "0px" || addTaskSection.style.height == "") {
-        addTaskSection.style.height = "300px";
-        addTaskSection.style.opacity = "1";
-        addTaskRevealBtn.style.backgroundColor = "lightgray";
 
-        if (addMemberSection.style.height != "0px" || addMemberSection.style.height != "") {
-            resetSection(addMemberSection);
-        }
-    } else {
-        addTaskSection.style.height = "0px";
-        addTaskSection.style.opacity = "0";
-        addTaskRevealBtn.style.backgroundColor = "";
-    }
-  }
-
-  function revealAddMemberSection() {
-    var addMemberRevealBtn = document.getElementById("addMemberRevealBtn");
-    var addMemberSection = document.getElementById("addMemberSection");
-    if (addMemberSection.style.height == "0px" || addMemberSection.style.height == "") {
-        addMemberSection.style.height = "150px";
-        addMemberSection.style.opacity = "1";
-        addMemberRevealBtn.style.backgroundColor = "lightgray";
-
-        if (addTaskSection.style.height != "0px" || addTaskSection.style.height != "") {
-            resetSection(addTaskSection);
-        }
-        
-    } else {
-        addMemberSection.style.height = "0px";
-        addMemberSection.style.opacity = "0";
-        addMemberRevealBtn.style.backgroundColor = "";
-    }
-  }
-
-  function resetSection(section){
-    section.style.height = "0px";
-    section.style.opacity = "0";
-    if (section == addTaskSection){
-        addTaskRevealBtn.style.backgroundColor = "";
-    } else {
-        addMemberRevealBtn.style.backgroundColor = "";
-    }
-}
-
-=======
-/*
-
-This JavaScript file contains code related to object handling (main functionality).
-
-*/
-
->>>>>>> master
 function createTask(event) {
     event.preventDefault();
 
     const taskName = document.querySelector("[name='taskName']").value;
     const taskDescription = document.querySelector("[name='taskDescription']").value;
     const taskIcon = document.getElementById("pickedIcon").src;
-<<<<<<< HEAD
-    const taskProgress = 40;
-
-    const task = {taskName, taskDescription, taskIcon, taskProgress};
-=======
 
     const task = { taskName, taskDescription, taskIcon };
->>>>>>> master
     const taskList = JSON.parse(localStorage.getItem('task')) || [];
     taskList.push(task);
 
@@ -97,32 +36,19 @@ function createMember(event) {
 function renderTaskList() {
 
     const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
-    console.log(taskList);
     const unstartedTasks = document.getElementById("unstartedTasks");
 
     unstartedTasks.innerHTML = "";
 
     for (const task of taskList) {
         const taskElement = document.createElement("div");
-<<<<<<< HEAD
-        const {taskName, taskDescription, taskIcon, taskProgress} = task;
-
-        taskElement.innerHTML = `<div class="taskObject">
-                                <img id="taskIcon" src="${task.taskIcon}">
-                                <h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4>
-                                <div>${task.taskDescription}</div>
-                                <div id="progressBarDiv"style="width: 379px; height: 20px; border: 1px solid lightgray;">
-                                <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div>
-                                </div>`
-=======
         const { taskName, taskDescription, taskIcon } = task;
 
         taskElement.innerHTML = `<div class="taskObject" onclick="expandTask(this)">
                                 <img id="taskIcon" src="${task.taskIcon}">
-                                <div id="taskHeading"><h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
-                                <p id="taskDescriptionPara">${task.taskDescription}</p>
+                                <div id="taskHeading"><h4 class="adjustHeader">${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
+                                <p style="font-size: medium;" id="taskDescriptionPara" class="adjustText">${task.taskDescription}</p>
                                 </div>`;
->>>>>>> master
         unstartedTasks.appendChild(taskElement);
     }
 }
@@ -130,20 +56,6 @@ function renderTaskList() {
 function renderMemberList() {
 
     const memberList = JSON.parse(window.localStorage.getItem("member")) || [];
-<<<<<<< HEAD
-    const membersSection = document.getElementById("membersSection");
-
-    membersSection.innerHTML = "";
-
-    for (const member of memberList) {
-        const memberElement = document.createElement("div");
-        const { memberName } = member;
-
-        memberElement.innerHTML = `<div class="memberObject">
-                                <h4>${member.memberName}</h4>
-                                </div>`;
-        membersSection.appendChild(memberElement);
-=======
     const memberSlots = document.getElementsByClassName("memberSlot");
     var counter = -1;
 
@@ -161,7 +73,6 @@ function renderMemberList() {
             memberSlots[counter].appendChild(memberElement);
             memberSlots[counter].style.border = "1px solid gray";
             memberSlots[counter].style.backgroundColor = "#f7fafa";
->>>>>>> master
     }
 }
 
@@ -174,8 +85,6 @@ function createChecklistPoint() {
 
     document.getElementById("taskChecklist").appendChild(li);
     document.getElementById("taskChecklistInput").value = "";
-<<<<<<< HEAD
-=======
 }
 
 function createMemberSlots(){
@@ -208,5 +117,26 @@ function createIconButtons(){
         button.appendChild(img)
         taskIconForm.appendChild(button);
     }
->>>>>>> master
+}
+
+function adjustText(size) {
+    var textToAdjust = document.getElementsByClassName("adjustText");
+    //textToAdjust[0].style.fontSize = size;
+    textToAdjust[1].style.fontSize = size;
+    textToAdjust[2].style.fontSize = size;
+
+    for (var i = 0; i < textToAdjust.length; i++) {
+        
+
+    }
+}
+
+function adjustHeader(size) {
+    var text = document.getElementsByClassName("adjustHeader");
+
+    for (var i = 0; i < text.length; i++) {
+        var text = text[i];
+        text.style.fontSize = size;
+        console.log(text);
+    }
 }
