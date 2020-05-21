@@ -1,4 +1,3 @@
-
 function createTask(event) {
     event.preventDefault();
 
@@ -121,13 +120,9 @@ function createIconButtons(){
 
 function adjustText(size) {
     var textToAdjust = document.getElementsByClassName("adjustText");
-    //textToAdjust[0].style.fontSize = size;
-    textToAdjust[1].style.fontSize = size;
-    textToAdjust[2].style.fontSize = size;
-
     for (var i = 0; i < textToAdjust.length; i++) {
-        
-
+        textToAdjust[i].style.fontSize = size;
+    
     }
 }
 
