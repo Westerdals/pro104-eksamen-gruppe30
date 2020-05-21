@@ -71,7 +71,7 @@ function renderTaskList() {
                                 <img id="taskIcon" src="${task.taskIcon}">
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
                                 <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${task.taskDescription}</p>
-                                <button id="deleteTaskBtn"  type="button" onclick="deleteTask(${task.taskId})">X</button>
+                                <button id="deleteTaskBtn"  type="button" onclick="deleteTask(${task.taskId})"><img src="icons/trashcan.png" style="height:30px;" alt="delete task"></button>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
@@ -158,7 +158,7 @@ function adjustText(header, description) {
 
     textSizeDescription = description;
     textSizeHeader = header;
-    
+
     var savedSettings = JSON.parse(localStorage.getItem('settings')) || [];
     var savedTextSize = description;
     var savedTextSizeHeader = header;
