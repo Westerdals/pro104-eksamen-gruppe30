@@ -128,11 +128,9 @@ function adjustText(size) {
 }
 
 function adjustHeader(size) {
-    var text = document.getElementsByClassName("adjustHeader");
+    var textToAdjust = document.getElementsByClassName("adjustHeader");
 
-    for (var i = 0; i < text.length; i++) {
-        var text = text[i];
-        text.style.fontSize = size;
-        console.log(text);
+    for (var i = 0; i < textToAdjust.length; i++) {
+        textToAdjust[i].style.fontSize = size;
     }
 }
