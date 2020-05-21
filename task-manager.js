@@ -118,3 +118,7 @@ function createIconButtons(){
         taskIconForm.appendChild(button);
     }
 }
+
+function countCharacters(){
+    document.getElementById("current").innerHTML = taskDescription.value.length;
+}

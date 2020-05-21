@@ -47,8 +47,12 @@
 
                         <div class="additionForm" id="taskDescriptionForm">
                             <label id="taskDescriptionLabel" for="taskDescription">DESCRIBE THE TASK</label>
-                            <textarea id="taskDescription" name="taskDescription" placeholder=""
-                                maxlength="140"></textarea><br>
+                            <textarea id="taskDescription" name="taskDescription" placeholder="" maxlength="140"
+                                onkeyup="countCharacters()"></textarea>
+                            <div id="counting">
+                                <span id="current">0</span>
+                                <span>/ 140</span>
+                            </div>
                         </div>
 
                         <div class="additionForm" id="taskChecklistForm">
