@@ -79,12 +79,21 @@ function dragStartNames(ev){
 
 function dropNames(ev){
     ev.preventDefault();
+
+    const draggedMembersList = JSON.parse(localStorage.getItem("draggedMembers")) || [];
+
     let nameDropped = ev.dataTransfer.getData("text");
+    let assignedToTask = ev.target.parentElement.querySelector("h4").innerText;
     let nameDiv = document.createElement("div");
 
-    nameDiv.innerHTML = `<div>${nameDropped}</div>`;    
+    nameDiv.innerHTML = `<div>${nameDropped}</div>`;
+    
+    let draggedMember = {assignedToTask, nameDropped};
+    draggedMembersList.push(draggedMember);
     
     ev.target.appendChild(nameDiv);
+
+    window.localStorage.setItem("draggedMembers", JSON.stringify(draggedMembersList))
 
 }
 
