@@ -165,6 +165,7 @@ header{
     background-color: orange;
 }
 
+
 #revealArchiveBtn{
 <<<<<<< HEAD
     left: 1280px;
@@ -205,8 +206,15 @@ header{
 
 #taskDescription{
     position: absolute;
-    width: 270px;
-    height: 50px;
+    display: none;
+    top: 40px;
+    left: 12px;
+    width: 240px;
+    height: 160px;
+    background-color: #f7fafa;
+    resize: none;
+    border: 0px;
+    font-size: 16px;
 }
 
 #taskDescriptionPara{
@@ -282,7 +290,12 @@ label{
     float: left;
 }
 
+#taskChecklistInput{
+    display: none;
+}
+
 #createChecklistBtn{
+    display: none;
     top: 60px;
     left: 10px;
     font-size: 13px;
@@ -290,10 +303,6 @@ label{
     border: 0px;
     background: lightgray;
     color: gray;
-}
-
-textarea{
-    resize: none;
 }
 
 .input{
@@ -312,7 +321,7 @@ input::placeholder{
 #tasksTable{
     position: relative;
     z-index: 1;
-    top: 80px;
+    top: 100px;
     height: 630px;
     width: 1400px;
     opacity: 1;
@@ -323,9 +332,13 @@ input::placeholder{
     position: relative;
     z-index: 3;
 <<<<<<< HEAD
+<<<<<<< HEAD
     top: 130px;
 =======
     top: 137px;
+>>>>>>> master
+=======
+    top: 140px;
 >>>>>>> master
     height: 0px;
     width: 1400px;
@@ -343,7 +356,7 @@ input::placeholder{
 .tasks{
     position: absolute;
     text-align: center;
-    top: 98px;
+    top: 89px;
     height: 630px;
     width: 450px;
     display: grid-inline;
@@ -356,9 +369,13 @@ input::placeholder{
     width: 1400px;
     height: 60px;
 <<<<<<< HEAD
+<<<<<<< HEAD
     top: 50px;
 =======
     top: 60px;
+>>>>>>> master
+=======
+    top: 40px;
 >>>>>>> master
     border-top: 2px solid gray;
 }
@@ -485,10 +502,14 @@ input::placeholder{
 
 .buttonIcon{
     display: none;
+<<<<<<< HEAD
 >>>>>>> master
     display: inline-block;
+=======
+>>>>>>> master
     height: 40px;
     width: 40px;
+    opacity: 0px;
     border: 0px;
     cursor: pointer;
     background: lightgray;
