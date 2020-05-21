@@ -339,6 +339,7 @@ input::placeholder{
 }
 
 .taskObject{
+    position: relative;
     width: 380px;
     height: 200px;
     padding: 10px;
@@ -411,4 +412,12 @@ input::placeholder{
     height: 120px;
     border: 1px dashed gray;
     border-radius: 0px;
+}
+
+#deleteTaskBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 0px;
+    background-color: whitesmoke;
 }
