@@ -13,7 +13,6 @@ function loadSettings (){
     var savedSettings = JSON.parse(localStorage.getItem('settings')) || [];
     textSizeDescription = savedSettings.savedTextSize;
     textSizeHeader = savedSettings.savedTextSizeHeader;
-    
 }
 
 function adjustText(header, description) {
@@ -26,11 +25,11 @@ function adjustText(header, description) {
     window.localStorage.setItem('settings', JSON.stringify(textSize));
 
     renderTaskList();
-    
 }
 
 function createTask(event) {
     event.preventDefault();
+    document.getElementById("currentCount").innerHTML = "0";
 
     const taskList = JSON.parse(localStorage.getItem('task')) || [];
     const taskName = document.querySelector("[name='taskName']").value;
@@ -41,7 +40,6 @@ function createTask(event) {
     if (taskList.length != 0){
         taskId=taskList[taskList.length-1].taskId + 1;
     }
-
 
     const task = { taskId, taskName, taskDescription, taskIcon };
     taskList.push(task);
@@ -84,7 +82,7 @@ function renderTaskList() {
                                 <img id="taskIcon" src="${task.taskIcon}">
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
                                 <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${task.taskDescription}</p>
-                                <button id="deleteTaskBtn"  type="button" onclick="deleteTask(${task.taskId})"><img src="icons/trashcan.png" style="height:30px;" alt="delete task"></button>
+                                <button id="deleteTaskBtn" type="button" onclick="deleteTask(${task.taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
@@ -167,8 +165,6 @@ function createIconButtons(){
     }
 }
 
-
-
 function countCharacters(){
-    document.getElementById("current").innerHTML = taskDescription.value.length;
+    document.getElementById("currentCount").innerHTML = taskDescription.value.length;
 }

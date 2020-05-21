@@ -37,20 +37,21 @@
                         </div>
 
                         <div id=additionButtons>
-                            <button class="additionBtn" id="addDescriptionRevealBtn"
+                            <button class="additionBtn" type="button" id="addDescriptionRevealBtn"
                                 onmouseover="revealAddDescriptionForm()">+ DESCRIPTION</button>
-                            <button class="additionBtn" id="addChecklistRevealBtn"
+                            <button class="additionBtn" type="button" id="addChecklistRevealBtn"
                                 onmouseover="revealAddChecklistForm()">+ CHECKLIST</button>
-                            <button class="additionBtn" id="addIconRevealBtn" onmouseover="revealAddIconForm()">+
+                            <button class="additionBtn" type="button" id="addIconRevealBtn"
+                                onmouseover="revealAddIconForm()">+
                                 ICON</button>
                         </div>
 
                         <div class="additionForm" id="taskDescriptionForm">
                             <label id="taskDescriptionLabel" for="taskDescription">DESCRIBE THE TASK</label>
-                            <textarea id="taskDescription" name="taskDescription" placeholder="" maxlength="140"
+                            <textarea id="taskDescription" name="taskDescription" placeholder="Write here..." maxlength="140"
                                 onkeyup="countCharacters()"></textarea>
                             <div id="counting">
-                                <span id="current">0</span>
+                                <span id="currentCount">0</span>
                                 <span>/ 140</span>
                             </div>
                         </div>
@@ -92,9 +93,11 @@
                 <div class="headerSection" id="settingsSection">
                     <div id="adjustTextSection">
                         <label id="fontLabel">CHANGE FONT SIZE</label>
-                        <button id="adjustTextBiggerBtn" type="button" onclick="adjustText('xxx-large', 'x-large');">LARGE</button>
+                        <button id="adjustTextBiggerBtn" type="button"
+                            onclick="adjustText('xxx-large', 'x-large');">LARGE</button>
                         <br>
-                        <button id="adjustTextStandardBtn"  type="button" onclick="adjustText('large', 'medium');">STANDARD</button>
+                        <button id="adjustTextStandardBtn" type="button"
+                            onclick="adjustText('large', 'medium');">STANDARD</button>
                     </div>
                 </div>
             </section>

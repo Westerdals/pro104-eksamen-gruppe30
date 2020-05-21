@@ -156,15 +156,19 @@ header{
 
 #taskDescription{
     position: absolute;
+    z-index: 3;
     display: none;
     top: 40px;
     left: 12px;
     width: 240px;
     height: 120px;
-    background-color: #f7fafa;
+    background-color: lightgray;
     resize: none;
     border: 0px;
-    font-size: 16px;
+    font-size: 15px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    
 }
 
 #counting{
@@ -258,7 +262,10 @@ label{
 input::placeholder{
     font-family: fantasy;
 }
-
+textarea::placeholder{
+    font-family: fantasy;
+    padding-top: 5px;
+}
 
 #tasksTable{
     position: relative;
@@ -351,6 +358,10 @@ input::placeholder{
     overflow: hidden;
 }
 
+.taskObject:hover #deleteTaskBtn{
+    background-color:#f7fafa;
+}
+
 .taskObject:hover{
     background-color: #f7fafa;
 }
@@ -402,7 +413,7 @@ input::placeholder{
 
 #taskIcon{
     position: absolute;
-    left: 200px;
+    left: 181px;
     height: 40px;
     width: auto;
 }
@@ -420,4 +431,8 @@ input::placeholder{
     right: 10px;
     border: 0px;
     background-color: whitesmoke;
+}
+
+#deleteTaskBtn:hover{
+    cursor: pointer;
 }
