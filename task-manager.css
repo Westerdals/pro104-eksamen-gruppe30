@@ -1,9 +1,6 @@
 body{
     margin-top: 0;
-<<<<<<< HEAD
-=======
     background-color: whitesmoke;
->>>>>>> master
 }
 
 #mainContainer{
@@ -23,49 +20,28 @@ header{
     position: fixed;
     z-index: 3;
     width: 1400px;
-<<<<<<< HEAD
-    height: 110px;
-    background-color: white;
-    padding-bottom: 20px;
-=======
     height: 120px;
     background-color: white;
     padding-bottom: 20px;
     background-color: whitesmoke;
     font-family: 'Pacifico', cursive;
     font-size: 18px;
->>>>>>> master
 }
 
 .headerButton{
     position: absolute;
     border: 0px;
-<<<<<<< HEAD
-    top: 90px;
-=======
     top: 100px;
->>>>>>> master
     height: 30px;
     font-size: 15px;
     cursor: pointer;
     color: gray;
 }
 
-<<<<<<< HEAD
-.headerButton:hover{
-    background-color: lightgray;
-}
-
-.additionBtn{
-    position: absolute;
-    background-color: lightgray;
-    width: 140px;
-=======
 .additionBtn{
     position: absolute;
     background-color: lightgray;
     width: 172px;
->>>>>>> master
     height: 30px;
     font-size: 15px;
     text-align: left;
@@ -97,12 +73,6 @@ header{
 }
 
 #taskSubmitBtn{
-<<<<<<< HEAD
-<<<<<<< HEAD
-    top: 220px;
-=======
-=======
->>>>>>> master
     top: 180px;
     left: 10px;
     background-color: lightgray;
@@ -117,8 +87,6 @@ header{
     color: orange;
 }
 
-<<<<<<< HEAD
-=======
 #memberSubmitBtn{
     top: 130px;
     left: 10px;
@@ -134,17 +102,12 @@ header{
     color: orange;
 }
 
->>>>>>> master
 #addTaskRevealBtn{
     background-color: lightgray;
 }
 
 #addTaskRevealBtn:hover{
     background-color: orange;
-<<<<<<< HEAD
->>>>>>> pbyenstuen
-=======
->>>>>>> master
 }
 
 #addMemberRevealBtn{
@@ -167,14 +130,6 @@ header{
 
 
 #revealArchiveBtn{
-<<<<<<< HEAD
-    left: 1280px;
-}
-
-.additionForm{
-    position: absolute;
-    left: 435px;
-=======
     background-color: whitesmoke;
     left: 1280px;
 }
@@ -186,7 +141,6 @@ header{
 .additionForm{
     position: absolute;
     left: 470px;
->>>>>>> master
     height: 0px;
     width: 250px;
     opacity: 0;
@@ -194,14 +148,11 @@ header{
     background-color: lightgray;
     color: gray;
     font-size: 17px;
-<<<<<<< HEAD
-=======
 }
 
 #taskIconForm{
     width: 400px;
     padding-left: 100px;
->>>>>>> master
 }
 
 #taskDescription{
@@ -223,11 +174,7 @@ header{
 
 .headerSection{
     position: relative;
-<<<<<<< HEAD
-    top: 140px;
-=======
     top: 150px;
->>>>>>> master
     width: 1400px;
     height: 0px;
     opacity: 0;
@@ -241,17 +188,11 @@ header{
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(100px,1fr));
     grid-auto-columns: minmax(100px,1fr);
-<<<<<<< HEAD
-    grid-column-gap: 0px;
-=======
     grid-column-gap: 20px;
->>>>>>> master
     grid-auto-flow: column;
     overflow-x: auto;
 }
 
-<<<<<<< HEAD
-=======
 #addMemberForm{
     width: 263px;
     height: 150px;
@@ -262,7 +203,6 @@ header{
     font-weight: 700;
 }
 
->>>>>>> master
 label{
     display: block;
     font-family: 'Nanum Gothic', sans-serif;
@@ -277,10 +217,7 @@ label{
     color: rgb(131, 124, 124);
     float: left;
     height: 200px;
-<<<<<<< HEAD
-=======
     width: 263px;
->>>>>>> master
     padding: 10px;
     margin-right: 60px;
     background-color: lightgray;
@@ -331,15 +268,7 @@ input::placeholder{
 #archive{
     position: relative;
     z-index: 3;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    top: 130px;
-=======
-    top: 137px;
->>>>>>> master
-=======
     top: 140px;
->>>>>>> master
     height: 0px;
     width: 1400px;
     opacity: 0;
@@ -368,15 +297,7 @@ input::placeholder{
     position: relative;
     width: 1400px;
     height: 60px;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    top: 50px;
-=======
-    top: 60px;
->>>>>>> master
-=======
     top: 40px;
->>>>>>> master
     border-top: 2px solid gray;
 }
 
@@ -418,65 +339,6 @@ input::placeholder{
     padding: 10px;
     margin-top: 30px;
     margin-left: 15px;
-<<<<<<< HEAD
-    border: 2px dashed gray;
-    cursor: pointer;
-    transition: height 0.3s ease-in-out;
-    overflow: hidden;
-}
-
-.taskObject:hover{
-    background-color: #f7fafa;
-}
-
-#taskHeading{
-    padding-top: 30px;
-}
-
-.memberObject{
-    width: 80px;
-    height: 80px;
-    left: 20px;
-    top: 5px;
-    margin-left: 15px;
-    border: 2px dashed gray;
-<<<<<<< HEAD
-}
-
-.buttonIcon {
-    display: inline-block;
-    padding: 0px;
-    height: 40px;
-    width: 40px;
-}
-
-.imageIcon {
-    height: 38px;
-    width: auto;
-}
-
-#pickedIcon {
-    height: 40px;
-    padding-left: 10px;
-    width: auto;
-}
-
-#taskIcon {
-    position: absolute;
-    left: 10px;;
-    height: 40px;
-    width: auto;
-}
-
-#progressBarDiv {
-    position: absolute;
-    bottom: 1px;
-=======
-    cursor: pointer;
-}
-
-.buttonIcon{
-=======
     border: 2px dashed gray;
     cursor: pointer;
     transition: height 0.3s ease-in-out;
@@ -502,11 +364,6 @@ input::placeholder{
 
 .buttonIcon{
     display: none;
-<<<<<<< HEAD
->>>>>>> master
-    display: inline-block;
-=======
->>>>>>> master
     height: 40px;
     width: 40px;
     opacity: 0px;
@@ -517,19 +374,11 @@ input::placeholder{
 
 #activeIcon{
     position: absolute;
-<<<<<<< HEAD
-    top: 130px;
-    height: 68px;
-    width: 80px;
-    text-align: center;
-    padding-top: 12px;
-=======
     left: 15px;
     height: 68px;
     width: 80px;
     padding-top: 12px;
     text-align: center;
->>>>>>> master
 }
 
 .buttonIcon:hover{
@@ -542,22 +391,11 @@ input::placeholder{
 }
 
 #pickedIcon{
-<<<<<<< HEAD
-    top: 100px;
-    height: 50px;
-=======
     height: 70px;
->>>>>>> master
 }
 
 #taskIcon{
     position: absolute;
-<<<<<<< HEAD
-    height: 40px;
-    left: 200px;
-    width: auto;
->>>>>>> pbyenstuen
-=======
     left: 200px;
     height: 40px;
     width: auto;
@@ -568,5 +406,4 @@ input::placeholder{
     height: 120px;
     border: 1px dashed gray;
     border-radius: 0px;
->>>>>>> master
 }
