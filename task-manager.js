@@ -51,8 +51,8 @@ function renderTaskList() {
 
         taskElement.innerHTML = `<div class="taskObject" onclick="expandTask(this)">
                                 <img id="taskIcon" src="${task.taskIcon}">
-                                <div id="taskHeading"><h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
-                                <p id="taskDescriptionPara">${task.taskDescription}</p>
+                                <div id="taskHeading"><h4 class="adjustHeader">${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
+                                <p style="font-size: medium;" id="taskDescriptionPara" class="adjustText">${task.taskDescription}</p>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
@@ -121,5 +121,27 @@ function createIconButtons(){
         img.setAttribute('alt', `${icons[i]}`);
         button.appendChild(img)
         taskIconForm.appendChild(button);
+    }
+}
+
+function adjustText(size) {
+    var textToAdjust = document.getElementsByClassName("adjustText");
+    //textToAdjust[0].style.fontSize = size;
+    textToAdjust[1].style.fontSize = size;
+    textToAdjust[2].style.fontSize = size;
+
+    for (var i = 0; i < textToAdjust.length; i++) {
+        
+
+    }
+}
+
+function adjustHeader(size) {
+    var text = document.getElementsByClassName("adjustHeader");
+
+    for (var i = 0; i < text.length; i++) {
+        var text = text[i];
+        text.style.fontSize = size;
+        console.log(text);
     }
 }
