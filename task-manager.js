@@ -65,10 +65,12 @@ function renderTaskList() {
 
         taskElement.innerHTML = `<div id="outputTask${taskId}" class="taskObject" draggable="true" ondragstart="drag(event)">
                                 <div id="taskHeading"><h4>${taskName}</h4></div>
-                                <div id="droppedMember${taskId}" class="droppedMember" ondragover="allowMoveNames(event)" ondrop="dropNames(event)"></div>
+                                <div id="droppedMember${taskId}" class="droppedMember" 
+                                ondragover="allowMoveNames(event)" ondrop="dropNames(event)"></div>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
+
 }
 
 function dragStartNames(ev){
@@ -84,6 +86,7 @@ function dropNames(ev){
 
     let nameDropped = ev.dataTransfer.getData("text");
     let assignedToTask = ev.target.parentElement.querySelector("h4").innerText;
+    
     let nameDiv = document.createElement("div");
 
     nameDiv.innerHTML = `<div>${nameDropped}</div>`;
