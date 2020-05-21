@@ -1,12 +1,36 @@
+var textSizeDescription = "";
+var textSizeHeader = "";
+
+function loadSettings (){
+    if (window.localStorage.length == 0) {
+        console.log("Settings");
+        var savedTextSize = "medium";
+        var savedTextSizeHeader = "large" ;
+        var textSize = {savedTextSize, savedTextSizeHeader}
+        window.localStorage.setItem('settings', JSON.stringify(textSize));
+        
+    }
+    var savedSettings = JSON.parse(localStorage.getItem('settings')) || [];
+    textSizeDescription = savedSettings.savedTextSize;
+    textSizeHeader = savedSettings.savedTextSizeHeader;
+    
+}
+
 function createTask(event) {
     event.preventDefault();
 
+    const taskList = JSON.parse(localStorage.getItem('task')) || [];
     const taskName = document.querySelector("[name='taskName']").value;
     const taskDescription = document.querySelector("[name='taskDescription']").value;
     const taskIcon = document.getElementById("pickedIcon").src;
+    
+    var taskId = 0;
+    if (taskList.length != 0){
+        taskId=taskList[taskList.length-1].taskId + 1;
+    }
 
-    const task = { taskName, taskDescription, taskIcon };
-    const taskList = JSON.parse(localStorage.getItem('task')) || [];
+
+    const task = { taskId, taskName, taskDescription, taskIcon };
     taskList.push(task);
 
     window.localStorage.setItem('task', JSON.stringify(taskList));
@@ -41,15 +65,27 @@ function renderTaskList() {
 
     for (const task of taskList) {
         const taskElement = document.createElement("div");
-        const { taskName, taskDescription, taskIcon } = task;
+        const { taskId, taskName, taskDescription, taskIcon } = task;
 
         taskElement.innerHTML = `<div class="taskObject" onclick="expandTask(this)">
                                 <img id="taskIcon" src="${task.taskIcon}">
-                                <div id="taskHeading"><h4 class="adjustHeader">${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
-                                <p style="font-size: medium;" id="taskDescriptionPara" class="adjustText">${task.taskDescription}</p>
+                                <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
+                                <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${task.taskDescription}</p>
+                                <button id="deleteTaskBtn"  type="button" onclick="deleteTask(${task.taskId})">X</button>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
+}
+
+function deleteTask(taskId) {
+    var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+	for(var i = 0; i < taskList.length; i++){
+		if(taskList[i].taskId == taskId){
+			taskList.splice(i, 1);
+		}
+	}
+	window.localStorage.setItem("task", JSON.stringify(taskList));
+	renderTaskList();
 }
 
 function renderMemberList() {
@@ -118,20 +154,18 @@ function createIconButtons(){
     }
 }
 
-function adjustText(size) {
-    var textToAdjust = document.getElementsByClassName("adjustText");
-    for (var i = 0; i < textToAdjust.length; i++) {
-        textToAdjust[i].style.fontSize = size;
+function adjustText(header, description) {
+
+    textSizeDescription = description;
+    textSizeHeader = header;
     
-    }
+    var savedSettings = JSON.parse(localStorage.getItem('settings')) || [];
+    var savedTextSize = description;
+    var savedTextSizeHeader = header;
+    var textSize = {savedTextSize, savedTextSizeHeader}
+    window.localStorage.setItem('settings', JSON.stringify(textSize));
+    
+    renderTaskList();
+
 }
 
-function adjustHeader(size) {
-    var text = document.getElementsByClassName("adjustHeader");
-
-    for (var i = 0; i < text.length; i++) {
-        var text = text[i];
-        text.style.fontSize = size;
-        console.log(text);
-    }
-}

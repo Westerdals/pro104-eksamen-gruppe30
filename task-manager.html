@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 
-<body onload="renderTaskList(); createIconButtons(); createMemberSlots();">
+<body onload="loadSettings(); renderTaskList(); createIconButtons(); createMemberSlots();">
 
     <div id="mainContainer">
 
@@ -87,9 +87,9 @@
                 <div class="headerSection" id="settingsSection">
                     <div id="adjustTextSection">
                         <label id="fontLabel">CHANGE FONT SIZE</label>
-                        <button id="adjustTextBiggerBtn" type="button" onclick="adjustText('x-large'); adjustHeader('xx-large');">LARGE</button>
+                        <button id="adjustTextBiggerBtn" type="button" onclick="adjustText('xxx-large', 'x-large');">LARGE</button>
                         <br>
-                        <button id="adjustTextStandardBtn"  type="button" onclick="adjustText('medium'); adjustHeader('');">STANDARD</button>
+                        <button id="adjustTextStandardBtn"  type="button" onclick="adjustText('large', 'medium');">STANDARD</button>
                     </div>
                 </div>
             </section>
