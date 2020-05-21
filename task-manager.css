@@ -350,3 +350,11 @@ input::placeholder{
     height: 40px;
     width: auto;
 }
+
+.droppedMember{
+    position: relative;
+    height: 100px;
+    width: 200px;
+    background-color: lightgrey;
+    display: inline-block;
+}
