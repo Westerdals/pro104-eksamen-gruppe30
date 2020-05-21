@@ -109,6 +109,9 @@ function revealAddDescriptionForm(){
         if (taskIconForm.style.height != "0px" || taskIconForm.style.height != "") {
             hideSection(taskIconForm);
         }
+        if (taskDeadlineForm.style.height != "0px" || taskDeadlineForm.style.height != "") {
+            hideSection(taskDeadlineForm);
+        }
 
     } else {
         hideSection(taskDescriptionForm);
@@ -129,6 +132,9 @@ function revealAddChecklistForm(){
         }
         if (taskIconForm.style.height != "0px" || taskIconForm.style.height != "") {
             hideSection(taskIconForm);
+        }
+        if (taskDeadlineForm.style.height != "0px" || taskDeadlineForm.style.height != "") {
+            hideSection(taskDeadlineForm);
         }
 
     } else {
@@ -151,9 +157,36 @@ function revealAddIconForm(){
         if (taskChecklistForm.style.height != "0px" || taskChecklistForm.style.height != "") {
             hideSection(taskChecklistForm);
         }
+        if (taskDeadlineForm.style.height != "0px" || taskDeadlineForm.style.height != "") {
+            hideSection(taskDeadlineForm);
+        }
 
     } else {
         hideSection(taskIconForm);
+    }
+}
+
+function revealAddDeadlineForm(){
+    var taskDeadlineForm = document.getElementById("taskDeadlineForm");
+
+    if (taskDeadlineForm.style.height == "0px" || taskDeadlineForm.style.height == ""){
+        taskDeadlineForm.style.height = "200px";
+        taskDeadlineForm.style.opacity = "1";
+        taskDeadlineForm.style.display = "block";
+        addDeadlineRevealBtn.style.backgroundColor = "orange";
+
+        if (taskDescriptionForm.style.height != "0px" || taskDescriptionForm.style.height != "") {
+            hideSection(taskDescriptionForm);
+        }
+        if (taskIconForm.style.height != "0px" || taskIconForm.style.height != "") {
+            hideSection(taskIconForm);
+        }
+        if (taskChecklistForm.style.height != "0px" || taskChecklistForm.style.height != "") {
+            hideSection(taskChecklistForm);
+        }
+
+    } else {
+        hideSection(taskDeadlineForm);
     }
 }
 
@@ -184,6 +217,8 @@ function hideSection(section) {
         addChecklistRevealBtn.style.backgroundColor = "";
     } else if (section == taskIconForm){
         addIconRevealBtn.style.backgroundColor = "";
+    } else if (section == taskDeadlineForm){
+        addDeadlineRevealBtn.style.backgroundColor = "";
     }
 }
 
@@ -191,4 +226,5 @@ function hideAdditionForms(){
     hideSection(taskDescriptionForm);
     hideSection(taskChecklistForm);
     hideSection(taskIconForm);
+    hideSection(taskDeadlineForm);
 }

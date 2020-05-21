@@ -10,8 +10,9 @@ function createTask(event) {
     const taskName = document.querySelector("[name='taskName']").value;
     const taskDescription = document.querySelector("[name='taskDescription']").value;
     const taskIcon = document.getElementById("pickedIcon").src;
+    const taskDeadline = document.getElementById("taskDeadline").value;
 
-    const task = { taskName, taskDescription, taskIcon };
+    const task = { taskName, taskDescription, taskIcon, taskDeadline };
     const taskList = JSON.parse(localStorage.getItem('task')) || [];
     taskList.push(task);
 
@@ -47,12 +48,13 @@ function renderTaskList() {
 
     for (const task of taskList) {
         const taskElement = document.createElement("div");
-        const { taskName, taskDescription, taskIcon } = task;
+        const { taskName, taskDescription, taskIcon, taskDeadline } = task;
 
         taskElement.innerHTML = `<div class="taskObject" onclick="expandTask(this)">
                                 <img id="taskIcon" src="${task.taskIcon}">
                                 <div id="taskHeading"><h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
                                 <p id="taskDescriptionPara">${task.taskDescription}</p>
+                                <div id="taskDeadlinePara">Due Date: ${task.taskDeadline}</p>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }

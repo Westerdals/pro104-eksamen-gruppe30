@@ -4,6 +4,15 @@
 <head>
     <title>Task Manager</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+    $( "#taskDeadline" ).datepicker();
+    } );</script><!--jQuery UI Datepicker-->
     <link rel="stylesheet" type="text/css" href="task-manager.css">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -41,6 +50,7 @@
                                 onmouseover="revealAddChecklistForm()">+ CHECKLIST</button>
                             <button class="additionBtn" id="addIconRevealBtn" onmouseover="revealAddIconForm()">+
                                 ICON</button>
+                            <button class="additionBtn" id="addDeadlineRevealBtn" onmouseover="revealAddDeadlineForm()">+ DEADLINE</button>
                         </div>
 
                         <div class="additionForm" id="taskDescriptionForm">
@@ -61,6 +71,12 @@
                             <div id="activeIcon">
                                 <img name="taskIcon" id="pickedIcon" src="icons/default.png" alt="chosen-icon">
                             </div>
+                        </div>
+                        
+                        <div class="additionForm" id="taskDeadlineForm">
+                            <label id="taskDeadlineLabel" for="taskDeadline">SET DUE DATE:</label>
+                            <input type="text" id="taskDeadline" name="taskDeadline">
+                            <br>
                         </div>
 
                         <input id="taskSubmitBtn" class="button" type="submit" value="GET IT DONE!">
