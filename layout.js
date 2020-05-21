@@ -231,12 +231,14 @@ function hideAdditionInputs(form){
             var taskDescription = document.getElementById("taskDescription");
             taskDescription.style.display = "none";
             break;
+
         case taskChecklistForm:
             var taskChecklistInput = document.getElementById("taskChecklistInput");
             var createChecklistBtn = document.getElementById("createChecklistBtn");
             taskChecklistInput.style.display = "none";
             createChecklistBtn.style.display = "none"
             break;
+            
         case taskIconForm:
             var buttonIcons = document.getElementsByClassName("buttonIcon")
             for(var i = 0; i < buttonIcons.length; i++){
