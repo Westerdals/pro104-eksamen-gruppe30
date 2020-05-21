@@ -141,6 +141,38 @@ function renderMemberList() {
             }
         }
     }
+    
+    //Add item in localStorage
+    const addItem = function(){
+        let val = input.value;
+        if (val) {
+            let li = document.createElement('li');
+            let inner = '<h1 class="text">' + val + '</h1>';
+            inner += '<button class="close">Close</button>';
+            inner += '<button class = "checked">Checked</button>';
+            li.innerHTML = inner;
+            container.appendChild(li);
+            input.value = '';
+            currentItem = li.firstChild;
+            
+            //save the bellow list
+            items = document.querySelectorAll('li');
+            for(let item of items){
+                //this return empty objects
+                localStorage.setItem('list', JSON.stringify(item) );
+                console.log(localStorage)
+            }
+            for(let del of document.querySelectorAll('.close')){
+                del.addEventListener('click', closeItem);
+            }
+            for(let edit of document.querySelectorAll('.checked')){
+                edit.addEventListener('click', checkedItem);
+            }
+        }else {
+            alert('please add some text');
+            return;
+        }
+    }
 
     
     
