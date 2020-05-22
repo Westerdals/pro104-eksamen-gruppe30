@@ -39,29 +39,34 @@ function createMember(event) {
     renderMemberList();
 }
 
-//Datepicker function plugin + time
+//Datepicker function plugin
 $(function(){
     $("#taskDeadline").datepicker({
         dateFormat: "dd-mm-yy",
-        /*onSelect: function(datetext) { //for å få med tid
-            var d = new Date(); // for now
-
-            var h = d.getHours();
-            h = (h < 10) ? ("0" + h) : h ;
-
-            var m = d.getMinutes();
-            m = (m < 10) ? ("0" + m) : m ;
-
-            var s = d.getSeconds();
-            s = (s < 10) ? ("0" + s) : s ;
-
-            datetextWithSec = datetext + " " + h + ":" + m + ":" + s;
-            datetext = datetext + " " + h + ":" + m
-
-            $('#taskDeadline').val(datetext);
-        }*/
         });
     });
+
+
+function renderTaskList() {
+
+    const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+    const unstartedTasks = document.getElementById("unstartedTasks");
+
+    unstartedTasks.innerHTML = "";
+
+    for (const task of taskList) {
+        const taskElement = document.createElement("div");
+        const { taskName, taskDescription, taskIcon, taskDeadline } = task;
+
+        taskElement.innerHTML = `<div class="taskObject" onclick="expandTask(this)">
+                                <img id="taskIcon" src="${task.taskIcon}">
+                                <div id="taskHeading"><h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
+                                <p id="taskDescriptionPara">${task.taskDescription}</p>
+                                <div><p id="taskDeadlinePara">Due Date: ${task.taskDeadline}</p>
+                                </div>`;
+        unstartedTasks.appendChild(taskElement);
+    }
+}
 
 /*
 //Countdown clock on Deadline
@@ -95,26 +100,19 @@ var x = setInterval(function() {
 }, 1000);*/
 
 
-function renderTaskList() {
 
-    const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
-    const unstartedTasks = document.getElementById("unstartedTasks");
-
-    unstartedTasks.innerHTML = "";
-
-    for (const task of taskList) {
-        const taskElement = document.createElement("div");
-        const { taskName, taskDescription, taskIcon, taskDeadline } = task;
-
-        taskElement.innerHTML = `<div class="taskObject" onclick="expandTask(this)">
-                                <img id="taskIcon" src="${task.taskIcon}">
-                                <div id="taskHeading"><h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
-                                <p id="taskDescriptionPara">${task.taskDescription}</p>
-                                <div><p id="taskDeadlinePara">Due Date: ${task.taskDeadline}</p>
-                                </div>`;
-        unstartedTasks.appendChild(taskElement);
-    }
+//taskDeadlineAlert
+function taskDeadlineAlert() {
+    
+    const now = new Date();
+    const nD = now.valueOf();
+    const tD = taskDeadline.valueOf();
+    
+    alert nD;
 }
+
+
+
 
 function renderMemberList() {
 
