@@ -199,7 +199,8 @@ function deleteTask(taskId) {
 }
 
 function deleteMember(memberId) {
-    console.log(memberId);
+    const memberSlots = document.getElementsByClassName("memberSlot");
+
     var memberList = JSON.parse(window.localStorage.getItem("member")) || [];
     console.log(memberList);
     for(var i = 0; i < memberList.length; i++) {
@@ -209,7 +210,9 @@ function deleteMember(memberId) {
     }
     window.localStorage.setItem("member", JSON.stringify(memberList));
     renderMemberList();
- 
+
+    memberSlots[memberId].style.border = "1px dashed gray";
+    memberSlots[memberId].style.backgroundColor = "";
 }
 
 function renderMemberList() {
@@ -223,16 +226,14 @@ function renderMemberList() {
     }
         for (const member of memberList) {
 
-
             const memberElement = document.createElement("div");
             const {memberId, memberName } = member;
             counter++;
             memberElement.innerHTML = `<div class="memberObject" id="${memberId}" 
                                       draggable="true" ondragstart="dragStartNames(event)">
-                                      <button type="button" onclick="deleteMember('${memberId}')"><img src="images/trashcan.png" id="trashcan" style="height:20px;" alt="delete task"></button>
+                                      <button id="deleteMemberBtn" type="button" onclick="deleteMember('${memberId}')"><img src="images/trashcan.png" id="trashcan" style="height:20px;" alt="delete task"></button>
                                       <img src="images/member.png" alt="member" width="45" height="45">
                                       <h4>${memberName}</h4>
-                                      
                                       </div>`; 
             memberSlots[counter].appendChild(memberElement);
             memberSlots[counter].style.border = "1px solid gray";

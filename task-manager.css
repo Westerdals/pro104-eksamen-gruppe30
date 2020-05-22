@@ -422,7 +422,6 @@ textarea::placeholder{
     width: 100px;
     height: 120px;
     border: 1px dashed gray;
-    border-radius: 0px;
 }
 
 #deleteTaskBtn {
@@ -435,6 +434,12 @@ textarea::placeholder{
 
 #deleteTaskBtn:hover{
     cursor: pointer;
+}
+
+#deleteMemberBtn{
+    position: absolute;
+    border: 0px;
+    background-color: #f7fafa;
 }
 
 .droppedMember{
