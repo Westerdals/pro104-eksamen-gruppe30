@@ -167,7 +167,7 @@ function renderTaskFinishedList() {
                                 <img id="taskIcon" src="${taskIcon}">
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                 <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
-                                <button id="deleteTaskBtn" type="button" onclick="deleteTaskFinished(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                <button id="deleteTaskBtn" type="button" onclick="archiveTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 <div id="droppedMember" class="droppedMember" 
                                  ondrop="dropNames(event)">Members</div>
                                 </div>
@@ -187,15 +187,54 @@ function deleteTaskFinished(taskId) {
     renderTaskFinishedList();
   }
 
-function deleteTask(taskId) {
-    var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
-	for(var i = 0; i < taskList.length; i++){
-		if(taskList[i].taskId == taskId){
-			taskList.splice(i, 1);
+function renderArchiveList(){
+    const archiveList = JSON.parse(localStorage.getItem("archive")) || [];
+
+    let archive = document.getElementById("archive");
+
+    archive.innerHTML = "";
+
+    for(const ar of archiveList){
+        let archiveElement = document.createElement("div");
+        
+        const { taskId, taskName, taskDescription, taskIcon } = ar;
+
+        archiveElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
+                                    draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
+                                    <img id="taskIcon" src="${taskIcon}">
+                                    <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                    <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
+                                    <button id="deleteTaskBtn" type="button" onclick="deleteTaskFromArchive(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                    <div id="droppedMember" class="droppedMember" 
+                                    ondrop="dropNames(event)">Members</div>
+                                    </div>
+                                    </div>`;
+        archive.appendChild(archiveElement);
+    }
+}
+
+function deleteTaskFromArchive(taskId){
+    const archiveList = JSON.parse(window.localStorage.getItem("archive")) || [];
+  for(var i = 0; i < archiveList.length; i++){
+    if(archiveList[i].taskId == taskId){
+      archiveList.splice(i, 1);
+    }
+  }
+    window.localStorage.setItem("archive", JSON.stringify(archiveList));
+    renderArchiveList();
+}
+
+function archiveTask(taskId) {
+    const archiveList = JSON.parse(localStorage.getItem("archive")) || [];
+    var fList = JSON.parse(window.localStorage.getItem("fList")) || [];
+	for(var i = 0; i < fList.length; i++){
+		if(fList[i].taskId == taskId){
+			archiveList.push(fList[i]);
+            deleteTaskFinished(taskId);
 		}
 	}
-	window.localStorage.setItem("task", JSON.stringify(taskList));
-	renderTaskList();
+	window.localStorage.setItem("archive", JSON.stringify(archiveList));
+	renderArchiveList();
 }
 
 function deleteMember(memberId) {
