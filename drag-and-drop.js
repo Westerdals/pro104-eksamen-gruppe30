@@ -81,6 +81,7 @@ function allowMoveTasks(ev) {
 
     document.getElementById(taskId).style.border = "2px dashed green";
     moveToFinished(taskId);
+    moveFromUnstartedToFinished(taskId);
     deleteTaskOngoing(taskId);
 
   }
