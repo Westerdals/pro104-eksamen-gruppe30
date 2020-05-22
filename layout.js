@@ -218,15 +218,6 @@ function expandTask(object){
     }
 }
 
-function expandTask(object){
-
-    if (object.style.height != "400px") {
-        object.style.height = "400px";
-    } else {
-        object.style.height = "200px";
-    }
-}
-
 function hideSection(section) {
     section.style.height = "0px";
     section.style.opacity = "0";

@@ -41,12 +41,7 @@ function createTask(event) {
         taskId=taskList[taskList.length-1].taskId + 1;
     }
 
-<<<<<<< HEAD
-    const task = {taskName, taskDescription, taskIcon };
-    const taskList = JSON.parse(localStorage.getItem('task')) || [];
-=======
     const task = { taskId, taskName, taskDescription, taskIcon };
->>>>>>> master
     taskList.push(task);
 
     window.localStorage.setItem('task', JSON.stringify(taskList));
@@ -82,14 +77,6 @@ function renderTaskList() {
 
     for (const task of taskList) {
         const taskElement = document.createElement("div");
-<<<<<<< HEAD
-        const {taskName, taskDescription, taskIcon } = task;
-
-        taskElement.innerHTML = `<div class="taskObject" onclick="expandTask(this)">
-                                <img id="taskIcon" src="${task.taskIcon}">
-                                <div id="taskHeading"><h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
-                                <p id=taskDescriptionPara>${task.taskDescription}</p>
-=======
         const { taskId, taskName, taskDescription, taskIcon } = task;
 
         taskElement.innerHTML = `<div class="taskObject" onclick="expandTask(this)">
@@ -97,7 +84,6 @@ function renderTaskList() {
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
                                 <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${task.taskDescription}</p>
                                 <button id="deleteTaskBtn" type="button" onclick="deleteTask(${task.taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
->>>>>>> master
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }

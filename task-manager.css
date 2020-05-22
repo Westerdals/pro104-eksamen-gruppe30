@@ -147,14 +147,11 @@ header{
     background-color: lightgray;
     color: gray;
     font-size: 17px;
-<<<<<<< HEAD
-=======
 }
 
 #taskIconForm{
     width: 400px;
     padding-left: 100px;
->>>>>>> master
 }
 
 #taskDescription{
@@ -178,10 +175,6 @@ header{
     position: absolute;
     top: 170px;
     left: 15px;
-}
-
-#taskDescriptionPara{
-    padding-top: 150px;
 }
 
 #taskDescriptionPara{
@@ -365,13 +358,10 @@ textarea::placeholder{
     overflow: hidden;
 }
 
-<<<<<<< HEAD
-=======
 .taskObject:hover #deleteTaskBtn{
     background-color:#f7fafa;
 }
 
->>>>>>> master
 .taskObject:hover{
     background-color: #f7fafa;
 }
@@ -425,7 +415,6 @@ textarea::placeholder{
     position: absolute;
     left: 181px;
     height: 40px;
-    left: 200px;
     width: auto;
 }
 
