@@ -36,10 +36,12 @@ function createTask(event) {
     const taskDescription = document.querySelector("[name='taskDescription']").value;
     const taskIcon = document.getElementById("pickedIcon").src;
     
-    var taskId = 0;
+    /*var taskId = 0;
     if (taskList.length != 0){
         taskId=taskList[taskList.length-1].taskId + 1;
-    }
+    }*/
+
+    let taskId = taskList.length;
 
     const task = { taskId, taskName, taskDescription, taskIcon };
     taskList.push(task);
@@ -69,6 +71,7 @@ function createMember(event) {
     revealMembersSection();
     renderMemberList();
 }
+
 
 function renderTaskList() {
 
@@ -113,7 +116,7 @@ function renderTaskOngoingList() {
             taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                     draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                     <img id="taskIcon" src="${taskIcon}">
-                                    <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName}</h4></div>
+                                    <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                     <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTaskOngoing(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div id="droppedMember" class="droppedMember" 
@@ -238,3 +241,4 @@ function countCharacters(){
     document.getElementById("currentCount").innerHTML = taskDescription.value.length;
 }
 
+window.onload = renderMemberList();
