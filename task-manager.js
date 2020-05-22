@@ -1,6 +1,6 @@
 var textSizeDescription = "";
 var textSizeHeader = "";
-var memberCounter = 0;
+// var memberCounter = 0;
 
 function loadSettings (){
     if (window.localStorage.length == 0) {
@@ -54,7 +54,7 @@ function createTask(event) {
 
 function createMember(event) {
     event.preventDefault();
-    memberCounter++;
+ //   memberCounter++;
 
     const memberName = document.querySelector("[name='memberName']").value;
 
@@ -64,17 +64,17 @@ function createMember(event) {
 
     window.localStorage.setItem('member', JSON.stringify(memberList));
 
-    if(memberCounter >= 11){
-        var memberSlot = document.createElement("div");
-        memberSlot.setAttribute('class', 'memberSlot');
-        memberSlot.setAttribute('id', `memberSlot${memberCounter}`);
-        membersSection.appendChild(memberSlot);
+  //  if(memberCounter >= 11){
+  //      var memberSlot = document.createElement("div");
+  //      memberSlot.setAttribute('class', 'memberSlot');
+ //       memberSlot.setAttribute('id', `memberSlot${memberCounter}`);
+ //      membersSection.appendChild(memberSlot);
 
-        const addedMemberSlots = JSON.parse(localStorage.getItem('memberSlot')) || [];
-        addedMemberSlots.push("memberSlot");
-        window.localStorage.setItem('memberSlot', JSON.stringify(addedMemberSlots));
-        renderAddedMemberSlots();
-    }
+ //       const addedMemberSlots = JSON.parse(localStorage.getItem('memberSlot')) || [];
+ //       addedMemberSlots.push("memberSlot");
+ //       window.localStorage.setItem('memberSlot', JSON.stringify(addedMemberSlots));
+//       renderAddedMemberSlots();
+//    }
 
     event.target.reset();
     revealMembersSection();
