@@ -33,16 +33,23 @@ function createTask(event) {
     document.getElementById("currentCount").innerHTML = "0 ";
 
     const taskList = JSON.parse(localStorage.getItem('task')) || [];
+
     const taskName = document.querySelector("[name='taskName']").value;
     const taskDescription = document.querySelector("[name='taskDescription']").value;
     const taskIcon = document.getElementById("pickedIcon").src;
+    const taskChecklist = document.getElementById("taskChecklist").getElementsByTagName("li");
+    const taskChecklistPoints = [];
+
+    for (var i = 0; i < taskChecklist.length; i++){
+        taskChecklistPoints.push(taskChecklist[i].innerHTML);
+    }
     
     var taskId = 0;
     if (taskList.length != 0){
         taskId=taskList[taskList.length-1].taskId + 1;
     }
 
-    const task = { taskId, taskName, taskDescription, taskIcon };
+    const task = { taskId, taskName, taskDescription, taskChecklistPoints, taskIcon };
     taskList.push(task);
 
     window.localStorage.setItem('task', JSON.stringify(taskList));
@@ -81,15 +88,15 @@ function createMember(event) {
     renderMemberList();
 }
 
-function renderAddedMemberSlots(){
-    const addedMemberSlots = JSON.parse(window.localStorage.getItem("memberSlot")) || [];
-    const membersSection = document.getElementById("membersSection");
+//function renderAddedMemberSlots(){
+  //  const addedMemberSlots = JSON.parse(window.localStorage.getItem("memberSlot")) || [];
+  //  const membersSection = document.getElementById("membersSection");
 
-    for (const memberSlot of addedMemberSlots){
-        const { memberSlot } = memberSlot;
-        membersSection.appendChild(memberSlot);
-    }
-}
+  //  for (const memberSlot of addedMemberSlots){
+  //      const { memberSlot } = memberSlot;
+  //      membersSection.appendChild(memberSlot);
+   // }
+//}
 
 function renderTaskList() {
 
@@ -99,14 +106,26 @@ function renderTaskList() {
 
     unstartedTasks.innerHTML = "";
 
+    const taskChecklistPoints = taskList.taskChecklistPoints;
+    const taskChecklist = document.createElement("ul");
+
+    for(var i = 0; i < taskChecklistPoints.length; i++){
+        var taskChecklistPoint = document.createElement("li");
+        taskChecklistPoint.innerHTML = taskChecklistPoints[i];
+        taskChecklist.appendChild(taskChecklistPoint);
+    }
+
+    console.log(taskChecklist);
+
     for (const task of taskList) {
         const taskElement = document.createElement("div");
-        const { taskId, taskName, taskDescription, taskIcon } = task;
+        const { taskId, taskName, taskDescription, taskChecklistPoints, taskIcon } = task;
 
         taskElement.innerHTML = `<div class="taskObject" onclick="expandTask(this)">
                                 <img id="taskIcon" src="${task.taskIcon}">
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
                                 <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${task.taskDescription}</p>
+                                ${taskChecklist}
                                 <button id="deleteTaskBtn" type="button" onclick="deleteTask(${task.taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
