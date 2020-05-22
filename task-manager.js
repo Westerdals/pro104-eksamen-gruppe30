@@ -39,6 +39,62 @@ function createMember(event) {
     renderMemberList();
 }
 
+//Datepicker function plugin + time
+$(function(){
+    $("#taskDeadline").datepicker({
+        dateFormat: "dd-mm-yy",
+        /*onSelect: function(datetext) { //for å få med tid
+            var d = new Date(); // for now
+
+            var h = d.getHours();
+            h = (h < 10) ? ("0" + h) : h ;
+
+            var m = d.getMinutes();
+            m = (m < 10) ? ("0" + m) : m ;
+
+            var s = d.getSeconds();
+            s = (s < 10) ? ("0" + s) : s ;
+
+            datetextWithSec = datetext + " " + h + ":" + m + ":" + s;
+            datetext = datetext + " " + h + ":" + m
+
+            $('#taskDeadline').val(datetext);
+        }*/
+        });
+    });
+
+/*
+//Countdown clock on Deadline
+// Set the date we're counting down to
+var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="taskDeadlinePara"
+  document.getElementById("taskDeadlinePara").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("taskDeadlinePara").innerHTML = "Time's up!";
+  }
+}, 1000);*/
+
+
 function renderTaskList() {
 
     const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
@@ -54,7 +110,7 @@ function renderTaskList() {
                                 <img id="taskIcon" src="${task.taskIcon}">
                                 <div id="taskHeading"><h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
                                 <p id="taskDescriptionPara">${task.taskDescription}</p>
-                                <div id="taskDeadlinePara"><p>Due Date: ${task.taskDeadline}</p>
+                                <div><p id="taskDeadlinePara">Due Date: ${task.taskDeadline}</p>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
