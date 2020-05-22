@@ -165,8 +165,19 @@ function deleteTask(taskId) {
 	renderTaskList();
 }
 
-
-
+function deleteMember(memberId) {
+    console.log(memberId);
+    var memberList = JSON.parse(window.localStorage.getItem("member")) || [];
+    console.log(memberList);
+    for(var i = 0; i < memberList.length; i++) {
+        if(memberList[i].memberId == memberId) {
+            memberList.splice(i,1);
+        }
+    }
+    window.localStorage.setItem("member", JSON.stringify(memberList));
+    renderMemberList();
+ 
+}
 
 function renderMemberList() {
 
@@ -185,8 +196,10 @@ function renderMemberList() {
             counter++;
             memberElement.innerHTML = `<div class="memberObject" id="${memberId}" 
                                       draggable="true" ondragstart="dragStartNames(event)">
+                                      <button type="button" onclick="deleteMember('${memberId}')"><img src="images/trashcan.png" id="trashcan" style="height:20px;" alt="delete task"></button>
                                       <img src="images/member.png" alt="member" width="45" height="45">
                                       <h4>${memberName}</h4>
+                                      
                                       </div>`; 
             memberSlots[counter].appendChild(memberElement);
             memberSlots[counter].style.border = "1px solid gray";
