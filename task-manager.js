@@ -54,7 +54,7 @@ function renderTaskList() {
                                 <img id="taskIcon" src="${task.taskIcon}">
                                 <div id="taskHeading"><h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
                                 <p id="taskDescriptionPara">${task.taskDescription}</p>
-                                <div id="taskDeadlinePara">Due Date: ${task.taskDeadline}</p>
+                                <div id="taskDeadlinePara"><p>Due Date: ${task.taskDeadline}</p>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
