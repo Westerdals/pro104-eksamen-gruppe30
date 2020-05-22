@@ -63,15 +63,28 @@ function renderTaskList() {
 
         let {taskId, taskName} = task;
 
-        taskElement.innerHTML = `<div id="outputTask${taskId}" class="taskObject" draggable="true" ondragstart="drag(event)">
+        taskElement.innerHTML = `<div id="outputTask${taskId}" class="taskObject" draggable="true" ondragstart="drag(event)" onclick="deleteTask(${taskId})">
                                 <div id="taskHeading"><h4>${taskName}</h4></div>
-                                <div id="droppedMember${taskId}" class="droppedMember" 
-                                ondragover="allowMoveNames(event)" ondrop="dropNames(event)"></div>
+                                <div id="droppedMember" class="droppedMember" 
+                                ondragover="allowMoveNames(event)" ondrop="dropNames(event)">Members</div>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
 
 }
+
+function deleteTask(taskId) {
+  console.log(taskId);
+  var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+for(var i = 0; i < taskList.length; i++){
+  if(taskList[i].taskId == taskId){
+    taskList.splice(i, 1);
+  }
+}
+window.localStorage.setItem("task", JSON.stringify(taskList));
+renderTaskList();
+}
+
 
 function dragStartNames(ev){
     let nameDrag = ev.target.innerText;
@@ -90,11 +103,12 @@ function dropNames(ev){
     let nameDiv = document.createElement("div");
 
     nameDiv.innerHTML = `<div>${nameDropped}</div>`;
+
+    ev.target.appendChild(nameDiv);
     
     let draggedMember = {assignedToTask, nameDropped};
     draggedMembersList.push(draggedMember);
     
-    ev.target.appendChild(nameDiv);
 
     window.localStorage.setItem("draggedMembers", JSON.stringify(draggedMembersList))
 
@@ -114,28 +128,58 @@ function allowMoveTasks(ev) {
     ev.dataTransfer.setData("text", taskInfo);
   }
 
-  function dropUnstarted(ev) {
+  /*function dropUnstarted(ev) {
     ev.preventDefault();
-
     let ongoingTaskName = ev.dataTransfer.getData("text");
     event.target.appendChild(document.getElementById(ongoingTaskName));
 
     document.getElementById(ongoingTaskName).style.border = "2px dashed grey";
     
-  }
+  }*/
+
+
   
   
   function dropOngoing(ev) {
     ev.preventDefault();
 
+    const taskOngoing = JSON.parse(localStorage.getItem("taskOngoing")) || [];
     let ongoingTaskName = ev.dataTransfer.getData("text");
-    event.target.appendChild(document.getElementById(ongoingTaskName));
+    //event.target.appendChild(document.getElementById(ongoingTaskName));
+    let ongoingTask = document.getElementById(ongoingTaskName);
+    //document.getElementById(ongoingTaskName).style.border = "2px dashed yellow";
 
-    document.getElementById(ongoingTaskName).style.border = "2px dashed yellow";
+    let ongoingTasks = {ongoingTask};
+    taskOngoing.push(ongoingTasks);
+
+    window.localStorage.setItem("taskOngoing", JSON.stringify(taskOngoing));
+
+    function renderOngoingTask(){
+    const taskOngoing = JSON.parse(localStorage.getItem("taskOngoing")) || [];
+
+    let ongoingTasks = document.getElementById("ongoingTasks");
+    ongoingTasks.innerHTML = "";
+
+    for(const to of taskOngoing){
+        let {ongoingTask} = to;
+        let ongoingElement = document.createElement("div");
+        ongoingElement.innerHTML = `<div id="outputTask" class="taskObject"
+                                    draggable="true" ondragstart="drag(event)">
+                                    <div id="taskHeading"><h4>${ongoingTask}</h4></div>
+                                    </div>`;
+
+        ongoingTasks.appendChild(ongoingElement);
+    }
+
+  }
+  renderOngoingTask();
+  renderTaskList();
+
+    deleteTask(taskId);
     
   }
 
-  function dropFinished(ev) {
+  /*function dropFinished(ev) {
     ev.preventDefault();
 
     let ongoingTaskName = ev.dataTransfer.getData("text");
@@ -143,7 +187,7 @@ function allowMoveTasks(ev) {
 
     document.getElementById(ongoingTaskName).style.border = "2px dashed green";
     
-  }
+  }*/
 
 
 function renderMemberList() {
@@ -194,24 +238,4 @@ window.onload = renderMemberList();
     
     window.localStorage.setItem("taskOngoing", JSON.stringify(taskOngoing));*/
 
-    //renderOngoingTask();
-    //renderTaskList();
-
-  /*function renderOngoingTask(){
-    const taskOngoing = JSON.parse(localStorage.getItem("taskOngoing")) || [];
-
-    let ongoingTasks = document.getElementById("ongoingTasks");
-    ongoingTasks.innerHTML = "";
-
-    for(const to of taskOngoing){
-        let {ongoingTaskName} = to;
-        let ongoingElement = document.createElement("div");
-        ongoingElement.innerHTML = `<div id="outputTask" class="taskObject"
-                                    draggable="true" ondragstart="drag(event)">
-                                    <div id="taskHeading"><h4>${ongoingTaskName}</h4></div>
-                                    </div>`;
-
-        ongoingTasks.appendChild(ongoingElement);
-    }
-
-  }*/
+    
