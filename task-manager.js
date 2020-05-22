@@ -96,6 +96,61 @@ function renderTaskList() {
     }
 }
 
+function renderTaskOngoingList() {
+
+
+    document.getElementById("pickedIcon").src="icons/default.png";
+    const lists = JSON.parse(window.localStorage.getItem("lists")) || [];
+    const ongoingTasks = document.getElementById("ongoingTasks");
+
+
+    ongoingTasks.innerHTML = "";
+
+        for(const task of lists) {
+            const taskElement = document.createElement("div");
+            const { taskId, taskName, taskDescription, taskIcon } = task;
+
+            taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
+                                    draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
+                                    <img id="taskIcon" src="${taskIcon}">
+                                    <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName}</h4></div>
+                                    <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
+                                    <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                    <div id="droppedMember" class="droppedMember" 
+                                    ondrop="dropNames(event)">Members</div>
+                                    </div>
+                                    </div>`;
+            ongoingTasks.appendChild(taskElement);
+        }
+
+}
+
+function renderTaskFinishedList() {
+
+    document.getElementById("pickedIcon").src="icons/default.png";
+    const fList = JSON.parse(window.localStorage.getItem("fList")) || [];
+    const finishedTasks = document.getElementById("finishedTasks");
+
+    finishedTasks.innerHTML = "";
+
+    for (const task of fList) {
+        const taskElement = document.createElement("div");
+        const { taskId, taskName, taskDescription, taskIcon } = task;
+
+        taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
+                                draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
+                                <img id="taskIcon" src="${taskIcon}">
+                                <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
+                                <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                <div id="droppedMember" class="droppedMember" 
+                                 ondrop="dropNames(event)">Members</div>
+                                </div>
+                                </div>`;
+        finishedTasks.appendChild(taskElement);
+    }
+}
+
 function deleteTask(taskId) {
     var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
 	for(var i = 0; i < taskList.length; i++){
@@ -106,6 +161,92 @@ function deleteTask(taskId) {
 	window.localStorage.setItem("task", JSON.stringify(taskList));
 	renderTaskList();
 }
+
+function deleteTaskUnstarted(taskId) {
+    var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+	for(var i = 0; i < taskList.length; i++){
+		if(taskList[i].taskId == taskId){
+			taskList.splice(i, 1);
+		}
+	}
+	window.localStorage.setItem("task", JSON.stringify(taskList));
+	renderTaskList();
+}
+
+function deleteTaskOngoing(taskId) {
+    var lists = JSON.parse(window.localStorage.getItem("lists")) || [];
+	for(var i = 0; i < lists.length; i++){
+		if(lists[i].taskId == taskId){
+			lists.splice(i, 1);
+		}
+	}
+    window.localStorage.setItem("lists", JSON.stringify(lists));
+    renderTaskOngoingList();
+}
+
+function deleteTaskFinished(taskId) {
+    var finishedList = JSON.parse(window.localStorage.getItem("finishedList")) || [];
+	for(var i = 0; i < finishedList.length; i++){
+		if(finishedList[i].taskId == taskId){
+			finishedList.splice(i, 1);
+		}
+	}
+    window.localStorage.setItem("lists", JSON.stringify(lists));
+    renderTaskOngoingList();
+}
+
+function moveToOngoing(taskId) {
+    var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+    var lists = JSON.parse(window.localStorage.getItem("lists")) || [];
+	for(var i = 0; i < taskList.length; i++){
+		if(taskList[i].taskId == taskId){
+            lists.push(taskList.splice(i, 1));
+            deleteTaskUnstarted(taskId);
+            window.localStorage.setItem("lists", JSON.stringify(lists));
+		}
+	}
+    renderTaskOngoingList();
+}
+
+function moveToFinished(taskId) {
+    var fList = JSON.parse(window.localStorage.getItem("fList")) || [];
+    var lists = JSON.parse(window.localStorage.getItem("lists")) || [];
+	for(var i = 0; i < lists.length; i++){
+		if(lists[i].taskId == taskId){
+            fList.push(lists.splice(i, 1));
+            deleteTaskOngoing(taskId);
+		}
+	}
+	window.localStorage.setItem("fList", JSON.stringify(fList));
+    renderTaskFinishedList();
+}
+
+function moveFromUnstartedToFinished(taskId) {
+    var fList = JSON.parse(window.localStorage.getItem("fList")) || [];
+    var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+	for(var i = 0; i < taskList.length; i++){
+		if(taskList[i].taskId == taskId){
+            fList.push(taskList.splice(i, 1));
+            deleteTaskUnstarted(taskId);
+		}
+	}
+	window.localStorage.setItem("fList", JSON.stringify(fList));
+
+}
+
+function moveFromOngoingToUnstarted(taskId) {
+    var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+    var lists = JSON.parse(window.localStorage.getItem("lists")) || [];
+	for(var i = 0; i < lists.length; i++){
+		if(lists[i].taskId == taskId){
+            taskList.push(lists.splice(i, 1));
+            deleteTaskOngoing(taskId);
+		}
+	}
+	window.localStorage.setItem("task", JSON.stringify(taskList));
+
+}
+
 
 function renderMemberList() {
 
@@ -179,3 +320,4 @@ function createIconButtons(){
 function countCharacters(){
     document.getElementById("currentCount").innerHTML = taskDescription.value.length;
 }
+
