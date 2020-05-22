@@ -1,3 +1,61 @@
+
+
+
+
+function moveToOngoing(taskId) {
+  var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+  var lists = JSON.parse(window.localStorage.getItem("lists")) || [];
+for(var i = 0; i < taskList.length; i++){
+  if(taskList[i].taskId == taskId){
+          lists.push(taskList[i]);
+          deleteTask(taskId);
+  }
+  }
+  window.localStorage.setItem("lists", JSON.stringify(lists));
+  renderTaskOngoingList();
+}
+
+function moveToFinished(taskId) {
+  var fList = JSON.parse(window.localStorage.getItem("fList")) || [];
+  var lists = JSON.parse(window.localStorage.getItem("lists")) || [];
+for(var i = 0; i < lists.length; i++){
+  if(lists[i].taskId == taskId){
+          fList.push(lists[i]);
+          deleteTaskOngoing(taskId);
+  }
+}
+window.localStorage.setItem("fList", JSON.stringify(fList));
+  renderTaskFinishedList();
+}
+
+function moveFromUnstartedToFinished(taskId) {
+  var fList = JSON.parse(window.localStorage.getItem("fList")) || [];
+  var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+for(var i = 0; i < taskList.length; i++){
+  if(taskList[i].taskId == taskId){
+          fList.push(taskList[i]);
+          deleteTask(taskId);
+  }
+}
+  window.localStorage.setItem("fList", JSON.stringify(fList));
+  renderTaskFinishedList();
+
+}
+
+function moveFromOngoingToUnstarted(taskId) {
+  var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+  var lists = JSON.parse(window.localStorage.getItem("lists")) || [];
+for(var i = 0; i < lists.length; i++){
+  if(lists[i].taskId == taskId){
+          taskList.push(lists[i]);
+          deleteTaskOngoing(taskId);
+  }
+}
+  window.localStorage.setItem("task", JSON.stringify(taskList));
+  renderTaskList();
+
+}
+
 function dragStartNames(ev){
     let nameDrag = ev.target.id;
     ev.dataTransfer.setData("text/plain", nameDrag);
@@ -65,13 +123,7 @@ function allowMoveTasks(ev) {
     ev.preventDefault();
 
     let taskId = ev.dataTransfer.getData("text/plain");
-    event.target.appendChild(document.getElementById(taskId));
-
-    document.getElementById(taskId).style.border = "2px dashed green";
+    
     moveToFinished(taskId);
     moveFromUnstartedToFinished(taskId);
   }
-
-window.onload = renderTaskList();
-window.onload = renderTaskOngoingList();
-window.onload = renderTaskFinishedList();

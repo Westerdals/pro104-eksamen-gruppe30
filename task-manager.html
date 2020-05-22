@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 
-<body onload="loadSettings(); renderTaskList(); createIconButtons(); createMemberSlots();">
+<body onload="loadSettings(); renderTaskList(); createIconButtons(); createMemberSlots(); renderMemberList();
+                renderTaskOngoingList(); renderTaskFinishedList();">
 
     <div id="mainContainer">
 
@@ -127,14 +128,11 @@
         </main>
 
     </div>
+    <script src="drag-and-drop.js"></script>
+    <script src="task-manager.js"></script>
+    <script src="layout.js"></script>
 
 </body>
-
-<script src="drag-and-drop.js"></script>
-<script src="drag-and-drop-functions.js"></script>
-<script src="task-manager.js"></script>
-<script src="layout.js"></script>
-
 
 
 </html>
