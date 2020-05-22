@@ -55,9 +55,12 @@ function createMember(event) {
     event.preventDefault();
 
     const memberName = document.querySelector("[name='memberName']").value;
-
-    const member = { memberName };
     const memberList = JSON.parse(localStorage.getItem('member')) || [];
+
+    let memberId = memberList.length;
+
+    const member = {memberId, memberName };
+    
     memberList.push(member);
 
     window.localStorage.setItem('member', JSON.stringify(memberList));
@@ -79,11 +82,15 @@ function renderTaskList() {
         const taskElement = document.createElement("div");
         const { taskId, taskName, taskDescription, taskIcon } = task;
 
-        taskElement.innerHTML = `<div class="taskObject" onclick="expandTask(this)">
-                                <img id="taskIcon" src="${task.taskIcon}">
-                                <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
-                                <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${task.taskDescription}</p>
-                                <button id="deleteTaskBtn" type="button" onclick="deleteTask(${task.taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+        taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
+                                draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
+                                <img id="taskIcon" src="${taskIcon}">
+                                <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
+                                <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                <div id="droppedMember" class="droppedMember" 
+                                 ondrop="dropNames(event)">Members</div>
+                                </div>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
@@ -110,12 +117,15 @@ function renderMemberList() {
         memberSlots[i].innerHTML = "";
     }
         for (const member of memberList) {
+
+
             const memberElement = document.createElement("div");
-            const { memberName } = member;
+            const {memberId, memberName } = member;
             counter++;
-            memberElement.innerHTML = `<div class="memberObject">
+            memberElement.innerHTML = `<div class="memberObject" id="${memberId}" 
+                                      draggable="true" ondragstart="dragStartNames(event)">
                                       <img src="images/member.png" alt="member" width="45" height="45">
-                                      <h4>${member.memberName}</h4>
+                                      <h4>${memberName}</h4>
                                       </div>`; 
             memberSlots[counter].appendChild(memberElement);
             memberSlots[counter].style.border = "1px solid gray";

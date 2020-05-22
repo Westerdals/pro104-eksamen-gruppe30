@@ -436,3 +436,12 @@ textarea::placeholder{
 #deleteTaskBtn:hover{
     cursor: pointer;
 }
+
+.droppedMember{
+    position: relative;
+    height: 100px;
+    width: 200px;
+    overflow-y: scroll;
+    background-color: lightgrey;
+    display: inline-block;
+}

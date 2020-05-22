@@ -72,6 +72,7 @@
                         </div>
 
                         <input id="taskSubmitBtn" class="button" type="submit" value="GET IT DONE!">
+                    -->
                     </form>
                 </div>
             </section>
@@ -114,9 +115,9 @@
                     <h2 class="tasksHeading" id="ongoingHeading">ONGOING</h2>
                     <h2 class="tasksHeading" id="finishedHeading">FINISHED</h2>
                 </div>
-                <div class="tasks" id="unstartedTasks"></div>
-                <div class="tasks" id="ongoingTasks"></div>
-                <div class="tasks" id="finishedTasks"></div>
+                <div class="tasks" id="unstartedTasks" ondrop="dropUnstarted(event)" ondragover="allowMoveTasks(event)"></div>
+                <div class="tasks" id="ongoingTasks" ondrop="dropOngoing(event)" ondragover="allowMoveTasks(event)"></div>
+                <div class="tasks" id="finishedTasks" ondrop="dropFinished(event)" ondragover="allowMoveTasks(event)"></div>
             </div>
             <div id="archive">
                 <h2>ARCHIVE</h2>
@@ -131,5 +132,6 @@
 
 <script src="task-manager.js"></script>
 <script src="layout.js"></script>
+<script src="drag-and-drop.js"></script>
 
 </html>
