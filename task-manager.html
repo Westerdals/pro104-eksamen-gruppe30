@@ -1,95 +1,145 @@
 <!DOCTYPE HTML>
 <html lang="en">
 
-    <head>
-        <title>Task Manager</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="task-manager.css">
-        <link rel="stylesheet" type="text/css" href="Style.css">
-        <link rel="stylesheet" type="text/css" href="TaskManagerMember.css">
-    </head>
-    
+<head>
+    <title>Task Manager</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="task-manager.css">
+    <link rel="stylesheet" type="text/css" href="settings.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
 
-    <body onload="renderTaskList();">
-        <script src="task-manager.js"></script>
-        <script src="KulwinderMember.js"></script>
-        <script src="KulwinderNightModus.js"></script>
+<body onload="loadSettings(); renderTaskList(); createIconButtons(); createMemberSlots(); renderMemberList();
+                renderTaskOngoingList(); renderTaskFinishedList(); renderArchiveList();">
 
-        <div id="mainContainer">
+    <div id="mainContainer">
+        
+        <button id="darkModeToggle" class="darkModeToggle">
+        <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496"><path fill="currentColor" 
+            d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" transform="translate(-6 -6)"/>
+        </svg>
+      </button>
 
+        <header id="header">
+            <h1>Task Manager</h1>
+            <button class="headerButton" id="addTaskRevealBtn" onclick="revealAddTaskSection()">+ NEW TASK</button>
+            <button class="headerButton" id="addMemberRevealBtn" onclick="revealAddMemberSection()">+ NEW TEAM
+                MEMBER</button>
+            <button class="headerButton" id="revealMembersBtn" onclick="revealMembersSection()">VIEW TEAM
+                MEMBERS</button>
+            <button class="headerButton" id="revealArchiveBtn" onclick="revealArchive()">VIEW ARCHIVE</button>
+            <button class="headerButton" id="revealSettingsBtn" onclick="revealSettings()">SETTINGS</button>
+        </header>
 
-                <header class="overskrift">Task Manager
-                    <div class="navBar">
-    
-                        <nav>
-                         <ul class="navBar1"></ul>
-                         
-                            </nav>    
-                                    
-                         </div>  
-                    <button class="button" id="addTaskRevealBtn" onclick="revealAddTaskSection()">+ NEW TASK</button>
-                    <button class="button" id="addMemberRevealBtn" onclick="revealAddMemberSection()">+ NEW TEAM MEMBER</button>
-                </header>
+        <aside>
+            <section>
+                <div class="headerSection" id="addTaskSection">
+                    <form onsubmit="createTask(event)">
 
-                <button id="darkModeToggle" class="darkModeToggle"></button>
-                
-       
-                
+                        <div id="taskNameForm" onmouseover="hideAdditionForms()">
+                            <label id="taskNameLabel" for="taskName">WHAT DO YOU<br>NEED TO GET<br>DONE?</label><br>
+                            <input class="input" type="text" id="taskName" name="taskName"
+                                placeholder="Write down a task..." size="32"><br><br>
+                        </div>
 
+                        <div id=additionButtons>
+                            <button class="additionBtn" type="button" id="addDescriptionRevealBtn"
+                                onmouseover="revealAddDescriptionForm()">+ DESCRIPTION</button>
+                            <button class="additionBtn" type="button" id="addChecklistRevealBtn"
+                                onmouseover="revealAddChecklistForm()">+ CHECKLIST</button>
+                            <button class="additionBtn" type="button" id="addIconRevealBtn"
+                                onmouseover="revealAddIconForm()">+
+                                ICON</button>
+                        </div>
 
+                        <div class="additionForm" id="taskDescriptionForm">
+                            <label id="taskDescriptionLabel" for="taskDescription">DESCRIBE THE TASK</label>
+                            <textarea id="taskDescription" name="taskDescription" placeholder="Write here..." maxlength="140"
+                                onkeyup="countCharacters()"></textarea>
+                            <div id="counting">
+                                <span id="currentCount">0 </span>
+                                <span>/ 140</span>
+                            </div>
+                        </div>
 
+                        <div class="additionForm" id="taskChecklistForm">
+                            <label id="taskChecklistLabel" for="taskChecklistInput">ADD A CHECKLIST</label>
+                            <input class="input" type="text" id="taskChecklistInput" name="taskChecklistInput"
+                                placeholder="">
+                            <button class="button" id="createChecklistBtn" type="button"
+                                onclick="createChecklistPoint()">+</button>
+                            <ul id="taskChecklist"></ul>
+                        </div>
 
+                        <div class="additionForm" id="taskIconForm">
+                            <div id="activeIcon">
+                                <img name="taskIcon" id="pickedIcon" src="icons/default.png" alt="chosen-icon">
+                            </div>
+                        </div>
 
-                <section>
-                    <div class="addSection" id="addTaskSection">
-                        <form onsubmit="createTask(event)">
-                            <label id="taskNameLabel" for="taskName">What do you need to get done?</label><br>
-                            <input class="input" type="text" id="taskName" name="taskName" placeholder="Laundry, change tires, mealprep..." size="33"><br><br><br>
-                            <label id="taskDescriptionLabel" for="taskDescription">Add a task description (optional)</label><br>
-                            <textarea id="taskDescription" name="taskDescription" placeholder=""></textarea><br>
-                            <input id="taskSubmitBtn" class="button" type="submit" value="GET IT DONE!">
-                        </form> 
+                        <input id="taskSubmitBtn" class="button" type="submit" value="GET IT DONE!">
+                    -->
+                    </form>
+                </div>
+            </section>
+
+            <section>
+                <div class="headerSection" id="addMemberSection">
+                    <form onsubmit="createMember(event)">
+                        <div id="addMemberForm">
+                            <label id="memberLabel" for="memberName">ADD A TEAM MEMBER</label><br>
+                            <input class="input" type="text" id="memberName" name="memberName" placeholder="John Doe"
+                                size="32"><br>
+                            <input id="memberSubmitBtn" class="button" type="submit" value="ADD">
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section>
+                <div class="headerSection" id="settingsSection">
+                    <div id="adjustTextSection">
+                        <label id="fontLabel">CHANGE FONT SIZE</label>
+                        <button id="adjustTextBiggerBtn" type="button"
+                            onclick="adjustText('xxx-large', 'x-large');">LARGE</button>
+                        <br>
+                        <button id="adjustTextStandardBtn" type="button"
+                            onclick="adjustText('large', 'medium');">STANDARD</button>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <section>
-                    <div class="addSection" id="addMemberSection">
-                         <form>
-                            <label id="teamMemberLabel" for="teamMember">Add a team member:</label><br>
-                            <input class="input" type="text" id="teamMember" name="teamMember" placeholder="John Doe" size="17"><br>
-                            <input class="button" type="submit" value="ADD">
-                        </form> 
-                    </div>
-                </section>
+            <section>
+                <div class="headerSection" id="membersSection"></div>
+            </section>
+        </aside>
 
-
-               
-
-
-
-
+        <main>
+            <div id="tasksTable">
                 <div id=tasksHeadings>
                     <h2 class="tasksHeading" id="unstartedHeading">UNSTARTED</h2>
                     <h2 class="tasksHeading" id="ongoingHeading">ONGOING</h2>
                     <h2 class="tasksHeading" id="finishedHeading">FINISHED</h2>
                 </div>
-
-                <main>
-                    <div class="tasks" id="unstartedTasks"></div>
-                    <div class="tasks" id="ongoingTasks"></div>
-                    <div class="tasks" id="finishedTasks"></div>
-                </main>
-
-
-                <footer></footer>
-
-        </div>
+                <div class="tasks" id="unstartedTasks" ondrop="dropUnstarted(event)" ondragover="allowMoveTasks(event)"></div>
+                <div class="tasks" id="ongoingTasks" ondrop="dropOngoing(event)" ondragover="allowMoveTasks(event)"></div>
+                <div class="tasks" id="finishedTasks" ondrop="dropFinished(event)" ondragover="allowMoveTasks(event)"></div>
+            </div>
+            <div id="archive">
+                <h2>ARCHIVE</h2>
+            </div>
 
 
+        </main>
 
-        
-        
+    </div>
+    <script src="drag-and-drop.js"></script>
+    <script src="task-manager.js"></script>
+    <script src="layout.js"></script>
+    <script src="Darkmode.js"></script>
 
-    </body>
-    
+</body>
+
+
 </html>
