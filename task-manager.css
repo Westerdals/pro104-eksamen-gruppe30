@@ -39,7 +39,7 @@ header{
     height: 30px;
     font-size: 15px;
     cursor: pointer;
-    color: gray;
+    color: black;
 }
 
 .additionBtn{
@@ -50,7 +50,7 @@ header{
     font-size: 15px;
     text-align: left;
     left: 290px;
-    color: gray;
+    color: black;
     border: 0px;
 }
 
@@ -62,9 +62,13 @@ header{
     top: 70px;
 }
 
+#addDeadlineRevealBtn{
+    top: 105px;
+}
+
 .button{
     position: absolute;
-    border: 1px solid gray;
+    border: 1px solid black;
     top: 90px;
     height: 20px;
     font-size: 10px;
@@ -80,7 +84,7 @@ header{
     top: 180px;
     left: 10px;
     background-color: lightgray;
-    color: gray;
+    color: black;
     height: 30px;
     width: 120px;
     font-size: 15px;
@@ -95,7 +99,7 @@ header{
     top: 130px;
     left: 10px;
     background-color: lightgray;
-    color: gray;
+    color: black;
     height: 30px;
     width: 55px;
     font-size: 15px;
@@ -149,7 +153,7 @@ header{
     opacity: 0;
     padding: 10px;
     background-color: lightgray;
-    color: gray;
+    color: black;
     font-size: 17px;
 }
 
@@ -170,8 +174,8 @@ header{
     resize: none;
     border: 0px;
     font-size: 15px;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     
 }
 
@@ -211,7 +215,7 @@ header{
     height: 150px;
     padding: 10px;
     background-color: lightgray;
-    color: gray;
+    color: black;
     font-size: 18px;
     font-weight: 700;
 }
@@ -227,7 +231,7 @@ label{
 }
 
 #taskNameForm{
-    color: rgb(131, 124, 124);
+    color:black;
     float: left;
     height: 200px;
     width: 263px;
@@ -252,7 +256,7 @@ label{
     font-weight: 700;
     border: 0px;
     background: lightgray;
-    color: gray;
+    color: black;
 }
 
 .input{
@@ -260,7 +264,7 @@ label{
     display: block;
     border: 0px;
     background: transparent;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid black;
     font-size: 15px;
 }
 
@@ -290,7 +294,7 @@ textarea::placeholder{
     width: 1400px;
     opacity: 0;
     transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
-    border-top: 2px solid gray;
+    border-top: 2px solid black;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -315,7 +319,7 @@ textarea::placeholder{
     width: 1400px;
     height: 60px;
     top: 40px;
-    border-top: 2px solid gray;
+    border-top: 2px solid black;
 }
 
 .tasksHeading{
@@ -325,12 +329,12 @@ textarea::placeholder{
 }
 
 #unstartedHeading{
-    border-right: 1px solid gray;
+    border-right: 1px solid black;
 }
 
 #ongoingHeading{
     left: 450px;;
-    border-right: 1px solid gray;
+    border-right: 1px solid black;
 }
 
 #finishedHeading{
@@ -338,12 +342,12 @@ textarea::placeholder{
 }
 
 #unstartedTasks{
-    border-right: 1px solid gray;
+    border-right: 1px solid black;
 }
 
 #ongoingTasks{
     left: 450px;
-    border-right: 1px solid gray;
+    border-right: 1px solid black;
 }
 
 #finishedTasks{
@@ -357,7 +361,7 @@ textarea::placeholder{
     padding: 10px;
     margin-top: 30px;
     margin-left: 15px;
-    border: 2px dashed gray;
+    border: 2px dashed black;
     cursor: pointer;
     transition: height 0.3s ease-in-out;
     overflow: hidden;
@@ -426,8 +430,7 @@ textarea::placeholder{
 .memberSlot{
     width: 100px;
     height: 120px;
-    border: 1px dashed gray;
-    border-radius: 0px;
+    border: 1px dashed black;
 }
 
 #deleteTaskBtn {
@@ -440,4 +443,19 @@ textarea::placeholder{
 
 #deleteTaskBtn:hover{
     cursor: pointer;
+}
+
+#deleteMemberBtn{
+    position: absolute;
+    border: 0px;
+    background-color: #f7fafa;
+}
+
+.droppedMember{
+    position: relative;
+    height: 100px;
+    width: 200px;
+    overflow-y: scroll;
+    background-color: lightgrey;
+    display: inline-block;
 }
