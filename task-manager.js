@@ -21,7 +21,7 @@ function adjustText(header, description) {
     var savedSettings = JSON.parse(localStorage.getItem('settings')) || [];
     var savedTextSize = description;
     var savedTextSizeHeader = header;
-    var textSize = {savedTextSize, savedTextSizeHeader}
+    var textSize = {savedTextSize, savedTextSizeHeader};
     window.localStorage.setItem('settings', JSON.stringify(textSize));
 
     renderTaskList();
@@ -35,12 +35,6 @@ function createTask(event) {
     const taskName = document.querySelector("[name='taskName']").value;
     const taskDescription = document.querySelector("[name='taskDescription']").value;
     const taskIcon = document.getElementById("pickedIcon").src;
-HEAD
-    const taskDeadline = document.getElementById("taskDeadline").value;
-
-    const task = { taskName, taskDescription, taskIcon, taskDeadline };
-    const taskList = JSON.parse(localStorage.getItem('task')) || [];
-
     
     /*var taskId = 0;
     if (taskList.length != 0){
@@ -49,8 +43,7 @@ HEAD
 
     let taskId = taskList.length;
 
-    const task = { taskId, taskName, taskDescription, taskIcon, taskDeadline };
-cb026937c233a556e93e40fcea95b0667b9e3ed8
+    const task = { taskId, taskName, taskDescription, taskIcon };
     taskList.push(task);
 
     window.localStorage.setItem('task', JSON.stringify(taskList));
@@ -79,16 +72,6 @@ function createMember(event) {
     renderMemberList();
 }
 
-HEAD
-//Datepicker function plugin
-$(function(){
-    $("#taskDeadline").datepicker({
-        dateFormat: "dd-mm-yy",
-        });
-    });
-
-
-cb026937c233a556e93e40fcea95b0667b9e3ed8
 
 function renderTaskList() {
 
@@ -100,28 +83,17 @@ function renderTaskList() {
 
     for (const task of taskList) {
         const taskElement = document.createElement("div");
-HEAD
-        const { taskName, taskDescription, taskIcon, taskDeadline } = task;
-
-        taskElement.innerHTML = `<div class="taskObject" onclick="expandTask(this)">
-                                <img id="taskIcon" src="${task.taskIcon}">
-                                <div id="taskHeading"><h4>${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
-                                <p id="taskDescriptionPara">${task.taskDescription}</p>
-                                <div><p id="taskDeadlinePara">Due Date: ${task.taskDeadline}</p>
-
-        const { taskId, taskName, taskDescription, taskIcon, taskDeadline } = task;
+        const { taskId, taskName, taskDescription, taskIcon } = task;
 
         taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                 draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                 <img id="taskIcon" src="${taskIcon}">
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                 <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
-                                <p style="font-size: ${textSizeDeadline};" id="taskDeadlinePara" class="adjustText">Due Date: ${taskDeadline}</p>
                                 <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 <div id="droppedMember" class="droppedMember" 
                                  ondrop="dropNames(event)">Members</div>
                                 </div>
-cb026937c233a556e93e40fcea95b0667b9e3ed8
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
@@ -150,14 +122,13 @@ function renderTaskOngoingList() {
 
         for(const task of lists) {
             const taskElement = document.createElement("div");
-            const { taskId, taskName, taskDescription, taskIcon, taskDeadline } = task;
+            const { taskId, taskName, taskDescription, taskIcon } = task;
 
             taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                     draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                     <img id="taskIcon" src="${taskIcon}">
                                     <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                     <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
-                                    <p style="font-size: ${textSizeDeadline};" id="taskDeadlinePara" class="adjustText">Due Date: ${taskDeadline}</p>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTaskOngoing(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div id="droppedMember" class="droppedMember" 
                                     ondrop="dropNames(event)">Members</div>
@@ -189,14 +160,13 @@ function renderTaskFinishedList() {
 
     for (const task of fList) {
         const taskElement = document.createElement("div");
-        const { taskId, taskName, taskDescription, taskIcon, taskDeadline } = task;
+        const { taskId, taskName, taskDescription, taskIcon } = task;
 
         taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                 draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                 <img id="taskIcon" src="${taskIcon}">
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                 <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
-                                <p style="font-size: ${textSizeDeadline};" id="taskDeadlinePara" class="adjustText">Due Date: ${taskDeadline}</p>
                                 <button id="deleteTaskBtn" type="button" onclick="archiveTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 <div id="droppedMember" class="droppedMember" 
                                  ondrop="dropNames(event)">Members</div>
@@ -227,14 +197,13 @@ function renderArchiveList(){
     for(const ar of archiveList){
         let archiveElement = document.createElement("div");
         
-        const { taskId, taskName, taskDescription, taskIcon, taskDeadline } = ar;
+        const { taskId, taskName, taskDescription, taskIcon } = ar;
 
         archiveElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                     draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                     <img id="taskIcon" src="${taskIcon}">
                                     <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                     <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
-                                    <p style="font-size: ${textSizeDeadline};" id="taskDeadlinePara" class="adjustText">Due Date: ${taskDeadline}</p>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTaskFromArchive(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div id="droppedMember" class="droppedMember" 
                                     ondrop="dropNames(event)">Members</div>
@@ -357,4 +326,3 @@ function createIconButtons(){
 function countCharacters(){
     document.getElementById("currentCount").innerHTML = taskDescription.value.length;
 }
-

@@ -144,9 +144,6 @@ function revealAddDescriptionForm(){
             hideSection(taskIconForm);
             hideAdditionInputs(taskIconForm);
         }
-        if (taskDeadlineForm.style.height != "0px" || taskDeadlineForm.style.height != "") {
-            hideSection(taskDeadlineForm);
-        }
 
     } else {
         hideSection(taskDescriptionForm);
@@ -174,9 +171,6 @@ function revealAddChecklistForm(){
         if (taskIconForm.style.height != "0px" || taskIconForm.style.height != "") {
             hideSection(taskIconForm);
             hideAdditionInputs(taskIconForm);
-        }
-        if (taskDeadlineForm.style.height != "0px" || taskDeadlineForm.style.height != "") {
-            hideSection(taskDeadlineForm);
         }
 
     } else {
@@ -208,37 +202,10 @@ function revealAddIconForm(){
             hideSection(taskChecklistForm);
             hideAdditionInputs(taskChecklistForm);
         }
-        if (taskDeadlineForm.style.height != "0px" || taskDeadlineForm.style.height != "") {
-            hideSection(taskDeadlineForm);
-        }
 
     } else {
         hideSection(taskIconForm);
         hideAdditionInputs(taskIconForm);
-    }
-}
-
-function revealAddDeadlineForm(){
-    var taskDeadlineForm = document.getElementById("taskDeadlineForm");
-
-    if (taskDeadlineForm.style.height == "0px" || taskDeadlineForm.style.height == ""){
-        taskDeadlineForm.style.height = "200px";
-        taskDeadlineForm.style.opacity = "1";
-        taskDeadlineForm.style.display = "block";
-        addDeadlineRevealBtn.style.backgroundColor = "orange";
-
-        if (taskDescriptionForm.style.height != "0px" || taskDescriptionForm.style.height != "") {
-            hideSection(taskDescriptionForm);
-        }
-        if (taskIconForm.style.height != "0px" || taskIconForm.style.height != "") {
-            hideSection(taskIconForm);
-        }
-        if (taskChecklistForm.style.height != "0px" || taskChecklistForm.style.height != "") {
-            hideSection(taskChecklistForm);
-        }
-
-    } else {
-        hideSection(taskDeadlineForm);
     }
 }
 
@@ -254,25 +221,6 @@ function expandTask(object){
 function hideSection(section) {
     section.style.height = "0px";
     section.style.opacity = "0";
-HEAD
-    section.style.display = "none";
-    if (section == addTaskSection) {
-        addTaskRevealBtn.style.backgroundColor = "";
-    } else if (section == addMemberSection) {
-        addMemberRevealBtn.style.backgroundColor = "";
-    } else if (section == membersSection) {
-        revealMembersBtn.style.backgroundColor = "";
-    } else if (section == archive) {
-        revealArchiveBtn.style.backgroundColor = "";
-    } else if (section == taskDescriptionForm){
-        addDescriptionRevealBtn.style.backgroundColor = "";
-    } else if (section == taskChecklistForm){
-        addChecklistRevealBtn.style.backgroundColor = "";
-    } else if (section == taskIconForm){
-        addIconRevealBtn.style.backgroundColor = "";
-    } else if (section == taskDeadlineForm){
-        addDeadlineRevealBtn.style.backgroundColor = "";
-
 
     switch(section){
         case addTaskSection:
@@ -299,10 +247,6 @@ HEAD
         case taskIconForm:
             addIconRevealBtn.style.backgroundColor = "";
             break;
-        case taskDeadlineForm:
-            addDeadlineRevealBtn.style.backgroundColor = "";
-            break;
-cb026937c233a556e93e40fcea95b0667b9e3ed8
     }
 }
 
@@ -310,14 +254,9 @@ function hideAdditionForms(){
     hideSection(taskDescriptionForm);
     hideSection(taskChecklistForm);
     hideSection(taskIconForm);
-HEAD
-    hideSection(taskDeadlineForm);
-
     hideAdditionInputs(taskDescriptionForm);
     hideAdditionInputs(taskChecklistForm);
     hideAdditionInputs(taskIconForm);
-    hideAdditionInputs(taskDeadlineForm);
-cb026937c233a556e93e40fcea95b0667b9e3ed8
 }
 
 function hideAdditionInputs(form){
@@ -340,11 +279,6 @@ function hideAdditionInputs(form){
             for(var i = 0; i < buttonIcons.length; i++){
                 buttonIcons[i].style.display = "none";
             }
-            break;
-        
-        case taskDeadlineForm:
-            var taskDeadline = document.getElementById("taskDeadline");
-            taskDeadline.style.display = "none";
             break;
     }
 }
