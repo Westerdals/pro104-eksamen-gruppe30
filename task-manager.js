@@ -91,11 +91,8 @@ function checklistStatus (taskId, indexCheckbox, status, tasklistKey) {
         if(taskList[i].taskId == taskId) {
             taskList[i].taskCheckListArray[indexCheckbox].checked = status;
         }
-        
     }
     window.localStorage.setItem(tasklistKey, JSON.stringify(taskList));
-
-
 }
 
 function renderTaskList() {
@@ -109,24 +106,30 @@ function renderTaskList() {
         const taskElement = document.createElement("div");
         const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray } = task;
         var taskChecklistDiv = "";
+        var taskProgress = 0
+        var finishedCheckpoint = 0;
         for(var i = 0; i < taskCheckListArray.length; i++) {
             if (taskCheckListArray[i].checked == true) {
-                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'task');" checked>
+                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'task'); renderTaskList();" checked>
                 <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+                finishedCheckpoint++
             }
             if (taskCheckListArray[i].checked == false) {
-                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task');" type="checkbox">
+                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task'); renderTaskList(); " type="checkbox">
                 <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
             }
+            taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
         }
 
         taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                 draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                 <img id="taskIcon" src="${taskIcon}">
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                <div id="progressBarDiv"style="width: 379px; height: 20px; border: 1px solid lightgray;">
+                                <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
                                 <div id="checkList">${taskChecklistDiv}</div>
                                 <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
-                                <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId}, 'task')"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 <div id="droppedMember" class="droppedMember" 
                                  ondrop="dropNames(event)" onload="renderMemberOnTask();">Members</div>
                                 </div>
@@ -170,24 +173,30 @@ function renderTaskOngoingList() {
             const taskElement = document.createElement("div");
             const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray } = task;
             var taskChecklistDiv = "";
+            var taskProgress = 0
+            var finishedCheckpoint = 0;
             for(var i = 0; i < taskCheckListArray.length; i++) {
-            if (taskCheckListArray[i].checked == true) {
-                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'lists');" checked>
-                <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+                if (taskCheckListArray[i].checked == true) {
+                    taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'lists'); renderTaskOngoingList();" checked>
+                    <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+                    finishedCheckpoint++
+                }
+                if (taskCheckListArray[i].checked == false) {
+                    taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'lists'); renderTaskOngoingList(); " type="checkbox">
+                    <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+                }
+                taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
             }
-            if (taskCheckListArray[i].checked == false) {
-                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'lists');" type="checkbox">
-                <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
-            }
-        }
 
             taskElement.innerHTML = `<div style="border: 2px dashed yellow" id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                     draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                     <img id="taskIcon" src="${taskIcon}">
                                     <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                    <div id="progressBarDiv"style="width: 379px; height: 20px; border: 1px solid lightgray;">
+                                    <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
                                     <div id="checkList">${taskChecklistDiv}</div>
                                     <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
-                                    <button id="deleteTaskBtn" type="button" onclick="deleteTaskOngoing(${taskId},'lists')"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                    <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'lists'); renderTaskOngoingList();"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div id="droppedMember" class="droppedMember" 
                                     ondrop="dropNames(event)">Members</div>
                                     </div>
@@ -209,21 +218,27 @@ function renderTaskFinishedList() {
         const taskElement = document.createElement("div");
         const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray } = task;
         var taskChecklistDiv = "";
-        for(var i = 0; i < taskCheckListArray.length; i++) {
-            if (taskCheckListArray[i].checked == true) {
-                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'task');" checked>
-                <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+            var taskProgress = 0
+            var finishedCheckpoint = 0;
+            for(var i = 0; i < taskCheckListArray.length; i++) {
+                if (taskCheckListArray[i].checked == true) {
+                    taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'fList'); renderTaskFinishedList();" checked>
+                    <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+                    finishedCheckpoint++
+                }
+                if (taskCheckListArray[i].checked == false) {
+                    taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'fList'); renderTaskFinishedList(); " type="checkbox">
+                    <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+                }
+                taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
             }
-            if (taskCheckListArray[i].checked == false) {
-                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task');" type="checkbox">
-                <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
-            }
-        }
 
         taskElement.innerHTML = `<div style="border: 2px dashed green" id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                 draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                 <img id="taskIcon" src="${taskIcon}">
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                <div id="progressBarDiv"style="width: 379px; height: 20px; border: 1px solid lightgray;">
+                                    <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
                                 <div id="checkList">${taskChecklistDiv}</div>
                                 <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
                                 <button id="deleteTaskBtn" type="button" onclick="archiveTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
@@ -244,7 +259,7 @@ function deleteTaskFinished(taskId) {
   }
     window.localStorage.setItem("fList", JSON.stringify(fList));
     renderTaskFinishedList();
-  }
+}
 
 function renderArchiveList(){
     const archiveList = JSON.parse(localStorage.getItem("archive")) || [];
@@ -259,11 +274,11 @@ function renderArchiveList(){
         var taskChecklistDiv = "";
         for(var i = 0; i < taskCheckListArray.length; i++) {
             if (taskCheckListArray[i].checked == true) {
-                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'task');" checked>
+                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" disabled="disabled" checked>
                 <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
             }
             if (taskCheckListArray[i].checked == false) {
-                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task');" type="checkbox">
+                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" disabled="disabled" type="checkbox">
                 <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
             }
         }
