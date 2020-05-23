@@ -1,6 +1,6 @@
 :root {
-    --clr-light: linear-gradient(120deg, rgb(169,169,169),rgb(220,220,220) ,rgb(169,169,169));
-    --clr-dark: linear-gradient(120deg, rgb(26, 65, 71),  rgb(58, 15, 94));
+    --clr-light: linear-gradient(120deg, rgb(0,0,0),rgb(0,0,0) ,rgb(0,0,0));
+    --clr-dark: linear-gradient(120deg, rgb(0,0,0),rgb(0,0,0)  );
     --clr-primary: #dbffa2;
     --clr-secondary: #c3fcf2;
     --clr-accent: #ff7750;
