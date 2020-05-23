@@ -237,11 +237,15 @@ label{
 }
 
 #taskChecklistForm{
-    float: left;
+    float: right;
+    width: 500px;
 }
 
 #taskChecklistInput{
+    position: absolute;
+    z-index: 5;
     display: none;
+    top: 40px;
 }
 
 #createChecklistBtn{
@@ -249,10 +253,13 @@ label{
     top: 60px;
     left: 10px;
     font-size: 13px;
-    font-weight: 700;
-    border: 0px;
     background: lightgray;
     color: black;
+}
+
+#createChecklistBtn:hover{
+    color: orange;
+    border-color: orange;
 }
 
 .input{
