@@ -33,9 +33,6 @@ function createTask(event) {
     event.preventDefault();
     document.getElementById("currentCount").innerHTML = "0 ";
 
-    var taskChecklist = document.getElementById("taskChecklist");
-    while(taskChecklist.firstChild) taskChecklist.removeChild(taskChecklist.firstChild);
-
     const taskList = JSON.parse(localStorage.getItem('task')) || [];
     const taskName = document.querySelector("[name='taskName']").value;
     const taskDescription = document.querySelector("[name='taskDescription']").value;
@@ -105,6 +102,10 @@ function checklistStatus (taskId, indexCheckbox, status, tasklistKey) {
 function renderTaskList() {
 
     document.getElementById("pickedIcon").src="icons/default.png";
+
+    var taskChecklist = document.getElementById("taskChecklist");
+    while(taskChecklist.firstChild) taskChecklist.removeChild(taskChecklist.firstChild);
+    
     const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
     const unstartedTasks = document.getElementById("unstartedTasks");
     unstartedTasks.innerHTML = "";
