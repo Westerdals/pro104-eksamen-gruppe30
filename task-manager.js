@@ -92,12 +92,22 @@ function renderTaskList() {
                                 <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
                                 <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 <div id="droppedMember" class="droppedMember" 
-                                 ondrop="dropNames(event)">Members</div>
+                                 ondrop="dropNames(event)" onload="renderMemberOnTask();">Members</div>
                                 </div>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
 }
+
+/*function renderMemberOnTask(){
+    const memberList = JSON.parse(window.localStorage.setItem("member")) || [];
+
+    let droppedMember = document.getElementById("droppedMember");
+    for(const member of memberList){
+
+    }
+
+}*/
 
 function deleteTask(taskId) {
     var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
@@ -124,7 +134,7 @@ function renderTaskOngoingList() {
             const taskElement = document.createElement("div");
             const { taskId, taskName, taskDescription, taskIcon } = task;
 
-            taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
+            taskElement.innerHTML = `<div style="border: 2px dashed yellow" id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                     draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                     <img id="taskIcon" src="${taskIcon}">
                                     <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
@@ -162,7 +172,7 @@ function renderTaskFinishedList() {
         const taskElement = document.createElement("div");
         const { taskId, taskName, taskDescription, taskIcon } = task;
 
-        taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
+        taskElement.innerHTML = `<div style="border: 2px dashed green" id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                 draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                 <img id="taskIcon" src="${taskIcon}">
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
