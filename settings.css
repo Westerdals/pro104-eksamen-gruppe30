@@ -1,0 +1,60 @@
+#adjustTextBiggerBtn {
+    background-color: whitesmoke;
+    position: absolute;
+    cursor: pointer;
+    border: 1px solid gray;
+    height: 40px;
+    right: 15px;
+    width: 90px;
+    top: 15px;
+    font-size: 14px;
+    z-index: 2;
+    background-color: lightgray;
+    color: gray;
+}
+
+#adjustTextBiggerBtn:hover{
+    color: orange;
+    border-color: orange;
+}
+
+#adjustTextStandardBtn {
+    background-color: whitesmoke;
+    border: 1px solid gray;
+    cursor: pointer;
+    position: absolute;
+    height: 40px;
+    width: 90px;
+    right: 15px;
+    top: 69px;
+    font-size: 14px;
+    z-index: 2;
+    background-color: lightgray;
+    color: gray;
+}
+
+#adjustTextStandardBtn:hover{
+    color: orange;
+    border-color: orange;
+}
+
+#revealSettingsBtn {
+    right: 130px;
+    background-color: whitesmoke;
+    transition: right 0.2s ease-in-out;
+}
+
+#revealSettingsBtn:hover {
+    color: orange;
+}
+
+#adjustTextSection {
+    position: relative;
+    color: rgb(131, 124, 124);
+    float: left;
+    height: 100px;
+    width: 263px;
+    padding: 10px;
+    margin-right: 60px;
+    background-color: lightgray;
+}
