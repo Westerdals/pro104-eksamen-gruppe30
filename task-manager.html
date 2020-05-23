@@ -12,11 +12,13 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!--jQuery tags ends here-->
     <link rel="stylesheet" type="text/css" href="task-manager.css">
+    <link rel="stylesheet" type="text/css" href="settings.css">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 
-<body onload="renderTaskList(); createIconButtons(); createMemberSlots();">
+<body onload="loadSettings(); renderTaskList(); createIconButtons(); createMemberSlots(); renderMemberList();
+                renderTaskOngoingList(); renderTaskFinishedList(); renderArchiveList();">
 
     <div id="mainContainer">
 
@@ -28,6 +30,7 @@
             <button class="headerButton" id="revealMembersBtn" onclick="revealMembersSection()">VIEW TEAM
                 MEMBERS</button>
             <button class="headerButton" id="revealArchiveBtn" onclick="revealArchive()">VIEW ARCHIVE</button>
+            <button class="headerButton" id="revealSettingsBtn" onclick="revealSettings()">SETTINGS</button>
         </header>
 
         <aside>
@@ -42,18 +45,24 @@
                         </div>
 
                         <div id=additionButtons>
-                            <button class="additionBtn" id="addDescriptionRevealBtn"
+                            <button class="additionBtn" type="button" id="addDescriptionRevealBtn"
                                 onmouseover="revealAddDescriptionForm()">+ DESCRIPTION</button>
-                            <button class="additionBtn" id="addChecklistRevealBtn"
+                            <button class="additionBtn" type="button" id="addChecklistRevealBtn"
                                 onmouseover="revealAddChecklistForm()">+ CHECKLIST</button>
-                            <button class="additionBtn" id="addIconRevealBtn" onmouseover="revealAddIconForm()">+
+                            <button class="additionBtn" type="button" id="addIconRevealBtn"
+                                onmouseover="revealAddIconForm()">+
                                 ICON</button>
                             <button class="additionBtn" id="addDeadlineRevealBtn" onmouseover="revealAddDeadlineForm()">+ DEADLINE</button>
                         </div>
 
                         <div class="additionForm" id="taskDescriptionForm">
                             <label id="taskDescriptionLabel" for="taskDescription">DESCRIBE THE TASK</label>
-                            <textarea id="taskDescription" name="taskDescription" placeholder=""></textarea><br>
+                            <textarea id="taskDescription" name="taskDescription" placeholder="Write here..." maxlength="140"
+                                onkeyup="countCharacters()"></textarea>
+                            <div id="counting">
+                                <span id="currentCount">0 </span>
+                                <span>/ 140</span>
+                            </div>
                         </div>
 
                         <div class="additionForm" id="taskChecklistForm">
@@ -78,6 +87,7 @@
                         </div>
 
                         <input id="taskSubmitBtn" class="button" type="submit" value="GET IT DONE!">
+                    -->
                     </form>
                 </div>
             </section>
@@ -96,6 +106,19 @@
             </section>
 
             <section>
+                <div class="headerSection" id="settingsSection">
+                    <div id="adjustTextSection">
+                        <label id="fontLabel">CHANGE FONT SIZE</label>
+                        <button id="adjustTextBiggerBtn" type="button"
+                            onclick="adjustText('xxx-large', 'x-large');">LARGE</button>
+                        <br>
+                        <button id="adjustTextStandardBtn" type="button"
+                            onclick="adjustText('large', 'medium');">STANDARD</button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
                 <div class="headerSection" id="membersSection"></div>
             </section>
         </aside>
@@ -107,21 +130,23 @@
                     <h2 class="tasksHeading" id="ongoingHeading">ONGOING</h2>
                     <h2 class="tasksHeading" id="finishedHeading">FINISHED</h2>
                 </div>
-                <div class="tasks" id="unstartedTasks"></div>
-                <div class="tasks" id="ongoingTasks"></div>
-                <div class="tasks" id="finishedTasks"></div>
+                <div class="tasks" id="unstartedTasks" ondrop="dropUnstarted(event)" ondragover="allowMoveTasks(event)"></div>
+                <div class="tasks" id="ongoingTasks" ondrop="dropOngoing(event)" ondragover="allowMoveTasks(event)"></div>
+                <div class="tasks" id="finishedTasks" ondrop="dropFinished(event)" ondragover="allowMoveTasks(event)"></div>
             </div>
             <div id="archive">
                 <h2>ARCHIVE</h2>
             </div>
 
+
         </main>
 
     </div>
+    <script src="drag-and-drop.js"></script>
+    <script src="task-manager.js"></script>
+    <script src="layout.js"></script>
 
 </body>
 
-<script src="task-manager.js"></script>
-<script src="layout.js"></script>
 
 </html>
