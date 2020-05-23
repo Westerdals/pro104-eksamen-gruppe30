@@ -248,10 +248,8 @@ function deleteMember(memberId) {
         }
     }
     window.localStorage.setItem("member", JSON.stringify(memberList));
-    renderMemberList();
+    createMemberSlots()
 
-    memberSlots[memberId].style.border = "1px dashed gray";
-    memberSlots[memberId].style.backgroundColor = "";
 }
 
 function renderMemberList() {
@@ -292,9 +290,11 @@ function createChecklistPoint() {
 }
 
 function createMemberSlots(){
+    membersSection.innerHTML = "";
 
     for(var i = 0; i < 11; i++){
         var memberSlot = document.createElement("div");
+
         memberSlot.setAttribute('class', 'memberSlot');
         membersSection.appendChild(memberSlot);
     }
