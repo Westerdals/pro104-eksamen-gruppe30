@@ -181,7 +181,7 @@ header{
     left: 15px;
 }
 
-#taskDescriptionPara{
+.taskDescriptionPara{
     padding-top: 150px;
 }
 
