@@ -10,8 +10,14 @@
     font-size: 14px;
     z-index: 2;
     background-color: lightgray;
-    color: gray;
+    color: black;
 }
+
+#adjustTextBiggerBtn:hover{
+    color: orange;
+    border-color: orange;
+}
+
 #adjustTextStandardBtn {
     background-color: whitesmoke;
     border: 1px solid gray;
@@ -24,13 +30,18 @@
     font-size: 14px;
     z-index: 2;
     background-color: lightgray;
-    color: gray;
+    color: black;
+}
 
+#adjustTextStandardBtn:hover{
+    color: orange;
+    border-color: orange;
 }
 
 #revealSettingsBtn {
-    left: 1180px;
+    right: 130px;
     background-color: whitesmoke;
+    transition: right 0.2s ease-in-out;
 }
 
 #revealSettingsBtn:hover {
@@ -39,7 +50,7 @@
 
 #adjustTextSection {
     position: relative;
-    color: rgb(131, 124, 124);
+    color: black;
     float: left;
     height: 100px;
     width: 263px;

@@ -3,7 +3,7 @@ var textSizeHeader = "";
 
 function loadSettings (){
     if (window.localStorage.length == 0) {
-        console.log("Settings");
+        console.log("Standard settings loaded");
         var savedTextSize = "medium";
         var savedTextSizeHeader = "large" ;
         var textSize = {savedTextSize, savedTextSizeHeader}
@@ -13,24 +13,51 @@ function loadSettings (){
     var savedSettings = JSON.parse(localStorage.getItem('settings')) || [];
     textSizeDescription = savedSettings.savedTextSize;
     textSizeHeader = savedSettings.savedTextSizeHeader;
-    
+}
+
+function adjustText(header, description) {
+    textSizeDescription = description;
+    textSizeHeader = header;
+    var savedSettings = JSON.parse(localStorage.getItem('settings')) || [];
+    var savedTextSize = description;
+    var savedTextSizeHeader = header;
+    var textSize = {savedTextSize, savedTextSizeHeader};
+    window.localStorage.setItem('settings', JSON.stringify(textSize));
+
+    renderTaskList();
 }
 
 function createTask(event) {
     event.preventDefault();
+    document.getElementById("currentCount").innerHTML = "0 ";
 
     const taskList = JSON.parse(localStorage.getItem('task')) || [];
     const taskName = document.querySelector("[name='taskName']").value;
     const taskDescription = document.querySelector("[name='taskDescription']").value;
     const taskIcon = document.getElementById("pickedIcon").src;
+
+    const taskChecklistUl = document.getElementsByClassName("checkListLi");
+    var taskCheckListArray = [];
+
+    for(var i = 0; i < taskChecklistUl.length; i++) {
+        var taskChecklist = {
+            checkPointName : taskChecklistUl[i].innerHTML,
+            checked : false
+        };
+        taskCheckListArray.push(taskChecklist);
+        console.log(taskCheckListArray);
+
+    }
+    console.log(taskChecklistUl)
     
-    var taskId = 0;
+    /*var taskId = 0;
     if (taskList.length != 0){
         taskId=taskList[taskList.length-1].taskId + 1;
-    }
+    }*/
 
+    let taskId = taskList.length;
 
-    const task = { taskId, taskName, taskDescription, taskIcon };
+    const task = { taskId, taskName, taskDescription, taskIcon, taskCheckListArray };
     taskList.push(task);
 
     window.localStorage.setItem('task', JSON.stringify(taskList));
@@ -44,9 +71,12 @@ function createMember(event) {
     event.preventDefault();
 
     const memberName = document.querySelector("[name='memberName']").value;
-
-    const member = { memberName };
     const memberList = JSON.parse(localStorage.getItem('member')) || [];
+
+    let memberId = memberList.length;
+
+    const member = {memberId, memberName };
+    
     memberList.push(member);
 
     window.localStorage.setItem('member', JSON.stringify(memberList));
@@ -56,8 +86,10 @@ function createMember(event) {
     renderMemberList();
 }
 
+
 function renderTaskList() {
 
+    document.getElementById("pickedIcon").src="icons/default.png";
     const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
     const unstartedTasks = document.getElementById("unstartedTasks");
 
@@ -67,15 +99,29 @@ function renderTaskList() {
         const taskElement = document.createElement("div");
         const { taskId, taskName, taskDescription, taskIcon } = task;
 
-        taskElement.innerHTML = `<div class="taskObject" onclick="expandTask(this)">
-                                <img id="taskIcon" src="${task.taskIcon}">
-                                <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${task.taskName.charAt(0).toUpperCase() + task.taskName.slice(1)}</h4></div>
-                                <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${task.taskDescription}</p>
-                                <button id="deleteTaskBtn"  type="button" onclick="deleteTask(${task.taskId})"><img src="icons/trashcan.png" style="height:30px;" alt="delete task"></button>
+        taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
+                                draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
+                                <img id="taskIcon" src="${taskIcon}">
+                                <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
+                                <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                <div id="droppedMember" class="droppedMember" 
+                                 ondrop="dropNames(event)" onload="renderMemberOnTask();">Members</div>
+                                </div>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
 }
+
+/*function renderMemberOnTask(){
+    const memberList = JSON.parse(window.localStorage.setItem("member")) || [];
+
+    let droppedMember = document.getElementById("droppedMember");
+    for(const member of memberList){
+
+    }
+
+}*/
 
 function deleteTask(taskId) {
     var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
@@ -88,6 +134,148 @@ function deleteTask(taskId) {
 	renderTaskList();
 }
 
+function renderTaskOngoingList() {
+
+
+    document.getElementById("pickedIcon").src="icons/default.png";
+    const lists = JSON.parse(window.localStorage.getItem("lists")) || [];
+    const ongoingTasks = document.getElementById("ongoingTasks");
+
+
+    ongoingTasks.innerHTML = "";
+
+        for(const task of lists) {
+            const taskElement = document.createElement("div");
+            const { taskId, taskName, taskDescription, taskIcon } = task;
+
+            taskElement.innerHTML = `<div style="border: 2px dashed yellow" id="${taskId}" class="taskObject" onclick="expandTask(this)"
+                                    draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
+                                    <img id="taskIcon" src="${taskIcon}">
+                                    <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                    <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
+                                    <button id="deleteTaskBtn" type="button" onclick="deleteTaskOngoing(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                    <div id="droppedMember" class="droppedMember" 
+                                    ondrop="dropNames(event)">Members</div>
+                                    </div>
+                                    </div>`;
+            ongoingTasks.appendChild(taskElement);
+        }
+
+}
+
+function deleteTaskOngoing(taskId) {
+    var lists = JSON.parse(window.localStorage.getItem("lists")) || [];
+  for(var i = 0; i < lists.length; i++){
+    if(lists[i].taskId == taskId){
+      lists.splice(i, 1);
+    }
+  }
+    window.localStorage.setItem("lists", JSON.stringify(lists));
+    renderTaskOngoingList();
+  }
+
+function renderTaskFinishedList() {
+
+    document.getElementById("pickedIcon").src="icons/default.png";
+    const fList = JSON.parse(window.localStorage.getItem("fList")) || [];
+    const finishedTasks = document.getElementById("finishedTasks");
+
+    finishedTasks.innerHTML = "";
+
+    for (const task of fList) {
+        const taskElement = document.createElement("div");
+        const { taskId, taskName, taskDescription, taskIcon } = task;
+
+        taskElement.innerHTML = `<div style="border: 2px dashed green" id="${taskId}" class="taskObject" onclick="expandTask(this)"
+                                draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
+                                <img id="taskIcon" src="${taskIcon}">
+                                <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
+                                <button id="deleteTaskBtn" type="button" onclick="archiveTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                <div id="droppedMember" class="droppedMember" 
+                                 ondrop="dropNames(event)">Members</div>
+                                </div>
+                                </div>`;
+        finishedTasks.appendChild(taskElement);
+    }
+}
+
+function deleteTaskFinished(taskId) {
+    var fList = JSON.parse(window.localStorage.getItem("fList")) || [];
+  for(var i = 0; i < fList.length; i++){
+    if(fList[i].taskId == taskId){
+      fList.splice(i, 1);
+    }
+  }
+    window.localStorage.setItem("fList", JSON.stringify(fList));
+    renderTaskFinishedList();
+  }
+
+function renderArchiveList(){
+    const archiveList = JSON.parse(localStorage.getItem("archive")) || [];
+
+    let archive = document.getElementById("archive");
+
+    archive.innerHTML = "";
+
+    for(const ar of archiveList){
+        let archiveElement = document.createElement("div");
+        
+        const { taskId, taskName, taskDescription, taskIcon } = ar;
+
+        archiveElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
+                                    draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
+                                    <img id="taskIcon" src="${taskIcon}">
+                                    <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                    <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
+                                    <button id="deleteTaskBtn" type="button" onclick="deleteTaskFromArchive(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                    <div id="droppedMember" class="droppedMember" 
+                                    ondrop="dropNames(event)">Members</div>
+                                    </div>
+                                    </div>`;
+        archive.appendChild(archiveElement);
+    }
+}
+
+function deleteTaskFromArchive(taskId){
+    const archiveList = JSON.parse(window.localStorage.getItem("archive")) || [];
+  for(var i = 0; i < archiveList.length; i++){
+    if(archiveList[i].taskId == taskId){
+      archiveList.splice(i, 1);
+    }
+  }
+    window.localStorage.setItem("archive", JSON.stringify(archiveList));
+    renderArchiveList();
+}
+
+function archiveTask(taskId) {
+    const archiveList = JSON.parse(localStorage.getItem("archive")) || [];
+    var fList = JSON.parse(window.localStorage.getItem("fList")) || [];
+	for(var i = 0; i < fList.length; i++){
+		if(fList[i].taskId == taskId){
+			archiveList.push(fList[i]);
+            deleteTaskFinished(taskId);
+		}
+	}
+	window.localStorage.setItem("archive", JSON.stringify(archiveList));
+	renderArchiveList();
+}
+
+function deleteMember(memberId) {
+    const memberSlots = document.getElementsByClassName("memberSlot");
+
+    var memberList = JSON.parse(window.localStorage.getItem("member")) || [];
+    console.log(memberList);
+    for(var i = 0; i < memberList.length; i++) {
+        if(memberList[i].memberId == memberId) {
+            memberList.splice(i,1);
+        }
+    }
+    window.localStorage.setItem("member", JSON.stringify(memberList));
+    createMemberSlots()
+
+}
+
 function renderMemberList() {
 
     const memberList = JSON.parse(window.localStorage.getItem("member")) || [];
@@ -98,12 +286,15 @@ function renderMemberList() {
         memberSlots[i].innerHTML = "";
     }
         for (const member of memberList) {
+
             const memberElement = document.createElement("div");
-            const { memberName } = member;
+            const {memberId, memberName } = member;
             counter++;
-            memberElement.innerHTML = `<div class="memberObject">
+            memberElement.innerHTML = `<div class="memberObject" id="${memberId}" 
+                                      draggable="true" ondragstart="dragStartNames(event)">
+                                      <button id="deleteMemberBtn" type="button" onclick="deleteMember('${memberId}')"><img src="images/trashcan.png" id="trashcan" style="height:20px;" alt="delete task"></button>
                                       <img src="images/member.png" alt="member" width="45" height="45">
-                                      <h4>${member.memberName}</h4>
+                                      <h4>${memberName}</h4>
                                       </div>`; 
             memberSlots[counter].appendChild(memberElement);
             memberSlots[counter].style.border = "1px solid gray";
@@ -114,6 +305,7 @@ function renderMemberList() {
 function createChecklistPoint() {
 
     var li = document.createElement("li");
+    li.setAttribute("class", "checkListLi");
     var checklistInput = document.getElementById("taskChecklistInput").value;
     var node = document.createTextNode(checklistInput);
     li.appendChild(node);
@@ -123,6 +315,7 @@ function createChecklistPoint() {
 }
 
 function createMemberSlots(){
+    membersSection.innerHTML = "";
 
     for(var i = 0; i < 11; i++){
         var memberSlot = document.createElement("div");
@@ -154,18 +347,6 @@ function createIconButtons(){
     }
 }
 
-function adjustText(header, description) {
-
-    textSizeDescription = description;
-    textSizeHeader = header;
-
-    var savedSettings = JSON.parse(localStorage.getItem('settings')) || [];
-    var savedTextSize = description;
-    var savedTextSizeHeader = header;
-    var textSize = {savedTextSize, savedTextSizeHeader}
-    window.localStorage.setItem('settings', JSON.stringify(textSize));
-    
-    renderTaskList();
-
+function countCharacters(){
+    document.getElementById("currentCount").innerHTML = taskDescription.value.length;
 }
-
