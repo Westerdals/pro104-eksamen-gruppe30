@@ -8,7 +8,7 @@ function moveMembersToTask(memberId){
   }
   }
   window.localStorage.setItem("task", JSON.stringify(taskList));
-  renderTaskList();
+  renderUpdateTaskList();
 }
 
 
@@ -22,7 +22,7 @@ for(var i = 0; i < taskList.length; i++){
   }
   }
   window.localStorage.setItem("lists", JSON.stringify(lists));
-  renderTaskOngoingList();
+
 }
 
 function moveToFinished(taskId) {

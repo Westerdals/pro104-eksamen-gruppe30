@@ -92,22 +92,12 @@ function renderTaskList() {
                                 <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
                                 <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 <div id="droppedMember" class="droppedMember" 
-                                 ondrop="dropNames(event)" onload="renderMemberOnTask();">Members</div>
+                                 ondrop="dropNames(event)" onclick="moveMembersToTask(${taskId});">Members</div>
                                 </div>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
     }
 }
-
-/*function renderMemberOnTask(){
-    const memberList = JSON.parse(window.localStorage.setItem("member")) || [];
-
-    let droppedMember = document.getElementById("droppedMember");
-    for(const member of memberList){
-
-    }
-
-}*/
 
 function deleteTask(taskId) {
     var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
@@ -141,12 +131,22 @@ function renderTaskOngoingList() {
                                     <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTaskOngoing(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div id="droppedMember" class="droppedMember" 
-                                    ondrop="dropNames(event)">Members</div>
+                                    ondrop="dropNames(event)" onclick="test(memberId)">Members</div>
                                     </div>
                                     </div>`;
             ongoingTasks.appendChild(taskElement);
         }
 
+}
+
+function test(memberId){
+    this.memberId = memberId;
+    const memberList = JSON.parse(localStorage.getItem("member")) || [];
+    for(const member of memberList){
+    let div = document.createElement("div");
+
+    div.innerHTML = `${member.memberName}`;
+    }
 }
 
 function deleteTaskOngoing(taskId) {
@@ -185,6 +185,8 @@ function renderTaskFinishedList() {
         finishedTasks.appendChild(taskElement);
     }
 }
+
+
 
 function deleteTaskFinished(taskId) {
     var fList = JSON.parse(window.localStorage.getItem("fList")) || [];
