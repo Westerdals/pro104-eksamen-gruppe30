@@ -35,6 +35,20 @@ function createTask(event) {
     const taskName = document.querySelector("[name='taskName']").value;
     const taskDescription = document.querySelector("[name='taskDescription']").value;
     const taskIcon = document.getElementById("pickedIcon").src;
+
+    const taskChecklistUl = document.getElementsByClassName("checkListLi");
+    var taskCheckListArray = [];
+
+    for(var i = 0; i < taskChecklistUl.length; i++) {
+        var taskChecklist = {
+            checkPointName : taskChecklistUl[i].innerHTML,
+            checked : false
+        };
+        taskCheckListArray.push(taskChecklist);
+        console.log(taskCheckListArray);
+
+    }
+    console.log(taskChecklistUl)
     
     /*var taskId = 0;
     if (taskList.length != 0){
@@ -43,7 +57,7 @@ function createTask(event) {
 
     let taskId = taskList.length;
 
-    const task = { taskId, taskName, taskDescription, taskIcon };
+    const task = { taskId, taskName, taskDescription, taskIcon, taskCheckListArray };
     taskList.push(task);
 
     window.localStorage.setItem('task', JSON.stringify(taskList));
@@ -291,6 +305,7 @@ function renderMemberList() {
 function createChecklistPoint() {
 
     var li = document.createElement("li");
+    li.setAttribute("class", "checkListLi");
     var checklistInput = document.getElementById("taskChecklistInput").value;
     var node = document.createTextNode(checklistInput);
     li.appendChild(node);
@@ -304,7 +319,6 @@ function createMemberSlots(){
 
     for(var i = 0; i < 11; i++){
         var memberSlot = document.createElement("div");
-
         memberSlot.setAttribute('class', 'memberSlot');
         membersSection.appendChild(memberSlot);
     }
