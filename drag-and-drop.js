@@ -1,28 +1,53 @@
 
-function moveMembersToTask(memberId){
+function moveMembersToTask(memberId, taskId){
   const memberList = JSON.parse(window.localStorage.getItem("member")) || [];
   const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
-  for(var i = 0; i < memberList.length; i++){
-    if(memberList[i].memberId == memberId){
-            taskList.push(memberList[i]);
+  let lists = JSON.parse(window.localStorage.getItem("lists")) || [];
+  for(let i = 0; i < memberList.length; i++){
+      for(let j = 0; j < taskList.length; j++){
+        if(memberList[i].memberId == memberId && taskList[j].taskId == taskId){
+          let assignedTask= Object.assign({},memberList[i], taskList[j]);
+          assignedTask[taskList.taskId]++;
+          lists.push(assignedTask);
+          deleteTask(taskId);
+        }
+      }
   }
-  }
-  window.localStorage.setItem("task", JSON.stringify(taskList));
-  renderUpdateTaskList();
+  window.localStorage.setItem("lists", JSON.stringify(lists));
+  renderTaskOngoingList();
+
 }
+
+/*function moveMembersToTask(memberId, taskId){
+  const memberList = JSON.parse(window.localStorage.getItem("member")) || [];
+  const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+  const assignedList = JSON.parse(window.localStorage.getItem("assigned")) || [];
+  for(let i = 0; i < memberList.length; i++){
+        if(memberList[i].memberId == memberId){
+          assignedList.push(memberList[i]);
+        }
+      
+  }
+  for(let j = 0; j < taskList.length; j++){
+    if(taskList[j].taskId == taskId){
+      assignedList.taskList[j];
+    }
+  }
+  window.localStorage.setItem("assign", JSON.stringify(assignedList));
+}*/
 
 
 function moveToOngoing(taskId) {
-  var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+  var assignedList = JSON.parse(window.localStorage.getItem("assign")) || [];
   var lists = JSON.parse(window.localStorage.getItem("lists")) || [];
-for(var i = 0; i < taskList.length; i++){
-  if(taskList[i].taskId == taskId){
-          lists.push(taskList[i]);
+for(var i = 0; i < assignedList.length; i++){
+  if(assignedList[i].taskId == taskId){
+          lists.push(assignedList[i]);
           deleteTask(taskId);
   }
   }
   window.localStorage.setItem("lists", JSON.stringify(lists));
-
+  renderTaskOngoingList();
 }
 
 function moveToFinished(taskId) {
@@ -67,8 +92,8 @@ for(var i = 0; i < lists.length; i++){
 }
 
 function dragStartNames(ev){
-    let nameDrag = ev.target.id;
-    ev.dataTransfer.setData("text/plain", nameDrag);
+    let memberId = ev.target.id;
+    ev.dataTransfer.setData("text/plain", memberId);
 }
 
 function dropNames(ev){
@@ -78,7 +103,11 @@ function dropNames(ev){
 
     let memberId = ev.dataTransfer.getData("text/plain");
 
-    moveMembersToTask(memberId);
+    let taskId = ev.target.parentElement.id;
+    console.log(taskId);
+    console.log(memberId);
+
+    moveMembersToTask(memberId, taskId);
     //let assignedToTask = ev.target.parentElement.querySelector("h4").innerText;
     
     //let nameDiv = document.createElement("div");
