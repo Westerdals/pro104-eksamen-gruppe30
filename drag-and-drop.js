@@ -18,7 +18,7 @@ function moveToOngoing(taskId) {
 for(var i = 0; i < taskList.length; i++){
   if(taskList[i].taskId == taskId){
           lists.push(taskList[i]);
-          deleteTask(taskId);
+          deleteTask(taskId, 'task');
   }
   }
   window.localStorage.setItem("lists", JSON.stringify(lists));
@@ -31,7 +31,7 @@ function moveToFinished(taskId) {
 for(var i = 0; i < lists.length; i++){
   if(lists[i].taskId == taskId){
           fList.push(lists[i]);
-          deleteTaskOngoing(taskId);
+          deleteTask(taskId, 'lists');
   }
 }
 window.localStorage.setItem("fList", JSON.stringify(fList));
@@ -44,11 +44,12 @@ function moveFromUnstartedToFinished(taskId) {
 for(var i = 0; i < taskList.length; i++){
   if(taskList[i].taskId == taskId){
           fList.push(taskList[i]);
-          deleteTask(taskId);
+          deleteTask(taskId, 'task');
   }
 }
   window.localStorage.setItem("fList", JSON.stringify(fList));
   renderTaskFinishedList();
+  renderTaskOngoingList();
 
 }
 
@@ -58,11 +59,12 @@ function moveFromOngoingToUnstarted(taskId) {
 for(var i = 0; i < lists.length; i++){
   if(lists[i].taskId == taskId){
           taskList.push(lists[i]);
-          deleteTaskOngoing(taskId);
+          deleteTask(taskId, 'lists');
   }
 }
   window.localStorage.setItem("task", JSON.stringify(taskList));
   renderTaskList();
+  renderTaskOngoingList();
 
 }
 
