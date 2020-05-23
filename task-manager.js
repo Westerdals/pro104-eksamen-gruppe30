@@ -36,10 +36,30 @@ function createTask(event) {
     const taskDescription = document.querySelector("[name='taskDescription']").value;
     const taskIcon = document.getElementById("pickedIcon").src;
 
+<<<<<<< HEAD
+=======
+    const taskChecklistUl = document.getElementsByClassName("checkListLi");
+    var taskCheckListArray = [];
+
+    for(var i = 0; i < taskChecklistUl.length; i++) {
+        var taskChecklist = {
+            checkPointName : taskChecklistUl[i].innerHTML,
+            checked : false
+        };
+        taskCheckListArray.push(taskChecklist);
+
+    }
+    console.log(taskChecklistUl)
+    
+    /*var taskId = 0;
+    if (taskList.length != 0){
+        taskId=taskList[taskList.length-1].taskId + 1;
+    }*/
+>>>>>>> 59985dbeef5706f6752be12ed9b064697ca7ff28
 
     let taskId = taskList.length;
 
-    const task = { taskId, taskName, taskDescription, taskIcon };
+    const task = { taskId, taskName, taskDescription, taskIcon, taskCheckListArray };
     taskList.push(task);
 
     window.localStorage.setItem('task', JSON.stringify(taskList));
@@ -68,6 +88,18 @@ function createMember(event) {
     renderMemberList();
 }
 
+function checklistStatus (taskId, indexCheckbox, status, tasklistKey) {
+    const taskList = JSON.parse(window.localStorage.getItem(tasklistKey)) || [];
+    for(var i = 0; i < taskList.length; i++){
+        if(taskList[i].taskId == taskId) {
+            taskList[i].taskCheckListArray[indexCheckbox].checked = status;
+        }
+        
+    }
+    window.localStorage.setItem(tasklistKey, JSON.stringify(taskList));
+
+
+}
 
 function renderTaskList() {
 
@@ -75,18 +107,33 @@ function renderTaskList() {
     const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
     //const assignedList = JSON.parse(window.localStorage.getItem("assign")) || [];
     const unstartedTasks = document.getElementById("unstartedTasks");
-
     unstartedTasks.innerHTML = "";
 
     for (const task of taskList) {
 
         const taskElement = document.createElement("div");
+<<<<<<< HEAD
         const { taskId, taskName, taskDescription, taskIcon, memberName } = task;
+=======
+        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray } = task;
+        var taskChecklistDiv = "";
+        for(var i = 0; i < taskCheckListArray.length; i++) {
+            if (taskCheckListArray[i].checked == true) {
+                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'task');" checked>
+                <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+            }
+            if (taskCheckListArray[i].checked == false) {
+                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task');" type="checkbox">
+                <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+            }
+        }
+>>>>>>> 59985dbeef5706f6752be12ed9b064697ca7ff28
 
         taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)" ondrop="dropNames(event)"
                                 draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                 <img id="taskIcon" src="${taskIcon}">
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                <div id="checkList">${taskChecklistDiv}</div>
                                 <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
                                 <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 <div>${memberName}</div>
@@ -96,15 +143,35 @@ function renderTaskList() {
     }
 }
 
+<<<<<<< HEAD
 function deleteTask(taskId) {
     var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+=======
+/*function renderMemberOnTask(){
+    const memberList = JSON.parse(window.localStorage.setItem("member")) || [];
+
+    let droppedMember = document.getElementById("droppedMember");
+    for(const member of memberList){
+
+    }
+
+}*/
+
+function deleteTask(taskId, localStorageKey) {
+    var taskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
+>>>>>>> 59985dbeef5706f6752be12ed9b064697ca7ff28
 	for(var i = 0; i < taskList.length; i++){
 		if(taskList[i].taskId == taskId){
 			taskList.splice(i, 1);
 		}
 	}
+<<<<<<< HEAD
 	window.localStorage.setItem("task", JSON.stringify(taskList));
     renderTaskList();
+=======
+	window.localStorage.setItem(localStorageKey, JSON.stringify(taskList));
+	renderTaskList();
+>>>>>>> 59985dbeef5706f6752be12ed9b064697ca7ff28
 }
 
 function renderTaskOngoingList() {
@@ -119,32 +186,43 @@ function renderTaskOngoingList() {
 
         for(const task of lists) {
             const taskElement = document.createElement("div");
+<<<<<<< HEAD
             const { taskId, taskName, taskDescription, taskIcon, memberName } = task;
+=======
+            const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray } = task;
+            var taskChecklistDiv = "";
+            for(var i = 0; i < taskCheckListArray.length; i++) {
+            if (taskCheckListArray[i].checked == true) {
+                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'lists');" checked>
+                <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+            }
+            if (taskCheckListArray[i].checked == false) {
+                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'lists');" type="checkbox">
+                <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+            }
+        }
+>>>>>>> 59985dbeef5706f6752be12ed9b064697ca7ff28
 
             taskElement.innerHTML = `<div style="border: 4px dashed yellow" id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                     draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondrop="dropNames(event)">
                                     <img id="taskIcon" src="${taskIcon}">
                                     <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                    <div id="checkList">${taskChecklistDiv}</div>
                                     <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
+<<<<<<< HEAD
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTaskOngoing(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div>${memberName}</div>
+=======
+                                    <button id="deleteTaskBtn" type="button" onclick="deleteTaskOngoing(${taskId},'lists')"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                    <div id="droppedMember" class="droppedMember" 
+                                    ondrop="dropNames(event)">Members</div>
+>>>>>>> 59985dbeef5706f6752be12ed9b064697ca7ff28
                                     </div>
                                     </div>`;
             ongoingTasks.appendChild(taskElement);
         }
 
 }
-
-function deleteTaskOngoing(taskId) {
-    var lists = JSON.parse(window.localStorage.getItem("lists")) || [];
-  for(var i = 0; i < lists.length; i++){
-    if(lists[i].taskId == taskId){
-      lists.splice(i, 1);
-    }
-  }
-    window.localStorage.setItem("lists", JSON.stringify(lists));
-    renderTaskOngoingList();
-  }
 
 function renderTaskFinishedList() {
 
@@ -156,12 +234,28 @@ function renderTaskFinishedList() {
 
     for (const task of fList) {
         const taskElement = document.createElement("div");
+<<<<<<< HEAD
         const { taskId, taskName, taskDescription, taskIcon, memberName } = task;
+=======
+        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray } = task;
+        var taskChecklistDiv = "";
+        for(var i = 0; i < taskCheckListArray.length; i++) {
+            if (taskCheckListArray[i].checked == true) {
+                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'task');" checked>
+                <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+            }
+            if (taskCheckListArray[i].checked == false) {
+                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task');" type="checkbox">
+                <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+            }
+        }
+>>>>>>> 59985dbeef5706f6752be12ed9b064697ca7ff28
 
         taskElement.innerHTML = `<div style="border: 4px dashed green" id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                 draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondrop="dropNames(event)">
                                 <img id="taskIcon" src="${taskIcon}">
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                <div id="checkList">${taskChecklistDiv}</div>
                                 <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
                                 <button id="deleteTaskBtn" type="button" onclick="archiveTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 <div id="droppedMember" class="droppedMember" 
@@ -194,32 +288,37 @@ function renderArchiveList(){
 
     for(const ar of archiveList){
         let archiveElement = document.createElement("div");
+<<<<<<< HEAD
         
         const { taskId, taskName, taskDescription, taskIcon, memberName } = ar;
+=======
+        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray } = ar;
+        var taskChecklistDiv = "";
+        for(var i = 0; i < taskCheckListArray.length; i++) {
+            if (taskCheckListArray[i].checked == true) {
+                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'task');" checked>
+                <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+            }
+            if (taskCheckListArray[i].checked == false) {
+                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task');" type="checkbox">
+                <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+            }
+        }
+>>>>>>> 59985dbeef5706f6752be12ed9b064697ca7ff28
 
         archiveElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                     draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                     <img id="taskIcon" src="${taskIcon}">
                                     <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                    <div id="checkList">${taskChecklistDiv}</div>
                                     <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
-                                    <button id="deleteTaskBtn" type="button" onclick="deleteTaskFromArchive(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                    <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId}, 'archive'); renderArchiveList();"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div id="droppedMember" class="droppedMember" 
                                     ondrop="dropNames(event)">${memberName}</div>
                                     </div>
                                     </div>`;
         archive.appendChild(archiveElement);
     }
-}
-
-function deleteTaskFromArchive(taskId){
-    const archiveList = JSON.parse(window.localStorage.getItem("archive")) || [];
-  for(var i = 0; i < archiveList.length; i++){
-    if(archiveList[i].taskId == taskId){
-      archiveList.splice(i, 1);
-    }
-  }
-    window.localStorage.setItem("archive", JSON.stringify(archiveList));
-    renderArchiveList();
 }
 
 function archiveTask(taskId) {
@@ -279,6 +378,7 @@ function renderMemberList() {
 function createChecklistPoint() {
 
     var li = document.createElement("li");
+    li.setAttribute("class", "checkListLi");
     var checklistInput = document.getElementById("taskChecklistInput").value;
     var node = document.createTextNode(checklistInput);
     li.appendChild(node);
@@ -292,7 +392,6 @@ function createMemberSlots(){
 
     for(var i = 0; i < 11; i++){
         var memberSlot = document.createElement("div");
-
         memberSlot.setAttribute('class', 'memberSlot');
         membersSection.appendChild(memberSlot);
     }
