@@ -33,6 +33,9 @@ function createTask(event) {
     event.preventDefault();
     document.getElementById("currentCount").innerHTML = "0 ";
 
+    var taskChecklist = document.getElementById("taskChecklist");
+    while(taskChecklist.firstChild) taskChecklist.removeChild(taskChecklist.firstChild);
+
     const taskList = JSON.parse(localStorage.getItem('task')) || [];
     const taskName = document.querySelector("[name='taskName']").value;
     const taskDescription = document.querySelector("[name='taskDescription']").value;
@@ -348,11 +351,14 @@ function createChecklistPoint() {
     var li = document.createElement("li");
     li.setAttribute("class", "checkListLi");
     var checklistInput = document.getElementById("taskChecklistInput").value;
+
     var node = document.createTextNode(checklistInput);
     li.appendChild(node);
 
     document.getElementById("taskChecklist").appendChild(li);
     document.getElementById("taskChecklistInput").value = "";
+
+    revealCheckpoints();
 }
 
 function createMemberSlots(){

@@ -129,12 +129,14 @@ function revealAddDescriptionForm(){
     var taskDescriptionForm = document.getElementById("taskDescriptionForm");
     var addDescriptionRevealBtn = document.getElementById("addDescriptionRevealBtn");
     var taskDescription = document.getElementById("taskDescription");
+    var counting = document.getElementById("counting");
 
     if (taskDescriptionForm.style.height == "0px" || taskDescriptionForm.style.height == ""){
         taskDescriptionForm.style.height = "200px";
         taskDescriptionForm.style.opacity = "1";
         addDescriptionRevealBtn.style.backgroundColor = "orange";
         taskDescription.style.display = "inline-block";
+        counting.style.display = "inline-block";
 
         if (taskChecklistForm.style.height != "0px" || taskChecklistForm.style.height != "") {
             hideSection(taskChecklistForm);
@@ -177,6 +179,12 @@ function revealAddChecklistForm(){
         hideSection(taskChecklistForm);
         hideAdditionInputs(taskChecklistForm);
     }
+}
+
+function revealCheckpoints(){
+    var taskChecklist = document.getElementById("taskChecklist");
+    taskChecklist.style.width = "250px";
+    taskChecklist.style.opacity = "1";
 }
 
 function revealAddIconForm(){
@@ -264,7 +272,9 @@ function hideAdditionInputs(form){
     switch(form){
         case taskDescriptionForm:
             var taskDescription = document.getElementById("taskDescription");
+            var counting = document.getElementById("counting");
             taskDescription.style.display = "none";
+            counting.style.display = "none";
             break;
 
         case taskChecklistForm:

@@ -241,18 +241,45 @@ label{
 }
 
 #taskChecklistInput{
+    position: absolute;
+    z-index: 2;
     display: none;
+    top: 40px;
 }
 
 #createChecklistBtn{
     display: none;
-    top: 60px;
+    top: 190px;
     left: 10px;
     font-size: 13px;
-    font-weight: 700;
-    border: 0px;
     background: lightgray;
     color: black;
+}
+
+#createChecklistBtn:hover{
+    color: orange;
+    border-color: orange;
+}
+
+#taskChecklist{
+    position: absolute;
+    padding-top: 3px;
+    top: -20px;
+    left: 280px;
+    height: 220px;
+    width: 0px;
+    opacity: 0;
+    background-color: whitesmoke;
+    transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    overflow-y: auto;
+}
+
+.checkListLi{
+    padding: 5px;
+    margin-left: -40px;
+    left: 100px;
+    border-bottom: 2.5px solid lightgray;
+    font-size: 15px;
 }
 
 .input{
