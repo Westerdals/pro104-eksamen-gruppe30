@@ -1,3 +1,50 @@
+:root {
+    --clr-light: linear-gradient(120deg, rgb(169,169,169),rgb(220,220,220) ,rgb(169,169,169));
+    --clr-dark: linear-gradient(120deg, rgb(26, 65, 71),  rgb(58, 15, 94));
+    --clr-primary: #dbffa2;
+    --clr-secondary: #c3fcf2;
+    --clr-accent: #ff7750;
+    color: black;
+    
+  
+    --foreground: var(--clr-dark);
+    --background: var(--clr-light);
+  
+    --ff-title: "Playfair Display", serif;
+    --ff-body: "Assistant", sans-serif;
+  }
+
+
+
+
+
+
+  
+  .darkmode {
+    --clr-light: linear-gradient(120deg, rgb(0,0,0), rgb(0,0,0));
+    --clr-dark: linear-gradient(120deg, rgb(0,0,0),  rgb(0,0,0));
+    --clr-primary: #202302;
+    --clr-secondary: #00100d;
+    --clr-accent: #ff7750;
+    color: white;
+  
+    --foreground: var(--clr-light);
+    --background: var(--clr-dark);
+  }
+  
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body{
+    margin-top: 0;
+    background-color: whitesmoke;
+}
+
 #mainContainer{
     position: relative;
     margin: 0 auto;
@@ -13,36 +60,54 @@ button:focus, input:focus, textarea:focus, select:focus{
 
 header{
     position: fixed;
+    z-index: 3;
     width: 1400px;
-    height: 110px;
-    z-index: 2;
+    height: 120px;
     background-color: white;
+    padding-bottom: 20px;
+    background-color: whitesmoke;
+    font-family: 'Pacifico', cursive;
+    font-size: 18px;
 }
 
-.overskrift{
-    height: 80px;
-    text-align: center;
-    font-size: 50px;
-    color: white;
-    width: 1400;
-    animation: myanimation 5s infinite;}
+.headerButton{
+    position: absolute;
+    border: 0px;
+    top: 100px;
+    height: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    color: gray;
+}
 
-    @keyframes myanimation {
-        0%{background-color: #000000;}
-        20%{background-color:#FF0000;}
-        40%{background-color: #B6D4C4;}
-        50%{background-color: #E8D7CA}
-        70%{background-color: #B6D4C9;}
-        80% {background-color: #DCC4B4;}
-        90%{background-color: #E2D3D5;}
-        100%{background-color: #808080;}}
+.additionBtn{
+    position: absolute;
+    background-color: lightgray;
+    width: 172px;
+    height: 30px;
+    font-size: 15px;
+    text-align: left;
+    left: 290px;
+    color: gray;
+    border: 0px;
+}
 
+#addChecklistRevealBtn{
+    top: 35px;
+}
 
+#addIconRevealBtn{
+    top: 70px;
+}
 
 .button{
     position: absolute;
     border: 1px solid gray;
-    top: 60px;
+    top: 90px;
+    height: 20px;
+    font-size: 10px;
+    z-index: 2;
+    cursor: pointer;
 }
 
 .button:hover{
@@ -50,31 +115,148 @@ header{
 }
 
 #taskSubmitBtn{
-    top: 185px;
+    top: 180px;
+    left: 10px;
+    background-color: lightgray;
+    color: gray;
+    height: 30px;
+    width: 120px;
+    font-size: 15px;
+}
+
+#taskSubmitBtn:hover{
+    border-color: orange;
+    color: orange;
+}
+
+#memberSubmitBtn{
+    top: 130px;
+    left: 10px;
+    background-color: lightgray;
+    color: gray;
+    height: 30px;
+    width: 55px;
+    font-size: 15px;
+}
+
+#memberSubmitBtn:hover{
+    border-color: orange;
+    color: orange;
+}
+
+#addTaskRevealBtn{
+    background-color: lightgray;
+}
+
+#addTaskRevealBtn:hover{
+    background-color: orange;
 }
 
 #addMemberRevealBtn{
-    left: 1px;
+    left: 110px;
+    background-color: lightgray;
+}
+
+#addMemberRevealBtn:hover{
+    background-color: orange;
+}
+
+#revealMembersBtn{
+    background-color: lightgray;
+    left: 290px;
+}
+
+#revealMembersBtn:hover{
+    background-color: orange;
+}
+
+#revealArchiveBtn{
+    background-color: whitesmoke;
+    right: 0px;
+}
+
+#revealArchiveBtn:hover{
+    color: orange;
+}
+
+.additionForm{
+    position: absolute;
+    left: 470px;
+    height: 0px;
+    width: 250px;
+    opacity: 0;
+    padding: 10px;
+    background-color: lightgray;
+    color: gray;
+    font-size: 17px;
+}
+
+#taskIconForm{
+    width: 400px;
+    padding-left: 100px;
 }
 
 #taskDescription{
-    width: 270px;
-    height: 50px;
+    position: absolute;
+    z-index: 3;
+    display: none;
+    top: 40px;
+    left: 12px;
+    width: 240px;
+    height: 120px;
+    background-color: lightgray;
+    resize: none;
+    border: 0px;
+    font-size: 15px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    
 }
 
-.addSection{
+#counting{
+    position: absolute;
+    top: 170px;
+    left: 15px;
+}
+
+#taskDescriptionPara{
+    padding-top: 150px;
+}
+
+.headerSection{
     position: relative;
-    z-index: 0;
-    top: 130px;
-    width: 950px;
+    top: 150px;
+    width: 1400px;
     height: 0px;
     opacity: 0;
     transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
     overflow: hidden;
 }
 
+#membersSection{
+    width: 1380px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(100px,1fr));
+    grid-auto-columns: minmax(100px,1fr);
+    grid-column-gap: 20px;
+    grid-auto-flow: column;
+    overflow-x: auto;
+}
+
+#addMemberForm{
+    width: 263px;
+    height: 150px;
+    padding: 10px;
+    background-color: lightgray;
+    color: gray;
+    font-size: 18px;
+    font-weight: 700;
+}
+
 label{
-    font-family: fantasy;
+    display: block;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 #taskNameLabel{
@@ -82,38 +264,94 @@ label{
     font-weight: 700;
 }
 
-textarea{
-    resize: none;
+#taskNameForm{
+    color: rgb(131, 124, 124);
+    float: left;
+    height: 200px;
+    width: 263px;
+    padding: 10px;
+    margin-right: 60px;
+    background-color: lightgray;
+}
+
+#taskChecklistForm{
+    float: left;
+}
+
+#taskChecklistInput{
+    display: none;
+}
+
+#createChecklistBtn{
+    display: none;
+    top: 60px;
+    left: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    border: 0px;
+    background: lightgray;
+    color: gray;
 }
 
 .input{
+    display: block;
     border: 0px;
     background: transparent;
     border-bottom: 1px solid gray;
     font-size: 15px;
 }
 
-main{
+input::placeholder{
+    font-family: fantasy;
+}
+textarea::placeholder{
+    font-family: fantasy;
+    padding-top: 5px;
+}
+
+#tasksTable{
     position: relative;
     z-index: 1;
-    top: 60px;
-    height: 500px;
-    width: 1350px;
+    top: 100px;
+    height: 630px;
+    width: 1400px;
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+}
+
+#archive{
+    position: relative;
+    z-index: 3;
+    top: 140px;
+    height: 0px;
+    width: 1400px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    border-top: 2px solid gray;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    overflow: auto;
 }
 
 .tasks{
     position: absolute;
     text-align: center;
-    top: 15px;
-    height: 800px;
+    top: 89px;
+    height: 630px;
     width: 450px;
+    display: grid-inline;
+    grid-row-gap: 20px;
+    overflow-y: auto;
 }
 
 #tasksHeadings{
     position: relative;
-    width: 1351px;
+    width: 1400px;
     height: 60px;
-    top: 125px;
+    top: 40px;
     border-top: 2px solid gray;
 }
 
@@ -124,7 +362,7 @@ main{
 }
 
 #unstartedHeading{
-    border-right: 2px solid gray;
+    border-right: 1px solid gray;
 }
 
 #ongoingHeading{
@@ -150,45 +388,124 @@ main{
 }
 
 .taskObject{
-    position: absolute;
+    position: relative;
     width: 380px;
     height: 200px;
-    left: 20px;
-    top: 60px;
+    padding: 10px;
+    margin-top: 30px;
+    margin-left: 15px;
     border: 2px dashed gray;
+    cursor: pointer;
+    transition: height 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.taskObject:hover #deleteTaskBtn{
+    background-color:#f7fafa;
+}
+
+.taskObject:hover{
+    background-color: #f7fafa;
+}
+
+#taskHeading{
+    padding-top: 30px;
+}
+
+.memberObject{
+    width: 100px;
+    height: 120px;
+    margin-top: 5px;
+    cursor: pointer;
+    text-align: center;
+    overflow: auto;
+}
+
+.buttonIcon{
+    display: none;
+    height: 40px;
+    width: 40px;
+    opacity: 0px;
+    border: 0px;
+    cursor: pointer;
+    background: lightgray;
+}
+
+#activeIcon{
+    position: absolute;
+    left: 15px;
+    height: 68px;
+    width: 80px;
+    padding-top: 12px;
+    text-align: center;
+}
+
+.buttonIcon:hover{
+    background: orange;
+}
+
+.imageIcon{
+    height: 20px;
+    width: auto;
+}
+
+#pickedIcon{
+    height: 70px;
+}
+
+#taskIcon{
+    position: absolute;
+    left: 181px;
+    height: 40px;
+    width: auto;
+}
+
+.memberSlot{
+    width: 100px;
+    height: 120px;
+    border: 1px dashed gray;
+}
+
+#deleteTaskBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 0px;
+    background-color: whitesmoke;
+}
+
+#deleteTaskBtn:hover{
+    cursor: pointer;
+}
+
+#deleteMemberBtn{
+    position: absolute;
+    border: 0px;
+    background-color: #f7fafa;
+}
+
+.droppedMember{
+    position: relative;
+    height: 100px;
+    width: 200px;
+    overflow-y: scroll;
+    background-color: lightgrey;
+    display: inline-block;
 }
 
 
 
-.navBar{
-
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: lightgray;
-    width: 1400px;
-    height: 30px;;
-    position: relative; 
-    text-align: center;}
-    .navBar li{
-        float: none;
-        display: inline-block;}
-    
-    .navBar li a{
-        display: block;
-        text-decoration: none;
-        text-align: center;
-        color: #FFFFFF;
-        font-size: 16px;
-        width: 100px;
-        padding: 12px;
-        position: relative;}
-    
-    .navBar li a:hover{
-        background-color: black;
-    
-    -webkit-transition-duration: 1.0s; 
-     -moz-transition-duration:1.0s;
-    -o-transition-duration: 1.0s;     
-        transition-duration: 1.0s;}
+.darkModeToggle {
+    position: absolute;
+    z-index: 100;
+    top: 1em;
+    right: 1em;
+    color: var(--foreground);
+    border: 2px solid currentColor;
+    padding: 4px;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+  }
