@@ -130,7 +130,7 @@ function renderTaskList() {
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                 <div id="checkList">${taskChecklistDiv}</div>
                                 <p style="font-size: ${textSizeDescription};" class="taskDescriptionPara" class="adjustText">${taskDescription}</p>
-                                <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId})"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId}, 'task')"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 <div>Members</div>
                                 </div>
                                 </div>`;
@@ -146,7 +146,8 @@ function deleteTask(taskId, localStorageKey) {
 		}
 	}
 	window.localStorage.setItem(localStorageKey, JSON.stringify(taskList));
-	renderTaskList();
+    renderTaskList();
+    renderTaskOngoingList();
 }
 
 function renderTaskOngoingList() {
@@ -180,7 +181,7 @@ function renderTaskOngoingList() {
                                     <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                     <div id="checkList">${taskChecklistDiv}</div>
                                     <p style="font-size: ${textSizeDescription};" class="taskDescriptionPara" class="adjustText">${taskDescription}</p>
-                                    <button id="deleteTaskBtn" type="button" onclick="deleteTaskOngoing(${taskId},'lists')"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                    <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'lists')"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div>${memberName}</div>
                                     </div>
                                     </div>`;
@@ -226,7 +227,7 @@ function renderTaskFinishedList() {
     }
 }
 
-function deleteTaskFinished(taskId) {
+/*function deleteTaskFinished(taskId) {
     var fList = JSON.parse(window.localStorage.getItem("fList")) || [];
   for(var i = 0; i < fList.length; i++){
     if(fList[i].taskId == taskId){
@@ -235,7 +236,7 @@ function deleteTaskFinished(taskId) {
   }
     window.localStorage.setItem("fList", JSON.stringify(fList));
     renderTaskFinishedList();
-  }
+  }*/
 
 function renderArchiveList(){
     const archiveList = JSON.parse(localStorage.getItem("archive")) || [];
