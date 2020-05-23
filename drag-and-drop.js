@@ -1,5 +1,15 @@
 
-
+function moveMembersToTask(memberId){
+  const memberList = JSON.parse(window.localStorage.getItem("member")) || [];
+  const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+  for(var i = 0; i < memberList.length; i++){
+    if(memberList[i].memberId == memberId){
+            taskList.push(memberList[i]);
+  }
+  }
+  window.localStorage.setItem("task", JSON.stringify(taskList));
+  renderTaskList();
+}
 
 
 function moveToOngoing(taskId) {
@@ -66,14 +76,16 @@ function dropNames(ev){
 
     //const draggedMembersList = JSON.parse(localStorage.getItem("draggedMembers")) || [];
 
-    let nameDropped = ev.dataTransfer.getData("text/plain");
+    let memberId = ev.dataTransfer.getData("text/plain");
+
+    moveMembersToTask(memberId);
     //let assignedToTask = ev.target.parentElement.querySelector("h4").innerText;
     
     //let nameDiv = document.createElement("div");
 
-    let nameDiv = document.getElementById(nameDropped).innerText;
+    //let nameDiv = document.getElementById(nameDropped).innerText;
 
-    ev.target.appendChild(nameDiv);
+    //ev.target.appendChild(nameDiv);
     
     //let draggedMember = {assignedToTask, nameDropped};
     //draggedMembersList.push(draggedMember);
