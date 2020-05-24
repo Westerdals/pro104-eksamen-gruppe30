@@ -132,7 +132,7 @@ function renderTaskList() {
                                 <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
                                 <div id="checkList">${taskChecklistDiv}</div>
                                 <div id="taskDescriptionParaDiv" <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'task');" class="taskDescriptionPara adjustText">${taskDescription}</p></div>
-                                <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput};</div>
+                                <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput}</div>
                                 <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId}, 'task')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 <div id="taskMembers"></div>
                                 </div>
@@ -222,7 +222,7 @@ function renderTaskOngoingList() {
                                     <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
                                     <div id="checkList">${taskChecklistDiv}</div>
                                     <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'ongoingTask');" class="taskDescriptionPara adjustText">${taskDescription}</p>
-                                    <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput};</div>
+                                    <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput}</div>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'ongoingTask')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div>${memberName}</div>
                                     </div>
@@ -267,7 +267,7 @@ function renderTaskFinishedList() {
                                 <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
                                 <div id="checkList">${taskChecklistDiv}</div>
                                 <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'finishedTask');" class="taskDescriptionPara adjustText">${taskDescription}</p>
-                                <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput};</div>
+                                <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput}</div>
                                 <button id="deleteTaskBtn" type="button" onclick="archiveTask(${taskId})" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 <div>${memberName}</div>
                                 </div>
@@ -304,7 +304,7 @@ function renderArchiveList(){
                                     <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                     <div id="checkList">${taskChecklistDiv}</div>
                                     <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="taskDescriptionPara adjustText">${taskDescription}</p>
-                                    <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput};</div>
+                                    <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput}</div>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId}, 'archive'); renderArchiveList();" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div>${memberName}</div>
                                     </div>
