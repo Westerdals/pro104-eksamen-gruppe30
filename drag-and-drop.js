@@ -19,83 +19,20 @@ function moveMembersToTask(memberId, taskId){
   renderTaskOngoingList();
 }
 
-/*function move(taskId, localStorageKey) {
-  var taskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
-  for(var i = 0; i < taskList.length; i++){
-  if(taskList[i].taskId == taskId){
-          taskList.push(taskList[i]);
+function move(taskId, localStorageKey, newLocalStorageKey) {
+  var lastTaskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
+  var taskList = JSON.parse(window.localStorage.getItem(newLocalStorageKey)) || [];
+  for(var i = 0; i < lastTaskList.length; i++){
+  if(lastTaskList[i].taskId == taskId){
+          taskList.push(lastTaskList[i]);
           deleteTask(taskId, localStorageKey);
   }
 }
-  window.localStorage.setItem(localStorageKey, JSON.stringify(taskList));
+  window.localStorage.setItem(newLocalStorageKey, JSON.stringify(taskList));
   renderTaskList();
   renderTaskOngoingList();
   renderTaskFinishedList();
 
-}*/
-
-/*
-Function takes in the task target id as parameters, puts the information about this id and place them into the finishedList array.
-*/
-
-function moveFromUnstartedToFinished(taskId) {
-  var finishedList = JSON.parse(window.localStorage.getItem("fList")) || [];
-  var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
-for(var i = 0; i < taskList.length; i++){
-  if(taskList[i].taskId == taskId){
-          finishedList.push(taskList[i]);
-          deleteTask(taskId, 'task');
-  }
-}
-  window.localStorage.setItem("fList", JSON.stringify(finishedList));
-  renderTaskFinishedList();
-
-}
-
-/*
-Function takes in the task target id as parameters, puts the information about this id and place them into the ongoingList array.
-*/
-
- function moveFromOngoingToUnstarted(taskId) {
-    var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
-    var ongoinglist = JSON.parse(window.localStorage.getItem("lists")) || [];
-  for(var i = 0; i < ongoinglist.length; i++){
-    if(ongoinglist[i].taskId == taskId){
-            taskList.push(ongoinglist[i]);
-            deleteTask(taskId, 'lists');
-    }
-  }
-    window.localStorage.setItem("task", JSON.stringify(taskList));
-    renderTaskList();
-  
-  }
-
-
-function moveToOngoing(taskId) {
-  var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
-  var OngoingList = JSON.parse(window.localStorage.getItem("lists")) || [];
-for(var i = 0; i < taskList.length; i++){
-  if(taskList[i].taskId == taskId){
-          OngoingList.push(taskList[i]);
-          deleteTask(taskId, 'task');
-  }
-  }
-  window.localStorage.setItem("lists", JSON.stringify(OngoingList));
-  renderTaskOngoingList();
-}
-
-function moveToFinished(taskId) {
-  var finishedList = JSON.parse(window.localStorage.getItem("fList")) || [];
-  var ongoingList = JSON.parse(window.localStorage.getItem("lists")) || [];
-for(var i = 0; i < ongoingList.length; i++){
-  if(ongoingList[i].taskId == taskId){
-          finishedList.push(ongoingList[i]);
-          deleteTask(taskId, 'lists');
-  }
-}
-  window.localStorage.setItem("fList", JSON.stringify(finishedList));
-  renderTaskOngoingList();
-  renderTaskFinishedList();
 }
 
 function dragStartNames(ev){
@@ -115,13 +52,20 @@ function dropNames(ev){
 
 }
 
+function dragLeave(ev){
+  ev.preventDefault();
+
+}
+
 
 function allowMoveTasks(ev) {
     ev.preventDefault();
+
   }
   
   function allowMoveNames(ev) {
     ev.preventDefault();
+
   }
 
   function drag(ev) {
@@ -134,8 +78,10 @@ function allowMoveTasks(ev) {
     ev.preventDefault();    
 
     let taskId = ev.dataTransfer.getData("text/plain");
-    moveFromOngoingToUnstarted(taskId);
-    
+
+    //moveFromOngoingToUnstarted(taskId);
+
+    move(taskId, 'lists', 'task');
   }
   
   function dropOngoing(ev) {
@@ -144,9 +90,8 @@ function allowMoveTasks(ev) {
 
     let taskId = ev.dataTransfer.getData("text/plain");
   
-    moveToOngoing(taskId);
-    
-    
+    //moveToOngoing(taskId);
+    move(taskId, 'task', 'lists');
   }
 
 
@@ -154,8 +99,7 @@ function allowMoveTasks(ev) {
     ev.preventDefault();
 
     let taskId = ev.dataTransfer.getData("text/plain");
-    
-    moveToFinished(taskId);
-    moveFromUnstartedToFinished(taskId);
 
+    move(taskId, 'lists', 'fList');
+    move(taskId, 'task', 'fList');
   }
