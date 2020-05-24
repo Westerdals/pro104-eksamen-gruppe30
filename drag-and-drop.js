@@ -85,6 +85,7 @@ function allowMoveTasks(ev) {
     let taskId = ev.dataTransfer.getData("text/plain");
 
     move(taskId, 'ongoingTask', 'task');
+    move(taskId, 'finishedTask', 'task');
   }
   
   function dropOngoing(ev) {
