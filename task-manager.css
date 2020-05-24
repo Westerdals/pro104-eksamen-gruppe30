@@ -405,12 +405,31 @@ textarea::placeholder{
 }
 
 .memberObject{
-    width: 100px;
+    width: 105px;
     height: 120px;
     margin-top: 5px;
     cursor: pointer;
     text-align: center;
-    overflow: auto;
+    overflow: hidden;
+}
+
+#memberNameHeading{
+    margin-top: 60px;
+    left: 20px;
+    width: 105px;
+    height: 40px;
+    overflow: scroll;
+    font-size: 15px;
+}
+
+.memberObject:hover #deleteMemberBtn{
+    visibility: visible;
+}
+
+#memberImg{
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 8px;
 }
 
 .buttonIcon{
@@ -453,7 +472,7 @@ textarea::placeholder{
 }
 
 .memberSlot{
-    width: 100px;
+    width: 105px;
     height: 120px;
     border: 1px dashed black;
 }
@@ -471,9 +490,15 @@ textarea::placeholder{
 }
 
 #deleteMemberBtn{
-    position: absolute;
     border: 0px;
     background-color: #f7fafa;
+    padding-left: 30px;
+    float: right;
+    visibility: hidden;
+}
+
+#deleteMemberBtn:hover{
+    cursor: pointer;
 }
 
 .droppedMember{
