@@ -130,7 +130,7 @@ function renderTaskList() {
                                 <div id="progressBarDiv"style="width: 379px; height: 20px; border: 1px solid lightgray;">
                                 <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
                                 <div id="checkList">${taskChecklistDiv}</div>
-                                <p style="font-size: ${textSizeDescription};" class="adjustText">${taskDescription}</p>
+                                <p style="font-size: ${textSizeDescription};" class="taskDescriptionPara" class="adjustText">${taskDescription}</p>
                                 <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId}, 'task')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 <div>${memberName}</div>
                                 </div>
@@ -188,7 +188,7 @@ function renderTaskOngoingList() {
                                     <div id="progressBarDiv"style="width: 379px; height: 20px; border: 1px solid lightgray;">
                                     <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
                                     <div id="checkList">${taskChecklistDiv}</div>
-                                    <p style="font-size: ${textSizeDescription};" class="adjustText">${taskDescription}</p>
+                                    <p style="font-size: ${textSizeDescription};" class="taskDescriptionPara" class="adjustText">${taskDescription}</p>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'lists')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div>${memberName}</div>
                                     </div>
@@ -232,7 +232,7 @@ function renderTaskFinishedList() {
                                 <div id="progressBarDiv"style="width: 379px; height: 20px; border: 1px solid lightgray;">
                                     <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
                                 <div id="checkList">${taskChecklistDiv}</div>
-                                <p style="font-size: ${textSizeDescription};" class="adjustText">${taskDescription}</p>
+                                <p style="font-size: ${textSizeDescription};" class="taskDescriptionPara" class="adjustText">${taskDescription}</p>
                                 <button id="deleteTaskBtn" type="button" onclick="archiveTask(${taskId})" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 <div>${memberName}</div>
                                 </div>
@@ -268,7 +268,7 @@ function renderArchiveList(){
                                     <img id="taskIcon" src="${taskIcon}">
                                     <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                     <div id="checkList">${taskChecklistDiv}</div>
-                                    <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
+                                    <p style="font-size: ${textSizeDescription};" class="taskDescriptionPara" id="taskDescriptionPara" class="adjustText">${taskDescription}</p>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId}, 'archive'); renderArchiveList();" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div>${memberName}</div>
                                     </div>
