@@ -1,3 +1,7 @@
+/*
+Function takes in the targets id's as parameters, puts the information about these id's and place them into the ongoingList array.
+*/
+
 function moveMembersToTask(memberId, taskId){
   const memberList = JSON.parse(window.localStorage.getItem("member")) || [];
   const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
@@ -15,6 +19,10 @@ function moveMembersToTask(memberId, taskId){
   renderTaskOngoingList();
 }
 
+/*
+Function takes in the task target id as parameters, puts the information about this id and place them into the finishedList array.
+*/
+
 function moveFromUnstartedToFinished(taskId) {
   var finishedList = JSON.parse(window.localStorage.getItem("fList")) || [];
   var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
@@ -28,6 +36,10 @@ for(var i = 0; i < taskList.length; i++){
   renderTaskFinishedList();
 
 }
+
+/*
+Function takes in the task target id as parameters, puts the information about this id and place them into the ongoingList array.
+*/
 
  function moveFromOngoingToUnstarted(taskId) {
     var taskList = JSON.parse(window.localStorage.getItem("task")) || [];

@@ -51,7 +51,7 @@ function createTask(event) {
     }
     console.log(taskChecklistUl)
     
-    let taskId = Math.floor(Math.random() * 100);
+    let taskId = Math.floor(Math.random() * 1000);
 
 
     const task = { taskId, taskName, taskDescription, taskIcon, taskCheckListArray };
@@ -70,7 +70,7 @@ function createMember(event) {
     const memberName = document.querySelector("[name='memberName']").value;
     const memberList = JSON.parse(localStorage.getItem('member')) || [];
 
-    let memberId = Math.floor(Math.random() * 100);
+    let memberId = Math.floor(Math.random() * 1000);
 
     const member = {memberId, memberName };
     
