@@ -149,6 +149,7 @@ function deleteTask(taskId, localStorageKey) {
 	window.localStorage.setItem(localStorageKey, JSON.stringify(taskList));
     renderTaskList();
     renderTaskOngoingList();
+    renderArchiveList();
 }
 
 function renderTaskOngoingList() {

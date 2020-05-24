@@ -1,3 +1,11 @@
+@media (device-width: 100vw) and (device-height: 100vh) {
+	body {
+		background: green;
+	}
+	
+	body::before { content: "Full screen!!" }
+}
+
 body{
     margin-top: 0;
     background-color: whitesmoke;
