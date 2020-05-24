@@ -13,8 +13,7 @@
 <body onload="loadSettings(); renderTaskList(); createIconButtons(); createMemberSlots(); renderMemberList();
                 renderTaskOngoingList(); renderTaskFinishedList(); renderArchiveList();">
 
-    <div class=item> 
-         
+    <div id="mainContainer">
 
         <header id="header">
             <h1>Task Manager</h1>
@@ -25,7 +24,6 @@
                 MEMBERS</button>
             <button class="headerButton" id="revealArchiveBtn" onclick="revealArchive()">VIEW ARCHIVE</button>
             <button class="headerButton" id="revealSettingsBtn" onclick="revealSettings()">SETTINGS</button>
-            
         </header>
 
         <aside>
@@ -62,10 +60,10 @@
                         <div class="additionForm" id="taskChecklistForm">
                             <label id="taskChecklistLabel" for="taskChecklistInput">ADD A CHECKLIST</label>
                             <input class="input" type="text" id="taskChecklistInput" name="taskChecklistInput"
-                                placeholder="">
+                                placeholder="Write a checkpoint..." size="30">
                             <button class="button" id="createChecklistBtn" type="button"
-                                onclick="createChecklistPoint()">+</button>
-                            <ul id="taskChecklist"></ul>
+                                onclick="createChecklistPoint()">ADD TO CHECKLIST</button>
+                            <ul id="taskChecklist" name="checkList"></ul>
                         </div>
 
                         <div class="additionForm" id="taskIconForm">
@@ -103,7 +101,6 @@
                         <button id="adjustTextStandardBtn" type="button"
                             onclick="adjustText('large', 'medium');">STANDARD</button>
                         <button id="darkModeToggle" class="darkModeToggle">Darkmode</button>
-                        
                     </div>
                 </div>
             </section>
@@ -139,7 +136,5 @@
 
 </body>
 
-
-</html>
 
 </html>
