@@ -115,7 +115,7 @@ header{
 }
 
 #taskSubmitBtn{
-    top: 170px;
+    top: 190px;
     left: 1px;
     background-color: lightgray;
     color: black;
@@ -130,7 +130,7 @@ header{
 }
 
 #memberSubmitBtn{
-    top: 120px;
+    top: 140px;
     left: 1px;
     background-color: lightgray;
     color: black;
@@ -284,7 +284,7 @@ label{
 
 #createChecklistBtn{
     display: none;
-    top: 170px;
+    top: 190px;
     left:1px;
     font-size: 13px;
     background: lightgray;
