@@ -52,9 +52,6 @@ function createTask(event) {
     console.log(taskChecklistUl)
     
     let taskId = Math.floor(Math.random() * 100);
-    /*if (taskList.length != 0){
-        taskId=taskList[taskList.length-1].taskId + 1;
-    }*/
 
 
     const task = { taskId, taskName, taskDescription, taskIcon, taskCheckListArray };
@@ -74,11 +71,6 @@ function createMember(event) {
     const memberList = JSON.parse(localStorage.getItem('member')) || [];
 
     let memberId = Math.floor(Math.random() * 100);
-
-    /*let memberId = 0;
-    if (memberList.length != 0){
-        memberId=memberList[memberList.length-1].memberId + 1;
-    }*/
 
     const member = {memberId, memberName };
     
@@ -114,7 +106,7 @@ function renderTaskList() {
 
     for (const task of taskList) {
         const taskElement = document.createElement("div");
-        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray } = task;
+        const { taskId, taskName, taskDescription, taskIcon, memberName, taskCheckListArray } = task;
         var taskChecklistDiv = "";
         var taskProgress = 0
         var finishedCheckpoint = 0;
@@ -140,7 +132,7 @@ function renderTaskList() {
                                 <div id="checkList">${taskChecklistDiv}</div>
                                 <p style="font-size: ${textSizeDescription};" class="taskDescriptionPara" class="adjustText">${taskDescription}</p>
                                 <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId}, 'task')"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
-                                <div>Members</div>
+                                <div>${memberName}</div>
                                 </div>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
@@ -163,13 +155,13 @@ function renderTaskOngoingList() {
 
 
     document.getElementById("pickedIcon").src="icons/default.png";
-    const lists = JSON.parse(window.localStorage.getItem("lists")) || [];
+    const ongoingList = JSON.parse(window.localStorage.getItem("lists")) || [];
     const ongoingTasks = document.getElementById("ongoingTasks");
 
 
     ongoingTasks.innerHTML = "";
 
-        for(const task of lists) {
+        for(const task of ongoingList) {
             const taskElement = document.createElement("div");
             const { taskId, taskName, taskDescription, taskIcon, memberName, memberId, taskCheckListArray } = task;
             var taskChecklistDiv = "";
@@ -208,12 +200,12 @@ function renderTaskOngoingList() {
 function renderTaskFinishedList() {
 
     document.getElementById("pickedIcon").src="icons/default.png";
-    const fList = JSON.parse(window.localStorage.getItem("fList")) || [];
+    const finishedList = JSON.parse(window.localStorage.getItem("fList")) || [];
     const finishedTasks = document.getElementById("finishedTasks");
 
     finishedTasks.innerHTML = "";
 
-    for (const task of fList) {
+    for (const task of finishedList) {
         const taskElement = document.createElement("div");
         const { taskId, taskName, taskDescription, taskIcon, memberName, memberId, taskCheckListArray } = task;
         var taskChecklistDiv = "";

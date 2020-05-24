@@ -15,30 +15,58 @@ function moveMembersToTask(memberId, taskId){
   renderTaskOngoingList();
 }
 
+function moveFromUnstartedToFinished(taskId) {
+  var finishedList = JSON.parse(window.localStorage.getItem("fList")) || [];
+  var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+for(var i = 0; i < taskList.length; i++){
+  if(taskList[i].taskId == taskId){
+          finishedList.push(taskList[i]);
+          deleteTask(taskId, 'task');
+  }
+}
+  window.localStorage.setItem("fList", JSON.stringify(finishedList));
+  renderTaskFinishedList();
+
+}
+
+ function moveFromOngoingToUnstarted(taskId) {
+    var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
+    var ongoinglist = JSON.parse(window.localStorage.getItem("lists")) || [];
+  for(var i = 0; i < ongoinglist.length; i++){
+    if(ongoinglist[i].taskId == taskId){
+            taskList.push(ongoinglist[i]);
+            deleteTask(taskId, 'lists');
+    }
+  }
+    window.localStorage.setItem("task", JSON.stringify(taskList));
+    renderTaskList();
+  
+  }
+
 
 function moveToOngoing(taskId) {
   var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
-  var lists = JSON.parse(window.localStorage.getItem("lists")) || [];
+  var OngoingList = JSON.parse(window.localStorage.getItem("lists")) || [];
 for(var i = 0; i < taskList.length; i++){
   if(taskList[i].taskId == taskId){
-          lists.push(taskList[i]);
+          OngoingList.push(taskList[i]);
           deleteTask(taskId, 'task');
   }
   }
-  window.localStorage.setItem("lists", JSON.stringify(lists));
+  window.localStorage.setItem("lists", JSON.stringify(OngoingList));
   renderTaskOngoingList();
 }
 
 function moveToFinished(taskId) {
-  var fList = JSON.parse(window.localStorage.getItem("fList")) || [];
-  var lists = JSON.parse(window.localStorage.getItem("lists")) || [];
-for(var i = 0; i < lists.length; i++){
-  if(lists[i].taskId == taskId){
-          fList.push(lists[i]);
+  var finishedList = JSON.parse(window.localStorage.getItem("fList")) || [];
+  var ongoingList = JSON.parse(window.localStorage.getItem("lists")) || [];
+for(var i = 0; i < ongoingList.length; i++){
+  if(ongoingList[i].taskId == taskId){
+          finishedList.push(ongoingList[i]);
           deleteTask(taskId, 'lists');
   }
 }
-  window.localStorage.setItem("fList", JSON.stringify(fList));
+  window.localStorage.setItem("fList", JSON.stringify(finishedList));
   renderTaskOngoingList();
   renderTaskFinishedList();
 }
@@ -79,6 +107,7 @@ function allowMoveTasks(ev) {
     ev.preventDefault();    
 
     let taskId = ev.dataTransfer.getData("text/plain");
+    moveFromOngoingToUnstarted(taskId);
     
   }
   
@@ -100,5 +129,6 @@ function allowMoveTasks(ev) {
     let taskId = ev.dataTransfer.getData("text/plain");
     
     moveToFinished(taskId);
+    moveFromUnstartedToFinished(taskId);
 
   }
