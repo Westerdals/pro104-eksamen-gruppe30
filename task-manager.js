@@ -242,17 +242,6 @@ function renderTaskFinishedList() {
     }
 }
 
-/*function deleteTaskFinished(taskId) {
-    var fList = JSON.parse(window.localStorage.getItem("fList")) || [];
-  for(var i = 0; i < fList.length; i++){
-    if(fList[i].taskId == taskId){
-      fList.splice(i, 1);
-    }
-  }
-    window.localStorage.setItem("fList", JSON.stringify(fList));
-    renderTaskFinishedList();
-  }*/
-
 function renderArchiveList(){
     const archiveList = JSON.parse(localStorage.getItem("archive")) || [];
 
@@ -299,7 +288,8 @@ function archiveTask(taskId) {
 		}
 	}
 	window.localStorage.setItem("archive", JSON.stringify(archiveList));
-	renderArchiveList();
+    renderArchiveList();
+    renderTaskFinishedList();
 }
 
 function deleteMember(memberId) {
