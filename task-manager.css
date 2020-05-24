@@ -294,7 +294,18 @@ label{
 }
 
 .taskDescriptionPara{
-    padding-top: 50px;
+    position: absolute;
+    padding-top: 5px;
+    top: 80px;
+    height: 75px;
+    width: 380px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    overflow: none;
+}
+
+#taskMembers{
+    float: left;
 }
 
 input::placeholder{
@@ -401,7 +412,7 @@ textarea::placeholder{
     top: 50px;
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #taskDeadlineDiv{
@@ -420,6 +431,11 @@ textarea::placeholder{
     height: 20px;
     border: 1px solid lightgray;
     top: 190px;
+    transition: width 0.3s ease-in-out;
+}
+
+#progressBar{
+    transition: width 0.3s ease-in-out;
 }
 
 #taskMembers{
@@ -428,6 +444,10 @@ textarea::placeholder{
 }
 
 .taskObject:hover #deleteTaskBtn{
+    background-color:#f7fafa;
+}
+
+.taskObject:hover #archiveTaskBtn{
     background-color:#f7fafa;
 }
 
@@ -520,6 +540,18 @@ textarea::placeholder{
     background-color: #f0f0f0;
 }
 
+#archiveTaskBtn {
+    position: absolute;
+    top: 12px;
+    right: 45px;
+    border: 0px;
+    background-color: #f0f0f0;
+}
+
+#archiveTaskBtn:hover{
+    cursor: pointer;
+}
+
 #deleteTaskBtn:hover{
     cursor: pointer;
 }
@@ -543,4 +575,9 @@ textarea::placeholder{
     overflow-y: scroll;
     background-color: lightgrey;
     display: inline-block;
+}
+
+#extendTaskBtn{
+    position: relative;
+    float: left;
 }

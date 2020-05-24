@@ -5,18 +5,22 @@ Function takes in the targets id's as parameters, puts the information about the
 function moveMembersToTask(memberId, taskId){
   const memberList = JSON.parse(window.localStorage.getItem("member")) || [];
   const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
-  let ongoingList = JSON.parse(window.localStorage.getItem("ongoingTask")) || [];
+  const taskStorageList = JSON.parse(window.localStorage.getItem('taskStorage')) || [];
+  const ongoingList = JSON.parse(window.localStorage.getItem("ongoingTask")) || [];
   for(let i = 0; i < memberList.length; i++){
       for(let j = 0; j < taskList.length; j++){
-        if(memberList[i].memberId == memberId && taskList[j].taskId == taskId){
-          let assignedTask = Object.assign({},memberList[i], taskList[j]);
-          ongoingList.push(assignedTask);
-          deleteTask(taskId, 'task');
+        for(let t = 0; t < taskStorageList.length; t ++){
+        if(memberList[i].memberId == memberId && taskList[j].taskId == taskId && taskStorageList[t].taskId == taskId){
+          taskList.splice(j, 1);
+          let assignedTask = Object.assign({},memberList[i], taskStorageList[t]);
+          taskList.push(assignedTask);
+          deleteTask(taskId, 'taskStorage');
+          }
         }
       }
   }
-  window.localStorage.setItem("ongoingTask", JSON.stringify(ongoingList));
-  renderTaskOngoingList();
+  window.localStorage.setItem("task", JSON.stringify(taskList));
+  renderTaskList();
 }
 
 /*
@@ -53,8 +57,7 @@ function dropNames(ev){
     let taskId = ev.target.parentElement.id;
 
     moveMembersToTask(memberId, taskId);
-
-
+    
 }
 
 function dragLeave(ev){
@@ -85,6 +88,7 @@ function allowMoveTasks(ev) {
     let taskId = ev.dataTransfer.getData("text/plain");
 
     move(taskId, 'ongoingTask', 'task');
+    move(taskId, 'finishedTask', 'task');
   }
   
   function dropOngoing(ev) {

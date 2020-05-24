@@ -34,6 +34,8 @@ function createTask(event) {
     document.getElementById("currentCount").innerHTML = "0 ";
 
     const taskList = JSON.parse(localStorage.getItem('task')) || [];
+    const taskStorageList = JSON.parse(localStorage.getItem('taskStorage')) || [];
+
     const taskName = document.querySelector("[name='taskName']").value;
     const taskDescription = document.querySelector("[name='taskDescription']").value;
     const taskIcon = document.getElementById("pickedIcon").src;
@@ -57,8 +59,10 @@ function createTask(event) {
 
     const task = { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskDeadlineInput };
     taskList.push(task);
+    taskStorageList.push(task);
 
     window.localStorage.setItem('task', JSON.stringify(taskList));
+    window.localStorage.setItem('taskStorage', JSON.stringify(taskStorageList));
 
     event.target.reset();
     hideSection(addTaskSection);
@@ -111,6 +115,8 @@ function renderTaskList() {
         var taskChecklistDiv = "";
         var taskProgress = 0
         var finishedCheckpoint = 0;
+
+
         for(var i = 0; i < taskCheckListArray.length; i++) {
             if (taskCheckListArray[i].checked == true) {
                 taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'task'); renderTaskList();" checked>
@@ -125,6 +131,7 @@ function renderTaskList() {
         }
 
         taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
+<<<<<<< HEAD
                                 draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondrop="dropNames(event)" ondragleave="dragLeave(event)">
                                 <img id="taskIcon" src="${taskIcon}">
                                 <div id="taskHeading"><h4 contentEditable="true" oninput="changeName(${taskId}, event, 'task');" style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
@@ -138,6 +145,20 @@ function renderTaskList() {
                                 </div>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
+=======
+                                    draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondragleave="dragLeave(event)" ondrop="dropNames(event)">
+                                    <img id="taskIcon" src="${taskIcon}">
+                                    <div id="taskHeading"><h4 contentEditable="true" oninput="changeName(${taskId}, event, 'task');" style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                    <div id="progressBarDiv">
+                                    <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
+                                    <div id="checkList">${taskChecklistDiv}</div>
+                                    <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'ongoingTask');" class="taskDescriptionPara adjustText">${taskDescription}</p>
+                                    <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'task')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                    <div id="taskMembers">${memberName}</div>
+                                    </div>
+                                    </div>`;
+            unstartedTasks.appendChild(taskElement);
+>>>>>>> e6ff636381f1aa44d69ff12caa81e2b8e20e653d
     }
 }
 
@@ -183,6 +204,7 @@ function deleteTask(taskId, localStorageKey) {
     renderTaskList();
     renderTaskOngoingList();
     renderArchiveList();
+    renderTaskFinishedList();
 }
 
 function renderTaskOngoingList() {
@@ -267,8 +289,13 @@ function renderTaskFinishedList() {
                                 <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
                                 <div id="checkList">${taskChecklistDiv}</div>
                                 <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'finishedTask');" class="taskDescriptionPara adjustText">${taskDescription}</p>
+<<<<<<< HEAD
                                 <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput}</div>
                                 <button id="deleteTaskBtn" type="button" onclick="archiveTask(${taskId})" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+=======
+                                <button id="archiveTaskBtn" type="button" onclick="archiveTask(${taskId})" onmouseover="this.firstChild.src = 'images/filled-archive.png'" onmouseout="this.firstChild.src = 'images/archive.png'"><img src="images/archive.png" id="trashcan" style="height:28px;" alt="delete task"></button>
+                                <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'finishedTask')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+>>>>>>> e6ff636381f1aa44d69ff12caa81e2b8e20e653d
                                 <div>${memberName}</div>
                                 </div>
                                 </div>`;
