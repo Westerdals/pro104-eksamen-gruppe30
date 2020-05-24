@@ -132,7 +132,7 @@ function renderTaskList() {
                                 <div id="checkList">${taskChecklistDiv}</div>
                                 <div id="taskDescriptionParaDiv" <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'task');" class="taskDescriptionPara adjustText">${taskDescription}</p></div>
                                 <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId}, 'task')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
-                                <div id="taskMembers">${memberName}</div>
+                                <div id="taskMembers"></div>
                                 </div>
                                 </div>`;
         unstartedTasks.appendChild(taskElement);
@@ -257,7 +257,7 @@ function renderTaskFinishedList() {
             }
 
         taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
-                                 ondragover="allowMoveNames(event)">
+                                 draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                 <img id="taskIcon" src="${taskIcon}">
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; contentEditable="true" oninput="changeName(${taskId}, event, 'finishedTask');" class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                 <div id="progressBarDiv">

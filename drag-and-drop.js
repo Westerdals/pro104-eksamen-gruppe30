@@ -94,6 +94,7 @@ function allowMoveTasks(ev) {
     let taskId = ev.dataTransfer.getData("text/plain");
   
     move(taskId, 'task', 'ongoingTask');
+    move(taskId, 'finishedTask', 'ongoingTask');
   }
 
 
