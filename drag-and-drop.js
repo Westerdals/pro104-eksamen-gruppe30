@@ -1,7 +1,11 @@
+/*
+Function takes in the targets id's as parameters, puts the information about these id's and place them into the ongoingList array.
+*/
+
 function moveMembersToTask(memberId, taskId){
   const memberList = JSON.parse(window.localStorage.getItem("member")) || [];
   const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
-  let ongoingList = JSON.parse(window.localStorage.getItem("lists")) || [];
+  let ongoingList = JSON.parse(window.localStorage.getItem("ongoingTask")) || [];
   for(let i = 0; i < memberList.length; i++){
       for(let j = 0; j < taskList.length; j++){
         if(memberList[i].memberId == memberId && taskList[j].taskId == taskId){
@@ -11,36 +15,29 @@ function moveMembersToTask(memberId, taskId){
         }
       }
   }
-  window.localStorage.setItem("lists", JSON.stringify(ongoingList));
+  window.localStorage.setItem("ongoingTask", JSON.stringify(ongoingList));
   renderTaskOngoingList();
 }
 
+/*
+Function takes in three parameters, taskId, localstoragekey from the localstorage you want to retrieve information from,
+and newlocalstoragekey from the localstorage you want to put the information in.
+*/
 
-function moveToOngoing(taskId) {
-  var taskList = JSON.parse(window.localStorage.getItem("task")) || [];
-  var lists = JSON.parse(window.localStorage.getItem("lists")) || [];
-for(var i = 0; i < taskList.length; i++){
-  if(taskList[i].taskId == taskId){
-          lists.push(taskList[i]);
-          deleteTask(taskId, 'task');
-  }
-  }
-  window.localStorage.setItem("lists", JSON.stringify(lists));
-  renderTaskOngoingList();
-}
-
-function moveToFinished(taskId) {
-  var fList = JSON.parse(window.localStorage.getItem("fList")) || [];
-  var lists = JSON.parse(window.localStorage.getItem("lists")) || [];
-for(var i = 0; i < lists.length; i++){
-  if(lists[i].taskId == taskId){
-          fList.push(lists[i]);
-          deleteTask(taskId, 'lists');
+function move(taskId, localStorageKey, newLocalStorageKey) {
+  var lastTaskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
+  var taskList = JSON.parse(window.localStorage.getItem(newLocalStorageKey)) || [];
+  for(var i = 0; i < lastTaskList.length; i++){
+  if(lastTaskList[i].taskId == taskId){
+          taskList.push(lastTaskList[i]);
+          deleteTask(taskId, localStorageKey);
   }
 }
-  window.localStorage.setItem("fList", JSON.stringify(fList));
+  window.localStorage.setItem(newLocalStorageKey, JSON.stringify(taskList));
+  renderTaskList();
   renderTaskOngoingList();
   renderTaskFinishedList();
+
 }
 
 function dragStartNames(ev){
@@ -60,13 +57,20 @@ function dropNames(ev){
 
 }
 
+function dragLeave(ev){
+  ev.preventDefault();
+
+}
+
 
 function allowMoveTasks(ev) {
     ev.preventDefault();
+
   }
   
   function allowMoveNames(ev) {
     ev.preventDefault();
+
   }
 
   function drag(ev) {
@@ -79,7 +83,8 @@ function allowMoveTasks(ev) {
     ev.preventDefault();    
 
     let taskId = ev.dataTransfer.getData("text/plain");
-    
+
+    move(taskId, 'ongoingTask', 'task');
   }
   
   function dropOngoing(ev) {
@@ -88,9 +93,8 @@ function allowMoveTasks(ev) {
 
     let taskId = ev.dataTransfer.getData("text/plain");
   
-    moveToOngoing(taskId);
-    
-    
+    move(taskId, 'task', 'ongoingTask');
+    move(taskId, 'finishedTask', 'ongoingTask');
   }
 
 
@@ -98,7 +102,7 @@ function allowMoveTasks(ev) {
     ev.preventDefault();
 
     let taskId = ev.dataTransfer.getData("text/plain");
-    
-    moveToFinished(taskId);
 
+    move(taskId, 'ongoingTask', 'finishedTask');
+    move(taskId, 'task', 'finishedTask');
   }

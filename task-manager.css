@@ -1,3 +1,9 @@
+@media screen and (max-width: 1399px) {
+	#mainContainer{
+        width: 100%;
+    }
+}
+
 body{
     margin-top: 0;
     background-color: whitesmoke;
@@ -181,9 +187,6 @@ header{
     left: 15px;
 }
 
-.taskDescriptionPara{
-    padding-top: 150px;
-}
 
 .headerSection{
     position: relative;
@@ -290,6 +293,10 @@ label{
     font-size: 15px;
 }
 
+.taskDescriptionPara{
+    padding-top: 50px;
+}
+
 input::placeholder{
     font-family: fantasy;
 }
@@ -383,10 +390,37 @@ textarea::placeholder{
     padding: 10px;
     margin-top: 30px;
     margin-left: 15px;
-    border: 2px dashed black;
+    border: 1px solid gray;
     cursor: pointer;
     transition: height 0.3s ease-in-out;
     overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+#taskDescriptionParaDiv{
+    top: 50px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    overflow: scroll;
+}
+
+#checkList{
+    position: absolute;
+    top: 220px;
+    overflow: auto;
+}
+
+#progressBarDiv{
+    position: absolute;
+    width: 379px;
+    height: 20px;
+    border: 1px solid lightgray;
+    top: 190px;
+}
+
+#taskMembers{
+    position: absolute;
+    top: 10px;
 }
 
 .taskObject:hover #deleteTaskBtn{
@@ -402,12 +436,31 @@ textarea::placeholder{
 }
 
 .memberObject{
-    width: 100px;
+    width: 105px;
     height: 120px;
     margin-top: 5px;
     cursor: pointer;
     text-align: center;
-    overflow: auto;
+    overflow: hidden;
+}
+
+#memberNameHeading{
+    margin-top: 60px;
+    left: 20px;
+    width: 105px;
+    height: 40px;
+    overflow: scroll;
+    font-size: 15px;
+}
+
+.memberObject:hover #deleteMemberBtn{
+    visibility: visible;
+}
+
+#memberImg{
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 8px;
 }
 
 .buttonIcon{
@@ -450,7 +503,7 @@ textarea::placeholder{
 }
 
 .memberSlot{
-    width: 100px;
+    width: 105px;
     height: 120px;
     border: 1px dashed black;
 }
@@ -460,7 +513,7 @@ textarea::placeholder{
     top: 10px;
     right: 10px;
     border: 0px;
-    background-color: whitesmoke;
+    background-color: #f0f0f0;
 }
 
 #deleteTaskBtn:hover{
@@ -468,9 +521,15 @@ textarea::placeholder{
 }
 
 #deleteMemberBtn{
-    position: absolute;
     border: 0px;
-    background-color: #f7fafa;
+    background-color: #f0f0f0;
+    padding-left: 30px;
+    float: right;
+    visibility: hidden;
+}
+
+#deleteMemberBtn:hover{
+    cursor: pointer;
 }
 
 .droppedMember{
