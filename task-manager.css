@@ -294,7 +294,18 @@ label{
 }
 
 .taskDescriptionPara{
-    padding-top: 50px;
+    position: absolute;
+    padding-top: 5px;
+    top: 80px;
+    height: 75px;
+    width: 380px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    overflow: none;
+}
+
+#taskMembers{
+    float: left;
 }
 
 input::placeholder{
@@ -401,7 +412,7 @@ textarea::placeholder{
     top: 50px;
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #checkList{
@@ -416,6 +427,11 @@ textarea::placeholder{
     height: 20px;
     border: 1px solid lightgray;
     top: 190px;
+    transition: width 0.3s ease-in-out;
+}
+
+#progressBar{
+    transition: width 0.3s ease-in-out;
 }
 
 #taskMembers{
