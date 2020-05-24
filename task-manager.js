@@ -102,6 +102,10 @@ function checklistStatus (taskId, indexCheckbox, status, tasklistKey) {
 function renderTaskList() {
 
     document.getElementById("pickedIcon").src="icons/default.png";
+
+    var taskChecklist = document.getElementById("taskChecklist");
+    while(taskChecklist.firstChild) taskChecklist.removeChild(taskChecklist.firstChild);
+    
     const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
     const unstartedTasks = document.getElementById("unstartedTasks");
     unstartedTasks.innerHTML = "";
@@ -338,11 +342,14 @@ function createChecklistPoint() {
     var li = document.createElement("li");
     li.setAttribute("class", "checkListLi");
     var checklistInput = document.getElementById("taskChecklistInput").value;
+
     var node = document.createTextNode(checklistInput);
     li.appendChild(node);
 
     document.getElementById("taskChecklist").appendChild(li);
     document.getElementById("taskChecklistInput").value = "";
+
+    revealCheckpoints();
 }
 
 function createMemberSlots(){
