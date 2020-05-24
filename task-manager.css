@@ -390,10 +390,37 @@ textarea::placeholder{
     padding: 10px;
     margin-top: 30px;
     margin-left: 15px;
-    border: 2px dashed black;
+    border: 1px solid gray;
     cursor: pointer;
     transition: height 0.3s ease-in-out;
     overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+#taskDescriptionParaDiv{
+    top: 50px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    overflow: scroll;
+}
+
+#checkList{
+    position: absolute;
+    top: 220px;
+    overflow: auto;
+}
+
+#progressBarDiv{
+    position: absolute;
+    width: 379px;
+    height: 20px;
+    border: 1px solid lightgray;
+    top: 190px;
+}
+
+#taskMembers{
+    position: absolute;
+    top: 10px;
 }
 
 .taskObject:hover #deleteTaskBtn{
@@ -486,7 +513,7 @@ textarea::placeholder{
     top: 10px;
     right: 10px;
     border: 0px;
-    background-color: whitesmoke;
+    background-color: #f0f0f0;
 }
 
 #deleteTaskBtn:hover{
@@ -495,7 +522,7 @@ textarea::placeholder{
 
 #deleteMemberBtn{
     border: 0px;
-    background-color: #f7fafa;
+    background-color: #f0f0f0;
     padding-left: 30px;
     float: right;
     visibility: hidden;
