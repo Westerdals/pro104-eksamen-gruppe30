@@ -93,17 +93,6 @@ function checklistStatus (taskId, indexCheckbox, status, tasklistKey) {
     window.localStorage.setItem(tasklistKey, JSON.stringify(taskList));
 }
 
-function changeCheckpoint(taskId, checkPointIndex, event, localStorageKey) {
-    var taskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
-    for(const task of taskList) {
-        if(task.taskId === taskId) {
-            task.taskCheckListArray[checkPointIndex].checkPointName = event.target.innerText;
-            window.localStorage.setItem(localStorageKey, JSON.stringify(taskList));
-        }
-    }
-}
-
-
 function renderTaskList() {
 
     document.getElementById("pickedIcon").src="icons/default.png";
@@ -128,7 +117,7 @@ function renderTaskList() {
                 finishedCheckpoint++
             }
             if (taskCheckListArray[i].checked == false) {
-                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task'); moveToOngoing(${taskId}); renderTaskList(); " type="checkbox">
+                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task'); move(${taskId}, 'task', 'lists'); renderTaskList(); " type="checkbox">
                 <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i}, event, 'task');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
             }
             taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
@@ -170,6 +159,16 @@ function changeDescription(taskId, event, localStorageKey) {
         }
     }
 
+}
+
+function changeCheckpoint(taskId, checkPointIndex, event, localStorageKey) {
+    var taskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
+    for(const task of taskList) {
+        if(task.taskId === taskId) {
+            task.taskCheckListArray[checkPointIndex].checkPointName = event.target.innerText;
+            window.localStorage.setItem(localStorageKey, JSON.stringify(taskList));
+        }
+    }
 }
 
 function deleteTask(taskId, localStorageKey) {
