@@ -156,7 +156,7 @@ function renderTaskOngoingList() {
 
 
     document.getElementById("pickedIcon").src="icons/default.png";
-    const ongoingList = JSON.parse(window.localStorage.getItem("lists")) || [];
+    const ongoingList = JSON.parse(window.localStorage.getItem("ongoingTask")) || [];
     const ongoingTasks = document.getElementById("ongoingTasks");
 
 
@@ -189,7 +189,7 @@ function renderTaskOngoingList() {
                                     <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
                                     <div id="checkList">${taskChecklistDiv}</div>
                                     <p style="font-size: ${textSizeDescription};" class="taskDescriptionPara" class="adjustText">${taskDescription}</p>
-                                    <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'lists')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
+                                    <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'ongoingTask')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div>${memberName}</div>
                                     </div>
                                     </div>`;
@@ -201,7 +201,7 @@ function renderTaskOngoingList() {
 function renderTaskFinishedList() {
 
     document.getElementById("pickedIcon").src="icons/default.png";
-    const finishedList = JSON.parse(window.localStorage.getItem("fList")) || [];
+    const finishedList = JSON.parse(window.localStorage.getItem("finishedTask")) || [];
     const finishedTasks = document.getElementById("finishedTasks");
 
     finishedTasks.innerHTML = "";
@@ -279,11 +279,11 @@ function renderArchiveList(){
 
 function archiveTask(taskId) {
     const archiveList = JSON.parse(localStorage.getItem("archive")) || [];
-    var fList = JSON.parse(window.localStorage.getItem("fList")) || [];
+    var fList = JSON.parse(window.localStorage.getItem("finishedTask")) || [];
 	for(var i = 0; i < fList.length; i++){
 		if(fList[i].taskId == taskId){
 			archiveList.push(fList[i]);
-            deleteTask(taskId, "fList");
+            deleteTask(taskId, "finishedTask");
 		}
 	}
 	window.localStorage.setItem("archive", JSON.stringify(archiveList));

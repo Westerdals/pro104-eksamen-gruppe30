@@ -5,7 +5,7 @@ Function takes in the targets id's as parameters, puts the information about the
 function moveMembersToTask(memberId, taskId){
   const memberList = JSON.parse(window.localStorage.getItem("member")) || [];
   const taskList = JSON.parse(window.localStorage.getItem("task")) || [];
-  let ongoingList = JSON.parse(window.localStorage.getItem("lists")) || [];
+  let ongoingList = JSON.parse(window.localStorage.getItem("ongoingTask")) || [];
   for(let i = 0; i < memberList.length; i++){
       for(let j = 0; j < taskList.length; j++){
         if(memberList[i].memberId == memberId && taskList[j].taskId == taskId){
@@ -15,9 +15,14 @@ function moveMembersToTask(memberId, taskId){
         }
       }
   }
-  window.localStorage.setItem("lists", JSON.stringify(ongoingList));
+  window.localStorage.setItem("ongoingTask", JSON.stringify(ongoingList));
   renderTaskOngoingList();
 }
+
+/*
+Function takes in three parameters, taskId, localstoragekey from the localstorage you want to retrieve information from,
+and newlocalstoragekey from the localstorage you want to put the information in.
+*/
 
 function move(taskId, localStorageKey, newLocalStorageKey) {
   var lastTaskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
@@ -79,9 +84,7 @@ function allowMoveTasks(ev) {
 
     let taskId = ev.dataTransfer.getData("text/plain");
 
-    //moveFromOngoingToUnstarted(taskId);
-
-    move(taskId, 'lists', 'task');
+    move(taskId, 'ongoingTask', 'task');
   }
   
   function dropOngoing(ev) {
@@ -90,8 +93,7 @@ function allowMoveTasks(ev) {
 
     let taskId = ev.dataTransfer.getData("text/plain");
   
-    //moveToOngoing(taskId);
-    move(taskId, 'task', 'lists');
+    move(taskId, 'task', 'ongoingTask');
   }
 
 
@@ -100,6 +102,6 @@ function allowMoveTasks(ev) {
 
     let taskId = ev.dataTransfer.getData("text/plain");
 
-    move(taskId, 'lists', 'fList');
-    move(taskId, 'task', 'fList');
+    move(taskId, 'ongoingTask', 'finishedTask');
+    move(taskId, 'task', 'finishedTask');
   }
