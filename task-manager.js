@@ -51,10 +51,10 @@ function createTask(event) {
     }
     console.log(taskChecklistUl)
     
-    let taskId = 0;
-    if (taskList.length != 0){
+    let taskId = Math.floor(Math.random() * 100);
+    /*if (taskList.length != 0){
         taskId=taskList[taskList.length-1].taskId + 1;
-    }
+    }*/
 
 
     const task = { taskId, taskName, taskDescription, taskIcon, taskCheckListArray };
@@ -73,10 +73,12 @@ function createMember(event) {
     const memberName = document.querySelector("[name='memberName']").value;
     const memberList = JSON.parse(localStorage.getItem('member')) || [];
 
-    let memberId = 0;
+    let memberId = Math.floor(Math.random() * 100);
+
+    /*let memberId = 0;
     if (memberList.length != 0){
         memberId=memberList[memberList.length-1].memberId + 1;
-    }
+    }*/
 
     const member = {memberId, memberName };
     
