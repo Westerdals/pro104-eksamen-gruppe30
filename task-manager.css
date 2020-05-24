@@ -293,6 +293,10 @@ label{
     font-size: 15px;
 }
 
+/*.taskDescriptionPara{
+    padding-top: 150px;
+}*/
+
 input::placeholder{
     font-family: fantasy;
 }
