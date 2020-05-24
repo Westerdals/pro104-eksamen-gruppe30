@@ -138,7 +138,9 @@ function renderTaskList() {
                                     <div id="checkList">${taskChecklistDiv}</div>
                                     <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'ongoingTask');" class="taskDescriptionPara adjustText">${taskDescription}</p>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'task')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
-                                    <div>${memberName}</div>
+                                    <div>
+                                    ${memberName}
+                                    </div>
                                     </div>
                                     </div>`;
             unstartedTasks.appendChild(taskElement);
@@ -176,6 +178,7 @@ function changeCheckpoint(taskId, checkPointIndex, event, localStorageKey) {
     }
 }
 
+
 function deleteTask(taskId, localStorageKey) {
     var taskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
 	for(var i = 0; i < taskList.length; i++){
@@ -207,7 +210,7 @@ function renderTaskOngoingList() {
             var finishedCheckpoint = 0;
             for(var i = 0; i < taskCheckListArray.length; i++) {
                 if (taskCheckListArray[i].checked == true) {
-                    taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'ongoingTask'); renderTaskOngoingList();" checked>
+                    taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'task'); renderTaskOngoingList();" checked>
                     <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i} ,event, 'ongoingTask');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
                     finishedCheckpoint++
                 }

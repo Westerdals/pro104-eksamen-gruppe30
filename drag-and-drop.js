@@ -10,11 +10,11 @@ function moveMembersToTask(memberId, taskId){
   for(let i = 0; i < memberList.length; i++){
       for(let j = 0; j < taskList.length; j++){
         for(let t = 0; t < taskStorageList.length; t ++){
-        if(memberList[i].memberId == memberId && taskList[j].taskId == taskId && taskStorageList[t].taskId == taskId){
-          taskList.splice(j, 1);
-          let assignedTask = Object.assign({},memberList[i], taskStorageList[t]);
-          taskList.push(assignedTask);
-          deleteTask(taskId, 'taskStorage');
+          if(memberList[i].memberId == memberId && taskList[j].taskId == taskId && taskStorageList[t].taskId == taskId){
+            taskList.splice(j, 1);
+            let assignedTask = Object.assign({},memberList[i], taskStorageList[t]);
+            taskList.push(assignedTask);
+            deleteTask(taskId, 'taskStorage');
           }
         }
       }
