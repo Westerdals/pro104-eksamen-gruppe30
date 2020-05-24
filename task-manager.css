@@ -427,6 +427,10 @@ textarea::placeholder{
     background-color:#f7fafa;
 }
 
+.taskObject:hover #archiveTaskBtn{
+    background-color:#f7fafa;
+}
+
 .taskObject:hover{
     background-color: #f7fafa;
 }
@@ -514,6 +518,18 @@ textarea::placeholder{
     right: 10px;
     border: 0px;
     background-color: #f0f0f0;
+}
+
+#archiveTaskBtn {
+    position: absolute;
+    top: 12px;
+    right: 45px;
+    border: 0px;
+    background-color: #f0f0f0;
+}
+
+#archiveTaskBtn:hover{
+    cursor: pointer;
 }
 
 #deleteTaskBtn:hover{
