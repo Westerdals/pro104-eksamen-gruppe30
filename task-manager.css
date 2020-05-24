@@ -10,8 +10,6 @@
     --foreground: var(--clr-dark);
     --background: var(--clr-light);
   
-    --ff-title: "Playfair Display", serif;
-    --ff-body: "Assistant", sans-serif;
   }
   
   .darkmode {
@@ -52,7 +50,7 @@ body{
     width: 1400px;
     height: 800px;
     border: 0px solid black;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 
 }
 
 button:focus, input:focus, textarea:focus, select:focus{
@@ -122,8 +120,8 @@ header{
 }
 
 #taskSubmitBtn{
-    top: 180px;
-    left: 10px;
+    top: 170px;
+    left: 1px;
     background-color: lightgray;
     color: black;
     height: 30px;
@@ -137,8 +135,8 @@ header{
 }
 
 #memberSubmitBtn{
-    top: 130px;
-    left: 10px;
+    top: 120px;
+    left: 1px;
     background-color: lightgray;
     color: black;
     height: 30px;
@@ -326,7 +324,7 @@ label{
 
 .input{
     display: block;
-    border: 0px;
+    border: 1px;
     background: transparent;
     border-bottom: 1px solid black;
     font-size: 15px;
@@ -598,7 +596,7 @@ textarea::placeholder{
     border-radius: 5px;
     width: 100px;
     height: 100px;
-    margin-left: 1200px;
+    margin-left: 1300px;
     }
 
 .darkModeToggle:hover{
