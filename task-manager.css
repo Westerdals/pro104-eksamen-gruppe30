@@ -24,11 +24,6 @@
     --background: var(--clr-dark);
   }
   
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 
 
@@ -289,11 +284,12 @@ label{
 
 #createChecklistBtn{
     display: none;
-    top: 190px;
-    left: 10px;
+    top: 170px;
+    left:1px;
     font-size: 13px;
     background: lightgray;
     color: black;
+    height: 30px
 }
 
 #createChecklistBtn:hover{
