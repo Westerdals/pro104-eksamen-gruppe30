@@ -1,5 +1,5 @@
 :root {
-    --clr-light: linear-gradient(120deg, rgb(169,169,169),rgb(220,220,220) ,rgb(169,169,169));
+    --clr-light: linear-gradient(120deg, rgb(245,245,245),rgb(245,245,245) ,rgb(245,245,245));
     --clr-dark: linear-gradient(120deg, rgb(0, 0, 0),  rgb(0, 0, 0),);
     --clr-primary: #dbffa2;
     --clr-secondary: #c3fcf2;
@@ -502,17 +502,18 @@ textarea::placeholder{
 
 
 .darkModeToggle {
-    position: absolute;
+    position: relative;
     z-index: 100;
-    top: 1em;
+     bottom: 40px;
     right: 1em;
-    color: var(--foreground);
+    color: black;
     border: 2px solid currentColor;
     padding: 4px;
-    background:transparent;
+   background-color: lightgrey;
     cursor: pointer;
     border-radius: 5px;
-    width: 30px;
-    height: 30px;
+    width: 80px;
+    height: 40px;
+    margin-left: 1200px;
     
   }
