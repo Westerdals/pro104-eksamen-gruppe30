@@ -33,6 +33,7 @@
 }
 
 
+
 @media screen and (max-width: 1399px) {
 	#mainContainer{
         width: 100%;
@@ -577,6 +578,11 @@ textarea::placeholder{
     overflow-y: scroll;
     background-color: lightgrey;
     display: inline-block;
+}
+
+#extendTaskBtn{
+    position: relative;
+    float: left;
 }
 
 .darkModeToggle {
