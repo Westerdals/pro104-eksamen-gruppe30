@@ -13,12 +13,6 @@
     --ff-title: "Playfair Display", serif;
     --ff-body: "Assistant", sans-serif;
   }
-
-
-
-
-
-
   
   .darkmode {
     --clr-light: linear-gradient(120deg, rgb(0,0,0), rgb(0,0,0));
@@ -39,14 +33,16 @@
 }
 
 
+@media screen and (max-width: 1399px) {
+	#mainContainer{
+        width: 100%;
+    }
+}
 
 body{
     margin-top: 0;
-    
     background: var(--background);
     color: var(--foreground);
-    font-family: var(--ff-body);
-    
 }
 
 #mainContainer{
@@ -83,7 +79,7 @@ header{
     height: 30px;
     font-size: 15px;
     cursor: pointer;
-    color: gray;
+    color: black;
 }
 
 .additionBtn{
@@ -94,7 +90,7 @@ header{
     font-size: 15px;
     text-align: left;
     left: 290px;
-    color: gray;
+    color: black;
     border: 0px;
 }
 
@@ -106,9 +102,13 @@ header{
     top: 70px;
 }
 
+#addDeadlineRevealBtn{
+    top: 105px;
+}
+
 .button{
     position: absolute;
-    border: 1px solid gray;
+    border: 1px solid black;
     top: 90px;
     height: 20px;
     font-size: 10px;
@@ -124,7 +124,7 @@ header{
     top: 180px;
     left: 10px;
     background-color: lightgray;
-    color: gray;
+    color: black;
     height: 30px;
     width: 120px;
     font-size: 15px;
@@ -139,7 +139,7 @@ header{
     top: 130px;
     left: 10px;
     background-color: lightgray;
-    color: gray;
+    color: black;
     height: 30px;
     width: 55px;
     font-size: 15px;
@@ -193,7 +193,7 @@ header{
     opacity: 0;
     padding: 10px;
     background-color: lightgray;
-    color: gray;
+    color: black;
     font-size: 17px;
 }
 
@@ -214,8 +214,8 @@ header{
     resize: none;
     border: 0px;
     font-size: 15px;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     
 }
 
@@ -225,9 +225,6 @@ header{
     left: 15px;
 }
 
-#taskDescriptionPara{
-    padding-top: 150px;
-}
 
 .headerSection{
     position: relative;
@@ -255,7 +252,7 @@ header{
     height: 150px;
     padding: 10px;
     background-color: lightgray;
-    color: gray;
+    color: black;
     font-size: 18px;
     font-weight: 700;
 }
@@ -271,7 +268,7 @@ label{
 }
 
 #taskNameForm{
-    color: rgb(131, 124, 124);
+    color:black;
     float: left;
     height: 200px;
     width: 263px;
@@ -285,26 +282,57 @@ label{
 }
 
 #taskChecklistInput{
+    position: absolute;
+    z-index: 2;
     display: none;
+    top: 40px;
 }
 
 #createChecklistBtn{
     display: none;
-    top: 60px;
+    top: 190px;
     left: 10px;
     font-size: 13px;
-    font-weight: 700;
-    border: 0px;
     background: lightgray;
-    color: gray;
+    color: black;
+}
+
+#createChecklistBtn:hover{
+    color: orange;
+    border-color: orange;
+}
+
+#taskChecklist{
+    position: absolute;
+    padding-top: 3px;
+    top: -20px;
+    left: 280px;
+    height: 220px;
+    width: 0px;
+    opacity: 0;
+    background-color: whitesmoke;
+    transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    overflow-y: auto;
+}
+
+.checkListLi{
+    padding: 5px;
+    margin-left: -40px;
+    left: 100px;
+    border-bottom: 2.5px solid lightgray;
+    font-size: 15px;
 }
 
 .input{
     display: block;
     border: 0px;
     background: transparent;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid black;
     font-size: 15px;
+}
+
+.taskDescriptionPara{
+    padding-top: 50px;
 }
 
 input::placeholder{
@@ -333,7 +361,7 @@ textarea::placeholder{
     width: 1400px;
     opacity: 0;
     transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
-    border-top: 2px solid gray;
+    border-top: 2px solid black;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -358,7 +386,7 @@ textarea::placeholder{
     width: 1400px;
     height: 60px;
     top: 40px;
-    border-top: 2px solid gray;
+    border-top: 2px solid black;
 }
 
 .tasksHeading{
@@ -368,12 +396,12 @@ textarea::placeholder{
 }
 
 #unstartedHeading{
-    border-right: 1px solid gray;
+    border-right: 1px solid black;
 }
 
 #ongoingHeading{
     left: 450px;;
-    border-right: 1px solid gray;
+    border-right: 1px solid black;
 }
 
 #finishedHeading{
@@ -381,12 +409,12 @@ textarea::placeholder{
 }
 
 #unstartedTasks{
-    border-right: 1px solid gray;
+    border-right: 1px solid black;
 }
 
 #ongoingTasks{
     left: 450px;
-    border-right: 1px solid gray;
+    border-right: 1px solid black;
 }
 
 #finishedTasks{
@@ -400,10 +428,37 @@ textarea::placeholder{
     padding: 10px;
     margin-top: 30px;
     margin-left: 15px;
-    border: 2px dashed gray;
+    border: 1px solid gray;
     cursor: pointer;
     transition: height 0.3s ease-in-out;
     overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+#taskDescriptionParaDiv{
+    top: 50px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    overflow: scroll;
+}
+
+#checkList{
+    position: absolute;
+    top: 220px;
+    overflow: auto;
+}
+
+#progressBarDiv{
+    position: absolute;
+    width: 379px;
+    height: 20px;
+    border: 1px solid lightgray;
+    top: 190px;
+}
+
+#taskMembers{
+    position: absolute;
+    top: 10px;
 }
 
 .taskObject:hover #deleteTaskBtn{
@@ -419,12 +474,31 @@ textarea::placeholder{
 }
 
 .memberObject{
-    width: 100px;
+    width: 105px;
     height: 120px;
     margin-top: 5px;
     cursor: pointer;
     text-align: center;
-    overflow: auto;
+    overflow: hidden;
+}
+
+#memberNameHeading{
+    margin-top: 60px;
+    left: 20px;
+    width: 105px;
+    height: 40px;
+    overflow: scroll;
+    font-size: 15px;
+}
+
+.memberObject:hover #deleteMemberBtn{
+    visibility: visible;
+}
+
+#memberImg{
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 8px;
 }
 
 .buttonIcon{
@@ -467,9 +541,9 @@ textarea::placeholder{
 }
 
 .memberSlot{
-    width: 100px;
+    width: 105px;
     height: 120px;
-    border: 1px dashed gray;
+    border: 1px dashed black;
 }
 
 #deleteTaskBtn {
@@ -477,7 +551,7 @@ textarea::placeholder{
     top: 10px;
     right: 10px;
     border: 0px;
-    background-color: whitesmoke;
+    background-color: #f0f0f0;
 }
 
 #deleteTaskBtn:hover{
@@ -485,9 +559,15 @@ textarea::placeholder{
 }
 
 #deleteMemberBtn{
-    position: absolute;
     border: 0px;
-    background-color: #f7fafa;
+    background-color: #f0f0f0;
+    padding-left: 30px;
+    float: right;
+    visibility: hidden;
+}
+
+#deleteMemberBtn:hover{
+    cursor: pointer;
 }
 
 .droppedMember{
@@ -498,8 +578,6 @@ textarea::placeholder{
     background-color: lightgrey;
     display: inline-block;
 }
-
-
 
 .darkModeToggle {
     position: relative;
@@ -512,8 +590,13 @@ textarea::placeholder{
    background-color: lightgrey;
     cursor: pointer;
     border-radius: 5px;
-    width: 80px;
-    height: 40px;
+    width: 100px;
+    height: 100px;
     margin-left: 1200px;
-    
-  }
+    }
+
+.darkModeToggle:hover{
+    color: white;
+    border-color: white;
+    background-color: orange;
+}
