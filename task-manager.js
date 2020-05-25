@@ -116,20 +116,8 @@ function renderTaskList() {
         var taskProgress = 0
         var finishedCheckpoint = 0;
 
-<<<<<<< HEAD
         if(memberName == undefined){
 
-
-        for(var i = 0; i < taskCheckListArray.length; i++) {
-            if (taskCheckListArray[i].checked == true) {
-                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'task'); renderTaskList();" checked>
-                <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i} ,event, 'task');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
-                finishedCheckpoint++
-            }
-            if (taskCheckListArray[i].checked == false) {
-                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task'); renderTaskList(); " type="checkbox">
-                <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i}, event, 'task');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
-=======
         if(taskCheckListArray.length > 0) {
             taskChecklistDiv += `<div id="checkList">`;
             for(var i = 0; i < taskCheckListArray.length; i++) {
@@ -142,7 +130,6 @@ function renderTaskList() {
                     taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task'); renderTaskList()"; type="checkbox">
                     <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i}, event, 'task');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
                 }
->>>>>>> 4d11ac1dd27f3faff2bfba89cd9f9895c1266446
             }
             taskChecklistDiv += `</div>`;
             taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
@@ -161,7 +148,6 @@ function renderTaskList() {
                                     <div></div>
                                     </div>
                                     </div>`;
-<<<<<<< HEAD
             unstartedTasks.appendChild(taskElement);
         }else{
             for(var i = 0; i < taskCheckListArray.length; i++) {
@@ -194,9 +180,6 @@ function renderTaskList() {
                 unstartedTasks.appendChild(taskElement);
 
         }
-=======
-        unstartedTasks.appendChild(taskElement);
->>>>>>> 4d11ac1dd27f3faff2bfba89cd9f9895c1266446
     }
 }
 
