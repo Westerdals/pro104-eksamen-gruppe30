@@ -1,6 +1,6 @@
 :root {
     --clr-light: linear-gradient(120deg, rgb(245,245,245),rgb(245,245,245) ,rgb(245,245,245));
-    --clr-dark: linear-gradient(120deg, rgb(0, 0, 0),  rgb(0, 0, 0),);
+    --clr-dark: linear-gradient(120deg, rgb(220, 220, 220),  rgb(220, 220, 220));
     --clr-primary: #dbffa2;
     --clr-secondary: #c3fcf2;
     --clr-accent: #ff7750;
@@ -13,8 +13,8 @@
   }
   
   .darkmode {
-    --clr-light: linear-gradient(120deg, rgb(0,0,0), rgb(0,0,0));
-    --clr-dark: linear-gradient(120deg, rgb(0,0,0),  rgb(0,0,0));
+    --clr-light: linear-gradient(120deg, rgb(220, 220, 220), rgb(220, 220, 220));
+    --clr-dark: linear-gradient(120deg, rgb(220, 220, 220),  rgb(220, 220, 220));
     --clr-primary: #202302;
     --clr-secondary: #00100d;
     --clr-accent: #ff7750;
@@ -86,6 +86,7 @@ header{
     left: 290px;
     color: black;
     border: 0px;
+    color: var(--foreground);
 }
 
 #addChecklistRevealBtn{
@@ -115,13 +116,14 @@ header{
 }
 
 #taskSubmitBtn{
-    top: 190px;
-    left: 1px;
+    top: 180px;
+    left: 10px;
     background-color: lightgray;
     color: black;
     height: 30px;
     width: 120px;
     font-size: 15px;
+    color: var(--foreground);
 }
 
 #taskSubmitBtn:hover{
@@ -130,13 +132,14 @@ header{
 }
 
 #memberSubmitBtn{
-    top: 140px;
-    left: 1px;
+    top: 130px;
+    left: 10px;
     background-color: lightgray;
     color: black;
     height: 30px;
     width: 55px;
     font-size: 15px;
+    color: var(--foreground);
 }
 
 #memberSubmitBtn:hover{
@@ -146,6 +149,7 @@ header{
 
 #addTaskRevealBtn{
     background-color: lightgray;
+    color: var(--foreground);
 }
 
 #addTaskRevealBtn:hover{
@@ -155,6 +159,7 @@ header{
 #addMemberRevealBtn{
     left: 110px;
     background-color: lightgray;
+    color: var(--foreground);
 }
 
 #addMemberRevealBtn:hover{
@@ -164,6 +169,7 @@ header{
 #revealMembersBtn{
     background-color: lightgray;
     left: 290px;
+    color: var(--foreground);
 }
 
 #revealMembersBtn:hover{
@@ -249,6 +255,7 @@ header{
     color: black;
     font-size: 18px;
     font-weight: 700;
+    color: var(--foreground);
 }
 
 label{
@@ -269,6 +276,7 @@ label{
     padding: 10px;
     margin-right: 60px;
     background-color: lightgray;
+    color: var(--foreground);
 }
 
 #taskChecklistForm{
@@ -284,12 +292,12 @@ label{
 
 #createChecklistBtn{
     display: none;
-    top: 190px;
-    left:1px;
+    top: 180px;
+    left:10px;
     font-size: 13px;
     background: lightgray;
     color: black;
-    height: 30px
+    height: 30px;
 }
 
 #createChecklistBtn:hover{
