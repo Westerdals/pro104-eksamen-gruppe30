@@ -133,7 +133,7 @@ function renderTaskList() {
                                     draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondragleave="dragLeave(event)" ondrop="dropNames(event)">
                                     <img id="taskIcon" src="${taskIcon}">
                                     <div id="taskHeading"><h4 contentEditable="true" oninput="changeName(${taskId}, event, 'task');" style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
-                                    <div id="progressBarDiv"style="width: 379px; height: 20px; border: 1px solid lightgray;">
+                                    <div id="progressBarDiv">
                                     <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
                                     <div id="checkList">${taskChecklistDiv}</div>
                                     <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'ongoingTask');" class="taskDescriptionPara adjustText">${taskDescription}</p>
@@ -190,6 +190,7 @@ function deleteTask(taskId, localStorageKey) {
     renderTaskList();
     renderTaskOngoingList();
     renderArchiveList();
+    renderTaskFinishedList();
 }
 
 function renderTaskOngoingList() {

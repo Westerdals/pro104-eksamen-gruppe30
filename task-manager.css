@@ -294,7 +294,18 @@ label{
 }
 
 .taskDescriptionPara{
-    padding-top: 50px;
+    position: absolute;
+    padding-top: 5px;
+    top: 80px;
+    height: 75px;
+    width: 380px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    overflow: none;
+}
+
+#taskMembers{
+    float: left;
 }
 
 input::placeholder{
@@ -337,7 +348,7 @@ textarea::placeholder{
     text-align: center;
     top: 89px;
     height: 630px;
-    width: 450px;
+    width: 466.6px;
     display: grid-inline;
     grid-row-gap: 20px;
     overflow-y: auto;
@@ -352,7 +363,7 @@ textarea::placeholder{
 }
 
 .tasksHeading{
-    width: 450px;
+    width: 466.6px;
     position: absolute;
     text-align: center;
 }
@@ -362,12 +373,12 @@ textarea::placeholder{
 }
 
 #ongoingHeading{
-    left: 450px;;
+    left: 466.6px;;
     border-right: 1px solid black;
 }
 
 #finishedHeading{
-    left: 900px;
+    left: 933.2px;
 }
 
 #unstartedTasks{
@@ -375,12 +386,20 @@ textarea::placeholder{
 }
 
 #ongoingTasks{
-    left: 450px;
+    left: 466.6px;
     border-right: 1px solid black;
 }
 
 #finishedTasks{
-    left: 900px;
+    left: 933.2px;
+}
+
+#ongoingTasks > div{
+    padding-left: 17px;
+}
+
+#finishedTasks > div{
+    padding-left: 17px;
 }
 
 .taskObject{
@@ -397,13 +416,6 @@ textarea::placeholder{
     background-color: #f0f0f0;
 }
 
-#taskDescriptionParaDiv{
-    top: 50px;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
-    overflow: scroll;
-}
-
 #checkList{
     position: absolute;
     top: 220px;
@@ -416,6 +428,11 @@ textarea::placeholder{
     height: 20px;
     border: 1px solid lightgray;
     top: 190px;
+    transition: width 0.3s ease-in-out;
+}
+
+#progressBar{
+    transition: width 0.3s ease-in-out;
 }
 
 #taskMembers{
