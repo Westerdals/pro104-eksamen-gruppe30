@@ -104,7 +104,7 @@ function renderTaskList() {
         const taskElement = document.createElement("div");
 
         const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput} = task;
-        var expandTaskBtnDiv = "";
+        //var expandTaskBtnDiv = "";
         var taskChecklistDiv = "";
         var taskProgressBarDiv = "";
         var taskMemberDiv = "";
