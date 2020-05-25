@@ -52,7 +52,6 @@ function renderTaskList() {
                                     </div>`;
     unstartedTasks.appendChild(taskElement);
 
-        
     }
 }
 
