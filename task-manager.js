@@ -102,12 +102,9 @@ function renderTaskList() {
 
     for (const task of taskList) {
         const taskElement = document.createElement("div");
-<<<<<<< HEAD
+
         const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput} = task;
-=======
-        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers} = task;
         var expandTaskBtnDiv = "";
->>>>>>> 1db50f9afb2487abf68909cf16ca859d136affeb
         var taskChecklistDiv = "";
         var taskProgressBarDiv = "";
         var taskMemberDiv = "";
@@ -208,11 +205,8 @@ function renderTaskOngoingList() {
 
         for(const task of ongoingList) {
             const taskElement = document.createElement("div");
-<<<<<<< HEAD
+
             const { taskId, taskName, taskDescription, taskIcon, memberName, memberId, taskCheckListArray, taskDeadlineInput } = task;
-=======
-            const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers } = task;
->>>>>>> 1db50f9afb2487abf68909cf16ca859d136affeb
             var taskChecklistDiv = "";
             var taskProgressBarDiv = "";
             var taskProgress = 0
