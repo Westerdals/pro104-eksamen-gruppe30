@@ -1,0 +1,78 @@
+/*
+For mobile device. Looks best on Iphone X.
+*/
+
+@media only screen and (max-width: 400px) {
+    header{
+        width: 600px;
+        position: sticky;
+    }
+    #mainContainer{
+        width: 600px;
+    }
+
+    #revealSettingsBtn{
+        left: 10px;
+    }
+    #revealSettingsBtn{
+        top: 50px;
+        left: 43.5%;
+    }
+    #revealArchiveBtn{
+        top: 20px;
+        left: 38%;
+    }
+    #revealMembersBtn{
+        top: 116%;
+        width: 61.8%;
+        left: 0%;
+    }
+    #addTaskRevealBtn{
+        top: 64%;
+        width: 61.8%;
+    }
+    #addMemberRevealBtn{
+        top: 90%;
+        left: 0%;
+        width: 61.8%;
+    }
+    #tasksHeadings{
+        top: 14%;
+    }
+    .headerSection{
+        top: 195px;
+    }
+    #taskNameForm{
+        width: 14%;
+        height: 225px;
+    }
+    .input{
+        width: 70%;
+    }
+    .additionBtn{
+        left: 16%;
+        width: 9.5%;
+    }
+    .additionForm{
+        left: 0%;
+        width: 12%;
+        top: -10px;
+    }
+    #taskDescription{
+        width: 90%;
+    }
+    #counting{
+        top: 76%;
+    }
+    #taskSubmitBtn{
+        top: 210px;
+    }
+    .taskObject{
+        margin-top: 15%;
+    }
+    #archive{
+        top: 195px;
+    }
+}
+
+

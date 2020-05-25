@@ -306,6 +306,8 @@ label{
 .taskDescriptionPara{
     position: absolute;
     padding-top: 5px;
+    top: 80px;
+    cursor: pointer;
     top: 70px;
     height: 80px;
     width: 380px;
@@ -313,6 +315,7 @@ label{
     border-bottom: 1px solid gray;
     overflow: scroll;
 }
+
 
 #taskMembers{
     float: left;
@@ -420,6 +423,14 @@ textarea::placeholder{
     padding-left: 17px;
 }
 
+.grabbable{
+    cursor: grab;
+}
+
+.grabbable:active{
+    cursor: grabbing;
+}
+
 .taskObject{
     position: relative;
     width: 380px;
@@ -428,7 +439,7 @@ textarea::placeholder{
     margin-top: 30px;
     margin-left: 15px;
     border: 1px solid gray;
-    cursor: pointer;
+    cursor: grab;
     transition: height 0.3s ease-in-out;
     -webkit-transition: height 0.3s ease-in-out;
     -moz-transition: height 0.3s ease-in-out;
@@ -436,6 +447,10 @@ textarea::placeholder{
     -ms-transition: height 0.3s ease-in-out;
     overflow: hidden;
     background-color: #f0f0f0;
+}
+
+.taskObject:active{
+    cursor: grabbing;
 }
 
 #checkList{
@@ -486,9 +501,13 @@ textarea::placeholder{
     width: 105px;
     height: 120px;
     margin-top: 5px;
-    cursor: pointer;
+    cursor: grab;
     text-align: center;
     overflow: hidden;
+}
+
+.memberObject:active{
+    cursor: grabbing;
 }
 
 #memberNameHeading{
@@ -616,112 +635,7 @@ textarea::placeholder{
     float: left;
 }
 
-/*@media only screen and (max-width: 400px) {
-    header{
-        width: 600px;
-    }
-    #mainContainer{
-        width: 1400px;
-    }
-
-    #revealSettingsBtn{
-        left: 10px;
-    }
-    #revealSettingsBtn{
-        top: 50px;
-        left: 43.5%;
-    }
-    #revealArchiveBtn{
-        top: 20px;
-        left: 38%;
-    }
-    #revealMembersBtn{
-        top: 94%;
-        width: 28.7%;
-        left: 0%;
-    }
-    #addTaskRevealBtn{
-        top: 52%;
-    }
-    #addMemberRevealBtn{
-        top: 73%;
-        left: 0%;
-    }
-    #tasksHeadings{
-        top: 10%;
-    }
-    .headerSection{
-        top: 165px;
-    }
-    header{
-
-    }
-
-}*/
-
-@media only screen and (max-width: 400px) {
-    header{
-        width: 600px;
-    }
-    #mainContainer{
-        width: 1400px;
-    }
-
-    #revealSettingsBtn{
-        left: 10px;
-    }
-    #revealSettingsBtn{
-        top: 50px;
-        left: 43.5%;
-    }
-    #revealArchiveBtn{
-        top: 20px;
-        left: 38%;
-    }
-    #revealMembersBtn{
-        top: 116%;
-        width: 61.8%;
-        left: 0%;
-    }
-    #addTaskRevealBtn{
-        top: 64%;
-        width: 61.8%;
-    }
-    #addMemberRevealBtn{
-        top: 90%;
-        left: 0%;
-        width: 61.8%;
-    }
-    #tasksHeadings{
-        top: 15%;
-    }
-    .headerSection{
-        top: 195px;
-    }
-    #taskNameForm{
-        width: 14%;
-        height: 228px;
-    }
-    .input{
-        width: 70%;
-    }
-    .additionBtn{
-        left: 16%;
-        width: 9.5%;
-    }
-    .additionForm{
-        left: 0%;
-        width: 12%;
-        top: -10px;
-    }
-    #taskDescription{
-        width: 90%;
-    }
-    #counting{
-        top: 76%;
-    }
-    #taskSubmitBtn{
-        top: 215px;
-    }
-
+#displayMemberOnTask{
+    left: 0px;
 }
+
