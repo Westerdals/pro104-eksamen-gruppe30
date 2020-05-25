@@ -5,6 +5,20 @@
     <title>Task Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+    <!-- jQuery starts here -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#taskDeadlineInput" ).datepicker({
+                dateFormat: "dd-mm-yy"
+            });
+        } );
+    </script>
+    <!-- jQuery ends here -->
     <link rel="stylesheet" type="text/css" href="task-manager.css">
     <link rel="stylesheet" type="text/css" href="settings.css">
     <link rel="stylesheet" type="text/css" href="mediaqueries.css">
@@ -47,6 +61,8 @@
                             <button class="additionBtn" type="button" id="addIconRevealBtn"
                                 onmouseover="revealAddIconForm()">+
                                 ICON</button>
+                            <button class="additionBtn" type="button" id="addDeadlineRevealBtn"
+                                onmouseover="revealAddDeadlineForm()">+ DEADLINE</button>
                         </div>
 
                         <div class="additionForm" id="taskDescriptionForm">
@@ -72,6 +88,12 @@
                             <div id="activeIcon">
                                 <img name="taskIcon" id="pickedIcon" src="icons/default.png" alt="chosen-icon">
                             </div>
+                        </div>
+                        
+                        <div class="additionForm" id="taskDeadlineForm">
+                            <label id="taskDeadlineLabel" for="taskDeadlineInput">SET DUE DATE</label>
+                            <input class="input" type="text" id="taskDeadlineInput" name="taskDeadlineInput"
+                                placeholder="Click here...">
                         </div>
 
                         <input id="taskSubmitBtn" class="button" type="submit" value="GET IT DONE!">
