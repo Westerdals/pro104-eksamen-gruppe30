@@ -1,5 +1,5 @@
 #adjustTextBiggerBtn {
-    background-color: whitesmoke;
+ background-color: whitesmoke;
     position: absolute;
     cursor: pointer;
     border: 1px solid gray;
@@ -10,7 +10,7 @@
     font-size: 14px;
     z-index: 2;
     background-color: lightgray;
-    color: gray;
+    color: black;
 }
 
 #adjustTextBiggerBtn:hover{
@@ -30,7 +30,7 @@
     font-size: 14px;
     z-index: 2;
     background-color: lightgray;
-    color: gray;
+    color: black;
 }
 
 #adjustTextStandardBtn:hover{
@@ -50,7 +50,7 @@
 
 #adjustTextSection {
     position: relative;
-    color: rgb(131, 124, 124);
+    color: black;
     float: left;
     height: 100px;
     width: 263px;
