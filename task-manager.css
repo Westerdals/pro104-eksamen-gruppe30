@@ -306,14 +306,10 @@ label{
 .taskDescriptionPara{
     position: absolute;
     padding-top: 5px;
-<<<<<<< HEAD
     top: 80px;
     cursor: pointer;
-    height: 75px;
-=======
     top: 70px;
     height: 80px;
->>>>>>> 588370f7866de3a478499c155722bb9d00a05bea
     width: 380px;
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;

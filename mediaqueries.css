@@ -5,9 +5,10 @@ For mobile device. Looks best on Iphone X.
 @media only screen and (max-width: 400px) {
     header{
         width: 600px;
+        position: sticky;
     }
     #mainContainer{
-        width: 1400px;
+        width: 600px;
     }
 
     #revealSettingsBtn{
@@ -68,6 +69,9 @@ For mobile device. Looks best on Iphone X.
     }
     .taskObject{
         margin-top: 15%;
+    }
+    #archive{
+        top: 195px;
     }
 }
 
