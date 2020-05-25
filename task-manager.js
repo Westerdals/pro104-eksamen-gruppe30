@@ -112,38 +112,44 @@ function renderTaskList() {
         const taskElement = document.createElement("div");
         const { taskId, taskName, taskDescription, taskIcon, memberName, taskCheckListArray } = task;
         var taskChecklistDiv = "";
+        var taskProgressBarDiv = "";
         var taskProgress = 0
         var finishedCheckpoint = 0;
 
-
-        for(var i = 0; i < taskCheckListArray.length; i++) {
-            if (taskCheckListArray[i].checked == true) {
-                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'task'); renderTaskList();" checked>
-                <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i} ,event, 'task');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
-                finishedCheckpoint++
+        if(taskCheckListArray.length > 0) {
+            taskChecklistDiv += `<div id="checkList">`;
+            for(var i = 0; i < taskCheckListArray.length; i++) {
+                if (taskCheckListArray[i].checked == true) {
+                    taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'task'); renderTaskList();" checked>
+                    <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i} ,event, 'task');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+                    finishedCheckpoint++
+                }
+                if (taskCheckListArray[i].checked == false) {
+                    taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task'); renderTaskList()"; type="checkbox">
+                    <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i}, event, 'task');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+                }
             }
-            if (taskCheckListArray[i].checked == false) {
-                taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task'); move(${taskId}, 'task', 'ongoingTask'); renderTaskList(); " type="checkbox">
-                <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i}, event, 'task');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
-            }
+            taskChecklistDiv += `</div>`;
             taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
-        }
+            taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
 
+        }            
+    
         taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                     draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondragleave="dragLeave(event)" ondrop="dropNames(event)">
                                     <img id="taskIcon" src="${taskIcon}">
-                                    <div id="taskHeading"><h4 contentEditable="true" oninput="changeName(${taskId}, event, 'task');" style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
-                                    <div id="progressBarDiv">
-                                    <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
-                                    <div id="checkList">${taskChecklistDiv}</div>
-                                    <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'ongoingTask');" class="taskDescriptionPara adjustText">${taskDescription}</p>
+                                    <div id="taskHeading"><h4 contentEditable="true" oninput="changeName(${taskId}, event, 'task');" style="font-size: ${textSizeHeader}" class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
+                                    ${taskChecklistDiv}
+                                    ${taskProgressBarDiv}
+                                    <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'task');" class="taskDescriptionPara adjustText">${taskDescription}</p>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'task')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div id="taskMembers">${memberName}</div>
                                     </div>
                                     </div>`;
-            unstartedTasks.appendChild(taskElement);
+        unstartedTasks.appendChild(taskElement);
     }
 }
+
 
 function changeName(taskId, event, localStorageKey) {
     var taskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
@@ -204,28 +210,33 @@ function renderTaskOngoingList() {
             const taskElement = document.createElement("div");
             const { taskId, taskName, taskDescription, taskIcon, memberName, memberId, taskCheckListArray } = task;
             var taskChecklistDiv = "";
+            var taskProgressBarDiv = "";
             var taskProgress = 0
             var finishedCheckpoint = 0;
-            for(var i = 0; i < taskCheckListArray.length; i++) {
-                if (taskCheckListArray[i].checked == true) {
-                    taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'ongoingTask'); renderTaskOngoingList();" checked>
-                    <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i} ,event, 'ongoingTask');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
-                    finishedCheckpoint++
+            if(taskCheckListArray.length > 0) {
+                taskChecklistDiv += `<div id="checkList">`;
+                for(var i = 0; i < taskCheckListArray.length; i++) {
+                    if (taskCheckListArray[i].checked == true) {
+                        taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'ongoingTask'); renderTaskOngoingList();" checked>
+                        <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i} ,event, 'ongoingTask');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+                        finishedCheckpoint++
+                    }
+                    if (taskCheckListArray[i].checked == false) {
+                        taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'ongoingTask'); renderTaskOngoingList()"; type="checkbox">
+                        <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i}, event, 'ongoingTask');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+                    }
                 }
-                if (taskCheckListArray[i].checked == false) {
-                    taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'ongoingTask'); renderTaskOngoingList(); " type="checkbox">
-                    <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i} ,event, 'ongoingTask');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
-                }
+                taskChecklistDiv += `</div>`;
                 taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
+                taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
             }
 
             taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                     draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondragleave="dragLeave(event)">
                                     <img id="taskIcon" src="${taskIcon}">
                                     <div id="taskHeading"><h4 contentEditable="true" oninput="changeName(${taskId}, event, 'ongoingTask');" style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
-                                    <div id="progressBarDiv"style="width: 379px; height: 20px; border: 1px solid lightgray;">
-                                    <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
-                                    <div id="checkList">${taskChecklistDiv}</div>
+                                    ${taskChecklistDiv}
+                                    ${taskProgressBarDiv}
                                     <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'ongoingTask');" class="taskDescriptionPara adjustText">${taskDescription}</p>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'ongoingTask')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div>${memberName}</div>
@@ -248,8 +259,11 @@ function renderTaskFinishedList() {
         const taskElement = document.createElement("div");
         const { taskId, taskName, taskDescription, taskIcon, memberName, memberId, taskCheckListArray } = task;
         var taskChecklistDiv = "";
-            var taskProgress = 0
-            var finishedCheckpoint = 0;
+        var taskProgressBarDiv = "";
+        var taskProgress = 0
+        var finishedCheckpoint = 0;
+        if(taskCheckListArray.length > 0) {
+            taskChecklistDiv += `<div id="checkList">`;
             for(var i = 0; i < taskCheckListArray.length; i++) {
                 if (taskCheckListArray[i].checked == true) {
                     taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'finishedTask'); renderTaskFinishedList();" checked>
@@ -257,19 +271,21 @@ function renderTaskFinishedList() {
                     finishedCheckpoint++
                 }
                 if (taskCheckListArray[i].checked == false) {
-                    taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'finishedTask'); renderTaskFinishedList(); " type="checkbox">
-                    <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i} ,event, 'finishedTask');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+                    taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'finishedTask'); renderTaskFinishedList()"; type="checkbox">
+                    <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i}, event, 'finishedTask');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
                 }
-                taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
             }
+            taskChecklistDiv += `</div>`;
+            taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
+            taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
+        }
 
         taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                  draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                 <img id="taskIcon" src="${taskIcon}">
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; contentEditable="true" oninput="changeName(${taskId}, event, 'finishedTask');" class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
-                                <div id="progressBarDiv">
-                                <div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>
-                                <div id="checkList">${taskChecklistDiv}</div>
+                                ${taskChecklistDiv}
+                                ${taskProgressBarDiv}
                                 <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'finishedTask');" class="taskDescriptionPara adjustText">${taskDescription}</p>
                                 <button id="archiveTaskBtn" type="button" onclick="archiveTask(${taskId})" onmouseover="this.firstChild.src = 'images/filled-archive.png'" onmouseout="this.firstChild.src = 'images/archive.png'"><img src="images/archive.png" id="trashcan" style="height:28px;" alt="delete task"></button>
                                 <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'finishedTask')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
