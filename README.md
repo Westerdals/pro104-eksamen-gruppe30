@@ -5,7 +5,7 @@ Eksamen gruppe 30:
 * Pål Anders Byenstuen
 * Furkan Kara
 * Kulwinder Singh Toor
-* Anna Sitarz
+* Anna K. Sitarz
 * Petter Wibstad
 * Markus Kristiansen
 
