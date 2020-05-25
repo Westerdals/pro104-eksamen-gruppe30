@@ -1,6 +1,7 @@
+/*Darkmode kode for farge og variabler*/
 :root {
     --clr-light: linear-gradient(120deg, rgb(245,245,245),rgb(245,245,245) ,rgb(245,245,245));
-    --clr-dark: linear-gradient(120deg, rgb(220, 220, 220),  rgb(220, 220, 220));
+    --clr-dark: linear-gradient(120deg, rgb(220, 220, 220),  rgb(220, 220, 220), rgb(220, 220, 220));
     --clr-primary: #dbffa2;
     --clr-secondary: #c3fcf2;
     --clr-accent: #ff7750;
@@ -14,16 +15,18 @@
   
   .darkmode {
     --clr-light: linear-gradient(120deg, rgb(220, 220, 220), rgb(220, 220, 220));
-    --clr-dark: linear-gradient(120deg, rgb(220, 220, 220),  rgb(220, 220, 220));
+    --clr-dark: linear-gradient(120deg, rgb(105,105,105),  rgb(105,105,105));
     --clr-primary: #202302;
     --clr-secondary: #00100d;
     --clr-accent: #ff7750;
-    color: white;
+    color: #FFFAF0;
   
     --foreground: var(--clr-light);
     --background: var(--clr-dark);
   }
-  
+/*Darkmode*/  
+
+
 
 
 
@@ -35,8 +38,10 @@
 
 body{
     margin-top: 0;
+    /*Darkmode*/
     background: var(--background);
     color: var(--foreground);
+    /*Darkmode*/
 }
 
 #mainContainer{
@@ -86,7 +91,7 @@ header{
     left: 290px;
     color: black;
     border: 0px;
-    color: var(--foreground);
+   
 }
 
 #addChecklistRevealBtn{
@@ -123,7 +128,6 @@ header{
     height: 30px;
     width: 120px;
     font-size: 15px;
-    color: var(--foreground);
 }
 
 #taskSubmitBtn:hover{
@@ -139,7 +143,7 @@ header{
     height: 30px;
     width: 55px;
     font-size: 15px;
-    color: var(--foreground);
+   
 }
 
 #memberSubmitBtn:hover{
@@ -149,6 +153,7 @@ header{
 
 #addTaskRevealBtn{
     background-color: lightgray;
+    /*Darkmode*/
     color: var(--foreground);
 }
 
@@ -159,6 +164,7 @@ header{
 #addMemberRevealBtn{
     left: 110px;
     background-color: lightgray;
+    /*Darkmode*/
     color: var(--foreground);
 }
 
@@ -169,6 +175,7 @@ header{
 #revealMembersBtn{
     background-color: lightgray;
     left: 290px;
+    /*Darkmode*/
     color: var(--foreground);
 }
 
@@ -255,6 +262,7 @@ header{
     color: black;
     font-size: 18px;
     font-weight: 700;
+    /*Darkmode*/
     color: var(--foreground);
 }
 
@@ -276,6 +284,7 @@ label{
     padding: 10px;
     margin-right: 60px;
     background-color: lightgray;
+    /*Darkmode*/
     color: var(--foreground);
 }
 
@@ -587,6 +596,7 @@ textarea::placeholder{
     float: left;
 }
 
+/*Darkmode*/
 .darkModeToggle {
     position: relative;
     z-index: 100;
@@ -608,3 +618,4 @@ textarea::placeholder{
     border-color: white;
     background-color: orange;
 }
+/*Darkmode*/
