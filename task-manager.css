@@ -50,7 +50,7 @@ body{
     width: 1400px;
     height: 800px;
     border: 0px solid black;
-    font-family: 
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 button:focus, input:focus, textarea:focus, select:focus{
