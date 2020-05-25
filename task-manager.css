@@ -498,12 +498,7 @@ textarea::placeholder{
 }
 
 #taskHeading{
-<<<<<<< HEAD
-    padding-top: 30px;
-    cursor: pointer;
-=======
     margin-top: 45px;
->>>>>>> 588370f7866de3a478499c155722bb9d00a05bea
 }
 
 .memberObject{

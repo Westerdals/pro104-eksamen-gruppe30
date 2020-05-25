@@ -63,11 +63,8 @@ function dropNames(event, localStorageKey){
 
 function dragLeave(ev){
   ev.preventDefault();
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 588370f7866de3a478499c155722bb9d00a05bea
 }
 
 
