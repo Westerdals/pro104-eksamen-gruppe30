@@ -466,6 +466,10 @@ textarea::placeholder{
     background-color:#f7fafa;
 }
 
+.taskObject:hover #expandTaskBtn{
+    background-color:#f7fafa;
+}
+
 .taskObject:hover #archiveTaskBtn{
     background-color:#f7fafa;
 }
@@ -559,6 +563,14 @@ textarea::placeholder{
     background-color: #f0f0f0;
 }
 
+#expandTaskBtn{
+    position: absolute;
+    top: 12px;
+    left: 0px;
+    border: 0px;
+    background-color: #f0f0f0;
+}
+
 #archiveTaskBtn {
     position: absolute;
     top: 12px;
@@ -566,12 +578,15 @@ textarea::placeholder{
     border: 0px;
     background-color: #f0f0f0;
 }
-
-#archiveTaskBtn:hover{
+#deleteTaskBtn:hover{
     cursor: pointer;
 }
 
-#deleteTaskBtn:hover{
+#expandTaskBtn:hover{
+    cursor: pointer;
+}
+
+#archiveTaskBtn:hover{
     cursor: pointer;
 }
 
