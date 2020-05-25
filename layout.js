@@ -146,6 +146,10 @@ function revealAddDescriptionForm(){
             hideSection(taskIconForm);
             hideAdditionInputs(taskIconForm);
         }
+        if (taskDeadlineForm.style.height != "0px" || taskDeadlineForm.style.height != "") {
+            hideSection(taskDeadlineForm);
+            hideAdditionInputs(taskDeadlineForm);
+        }
 
     } else {
         hideSection(taskDescriptionForm);
@@ -173,6 +177,10 @@ function revealAddChecklistForm(){
         if (taskIconForm.style.height != "0px" || taskIconForm.style.height != "") {
             hideSection(taskIconForm);
             hideAdditionInputs(taskIconForm);
+        }
+        if (taskDeadlineForm.style.height != "0px" || taskDeadlineForm.style.height != "") {
+            hideSection(taskDeadlineForm);
+            hideAdditionInputs(taskDeadlineForm);
         }
 
     } else {
@@ -210,10 +218,45 @@ function revealAddIconForm(){
             hideSection(taskChecklistForm);
             hideAdditionInputs(taskChecklistForm);
         }
+        if (taskDeadlineForm.style.height != "0px" || taskDeadlineForm.style.height != "") {
+            hideSection(taskDeadlineForm);
+            hideAdditionInputs(taskDeadlineForm);
+        }
 
     } else {
         hideSection(taskIconForm);
         hideAdditionInputs(taskIconForm);
+    }
+}
+
+function revealAddDeadlineForm(){
+    var taskDeadlineForm = document.getElementById("taskDeadlineForm");
+    var addDeadlineRevealBtn = document.getElementById("addDeadlineRevealBtn");
+    var taskDeadlineInput = document.getElementById("taskDeadlineInput");
+
+    if (taskDeadlineForm.style.height == "0px" || taskDeadlineForm.style.height == ""){
+        taskDeadlineForm.style.height = "200px";
+        taskDeadlineForm.style.opacity = "1";
+        addDeadlineRevealBtn.style.backgroundColor = "orange";
+        taskDeadlineInput.style.display = "inline-block";
+
+        if (taskDescriptionForm.style.height != "0px" || taskDescriptionForm.style.height != "") {
+            hideSection(taskDescriptionForm);
+            hideAdditionInputs(taskDescriptionForm);
+        }
+        
+        if (taskChecklistForm.style.height != "0px" || taskChecklistForm.style.height != "") {
+            hideSection(taskChecklistForm);
+            hideAdditionInputs(taskChecklistForm);
+        }
+        if (taskIconForm.style.height != "0px" || taskIconForm.style.height != "") {
+            hideSection(taskIconForm);
+            hideAdditionInputs(taskIconForm);
+        }
+
+    } else {
+        hideSection(taskDeadlineForm);
+        hideAdditionInputs(taskDeadlineForm);
     }
 }
 
@@ -257,6 +300,9 @@ function hideSection(section) {
         case taskIconForm:
             addIconRevealBtn.style.backgroundColor = "";
             break;
+        case taskDeadlineForm:
+            addDeadlineRevealBtn.style.backgroundColor = "";
+            break;
     }
 }
 
@@ -264,9 +310,11 @@ function hideAdditionForms(){
     hideSection(taskDescriptionForm);
     hideSection(taskChecklistForm);
     hideSection(taskIconForm);
+    hideSection(taskDeadlineForm);
     hideAdditionInputs(taskDescriptionForm);
     hideAdditionInputs(taskChecklistForm);
     hideAdditionInputs(taskIconForm);
+    hideAdditionInputs(taskDeadlineForm);
 }
 
 function hideAdditionInputs(form){
@@ -291,6 +339,10 @@ function hideAdditionInputs(form){
             for(var i = 0; i < buttonIcons.length; i++){
                 buttonIcons[i].style.display = "none";
             }
+            break;
+        case taskDeadlineForm:
+            var taskDeadlineInput = document.getElementById("taskDeadlineInput");
+            taskDeadlineInput.style.display = "none";
             break;
     }
 }
