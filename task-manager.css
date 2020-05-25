@@ -298,8 +298,8 @@ label{
 .taskDescriptionPara{
     position: absolute;
     padding-top: 5px;
-    top: 80px;
-    height: 75px;
+    top: 70px;
+    height: 80px;
     width: 380px;
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
@@ -421,7 +421,13 @@ textarea::placeholder{
 #checkList{
     position: absolute;
     top: 220px;
+    width: 379px;
     overflow: auto;
+    left: 0px;
+}
+
+#checkList > input, label{
+    left: 0px;
 }
 
 #progressBarDiv{
@@ -455,7 +461,7 @@ textarea::placeholder{
 }
 
 #taskHeading{
-    padding-top: 30px;
+    margin-top: 45px;
 }
 
 .memberObject{
@@ -520,8 +526,8 @@ textarea::placeholder{
 
 #taskIcon{
     position: absolute;
-    left: 181px;
-    height: 40px;
+    left: 183px;
+    height: 35px;
     width: auto;
 }
 
