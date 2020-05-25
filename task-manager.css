@@ -193,6 +193,10 @@ header{
     height: 0px;
     opacity: 0;
     transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -webkit-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -moz-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -o-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -ms-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
     overflow: hidden;
 }
 
@@ -276,6 +280,10 @@ label{
     opacity: 0;
     background-color: whitesmoke;
     transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -webkit-transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -moz-transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -o-transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -ms-transition: opacity 0.2s ease-out, width 0.2s ease-out;
     overflow-y: auto;
 }
 
@@ -326,6 +334,10 @@ textarea::placeholder{
     width: 1400px;
     opacity: 1;
     transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -moz-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -ms-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
 }
 
 #archive{
@@ -336,6 +348,10 @@ textarea::placeholder{
     width: 1400px;
     opacity: 0;
     transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -webkit-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
     border-top: 2px solid black;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -414,6 +430,10 @@ textarea::placeholder{
     border: 1px solid gray;
     cursor: pointer;
     transition: height 0.3s ease-in-out;
+    -webkit-transition: height 0.3s ease-in-out;
+    -moz-transition: height 0.3s ease-in-out;
+    -o-transition: height 0.3s ease-in-out;
+    -ms-transition: height 0.3s ease-in-out;
     overflow: hidden;
     background-color: #f0f0f0;
 }
@@ -423,11 +443,10 @@ textarea::placeholder{
     top: 220px;
     width: 379px;
     overflow: auto;
-    left: 0px;
 }
 
-#checkList > input, label{
-    left: 0px;
+#fullCheckpoint{
+    float: left;
 }
 
 #progressBarDiv{
@@ -436,11 +455,6 @@ textarea::placeholder{
     height: 20px;
     border: 1px solid lightgray;
     top: 190px;
-    transition: width 0.3s ease-in-out;
-}
-
-#progressBar{
-    transition: width 0.3s ease-in-out;
 }
 
 #taskMembers{
