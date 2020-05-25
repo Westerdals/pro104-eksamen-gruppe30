@@ -217,12 +217,14 @@ function revealAddIconForm(){
     }
 }
 
-function expandTask(object){
-
-    if (object.style.height != "400px") {
-        object.style.height = "400px";
+function expandTask(task){
+    if (task.parentElement.style.height != "400px") {
+        task.parentElement.style.height = "400px";
+        task.firstChild.src = "images/shrink.png"
+        task.firstChild.src.alt = "shrink task";
     } else {
-        object.style.height = "200px";
+        task.parentElement.style.height = "200px";
+        task.firstChild.src = "images/expand.png"
     }
 }
 

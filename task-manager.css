@@ -193,6 +193,10 @@ header{
     height: 0px;
     opacity: 0;
     transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -webkit-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -moz-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -o-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -ms-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
     overflow: hidden;
 }
 
@@ -276,6 +280,10 @@ label{
     opacity: 0;
     background-color: whitesmoke;
     transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -webkit-transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -moz-transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -o-transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -ms-transition: opacity 0.2s ease-out, width 0.2s ease-out;
     overflow-y: auto;
 }
 
@@ -298,9 +306,14 @@ label{
 .taskDescriptionPara{
     position: absolute;
     padding-top: 5px;
+<<<<<<< HEAD
     top: 80px;
     cursor: pointer;
     height: 75px;
+=======
+    top: 70px;
+    height: 80px;
+>>>>>>> 588370f7866de3a478499c155722bb9d00a05bea
     width: 380px;
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
@@ -328,6 +341,10 @@ textarea::placeholder{
     width: 1400px;
     opacity: 1;
     transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -moz-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -ms-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
 }
 
 #archive{
@@ -338,6 +355,10 @@ textarea::placeholder{
     width: 1400px;
     opacity: 0;
     transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -webkit-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
     border-top: 2px solid black;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -424,6 +445,10 @@ textarea::placeholder{
     border: 1px solid gray;
     cursor: grab;
     transition: height 0.3s ease-in-out;
+    -webkit-transition: height 0.3s ease-in-out;
+    -moz-transition: height 0.3s ease-in-out;
+    -o-transition: height 0.3s ease-in-out;
+    -ms-transition: height 0.3s ease-in-out;
     overflow: hidden;
     background-color: #f0f0f0;
 }
@@ -435,7 +460,12 @@ textarea::placeholder{
 #checkList{
     position: absolute;
     top: 220px;
+    width: 379px;
     overflow: auto;
+}
+
+#fullCheckpoint{
+    float: left;
 }
 
 #progressBarDiv{
@@ -444,11 +474,6 @@ textarea::placeholder{
     height: 20px;
     border: 1px solid lightgray;
     top: 190px;
-    transition: width 0.3s ease-in-out;
-}
-
-#progressBar{
-    transition: width 0.3s ease-in-out;
 }
 
 #taskMembers{
@@ -457,6 +482,10 @@ textarea::placeholder{
 }
 
 .taskObject:hover #deleteTaskBtn{
+    background-color:#f7fafa;
+}
+
+.taskObject:hover #expandTaskBtn{
     background-color:#f7fafa;
 }
 
@@ -469,8 +498,12 @@ textarea::placeholder{
 }
 
 #taskHeading{
+<<<<<<< HEAD
     padding-top: 30px;
     cursor: pointer;
+=======
+    margin-top: 45px;
+>>>>>>> 588370f7866de3a478499c155722bb9d00a05bea
 }
 
 .memberObject{
@@ -539,8 +572,8 @@ textarea::placeholder{
 
 #taskIcon{
     position: absolute;
-    left: 181px;
-    height: 40px;
+    left: 183px;
+    height: 35px;
     width: auto;
 }
 
@@ -558,6 +591,14 @@ textarea::placeholder{
     background-color: #f0f0f0;
 }
 
+#expandTaskBtn{
+    position: absolute;
+    top: 12px;
+    left: 0px;
+    border: 0px;
+    background-color: #f0f0f0;
+}
+
 #archiveTaskBtn {
     position: absolute;
     top: 12px;
@@ -565,12 +606,15 @@ textarea::placeholder{
     border: 0px;
     background-color: #f0f0f0;
 }
-
-#archiveTaskBtn:hover{
+#deleteTaskBtn:hover{
     cursor: pointer;
 }
 
-#deleteTaskBtn:hover{
+#expandTaskBtn:hover{
+    cursor: pointer;
+}
+
+#archiveTaskBtn:hover{
     cursor: pointer;
 }
 
