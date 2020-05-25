@@ -163,7 +163,7 @@ function renderTaskList() {
                 taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
             }
     
-            taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
+            taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)" 
                                         draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondragleave="dragLeave(event)" ondrop="dropNames(event)">
                                         <img id="taskIcon" src="${taskIcon}">
                                         <div id="taskHeading"><h4 contentEditable="true" oninput="changeName(${taskId}, event, 'task');" style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
@@ -172,9 +172,7 @@ function renderTaskList() {
                                         <div id="checkList">${taskChecklistDiv}</div>
                                         <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'ongoingTask');" class="taskDescriptionPara adjustText">${taskDescription}</p>
                                         <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'task')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
-                                        <div>
-                                        ${memberName}
-                                        </div>
+                                        <p id="displayMemberOnTask">${memberName}</p>
                                         </div>
                                         </div>`;
                 unstartedTasks.appendChild(taskElement);
@@ -409,7 +407,7 @@ function renderMemberList() {
             const memberElement = document.createElement("div");
             const {memberId, memberName } = member;
             counter++;
-            memberElement.innerHTML = `<div class="memberObject" id="${memberId}" 
+            memberElement.innerHTML = `<div class="memberObject" id="${memberId}" class="grabbable"
                                       draggable="true" ondragstart="dragStartNames(event)" ondragleave="dragLeave(event)">
                                       <button id="deleteMemberBtn" type="button" onclick="deleteMember('${memberId}')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:20px;" alt="delete task"></button>
                                       <img id="memberImg" src="images/member.png" alt="member" width="45" height="45">

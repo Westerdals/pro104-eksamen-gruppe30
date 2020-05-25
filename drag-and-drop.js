@@ -63,6 +63,7 @@ function dropNames(ev){
 function dragLeave(ev){
   ev.preventDefault();
 
+
 }
 
 
@@ -73,7 +74,6 @@ function allowMoveTasks(ev) {
   
   function allowMoveNames(ev) {
     ev.preventDefault();
-
   }
 
   function drag(ev) {
