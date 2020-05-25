@@ -174,6 +174,39 @@ function renderMemberList() {
         }
     }
 
+    //Se på denne
+    document.getElementById("background").onchange = function() {
+    localStorage.setItem('background', document.getElementById("background").value);
+    if (localStorage.getItem('background') == 0){
+        document.body.style.backgroundImage = "url(images/Bluesky.jpg)";
+    }
+    if (localStorage.getItem('background') == 1){
+        document.body.style.backgroundImage = "url(images/.jpg)";
+    }
+    if (localStorage.getItem('background') == 2){
+        document.body.style.backgroundImage = "url(images/.jpg)";
+    }
+    if (localStorage.getItem('background') == 3){
+        document.body.style.backgroundImage = "url(images/.jpg)";
+    }
+ 
+}
+if (localStorage.getItem('background')) {
+    document.getElementById("background").options[localStorage.getItem('background')].selected = true;
+    if (localStorage.getItem('background') == 0){
+        document.body.style.backgroundImage = "url(images/Bluesky.jpg)";
+    }
+    if (localStorage.getItem('background') == 1){
+        document.body.style.backgroundImage = "url(images/.jpg)";
+    }
+    if (localStorage.getItem('background') == 2){
+        document.body.style.backgroundImage = "url(images/.jpg)";
+    }
+    if (localStorage.getItem('background') == 3){
+        document.body.style.backgroundImage = "url(images/.jpg)";
+    }
+   
+}
     
     
     
