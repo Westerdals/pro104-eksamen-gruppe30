@@ -1,8 +1,6 @@
-@media screen and (max-width: 1399px) {
-	#mainContainer{
-        width: 100%;
-    }
-}
+
+
+
 
 body{
     margin-top: 0;
@@ -229,6 +227,10 @@ label{
     font-weight: 700;
 }
 
+#websiteName{
+    top: 0px;
+}
+
 #taskNameForm{
     color:black;
     float: left;
@@ -347,7 +349,7 @@ textarea::placeholder{
     position: absolute;
     text-align: center;
     top: 89px;
-    height: 630px;
+    height: 800px;
     width: 466.6px;
     display: grid-inline;
     grid-row-gap: 20px;
@@ -577,4 +579,114 @@ textarea::placeholder{
 #extendTaskBtn{
     position: relative;
     float: left;
+}
+
+/*@media only screen and (max-width: 400px) {
+    header{
+        width: 600px;
+    }
+    #mainContainer{
+        width: 1400px;
+    }
+
+    #revealSettingsBtn{
+        left: 10px;
+    }
+    #revealSettingsBtn{
+        top: 50px;
+        left: 43.5%;
+    }
+    #revealArchiveBtn{
+        top: 20px;
+        left: 38%;
+    }
+    #revealMembersBtn{
+        top: 94%;
+        width: 28.7%;
+        left: 0%;
+    }
+    #addTaskRevealBtn{
+        top: 52%;
+    }
+    #addMemberRevealBtn{
+        top: 73%;
+        left: 0%;
+    }
+    #tasksHeadings{
+        top: 10%;
+    }
+    .headerSection{
+        top: 165px;
+    }
+    header{
+
+    }
+
+}*/
+
+@media only screen and (max-width: 400px) {
+    header{
+        width: 600px;
+    }
+    #mainContainer{
+        width: 1400px;
+    }
+
+    #revealSettingsBtn{
+        left: 10px;
+    }
+    #revealSettingsBtn{
+        top: 50px;
+        left: 43.5%;
+    }
+    #revealArchiveBtn{
+        top: 20px;
+        left: 38%;
+    }
+    #revealMembersBtn{
+        top: 116%;
+        width: 61.8%;
+        left: 0%;
+    }
+    #addTaskRevealBtn{
+        top: 64%;
+        width: 61.8%;
+    }
+    #addMemberRevealBtn{
+        top: 90%;
+        left: 0%;
+        width: 61.8%;
+    }
+    #tasksHeadings{
+        top: 15%;
+    }
+    .headerSection{
+        top: 195px;
+    }
+    #taskNameForm{
+        width: 14%;
+        height: 228px;
+    }
+    .input{
+        width: 70%;
+    }
+    .additionBtn{
+        left: 16%;
+        width: 9.5%;
+    }
+    .additionForm{
+        left: 0%;
+        width: 12%;
+        top: -10px;
+    }
+    #taskDescription{
+        width: 90%;
+    }
+    #counting{
+        top: 76%;
+    }
+    #taskSubmitBtn{
+        top: 215px;
+    }
+
 }
