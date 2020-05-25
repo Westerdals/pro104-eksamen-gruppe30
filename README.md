@@ -8,3 +8,5 @@ Eksamen gruppe 30:
 * Anna Sitarz
 * Petter Wibstad
 * Markus Kristiansen
+
+Test site through github-pages: https://westerdals.github.io/pro104-eksamen-gruppe30/
