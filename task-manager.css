@@ -240,6 +240,10 @@ header{
     height: 0px;
     opacity: 0;
     transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -webkit-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -moz-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -o-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -ms-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
     overflow: hidden;
 }
 
@@ -276,6 +280,10 @@ label{
     font-weight: 700;
 }
 
+#websiteName{
+    top: 0px;
+}
+
 #taskNameForm{
     color:black;
     float: left;
@@ -301,12 +309,11 @@ label{
 
 #createChecklistBtn{
     display: none;
-    top: 180px;
-    left:10px;
+    top: 190px;
+    left: 10px;
     font-size: 13px;
     background: lightgray;
     color: black;
-    height: 30px;
 }
 
 #createChecklistBtn:hover{
@@ -324,6 +331,10 @@ label{
     opacity: 0;
     background-color: whitesmoke;
     transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -webkit-transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -moz-transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -o-transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -ms-transition: opacity 0.2s ease-out, width 0.2s ease-out;
     overflow-y: auto;
 }
 
@@ -337,14 +348,27 @@ label{
 
 .input{
     display: block;
-    border: 1px;
+    border: 0px;
     background: transparent;
     border-bottom: 1px solid black;
     font-size: 15px;
 }
 
 .taskDescriptionPara{
-    padding-top: 50px;
+    position: absolute;
+    padding-top: 5px;
+    top: 80px;
+    cursor: pointer;
+    top: 70px;
+    height: 80px;
+    width: 380px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    overflow: scroll;
+}
+
+#taskMembers{
+    float: left;
 }
 
 input::placeholder{
@@ -363,6 +387,10 @@ textarea::placeholder{
     width: 1400px;
     opacity: 1;
     transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -moz-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -ms-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
 }
 
 #archive{
@@ -373,6 +401,10 @@ textarea::placeholder{
     width: 1400px;
     opacity: 0;
     transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -webkit-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
     border-top: 2px solid black;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -386,8 +418,8 @@ textarea::placeholder{
     position: absolute;
     text-align: center;
     top: 89px;
-    height: 630px;
-    width: 450px;
+    height: 800px;
+    width: 466.6px;
     display: grid-inline;
     grid-row-gap: 20px;
     overflow-y: auto;
@@ -402,7 +434,7 @@ textarea::placeholder{
 }
 
 .tasksHeading{
-    width: 450px;
+    width: 466.6px;
     position: absolute;
     text-align: center;
 }
@@ -412,12 +444,12 @@ textarea::placeholder{
 }
 
 #ongoingHeading{
-    left: 450px;;
+    left: 466.6px;;
     border-right: 1px solid black;
 }
 
 #finishedHeading{
-    left: 900px;
+    left: 933.2px;
 }
 
 #unstartedTasks{
@@ -425,12 +457,28 @@ textarea::placeholder{
 }
 
 #ongoingTasks{
-    left: 450px;
+    left: 466.6px;
     border-right: 1px solid black;
 }
 
 #finishedTasks{
-    left: 900px;
+    left: 933.2px;
+}
+
+#ongoingTasks > div{
+    padding-left: 17px;
+}
+
+#finishedTasks > div{
+    padding-left: 17px;
+}
+
+.grabbable{
+    cursor: grab;
+}
+
+.grabbable:active{
+    cursor: grabbing;
 }
 
 .taskObject{
@@ -441,23 +489,29 @@ textarea::placeholder{
     margin-top: 30px;
     margin-left: 15px;
     border: 1px solid gray;
-    cursor: pointer;
+    cursor: grab;
     transition: height 0.3s ease-in-out;
+    -webkit-transition: height 0.3s ease-in-out;
+    -moz-transition: height 0.3s ease-in-out;
+    -o-transition: height 0.3s ease-in-out;
+    -ms-transition: height 0.3s ease-in-out;
     overflow: hidden;
     background-color: #f0f0f0;
 }
 
-#taskDescriptionParaDiv{
-    top: 50px;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
-    overflow: scroll;
+.taskObject:active{
+    cursor: grabbing;
 }
 
 #checkList{
     position: absolute;
     top: 220px;
+    width: 379px;
     overflow: auto;
+}
+
+#fullCheckpoint{
+    float: left;
 }
 
 #progressBarDiv{
@@ -477,12 +531,20 @@ textarea::placeholder{
     background-color:#f7fafa;
 }
 
+.taskObject:hover #expandTaskBtn{
+    background-color:#f7fafa;
+}
+
+.taskObject:hover #archiveTaskBtn{
+    background-color:#f7fafa;
+}
+
 .taskObject:hover{
     background-color: #f7fafa;
 }
 
 #taskHeading{
-    padding-top: 30px;
+    padding-top: 45px;
 }
 
 .memberObject{
@@ -566,7 +628,31 @@ textarea::placeholder{
     background-color: #f0f0f0;
 }
 
+#expandTaskBtn{
+    position: absolute;
+    top: 12px;
+    left: 0px;
+    border: 0px;
+    background-color: #f0f0f0;
+}
+
+#archiveTaskBtn {
+    position: absolute;
+    top: 12px;
+    right: 45px;
+    border: 0px;
+    background-color: #f0f0f0;
+}
+
 #deleteTaskBtn:hover{
+    cursor: pointer;
+}
+
+#expandTaskBtn:hover{
+    cursor: pointer;
+}
+
+#archiveTaskBtn:hover{
     cursor: pointer;
 }
 
@@ -596,6 +682,11 @@ textarea::placeholder{
     float: left;
 }
 
+#displayMemberOnTask{
+    left: 0px;
+}
+
+
 /*Darkmode*/
 .darkModeToggle {
     position: relative;
@@ -616,6 +707,5 @@ textarea::placeholder{
 .darkModeToggle:hover{
     color: white;
     border-color: white;
-    background-color: orange;
-}
+    background-color: orange;}
 /*Darkmode*/
