@@ -110,7 +110,12 @@ function revealArchive() {
         archive.style.height = "630px";
         archive.style.opacity = "1";
         revealSettingsBtn.style.right = "170px";
-        revealArchiveBtn.innerHTML = "VIEW TASKS TABLE";
+
+        if(revealArchiveBtn.innerHTML === "VIEW ARCHIVE"){
+            revealArchiveBtn.innerHTML = "VIEW TASKS TABLE";
+        } else {
+            revealArchiveBtn.innerHTML = "VIS OPPGAVETAVLE";
+        }
 
         if (tasksTable.style.height != "0px" || tasksTable.style.height != "") {
             hideSection(tasksTable);
@@ -120,8 +125,13 @@ function revealArchive() {
         hideSection(archive);
         tasksTable.style.height = "630px";
         tasksTable.style.opacity = "1";
-        revealArchiveBtn.innerHTML = "VIEW ARCHIVE";
         revealSettingsBtn.style.right = "130px";
+
+        if(revealArchiveBtn.innerHTML === "VIEW TASKS TABLE"){
+            revealArchiveBtn.innerHTML = "VIEW ARCHIVE";
+        } else {
+            revealArchiveBtn.innerHTML = "VIS ARKIV";
+        }
     }
 }
 
