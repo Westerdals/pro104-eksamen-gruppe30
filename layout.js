@@ -129,12 +129,14 @@ function revealAddDescriptionForm(){
     var taskDescriptionForm = document.getElementById("taskDescriptionForm");
     var addDescriptionRevealBtn = document.getElementById("addDescriptionRevealBtn");
     var taskDescription = document.getElementById("taskDescription");
+    var counting = document.getElementById("counting");
 
     if (taskDescriptionForm.style.height == "0px" || taskDescriptionForm.style.height == ""){
         taskDescriptionForm.style.height = "200px";
         taskDescriptionForm.style.opacity = "1";
         addDescriptionRevealBtn.style.backgroundColor = "orange";
         taskDescription.style.display = "inline-block";
+        counting.style.display = "inline-block";
 
         if (taskChecklistForm.style.height != "0px" || taskChecklistForm.style.height != "") {
             hideSection(taskChecklistForm);
@@ -179,6 +181,12 @@ function revealAddChecklistForm(){
     }
 }
 
+function revealCheckpoints(){
+    var taskChecklist = document.getElementById("taskChecklist");
+    taskChecklist.style.width = "250px";
+    taskChecklist.style.opacity = "1";
+}
+
 function revealAddIconForm(){
     var taskIconForm = document.getElementById("taskIconForm");
     var addIconRevealBtn = document.getElementById("addIconRevealBtn");
@@ -209,12 +217,14 @@ function revealAddIconForm(){
     }
 }
 
-function expandTask(object){
-
-    if (object.style.height != "400px") {
-        object.style.height = "400px";
+function expandTask(task){
+    if (task.parentElement.style.height != "400px") {
+        task.parentElement.style.height = "400px";
+        task.firstChild.src = "images/shrink.png"
+        task.firstChild.src.alt = "shrink task";
     } else {
-        object.style.height = "200px";
+        task.parentElement.style.height = "200px";
+        task.firstChild.src = "images/expand.png"
     }
 }
 
@@ -264,7 +274,9 @@ function hideAdditionInputs(form){
     switch(form){
         case taskDescriptionForm:
             var taskDescription = document.getElementById("taskDescription");
+            var counting = document.getElementById("counting");
             taskDescription.style.display = "none";
+            counting.style.display = "none";
             break;
 
         case taskChecklistForm:
