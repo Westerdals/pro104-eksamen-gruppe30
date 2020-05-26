@@ -76,7 +76,7 @@ function renderTaskList() {
                                     <div id="taskHeading"><h4 contentEditable="true" oninput="changeName(${taskId}, event, 'task');" style="font-size: ${textSizeHeader}" class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                     ${taskChecklistDiv}
                                     ${taskProgressBarDiv}
-                                    <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'task');" class="taskDescriptionPara adjustText" ondrop="dropNames(event, 'task');">${taskDescription}</p>
+                                    <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'task');" class="taskDescriptionPara adjustText">${taskDescription}</p>
                                     <div id="memberIconFlex">${taskMemberDiv}</div>
                                     <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput}</div>
                                     </div>`;
