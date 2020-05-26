@@ -35,7 +35,7 @@ function renderExpandImg (task){
 }
 
 /*
-Function is rendering the created task from the localStorage 'task'.
+Function is rendering the created task and all the other existing tasks from the localStorage 'task'.
 */
 
 function renderTaskList() {

@@ -30,6 +30,10 @@ function adjustText(header, description) {
     renderArchiveList();
 }
 
+/*
+Function creates a task and saves it to localStorage. Triggers the renderTaskList function and prints it out.
+*/
+
 function createTask(event) {
     event.preventDefault();
     document.getElementById("currentCount").innerHTML = "0 ";
@@ -69,6 +73,10 @@ function createTask(event) {
     hideSection(addTaskSection);
     renderTaskList();
 }
+
+/*
+Function creates a member and saves it to localStorage. Triggers the renderMemberList function and prints it out.
+*/
 
 function createMember(event) {
     event.preventDefault();
@@ -172,6 +180,10 @@ function deleteMember(memberId) {
     createMemberSlots()
 
 }
+
+/*
+Function is rendering the created member and all the other existing members from the localStorage 'member'.
+*/
 
 function renderMemberList() {
 

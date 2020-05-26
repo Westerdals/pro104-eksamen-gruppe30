@@ -142,7 +142,7 @@ header{
 
 #revealArchiveBtn{
     background-color: whitesmoke;
-    right: 1%;
+    right: 3%;
 }
 
 #revealArchiveBtn:hover{
@@ -319,13 +319,14 @@ label{
     padding-top: 5px;
     top: 80px;
     cursor: pointer;
-    top: 110px;
+    top: 70px;
     height: 80px;
-    width: 422px;
+    width: 380px;
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
     overflow: scroll;
 }
+
 
 #taskMembers{
     float: left;
@@ -450,7 +451,7 @@ textarea::placeholder{
 .taskObject{
     position: relative;
     width: 89%;
-    height: 230px;
+    height: 200px;
     padding: 10px;
     margin-top: 30px;
     border: 1px solid gray;
@@ -471,7 +472,7 @@ textarea::placeholder{
 
 #checkList{
     position: absolute;
-    top: 250px;
+    top: 220px;
     width: 379px;
     overflow: auto;
 }
@@ -482,10 +483,10 @@ textarea::placeholder{
 
 #progressBarDiv{
     position: absolute;
-    width: 381px;
+    width: 379px;
     height: 20px;
     border: 1px solid lightgray;
-    top: 220px;
+    top: 190px;
 }
 
 #taskMembers{
@@ -498,10 +499,6 @@ textarea::placeholder{
 }
 
 .taskObject:hover #expandTaskBtn{
-    background-color:#f7fafa;
-}
-
-.taskObject:hover #expandTaskBtnFinishedList{
     background-color:#f7fafa;
 }
 
@@ -583,7 +580,7 @@ textarea::placeholder{
 
 #taskIcon{
     position: absolute;
-    left: 46.5%;
+    left: 46%;
     height: 35px;
     width: auto;
 }
@@ -604,19 +601,10 @@ textarea::placeholder{
 
 #expandTaskBtn{
     position: absolute;
-    top: 215px;
-    right: 5px;
+    top: 10px;
+    right: 42px;
     border: 0px;
     background-color: #f0f0f0;
-}
-
-#expandTaskBtnFinishedList {
-    position: absolute;
-    top: 11px;
-    right: 74px;
-    border: 0px;
-    background-color: #f0f0f0;
-
 }
 
 #archiveTaskBtn {
@@ -714,34 +702,6 @@ textarea::placeholder{
     overflow: hidden;
     align-content: flex-start;
 }
-
-.missingInput {
-    position: relative;
-    border-radius: 50%;
-    width: 27px;
-    height: 27px;
-    font-size: 1.5em;
-    text-align: center;
-    line-height: 23px;
-    line-height: 30px;
-    margin: auto;
-    background-color: red;
-    color: white;
-}
-
-#missingInputName {
-    right: -45%;
-    top: -34%;
-    visibility: hidden;
-}
-
-#missingInputCheckpoint {
-    right: -44%;
-    top: 0%;
-    visibility: hidden;
-
-}
-
 #norwegianBtn {
     background-color: whitesmoke;
     border: 1px solid gray;
@@ -761,33 +721,6 @@ textarea::placeholder{
 #norwegianBtn:hover{
     border-color: orange;
     color: orange;
-}
-
-.missingInput {
-    position: relative;
-    border-radius: 50%;
-    width: 27px;
-    height: 27px;
-    font-size: 1.5em;
-    text-align: center;
-    line-height: 23px;
-    line-height: 30px;
-    margin: auto;
-    background-color: red;
-    color: white;
-}
-
-#missingInputName {
-    right: -45%;
-    top: -34%;
-    visibility: hidden;
-}
-
-#missingInputCheckpoint {
-    right: -44%;
-    top: 0%;
-    visibility: hidden;
-
 }
 
 
@@ -843,7 +776,7 @@ textarea::placeholder{
 Media query for mobile device
 */
   
-@media (max-width: 414px){
+@media (max-width: 450px){
     #mainContainer{
         overflow-x: auto;
     }
@@ -897,6 +830,7 @@ Media query for mobile device
     .taskObject{
         position: relative;
         width: 200px;
+        height: 200px;
     }
     .tasks{
         position: absolute;
@@ -953,6 +887,7 @@ Media query for mobile device
         width: 200px;
     }
     #taskDescription{
+
         width: 200px;
         height: 110px;
     }
@@ -978,6 +913,11 @@ Media query for mobile device
         top: 105px;
         left: 230px;
     }
+    .additionBtn{
+        width: 172px;
+        height: 30px;
+        left: 230px;
+    }
 
     #languageSection {
         left: 185px;
@@ -997,14 +937,28 @@ Media query for mobile device
         right: 15px;
         top: 89px;
     }
-
     .taskDescriptionPara{
-        top: 70px;
+        top: 110px;
         height: 80px;
         width: 92%;
     }
     #taskIconForm{
         left: 70%
     }
+    #taskIcon{
+        left: 42%;
+    }
+    #progressBarDiv{
+        width: 200px;
+        top: 220px;
+    }
+    #checkList{
+        position: absolute;
+        top: 250px;
+        width: 100px;
+        left: 0;
+        overflow-y: auto;
+    }
+    
 
 }
