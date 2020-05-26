@@ -266,6 +266,13 @@ label{
     top: 40px;
 }
 
+#taskDeadlineDiv{
+    position: absolute;
+    top: 5px;
+    float: left;
+    color: gray;
+}
+
 #createChecklistBtn{
     display: none;
     top: 190px;
@@ -316,11 +323,10 @@ label{
 .taskDescriptionPara{
     position: absolute;
     padding-top: 5px;
-    top: 80px;
     cursor: pointer;
-    top: 110px;
-    height: 80px;
-    width: 95%;
+    top: 70px;
+    height: 75px;
+    width: 422px;
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
     overflow: scroll;
@@ -701,16 +707,26 @@ textarea::placeholder{
     color: white;
 }
 
-#memberIconFlex {
+#memberIconGrid {
     position: absolute;
-    height: 55px;
-    width: 80px;
-    display: flex;
-    flex-wrap: wrap;
-    top: 15px;
-    left: 5px;
+    height: 25px;
+    width: 420px;
+    top: 183px;
+    left: 10px;
     overflow: hidden;
-    align-content: flex-start;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(10px,1fr));
+    grid-auto-columns: minmax(10px,1fr);
+    grid-column-gap: 20px;
+    grid-auto-flow: column;
+    overflow-x: auto;
+}
+
+#memberIconGrid::-webkit-scrollbar{
+    height: 0px;
+    background: transparent;
 }
 
 .missingInput {
