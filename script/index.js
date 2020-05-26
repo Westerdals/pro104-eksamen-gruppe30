@@ -188,7 +188,7 @@ function renderMemberList() {
             const {memberId, memberName } = member;
             counter++;
             memberElement.innerHTML = `<div class="memberObject" id="${memberId}" class="grabbable"
-                                      draggable="true" ondragstart="dragStartNames(event)" ondragleave="dragLeave(event)">
+                                      draggable="true" ondragstart="dragStartNames(event)">
                                       <button id="deleteMemberBtn" type="button" onclick="deleteMember('${memberId}')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:20px;" alt="delete task"></button>
                                       <img id="memberImg" src="images/member.png" alt="member" width="45" height="45">
                                       <h4 id="memberNameHeading">${memberName}</h4>
