@@ -79,6 +79,7 @@ Function creates a member and saves it to localStorage. Triggers the renderMembe
 */
 
 function createMember(event) {
+    event.preventDefault();
     if(document.getElementById("memberName").value == "") {
         console.log("Feil");
         document.getElementById("missingInputTeamMember").style.visibility = "visible";
@@ -245,7 +246,7 @@ function createChecklistPoint() {
 function createMemberSlots(){
     membersSection.innerHTML = "";
 
-    for(var i = 0; i < 11; i++){
+    for(var i = 0; i < 30; i++){
         var memberSlot = document.createElement("div");
         memberSlot.setAttribute('class', 'memberSlot');
         membersSection.appendChild(memberSlot);
