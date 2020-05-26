@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html lang="no">
+
+<head>
+    <title>Task Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- jQuery plugin tags starts here -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#taskDeadlineInput").datepicker({
+                dateFormat: "dd-mm-yy"
+            });
+        });
+    </script>
+    <!-- jQuery plugin tags ends here -->
+    <link rel="icon" type="image/ico" href="images/default.ico">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="settings.css">
+    <link rel="stylesheet" type="text/css" href="index-no.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+
+<body onload="loadSettings(); renderTaskList(); createIconButtons(); createMemberSlots(); renderMemberList();
+                renderTaskOngoingList(); renderTaskFinishedList(); renderArchiveList();">
+
+    <div id="mainContainer">
+
+        <header id="header">
+            <h1 id="websiteName">Task Manager</h1>
+            <button class="headerButton" id="addTaskRevealBtn" onclick="revealAddTaskSection()">+ NY OPPGAVE</button>
+            <button class="headerButton" id="addMemberRevealBtn" onclick="revealAddMemberSection()">+ NYTT
+                TEAMMEDLEM</button>
+            <button class="headerButton" id="revealMembersBtn" onclick="revealMembersSection()">VIS
+                TEAMMEDLEMMER</button>
+            <button class="headerButton" id="revealArchiveBtn" onclick="revealArchive()">VIS ARKIV</button>
+            <button class="headerButton" id="revealSettingsBtn" onclick="revealSettings()">INNSTILLINGER</button>
+        </header>
+
+        <aside>
+            <section>
+                <div class="headerSection" id="addTaskSection">
+                    <form onsubmit="createTask(event)">
+
+                        <div id="taskNameForm" onmouseover="hideAdditionForms()">
+                            <label id="taskNameLabel" for="taskName">HVA VIL DU HA<br>UNNAGJORT?</label><br>
+                            <input class="input" type="text" id="taskName" name="taskName"
+                                placeholder="Skriv ned en oppgave..." size="34"><br><br>
+                                <div id="missingInputName" class="missingInput">!</div>
+                        </div>
+
+                        <div id=additionButtons>
+                            <button class="additionBtn" type="button" id="addDescriptionRevealBtn"
+                                onmouseover="revealAddDescriptionForm()">+ BESKRIVELSE</button>
+                            <button class="additionBtn" type="button" id="addChecklistRevealBtn"
+                                onmouseover="revealAddChecklistForm()">+ SJEKKLISTE</button>
+                            <button class="additionBtn" type="button" id="addIconRevealBtn"
+                                onmouseover="revealAddIconForm()">+IKON</button>
+                            <button class="additionBtn" type="button" id="addDeadlineRevealBtn"
+                                onmouseover="revealAddDeadlineForm()">+ FRIST</button>
+                        </div>
+
+                        <div class="additionForm" id="taskDescriptionForm">
+                            <label id="taskDescriptionLabel" for="taskDescription">BESKRIV OPPGAVEN</label>
+                            <textarea id="taskDescription" name="taskDescription" placeholder="Skriv her..."
+                                maxlength="140" onkeyup="countCharacters()"></textarea>
+                            <div id="counting">
+                                <span id="currentCount">0 </span>
+                                <span>/ 140</span>
+                            </div>
+                        </div>
+
+                        <div class="additionForm" id="taskChecklistForm">
+                            <label id="taskChecklistLabel" for="taskChecklistInput">LEGG TIL EN SJEKKLISTE</label>
+                            <input class="input" type="text" id="taskChecklistInput" name="taskChecklistInput"
+                                placeholder="Skriv inn et punkt i sjekklisten..." size="30">
+                            <button class="button" id="createChecklistBtn" type="button"
+                                onclick="createChecklistPoint()">LEGG TIL I SJEKKLISTEN</button>
+                                <div id="missingInputCheckpoint" class="missingInput">!</div>
+                            <ul id="taskChecklist" name="checkList"></ul>
+                        </div>
+
+                        <div class="additionForm" id="taskIconForm">
+                            <div id="activeIcon">
+                                <img name="taskIcon" id="pickedIcon" src="icons/default.png" alt="chosen-icon">
+                            </div>
+                        </div>
+
+                        <div class="additionForm" id="taskDeadlineForm">
+                            <label id="taskDeadlineLabel" for="taskDeadlineInput">SETT FRISTEN</label>
+                            <input class="input" type="text" id="taskDeadlineInput" name="taskDeadlineInput"
+                                placeholder="Velg dato..." size="30">
+                        </div>
+
+                        <input id="taskSubmitBtn" class="button" type="submit" value="FÅ DET GJORT!">
+                        -->
+                    </form>
+                </div>
+            </section>
+
+            <section>
+                <div class="headerSection" id="addMemberSection">
+                    <form onsubmit="createMember(event)">
+                        <div id="addMemberForm">
+                            <label id="memberLabel" for="memberName">LEGG TIL ET TEAMMEDLEM</label><br>
+                            <input class="input" type="text" id="memberName" name="memberName"
+                                placeholder="Ola Nordmann" size="32"><br>
+                                <div id="missingInputName" class="missingInput">!</div>
+                            <input id="memberSubmitBtn" class="button" type="submit" value="LEGG TIL">
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section>
+                <div class="headerSection" id="settingsSection">
+                    <div id="adjustTextSection">
+                        <label id="fontLabel">ENDRE TEKSTSTØRRELSE</label>
+                        <button id="adjustTextBiggerBtn" type="button"
+                            onclick="adjustText('xx-large', 'x-large');">STOR</button>
+                        <br>
+                        <button id="adjustTextStandardBtn" type="button"
+                            onclick="adjustText('large', 'medium');">STANDARD</button>
+                    </div>
+                    <div id="languageSection">
+                        <label id="languageLabel">ENDRE SPRÅK</label>
+                        <a href="index.html"><button id="englishBtn">ENGLISH</button></a>
+                        <br>
+                        <button id="norwegianBtn">NORSK</button>
+                        <br>
+                        <button id="darkModeToggle" class="darkModeToggle">Darkmode</button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="headerSection" id="membersSection"></div>
+            </section>
+        </aside>
+
+        <main>
+            <div id="tasksTable">
+                <div id=tasksHeadings>
+                    <h2 class="tasksHeading" id="unstartedHeading">IKKE STARTET</h2>
+                    <h2 class="tasksHeading" id="ongoingHeading">PÅBEGYNT</h2>
+                    <h2 class="tasksHeading" id="finishedHeading">FERDIG</h2>
+                </div>
+                <div class="tasks" id="unstartedTasks" ondrop="dropUnstarted(event)" ondragover="allowMoveTasks(event)">
+                </div>
+                <div class="tasks" id="ongoingTasks" ondrop="dropOngoing(event)" ondragover="allowMoveTasks(event)">
+                </div>
+                <div class="tasks" id="finishedTasks" ondrop="dropFinished(event)" ondragover="allowMoveTasks(event)">
+                </div>
+            </div>
+            <div id="archive">
+                <h2>ARKIV</h2>
+            </div>
+
+
+        </main>
+
+    </div>
+    <script src="drag-and-drop.js"></script>
+    <script src="index.js"></script>
+    <script src="layout.js"></script>
+    <script src="task-rendering.js"></script>
+    <script src="Darkmode.js"></script>
+
+</body>
+
+
+</html>
