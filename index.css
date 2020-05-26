@@ -825,8 +825,21 @@ textarea::placeholder{
 @media (max-width: 1395px) {
     #expandTaskBtn{
         position: absolute;
-        top: 55px;
+        top: 25px;
         left: 2px;
+    }
+    #memberIconGrid {
+        position: absolute;
+        height: 25px;
+        width: 96.5%;
+        top: 100px;
+        left: 40px;
+        overflow-x: scroll;
+    }
+    .taskDescriptionPara{
+        top: 110px;
+        height: 80px;
+        width: 90%;
     }
 }
 
@@ -843,6 +856,22 @@ textarea::placeholder{
         top: 42px;
         right: 10px;
     }
+    #memberIconGrid {
+        position: absolute;
+        height: 25px;
+        width: 96.5%;
+        top: 100px;
+        left: 40px;
+        overflow-x: scroll;
+    }
+    .taskDescriptionPara{
+        top: 110px;
+        height: 80px;
+        width: 90%;
+    }
+    #taskDeadlineDiv{
+        top: 80px;
+    }
 }
 
 @media (max-width: 874px) {
@@ -852,6 +881,22 @@ textarea::placeholder{
     #memberIconFlex {
         position: absolute;
         width: 52px;
+    }
+    #memberIconGrid {
+        position: absolute;
+        height: 25px;
+        width: 96.5%;
+        top: 100px;
+        left: 40px;
+        overflow-x: scroll;
+    }
+    .taskDescriptionPara{
+        top: 110px;
+        height: 80px;
+        width: 90%;
+    }
+    #taskDeadlineDiv{
+        top: 80px;
     }
 }
 
@@ -871,6 +916,22 @@ textarea::placeholder{
     }
     .taskObject{ 
         top: 20px;
+    }
+    #memberIconGrid {
+        position: absolute;
+        height: 25px;
+        width: 96.5%;
+        top: 100px;
+        left: 40px;
+        overflow-x: scroll;
+    }
+    .taskDescriptionPara{
+        top: 110px;
+        height: 80px;
+        width: 90%;
+    }
+    #taskDeadlineDiv{
+        top: 80px;
     }
 
 }
@@ -893,57 +954,58 @@ Media query for mobile device
         top: 170px;
     }
 
+    #unstartedHeading{
+        
+        left: 0px;
+    }
+
+    #ongoingHeading{
+        left: 360px;
+        
+    }
+
+    #finishedHeading{
+        left: 710px;
+    }
+
     #unstartedTasks{
         border-right: 1px solid black;
         height: 100vh;
-        width: 500px;
+        width: 365px;
         left: 0px;
     }
     #ongoingTasks{
         border-right: 1px solid black;
         height: 100vh;
-        width: 500px;
-        left: 500px;
+        width: 365px;
+        left: 355px;
     }
 
     #finishedTasks{
         right: 0;
-        width: 500px;
-        left: 1000px;
+        width: 365px;
+        left: 710px;
     }
     .tasksHeading{
         width: 100%;
         position: absolute;
         text-align: center;
     }
-
-    #unstartedHeading{
-        
-        left: 30px;
-    }
-
-    #ongoingHeading{
-        left: 550px;
-        
-    }
-
-    #finishedHeading{
-        left: 1050px;
-    }
     .taskObject{
         position: relative;
-        width: 200px;
+        width: 300px;
+        left: 10px;
         height: 200px;
     }
     .tasks{
         position: absolute;
-        width: 200px;
+        width: 120px;
         left: -1000px;
         
     }
     #revealArchiveBtn{
         top: 10px;
-        left: 220px;
+        left: 240px;
     }
     #revealMembersBtn{
         background-color: lightgray;
@@ -969,8 +1031,8 @@ Media query for mobile device
         background-color:orange;
         border-radius: 50%;
         color: white;
-        
     }
+
     #memberIconFlex {
         position: absolute;
         width: 52px;
@@ -990,7 +1052,6 @@ Media query for mobile device
         width: 200px;
     }
     #taskDescription{
-
         width: 200px;
         height: 110px;
     }
@@ -1021,7 +1082,6 @@ Media query for mobile device
         height: 30px;
         left: 230px;
     }
-
     #languageSection {
         left: 185px;
         height: 100px;
@@ -1040,19 +1100,35 @@ Media query for mobile device
         right: 15px;
         top: 89px;
     }
+    #adjustTextSection {
+        height: 100px;
+        width: 154px;
+    }
+    #adjustTextBiggerBtn {
+        height: 20px;
+        right: 15px;
+        width: 90px;
+        top: 60px;
+    }
+    #adjustTextStandardBtn {
+        height: 20px;
+        width: 90px;
+        right: 15px;
+        top: 89px;
+    }
     .taskDescriptionPara{
         top: 110px;
         height: 80px;
-        width: 92%;
+        width: 90%;
     }
     #taskIconForm{
-        left: 70%
+        left: 0%;
     }
     #taskIcon{
         left: 42%;
     }
     #progressBarDiv{
-        width: 200px;
+        width: 87%;
         top: 220px;
     }
     #checkList{
@@ -1073,9 +1149,10 @@ Media query for mobile device
     #memberIconGrid {
         position: absolute;
         height: 25px;
-        width: 420px;
+        width: 96.5%;
         top: 100px;
         left: 40px;
+        overflow-x: scroll;
     }
     
 
