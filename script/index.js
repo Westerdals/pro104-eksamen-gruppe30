@@ -41,7 +41,7 @@ function createTask(event) {
     const taskMembers = [];
     const taskChecklistUl = document.getElementsByClassName("checkListLi");
     var taskCheckListArray = [];
-    const taskHeight = "200px";
+    const taskHeight = "230px";
 
     if(taskName == "") {
         console.log("missing taskname");
