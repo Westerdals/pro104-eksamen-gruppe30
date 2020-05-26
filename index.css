@@ -318,14 +318,13 @@ label{
     padding-top: 5px;
     top: 80px;
     cursor: pointer;
-    top: 70px;
+    top: 110px;
     height: 80px;
-    width: 380px;
+    width: 422px;
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
     overflow: scroll;
 }
-
 
 #taskMembers{
     float: left;
@@ -450,7 +449,7 @@ textarea::placeholder{
 .taskObject{
     position: relative;
     width: 89%;
-    height: 200px;
+    height: 230px;
     padding: 10px;
     margin-top: 30px;
     border: 1px solid gray;
@@ -471,7 +470,7 @@ textarea::placeholder{
 
 #checkList{
     position: absolute;
-    top: 220px;
+    top: 250px;
     width: 379px;
     overflow: auto;
 }
@@ -482,10 +481,10 @@ textarea::placeholder{
 
 #progressBarDiv{
     position: absolute;
-    width: 379px;
+    width: 381px;
     height: 20px;
     border: 1px solid lightgray;
-    top: 190px;
+    top: 220px;
 }
 
 #taskMembers{
@@ -583,7 +582,7 @@ textarea::placeholder{
 
 #taskIcon{
     position: absolute;
-    left: 46%;
+    left: 46.5%;
     height: 35px;
     width: auto;
 }
@@ -604,8 +603,8 @@ textarea::placeholder{
 
 #expandTaskBtn{
     position: absolute;
-    top: 10px;
-    right: 42px;
+    top: 215px;
+    right: 5px;
     border: 0px;
     background-color: #f0f0f0;
 }
@@ -953,7 +952,6 @@ Media query for mobile device
         width: 200px;
     }
     #taskDescription{
-
         width: 200px;
         height: 110px;
     }

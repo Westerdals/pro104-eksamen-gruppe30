@@ -271,11 +271,12 @@ function revealAddDeadlineForm(){
 function expandTask(task){
     if (task.parentElement.style.height != "400px") {
         task.parentElement.style.height = "400px";
-        task.firstChild.src = "images/shrink.png"
-        task.firstChild.src.alt = "shrink task";
+        task.firstChild.src = "images/checkpoints-open.png"
+        task.firstChild.src.alt = "close checkpoints";
     } else {
-        task.parentElement.style.height = "200px";
-        task.firstChild.src = "images/expand.png"
+        task.parentElement.style.height = "230px";
+        task.firstChild.src = "images/checkpoints-closed.png"
+        task.firstChild.src.alt = "show checkpoints";
     }
 }
 
