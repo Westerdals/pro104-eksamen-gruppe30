@@ -449,7 +449,6 @@ textarea::placeholder{
 .taskObject{
     position: relative;
     width: 89%;
-    height: 230px;
     padding: 10px;
     margin-top: 30px;
     border: 1px solid gray;

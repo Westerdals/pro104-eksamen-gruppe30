@@ -75,7 +75,8 @@ function createMember(event) {
     if(document.getElementById("memberName").value == "") {
         console.log("Feil");
         document.getElementById("missingInputTeamMember").style.visibility = "visible";
-        setTimeout("document.getElementById('missingInputTeamMember').style.visibility = 'hidden'", 5000);
+        //setTimeout("document.getElementById('missingInputTeamMember').style.visibility = 'hidden'", 5000);
+        return false;
     }
     else {
         event.preventDefault();
