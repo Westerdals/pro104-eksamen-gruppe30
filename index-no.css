@@ -88,8 +88,24 @@
 @media (max-width: 1395px) {
     #expandTaskBtn{
         position: absolute;
-        top: 55px;
+        top: 25px;
         left: 2px;
+    }
+    .taskDescriptionPara{
+        top: 110px;
+        height: 80px;
+        width: 90%;
+    }
+    #taskDeadlineDiv{
+        top: 80px;
+    }
+    #memberIconGrid {
+        position: absolute;
+        height: 25px;
+        width: 96.5%;
+        top: 220px;
+        left: 10px;
+        overflow-x: scroll;
     }
 }
 
@@ -101,6 +117,22 @@
     #taskIcon{
         left: 42%;
     }
+    .taskDescriptionPara{
+        top: 110px;
+        height: 80px;
+        width: 90%;
+    }
+    #taskDeadlineDiv{
+        top: 80px;
+    }
+    #memberIconGrid {
+        position: absolute;
+        height: 25px;
+        width: 96.5%;
+        top: 100px;
+        left: 40px;
+        overflow-x: scroll;
+    }
 }
 
 @media (max-width: 874px) {
@@ -111,6 +143,23 @@
         position: absolute;
         width: 52px;
     }
+    .taskDescriptionPara{
+        top: 110px;
+        height: 80px;
+        width: 90%;
+    }
+    #taskDeadlineDiv{
+        top: 80px;
+    }
+    #memberIconGrid {
+        position: absolute;
+        height: 25px;
+        width: 96.5%;
+        top: 100px;
+        left: 40px;
+        overflow-x: scroll;
+    }
+   
 }
 
 @media (max-width: 715px) {
@@ -133,6 +182,22 @@
     #archive{
         top: 170px;
     }
+    .taskDescriptionPara{
+        top: 110px;
+        height: 80px;
+        width: 90%;
+    }
+    #taskDeadlineDiv{
+        top: 80px;
+    }
+    #memberIconGrid {
+        position: absolute;
+        height: 25px;
+        width: 96.5%;
+        top: 100px;
+        left: 40px;
+        overflow-x: scroll;
+    }
 
 }
 
@@ -154,51 +219,52 @@ Media query for mobile device
         top: 170px;
     }
 
+    #unstartedHeading{
+        
+        left: 0px;
+    }
+
+    #ongoingHeading{
+        left: 360px;
+        
+    }
+
+    #finishedHeading{
+        left: 710px;
+    }
+
     #unstartedTasks{
         border-right: 1px solid black;
         height: 100vh;
-        width: 500px;
+        width: 365px;
         left: 0px;
     }
     #ongoingTasks{
         border-right: 1px solid black;
         height: 100vh;
-        width: 500px;
-        left: 500px;
+        width: 365px;
+        left: 355px;
     }
 
     #finishedTasks{
         right: 0;
-        width: 500px;
-        left: 1000px;
+        width: 365px;
+        left: 710px;
     }
     .tasksHeading{
         width: 100%;
         position: absolute;
         text-align: center;
     }
-
-    #unstartedHeading{
-        
-        left: 30px;
-    }
-
-    #ongoingHeading{
-        left: 550px;
-        
-    }
-
-    #finishedHeading{
-        left: 1050px;
-    }
     .taskObject{
         position: relative;
-        width: 200px;
+        width: 300px;
+        left: 10px;
         height: 200px;
     }
     .tasks{
         position: absolute;
-        width: 200px;
+        width: 120px;
         left: -1000px;
         
     }
@@ -251,7 +317,6 @@ Media query for mobile device
         width: 200px;
     }
     #taskDescription{
-
         width: 200px;
         height: 110px;
     }
@@ -300,10 +365,6 @@ Media query for mobile device
         right: 15px;
         top: 89px;
     }
-    #revealSettingsBtn {
-        top: 50px;
-        left: 241px;
-    }
     #adjustTextSection {
         height: 100px;
         width: 154px;
@@ -323,7 +384,7 @@ Media query for mobile device
     .taskDescriptionPara{
         top: 110px;
         height: 80px;
-        width: 92%;
+        width: 90%;
     }
     #taskIconForm{
         left: 0%;
@@ -332,7 +393,7 @@ Media query for mobile device
         left: 42%;
     }
     #progressBarDiv{
-        width: 200px;
+        width: 87%;
         top: 220px;
     }
     #checkList{
@@ -353,11 +414,16 @@ Media query for mobile device
     #memberIconGrid {
         position: absolute;
         height: 25px;
-        width: 420px;
+        width: 96.5%;
         top: 100px;
         left: 40px;
         overflow-x: scroll;
     }
+    #revealSettingsBtn {
+        top: 50px;
+        left: 241px;
+    }
+
 }
 
 @media screen and (orientation:landscape)
