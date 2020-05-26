@@ -326,7 +326,7 @@ label{
     cursor: pointer;
     top: 70px;
     height: 75px;
-    width: 422px;
+    width: 97%;
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
     overflow: scroll;
@@ -816,7 +816,7 @@ textarea::placeholder{
 @media (max-width: 1395px) {
     #expandTaskBtn{
         position: absolute;
-        top: 95px;
+        top: 55px;
         left: 2px;
     }
 }
@@ -1057,6 +1057,16 @@ Media query for mobile device
         position: absolute;
         top: 95px;
         left: 2px;
+    }
+    #taskDeadlineDiv{
+        top: 80px;
+    }
+    #memberIconGrid {
+        position: absolute;
+        height: 25px;
+        width: 420px;
+        top: 100px;
+        left: 40px;
     }
     
 

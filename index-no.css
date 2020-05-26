@@ -88,7 +88,7 @@
 @media (max-width: 1395px) {
     #expandTaskBtn{
         position: absolute;
-        top: 95px;
+        top: 55px;
         left: 2px;
     }
 }
@@ -230,8 +230,8 @@ Media query for mobile device
         background-color:orange;
         border-radius: 50%;
         color: white;
-        
     }
+
     #memberIconFlex {
         position: absolute;
         width: 52px;
@@ -346,6 +346,17 @@ Media query for mobile device
         position: absolute;
         top: 95px;
         left: 2px;
+    }
+    #taskDeadlineDiv{
+        top: 80px;
+    }
+    #memberIconGrid {
+        position: absolute;
+        height: 25px;
+        width: 420px;
+        top: 100px;
+        left: 40px;
+        overflow-x: scroll;
     }
 }
 
