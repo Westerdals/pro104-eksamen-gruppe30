@@ -81,6 +81,7 @@
                                 placeholder="Skriv inn et punkt i sjekklisten..." size="30">
                             <button class="button" id="createChecklistBtn" type="button"
                                 onclick="createChecklistPoint()">LEGG TIL I SJEKKLISTEN</button>
+                                <div id="missingInputCheckpoint" class="missingInput">!</div>
                             <ul id="taskChecklist" name="checkList"></ul>
                         </div>
 
@@ -109,6 +110,7 @@
                             <label id="memberLabel" for="memberName">LEGG TIL ET TEAMMEDLEM</label><br>
                             <input class="input" type="text" id="memberName" name="memberName"
                                 placeholder="Ola Nordmann" size="32"><br>
+                                <div id="missingInputName" class="missingInput">!</div>
                             <input id="memberSubmitBtn" class="button" type="submit" value="LEGG TIL">
                         </div>
                     </form>

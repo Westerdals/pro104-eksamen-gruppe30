@@ -790,6 +790,12 @@ textarea::placeholder{
 
 }
 
+#missingInputTeamMember {
+    right: -44%;
+    top: -37%;
+    visibility: hidden;
+}
+
 
 /*                                              MEDIA QUERIES                                                         */
 

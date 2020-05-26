@@ -71,22 +71,30 @@ function createTask(event) {
 }
 
 function createMember(event) {
-    event.preventDefault();
 
-    const memberName = document.querySelector("[name='memberName']").value;
-    const memberList = JSON.parse(localStorage.getItem('member')) || [];
+    if(document.getElementById("memberName").value == "") {
+        console.log("Feil");
+        document.getElementById("missingInputTeamMember").style.visibility = "visible";
+        setTimeout("document.getElementById('missingInputTeamMember').style.visibility = 'hidden'", 5000);
+    }
+    else {
+        event.preventDefault();
 
-    let memberId = Math.floor(Math.random() * 1000);
+        const memberName = document.querySelector("[name='memberName']").value;
+        const memberList = JSON.parse(localStorage.getItem('member')) || [];
 
-    const member = {memberId, memberName };
+        let memberId = Math.floor(Math.random() * 1000);
+
+        const member = {memberId, memberName };
     
-    memberList.push(member);
+        memberList.push(member);
 
-    window.localStorage.setItem('member', JSON.stringify(memberList));
+        window.localStorage.setItem('member', JSON.stringify(memberList));
 
-    event.target.reset();
-    revealMembersSection();
-    renderMemberList();
+        event.target.reset();
+        revealMembersSection();
+        renderMemberList();
+    }
 }
 
 function checklistStatus (taskId, indexCheckbox, status, tasklistKey) {
