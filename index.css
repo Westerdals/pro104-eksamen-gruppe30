@@ -460,9 +460,6 @@ textarea::placeholder{
     cursor: grabbing;
 }
 
-#taskDeadlineDiv{
-    
-}
 
 #checkList{
     position: absolute;
@@ -713,7 +710,6 @@ textarea::placeholder{
     text-decoration: none;
 }
 
-<<<<<<< HEAD:task-manager.css
 @media (max-width: 1142px) {
     .taskObject{ 
       width: 55%;
@@ -749,9 +745,3 @@ textarea::placeholder{
       }
     
   }
-=======
-#norwegianBtn:hover{
-    border-color: orange;
-    color: orange;
-}
->>>>>>> a09efa6a6dd67c76557f115e6daad72bc56bfdc2:index.css
