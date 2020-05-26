@@ -501,6 +501,10 @@ textarea::placeholder{
     background-color:#f7fafa;
 }
 
+.taskObject:hover #expandTaskBtnFinishedList{
+    background-color:#f7fafa;
+}
+
 .taskObject:hover #archiveTaskBtn{
     background-color:#f7fafa;
 }
@@ -606,6 +610,15 @@ textarea::placeholder{
     background-color: #f0f0f0;
 }
 
+#expandTaskBtnFinishedList {
+    position: absolute;
+    top: 11px;
+    right: 74px;
+    border: 0px;
+    background-color: #f0f0f0;
+
+}
+
 #archiveTaskBtn {
     position: absolute;
     top: 12px;
@@ -701,6 +714,34 @@ textarea::placeholder{
     overflow: hidden;
     align-content: flex-start;
 }
+
+.missingInput {
+    position: relative;
+    border-radius: 50%;
+    width: 27px;
+    height: 27px;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 23px;
+    line-height: 30px;
+    margin: auto;
+    background-color: red;
+    color: white;
+}
+
+#missingInputName {
+    right: -45%;
+    top: -34%;
+    visibility: hidden;
+}
+
+#missingInputCheckpoint {
+    right: -44%;
+    top: 0%;
+    visibility: hidden;
+
+}
+
 #norwegianBtn {
     background-color: whitesmoke;
     border: 1px solid gray;
@@ -720,6 +761,33 @@ textarea::placeholder{
 #norwegianBtn:hover{
     border-color: orange;
     color: orange;
+}
+
+.missingInput {
+    position: relative;
+    border-radius: 50%;
+    width: 27px;
+    height: 27px;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 23px;
+    line-height: 30px;
+    margin: auto;
+    background-color: red;
+    color: white;
+}
+
+#missingInputName {
+    right: -45%;
+    top: -34%;
+    visibility: hidden;
+}
+
+#missingInputCheckpoint {
+    right: -44%;
+    top: 0%;
+    visibility: hidden;
+
 }
 
 
@@ -829,7 +897,6 @@ Media query for mobile device
     .taskObject{
         position: relative;
         width: 200px;
-        height: 200px;
     }
     .tasks{
         position: absolute;
@@ -931,6 +998,7 @@ Media query for mobile device
         right: 15px;
         top: 89px;
     }
+
     .taskDescriptionPara{
         top: 70px;
         height: 80px;

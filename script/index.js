@@ -41,6 +41,14 @@ function createTask(event) {
     const taskMembers = [];
     const taskChecklistUl = document.getElementsByClassName("checkListLi");
     var taskCheckListArray = [];
+    const taskHeight = "200px";
+
+    if(taskName == "") {
+        console.log("missing taskname");
+        document.getElementById("missingInputName").style.visibility = "visible";
+        setTimeout("document.getElementById('missingInputName').style.visibility = 'hidden'", 5000);
+        return false;
+    }
 
     for(var i = 0; i < taskChecklistUl.length; i++) {
         var taskChecklist = {
@@ -53,7 +61,7 @@ function createTask(event) {
     console.log(taskChecklistUl)
     
     let taskId = Math.floor(Math.random() * 1000);
-    const task = { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput};
+    const task = { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput, taskHeight};
     taskList.push(task);
     window.localStorage.setItem('task', JSON.stringify(taskList));
 
@@ -193,17 +201,24 @@ function renderMemberList() {
 
 function createChecklistPoint() {
 
-    var li = document.createElement("li");
-    li.setAttribute("class", "checkListLi");
-    var checklistInput = document.getElementById("taskChecklistInput").value;
-
-    var node = document.createTextNode(checklistInput);
-    li.appendChild(node);
-
-    document.getElementById("taskChecklist").appendChild(li);
-    document.getElementById("taskChecklistInput").value = "";
-
-    revealCheckpoints();
+    if (document.getElementById("taskChecklistInput").value != ""){
+        console.log(document.getElementById("taskChecklistInput").value);
+        var li = document.createElement("li");
+        li.setAttribute("class", "checkListLi");
+        var checklistInput = document.getElementById("taskChecklistInput").value;
+    
+        var node = document.createTextNode(checklistInput);
+        li.appendChild(node);
+    
+        document.getElementById("taskChecklist").appendChild(li);
+        document.getElementById("taskChecklistInput").value = "";
+    
+        revealCheckpoints();
+    }
+    else {
+        document.getElementById("missingInputCheckpoint").style.visibility = "visible";
+        setTimeout("document.getElementById('missingInputCheckpoint').style.visibility = 'hidden'", 5000);
+    }
 }
 
 function createMemberSlots(){

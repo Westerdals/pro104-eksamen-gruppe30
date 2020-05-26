@@ -1,6 +1,31 @@
-/*
-Function is rendering the created task from localStorage.
-*/
+function changeHeight(task, taskId, localStorageKey) {
+    var taskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
+    var newHeight;
+
+    if (task.parentElement.style.height != "400px") {
+        task.parentElement.style.height = "400px";
+        task.firstChild.src = "images/shrink.png"
+        task.firstChild.src.alt = "shrink task";
+        newHeight = "400px";
+    } else {
+        task.parentElement.style.height = "200px";
+        task.firstChild.src = "images/expand.png"
+        newHeight = "200px"
+    }
+    for(const task of taskList) {
+        if(task.taskId === taskId) {
+            task.taskHeight = newHeight;
+            window.localStorage.setItem(localStorageKey, JSON.stringify(taskList));
+        }
+    }
+}
+
+function renderExpandImg (task){
+    if(task == "400px") {
+        return "images/shrink.png"
+    }
+    else {return "images/expand.png"}
+}
 
 function renderTaskList() {
     document.getElementById("pickedIcon").src="icons/default.png";
@@ -12,7 +37,7 @@ function renderTaskList() {
 
     for (const task of taskList) {
         const taskElement = document.createElement("div");
-        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput} = task;
+        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput, taskHeight} = task;
         var taskChecklistDiv = "";
         var taskProgressBarDiv = "";
         var taskMemberDiv = "";
@@ -24,26 +49,26 @@ function renderTaskList() {
             taskChecklistDiv += `<div id="checkList">`;
             for(var i = 0; i < taskCheckListArray.length; i++) {
                 if (taskCheckListArray[i].checked == true) {
-                    taskChecklistDiv += `<div id="fullCheckpoint"><input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'task'); renderTaskList();" checked>
+                    taskChecklistDiv += `<div id="fullCheckpoint"><input name="${taskCheckListArray[i].checkPointName}" type="checkbox" onclick="checklistStatus(${taskId}, ${i}, false, 'task'); renderTaskList()" checked>
                     <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i} ,event, 'task');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label></div>`
                     finishedCheckpoint++
                 }
                 if (taskCheckListArray[i].checked == false) {
-                    taskChecklistDiv += `<div id="fullCheckpoint"><input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task');"; type="checkbox">
+                    taskChecklistDiv += `<div id="fullCheckpoint"><input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task'); renderTaskList()" type="checkbox">
                     <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i}, event, 'task');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label></div>`
                 }
             }
             taskChecklistDiv += `</div>`;
-            taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
-            taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
-            expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="expandTask(this)"><img src="images/expand.png" style="height:30px;" alt="expand task"></button>`;
+            taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${100/taskCheckListArray.length * finishedCheckpoint}%; height: 20px; background-color: lightgreen;"></div></div>`
+            expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'task')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="expand task"></button>`;
 
         }
+        taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
 
         for(var i = 0; i < task.taskMembers.length; i++) {
             taskMemberDiv += `<div class="memberIconDiv">${task.taskMembers[i].memberName.charAt(0)}</div>`;
         } 
-    taskElement.innerHTML = `<div id="${taskId}" class="taskObject" draggable="true" ondragstart="dragStartTasks(event)" ondragover="allowMoveNames(event)" ondrop="dropNames(event, 'task');">
+    taskElement.innerHTML = `<div id="${taskId}" class="taskObject" style="height:${taskHeight}"draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondragleave="dragLeave(event)" ondrop="dropNames(event, 'task');">
                                     <img id="taskIcon" src="${taskIcon}">
                                     ${expandTaskBtnDiv}
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'task')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
@@ -59,11 +84,6 @@ function renderTaskList() {
     }
 }
 
-/*
-Function is using the move(taskId, localStorageKey, newLocalStorageKey) function to render the task
-in the ongoingTask div.
-*/
-
 function renderTaskOngoingList() {
     document.getElementById("pickedIcon").src="icons/default.png";
     const ongoingList = JSON.parse(window.localStorage.getItem("ongoingTask")) || [];
@@ -73,7 +93,7 @@ function renderTaskOngoingList() {
 
         for(const task of ongoingList) {
             const taskElement = document.createElement("div");
-            const { taskId, taskName, taskDescription, taskIcon, memberName, memberId, taskCheckListArray, taskDeadlineInput } = task;
+            const { taskId, taskName, taskDescription, taskIcon, memberName, memberId, taskCheckListArray, taskDeadlineInput, taskHeight } = task;
             var taskChecklistDiv = "";
             var taskProgressBarDiv = "";
             var taskProgress = 0
@@ -96,13 +116,13 @@ function renderTaskOngoingList() {
                 taskChecklistDiv += `</div>`;
                 taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
                 taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
-                expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="expandTask(this)"><img src="images/expand.png" style="height:30px;" alt="expand task"></button>`;
+                expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'ongoingTask')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="expand task"></button>`;
             }
             for(var i = 0; i < task.taskMembers.length; i++) {
                 taskMemberDiv += `<div class="memberIconDiv">${task.taskMembers[i].memberName.charAt(0)}</div>`;
             }
-            taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
-                                    draggable="true" ondragstart="dragStartTasks(event)" ondragover="allowMoveNames(event)" ondrop="dropNames(event)">
+            taskElement.innerHTML = `<div id="${taskId}" class="taskObject" style="height:${taskHeight}" onclick="expandTask(this)"
+                                    draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondragleave="dragLeave(event)" ondrop="dropNames(event)">
                                     ${expandTaskBtnDiv}
                                     <img id="taskIcon" src="${taskIcon}">
                                     ${expandTaskBtnDiv}
@@ -119,12 +139,6 @@ function renderTaskOngoingList() {
         }
 }
 
-
-/*
-Function is using the move(taskId, localStorageKey, newLocalStorageKey) function to render the task
-in the ongoingTask div.
-*/
-
 function renderTaskFinishedList() {
 
     document.getElementById("pickedIcon").src="icons/default.png";
@@ -135,7 +149,7 @@ function renderTaskFinishedList() {
 
     for (const task of finishedList) {
         const taskElement = document.createElement("div");
-        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput } = task;
+        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput, taskHeight } = task;
         var taskChecklistDiv = "";
         var taskProgressBarDiv = "";
         var taskProgress = 0;
@@ -159,14 +173,14 @@ function renderTaskFinishedList() {
             taskChecklistDiv += `</div>`;
             taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
             taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
-            expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="expandTask(this)"><img src="images/expand.png" style="height:30px;" alt="expand task"></button>`;
+            expandTaskBtnDiv = `<button id="expandTaskBtnFinishedList" type="button" onclick="changeHeight(this, ${taskId}, 'finishedTask')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="expand task"></button>`;
         }
         for(var i = 0; i < task.taskMembers.length; i++) {
             taskMemberDiv += `<div class="memberIconDiv">${task.taskMembers[i].memberName.charAt(0)}</div>`;
         }
 
-        taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
-                                 draggable="true" ondragstart="dragStartTasks(event)" ondragover="allowMoveNames(event)" ondrop="dropNames(event)">
+        taskElement.innerHTML = `<div id="${taskId}" class="taskObject" style="height:${taskHeight}"
+                                 draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondrop="dropNames(event)">
                                 <img id="taskIcon" src="${taskIcon}">
                                 ${expandTaskBtnDiv}
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; contentEditable="true" oninput="changeName(${taskId}, event, 'finishedTask');" class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
@@ -183,11 +197,6 @@ function renderTaskFinishedList() {
     }
 }
 
-/*
-Function is triggered by the archiveTask(taskId) function which moves the taskId's object from finishedTask
-localStorage to the archive localStorage.
-*/
-
 function renderArchiveList(){
     const archiveList = JSON.parse(localStorage.getItem("archive")) || [];
 
@@ -197,7 +206,7 @@ function renderArchiveList(){
 
     for(const ar of archiveList){
         let archiveElement = document.createElement("div");
-        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput } = ar;
+        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput, taskHeight } = ar;
         var taskChecklistDiv = "";
         var taskMemberDiv = "";
         var expandTaskBtnDiv = "";
@@ -210,14 +219,14 @@ function renderArchiveList(){
                 taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" disabled="disabled" type="checkbox">
                 <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
             }
-            expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="expandTask(this)"><img src="images/expand.png" style="height:30px;" alt="expand task"></button>`;
+            expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'archive')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="expand task"></button>`;
         }
         for(var i = 0; i < ar.taskMembers.length; i++) {
             taskMemberDiv += `<div class="memberIconDiv">${ar.taskMembers[i].memberName.charAt(0)}</div>`;
         }
 
-        archiveElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
-                                    draggable="true" ondragstart="dragStartTasks(event)" ondragover="allowMoveNames(event)">
+        archiveElement.innerHTML = `<div id="${taskId}" class="taskObject"  style="height:${taskHeight}"
+                                    draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                     <img id="taskIcon" src="${taskIcon}">
                                     ${expandTaskBtnDiv}
                                     <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
