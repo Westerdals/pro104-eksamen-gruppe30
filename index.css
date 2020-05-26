@@ -724,6 +724,10 @@ textarea::placeholder{
     #taskIcon{
         left: 42%;
     }
+    #archiveTaskBtn {
+        top: 42px;
+        right: 10px;
+    }
   }
 
   @media (max-width: 874px) {
@@ -915,6 +919,14 @@ textarea::placeholder{
         width: 90px;
         right: 15px;
         top: 89px;
+    }
+    .taskDescriptionPara{
+        top: 70px;
+        height: 80px;
+        width: 92%;
+    }
+    #taskIconForm{
+        left: 70%
     }
     
   }
