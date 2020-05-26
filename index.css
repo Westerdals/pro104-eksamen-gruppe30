@@ -711,6 +711,11 @@ textarea::placeholder{
     text-decoration: none;
 }
 
+#norwegianBtn:hover{
+    border-color: orange;
+    color: orange;
+}
+
 
 /*                                              MEDIA QUERIES                                                         */
 

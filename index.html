@@ -11,14 +11,14 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-        $( function() {
-            $( "#taskDeadlineInput" ).datepicker( {
+        $(function () {
+            $("#taskDeadlineInput").datepicker({
                 dateFormat: "dd-mm-yy"
-            } );
-        } );
+            });
+        });
     </script>
     <!-- jQuery plugin tags ends here -->
-    <link rel="icon" type="image/ico" href="images/to-do-favicon.ico">
+    <link rel="icon" type="image/ico" href="images/default.ico">
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="settings.css">
     <link rel="stylesheet" type="text/css" href="mediaqueries.css">
@@ -61,14 +61,15 @@
                             <button class="additionBtn" type="button" id="addIconRevealBtn"
                                 onmouseover="revealAddIconForm()">+
                                 ICON</button>
-                            <button class="additionBtn" type="button" id="addDeadlineRevealBtn" onmouseover="revealAddDeadlineForm()">+ DEADLINE</button>
-                            
+                            <button class="additionBtn" type="button" id="addDeadlineRevealBtn"
+                                onmouseover="revealAddDeadlineForm()">+ DEADLINE</button>
+
                         </div>
 
                         <div class="additionForm" id="taskDescriptionForm">
                             <label id="taskDescriptionLabel" for="taskDescription">DESCRIBE THE TASK</label>
-                            <textarea id="taskDescription" name="taskDescription" placeholder="Write here..." maxlength="140"
-                                onkeyup="countCharacters()"></textarea>
+                            <textarea id="taskDescription" name="taskDescription" placeholder="Write here..."
+                                maxlength="140" onkeyup="countCharacters()"></textarea>
                             <div id="counting">
                                 <span id="currentCount">0 </span>
                                 <span>/ 140</span>
@@ -89,7 +90,7 @@
                                 <img name="taskIcon" id="pickedIcon" src="icons/default.png" alt="chosen-icon">
                             </div>
                         </div>
-                        
+
                         <div class="additionForm" id="taskDeadlineForm">
                             <label id="taskDeadlineLabel" for="taskDeadlineInput">SET DUE DATE</label>
                             <input class="input" type="text" id="taskDeadlineInput" name="taskDeadlineInput"
@@ -97,7 +98,7 @@
                         </div>
 
                         <input id="taskSubmitBtn" class="button" type="submit" value="GET IT DONE!">
-                    -->
+
                     </form>
                 </div>
             </section>
@@ -146,9 +147,12 @@
                     <h2 class="tasksHeading" id="ongoingHeading">ONGOING</h2>
                     <h2 class="tasksHeading" id="finishedHeading">FINISHED</h2>
                 </div>
-                <div class="tasks" id="unstartedTasks" ondrop="dropUnstarted(event)" ondragover="allowMoveTasks(event)"></div>
-                <div class="tasks" id="ongoingTasks" ondrop="dropOngoing(event)" ondragover="allowMoveTasks(event)"></div>
-                <div class="tasks" id="finishedTasks" ondrop="dropFinished(event)" ondragover="allowMoveTasks(event)"></div>
+                <div class="tasks" id="unstartedTasks" ondrop="dropUnstarted(event)" ondragover="allowMoveTasks(event)">
+                </div>
+                <div class="tasks" id="ongoingTasks" ondrop="dropOngoing(event)" ondragover="allowMoveTasks(event)">
+                </div>
+                <div class="tasks" id="finishedTasks" ondrop="dropFinished(event)" ondragover="allowMoveTasks(event)">
+                </div>
             </div>
             <div id="archive">
                 <h2>ARCHIVE</h2>
@@ -161,7 +165,7 @@
     <script src="script/drag-and-drop.js"></script>
     <script src="script/index.js"></script>
     <script src="script/layout.js"></script>
-    <script src="script/renderTasks.js"></script>
+    <script src="script/task-rendering.js"></script>
 </body>
 
 

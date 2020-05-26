@@ -99,8 +99,6 @@ function revealMembersSection() {
     window.setTimeout(hideAdditionForms, 1000);
 }
 
-
-
 function revealArchive() {
     var archive = document.getElementById("archive");
     var revealArchiveBtn = document.getElementById("revealArchiveBtn");
@@ -109,7 +107,7 @@ function revealArchive() {
     if (archive.style.height == "0px" || archive.style.height == "") {
         archive.style.height = "630px";
         archive.style.opacity = "1";
-        revealSettingsBtn.style.right = "170px";
+        revealSettingsBtn.style.right = "15%";
 
         if(revealArchiveBtn.innerHTML === "VIEW ARCHIVE"){
             revealArchiveBtn.innerHTML = "VIEW TASKS TABLE";
@@ -125,7 +123,7 @@ function revealArchive() {
         hideSection(archive);
         tasksTable.style.height = "630px";
         tasksTable.style.opacity = "1";
-        revealSettingsBtn.style.right = "130px";
+        revealSettingsBtn.style.right = "12%";
 
         if(revealArchiveBtn.innerHTML === "VIEW TASKS TABLE"){
             revealArchiveBtn.innerHTML = "VIEW ARCHIVE";
@@ -269,7 +267,6 @@ function revealAddDeadlineForm(){
         hideAdditionInputs(taskDeadlineForm);
     }
 }
-
 
 function expandTask(task){
     if (task.parentElement.style.height != "400px") {

@@ -39,7 +39,7 @@
 }
 
 #revealSettingsBtn {
-    right:  20%;
+    right: 12%;
     background-color: whitesmoke;
     transition: right 0.2s ease-in-out;
 }
