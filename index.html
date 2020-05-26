@@ -51,6 +51,7 @@
                             <label id="taskNameLabel" for="taskName">WHAT DO YOU<br>NEED TO GET<br>DONE?</label><br>
                             <input class="input" type="text" id="taskName" name="taskName"
                                 placeholder="Write down a task..." size="32"><br><br>
+                                <div id="missingInputName" class="missingInput">!</div>
                         </div>
 
                         <div id=additionButtons>
@@ -82,6 +83,7 @@
                                 placeholder="Write a checkpoint..." size="30">
                             <button class="button" id="createChecklistBtn" type="button"
                                 onclick="createChecklistPoint()">ADD TO CHECKLIST</button>
+                                <div id="missingInputCheckpoint" class="missingInput">!</div>
                             <ul id="taskChecklist" name="checkList"></ul>
                         </div>
 

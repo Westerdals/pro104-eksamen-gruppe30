@@ -1,7 +1,5 @@
 /*
-Function takes in the targets id's and localStorageKey as parameters, 
-puts the information about the memberId and puts it in a new object. The object is then pushed into the 
-targeted taskId.
+Function takes in the targets id's as parameters, puts the information about these id's and place them into the ongoingList array.
 */
 
 function moveMembersToTask(memberId, taskId, localStorageKey) {
@@ -46,19 +44,11 @@ function move(taskId, localStorageKey, newLocalStorageKey) {
 
 }
 
-/*
-dragstart handler for the member.
-*/
-
 function dragStartNames(ev){
     let nameDrag = ev.target.id;
     ev.dataTransfer.setData("text/plain", nameDrag);
     ev.dataTransfer.effectAllowed = "copy";
 }
-
-/*
-drop handler for the member.
-*/
 
 function dropNames(event, localStorageKey){
     event.preventDefault();
@@ -71,33 +61,32 @@ function dropNames(event, localStorageKey){
     
 }
 
-/*
-dragover handler for the member.
-*/
-
-function allowMoveNames(ev) {
+function dragLeave(ev){
   ev.preventDefault();
+<<<<<<< HEAD
   ev.dataTransfer.dropEffect = "copy"
 }
+=======
+>>>>>>> f4cfe8e5a2cb3b24cf2b57500620887a9c7969f4
 
 
-/*
-dragover handler for the task.
-*/
+}
+
 
 function allowMoveTasks(ev) {
     ev.preventDefault();
     ev.dataTransfer.dropEffect = "copy"
 
-}
+  }
   
-/*
-dragstart handler for the task.
-*/
+  function allowMoveNames(ev) {
+    ev.preventDefault();
+  }
 
-function dragStartTasks(ev) {
+  function drag(ev) {
     taskId = ev.target.id;
     ev.dataTransfer.setData("text/plain", taskId);
+<<<<<<< HEAD
     ev.dataTransfer.effectAllowed = "copy";
 }
 
@@ -106,32 +95,35 @@ function dragStartTasks(ev) {
 /*
 drop handlers for the unstartedTasks, ongoingTasks and finishedTasks divs.
 */
+=======
+  }
+>>>>>>> f4cfe8e5a2cb3b24cf2b57500620887a9c7969f4
 
-function dropUnstarted(ev) {
-  ev.preventDefault();    
+  function dropUnstarted(ev) {
+    ev.preventDefault();    
 
-  let taskId = ev.dataTransfer.getData("text/plain");
+    let taskId = ev.dataTransfer.getData("text/plain");
 
-  move(taskId, 'ongoingTask', 'task');
-  move(taskId, 'finishedTask', 'task');
-}
+    move(taskId, 'ongoingTask', 'task');
+    move(taskId, 'finishedTask', 'task');
+  }
   
-function dropOngoing(ev) {
-  ev.preventDefault();
+  function dropOngoing(ev) {
+    ev.preventDefault();
 
 
-  let taskId = ev.dataTransfer.getData("text/plain");
+    let taskId = ev.dataTransfer.getData("text/plain");
+  
+    move(taskId, 'task', 'ongoingTask');
+    move(taskId, 'finishedTask', 'ongoingTask');
+  }
 
-  move(taskId, 'task', 'ongoingTask');
-  move(taskId, 'finishedTask', 'ongoingTask');
-}
 
+  function dropFinished(ev) {
+    ev.preventDefault();
 
-function dropFinished(ev) {
-  ev.preventDefault();
+    let taskId = ev.dataTransfer.getData("text/plain");
 
-  let taskId = ev.dataTransfer.getData("text/plain");
-
-  move(taskId, 'ongoingTask', 'finishedTask');
-  move(taskId, 'task', 'finishedTask');
-}
+    move(taskId, 'ongoingTask', 'finishedTask');
+    move(taskId, 'task', 'finishedTask');
+  }
