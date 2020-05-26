@@ -1,0 +1,83 @@
+.additionBtn{
+    width: 172px;
+    left: 312px;
+}
+
+#taskSubmitBtn{
+    width: 125px;
+}
+
+#memberSubmitBtn{
+    width: 90px;
+}
+
+#addMemberRevealBtn{
+    left: 130px;
+}
+
+#revealMembersBtn{
+    left: 312px;
+}
+
+.additionForm{
+    left: 493px;
+}
+
+#taskNameForm{
+    width: 283px;
+}
+#deleteTaskBtn:hover{
+    cursor: pointer;
+}
+
+#adjustTextSection {
+    width: 300px;
+}
+
+#languageSection {
+    width: 240px;
+}
+
+#englishBtn {
+    background-color: whitesmoke;
+    position: absolute;
+    cursor: pointer;
+    border: 1px solid gray;
+    height: 40px;
+    right: 15px;
+    width: 90px;
+    top: 15px;
+    font-size: 14px;
+    z-index: 2;
+    background-color: lightgray;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+#norwegianBtn {
+    background-color: whitesmoke;
+    border: 1px solid gray;
+    cursor: pointer;
+    position: absolute;
+    height: 40px;
+    width: 90px;
+    right: 15px;
+    top: 69px;
+    font-size: 14px;
+    z-index: 2;
+    background-color: lightgray;
+    color: orange;
+    border-color: orange;
+    text-decoration: none;
+    text-align: center;
+}
+
+#englishBtn:hover{
+    border-color: orange;
+    color: orange;
+}
+
+#revealSettingsBtn {
+    right: 110px;
+}

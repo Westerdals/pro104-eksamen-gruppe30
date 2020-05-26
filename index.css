@@ -1,9 +1,3 @@
-@media screen and (max-width: 1399px) {
-	#mainContainer{
-        width: 100%;
-    }
-}
-
 body{
     margin-top: 0;
     background-color: whitesmoke;
@@ -20,6 +14,11 @@ body{
 
 button:focus, input:focus, textarea:focus, select:focus{
     outline: none;
+}
+
+a{
+    text-decoration: none;
+    color: black;
 }
 
 header{
@@ -195,6 +194,10 @@ header{
     height: 0px;
     opacity: 0;
     transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -webkit-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -moz-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -o-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
+    -ms-transition: opacity 0.6s ease-in-out, height 0.3s ease-in-out;
     overflow: hidden;
 }
 
@@ -227,6 +230,10 @@ label{
 #taskNameLabel{
     font-size: 20px;
     font-weight: 700;
+}
+
+#websiteName{
+    top: 0px;
 }
 
 #taskNameForm{
@@ -274,6 +281,10 @@ label{
     opacity: 0;
     background-color: whitesmoke;
     transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -webkit-transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -moz-transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -o-transition: opacity 0.2s ease-out, width 0.2s ease-out;
+    -ms-transition: opacity 0.2s ease-out, width 0.2s ease-out;
     overflow-y: auto;
 }
 
@@ -297,12 +308,15 @@ label{
     position: absolute;
     padding-top: 5px;
     top: 80px;
-    height: 75px;
+    cursor: pointer;
+    top: 70px;
+    height: 80px;
     width: 380px;
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
-    overflow: none;
+    overflow: scroll;
 }
+
 
 #taskMembers{
     float: left;
@@ -324,6 +338,10 @@ textarea::placeholder{
     width: 1400px;
     opacity: 1;
     transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -moz-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
+    -ms-transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
 }
 
 #archive{
@@ -334,6 +352,10 @@ textarea::placeholder{
     width: 1400px;
     opacity: 0;
     transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -webkit-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
     border-top: 2px solid black;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -347,8 +369,8 @@ textarea::placeholder{
     position: absolute;
     text-align: center;
     top: 89px;
-    height: 630px;
-    width: 450px;
+    height: 800px;
+    width: 466.6px;
     display: grid-inline;
     grid-row-gap: 20px;
     overflow-y: auto;
@@ -363,7 +385,7 @@ textarea::placeholder{
 }
 
 .tasksHeading{
-    width: 450px;
+    width: 466.6px;
     position: absolute;
     text-align: center;
 }
@@ -373,12 +395,12 @@ textarea::placeholder{
 }
 
 #ongoingHeading{
-    left: 450px;;
+    left: 466.6px;;
     border-right: 1px solid black;
 }
 
 #finishedHeading{
-    left: 900px;
+    left: 933.2px;
 }
 
 #unstartedTasks{
@@ -386,12 +408,28 @@ textarea::placeholder{
 }
 
 #ongoingTasks{
-    left: 450px;
+    left: 466.6px;
     border-right: 1px solid black;
 }
 
 #finishedTasks{
-    left: 900px;
+    left: 933.2px;
+}
+
+#ongoingTasks > div{
+    padding-left: 17px;
+}
+
+#finishedTasks > div{
+    padding-left: 17px;
+}
+
+.grabbable{
+    cursor: grab;
+}
+
+.grabbable:active{
+    cursor: grabbing;
 }
 
 .taskObject{
@@ -402,17 +440,18 @@ textarea::placeholder{
     margin-top: 30px;
     margin-left: 15px;
     border: 1px solid gray;
-    cursor: pointer;
+    cursor: grab;
     transition: height 0.3s ease-in-out;
+    -webkit-transition: height 0.3s ease-in-out;
+    -moz-transition: height 0.3s ease-in-out;
+    -o-transition: height 0.3s ease-in-out;
+    -ms-transition: height 0.3s ease-in-out;
     overflow: hidden;
     background-color: #f0f0f0;
 }
 
-#taskDescriptionParaDiv{
-    top: 50px;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
-    overflow: auto;
+.taskObject:active{
+    cursor: grabbing;
 }
 
 #taskDeadlineDiv{
@@ -422,7 +461,12 @@ textarea::placeholder{
 #checkList{
     position: absolute;
     top: 220px;
+    width: 379px;
     overflow: auto;
+}
+
+#fullCheckpoint{
+    float: left;
 }
 
 #progressBarDiv{
@@ -431,11 +475,6 @@ textarea::placeholder{
     height: 20px;
     border: 1px solid lightgray;
     top: 190px;
-    transition: width 0.3s ease-in-out;
-}
-
-#progressBar{
-    transition: width 0.3s ease-in-out;
 }
 
 #taskMembers{
@@ -444,6 +483,10 @@ textarea::placeholder{
 }
 
 .taskObject:hover #deleteTaskBtn{
+    background-color:#f7fafa;
+}
+
+.taskObject:hover #expandTaskBtn{
     background-color:#f7fafa;
 }
 
@@ -456,16 +499,20 @@ textarea::placeholder{
 }
 
 #taskHeading{
-    padding-top: 30px;
+    margin-top: 45px;
 }
 
 .memberObject{
     width: 105px;
     height: 120px;
     margin-top: 5px;
-    cursor: pointer;
+    cursor: grab;
     text-align: center;
     overflow: hidden;
+}
+
+.memberObject:active{
+    cursor: grabbing;
 }
 
 #memberNameHeading{
@@ -521,8 +568,8 @@ textarea::placeholder{
 
 #taskIcon{
     position: absolute;
-    left: 181px;
-    height: 40px;
+    left: 183px;
+    height: 35px;
     width: auto;
 }
 
@@ -540,6 +587,14 @@ textarea::placeholder{
     background-color: #f0f0f0;
 }
 
+#expandTaskBtn{
+    position: absolute;
+    top: 10px;
+    right: 42px;
+    border: 0px;
+    background-color: #f0f0f0;
+}
+
 #archiveTaskBtn {
     position: absolute;
     top: 12px;
@@ -547,12 +602,15 @@ textarea::placeholder{
     border: 0px;
     background-color: #f0f0f0;
 }
-
-#archiveTaskBtn:hover{
+#deleteTaskBtn:hover{
     cursor: pointer;
 }
 
-#deleteTaskBtn:hover{
+#expandTaskBtn:hover{
+    cursor: pointer;
+}
+
+#archiveTaskBtn:hover{
     cursor: pointer;
 }
 
@@ -577,7 +635,79 @@ textarea::placeholder{
     display: inline-block;
 }
 
-#extendTaskBtn{
+#displayMemberOnTask{
+    left: 0px;
+}
+
+#languageSection {
     position: relative;
+    color: black;
     float: left;
+    left: -40px;
+    height: 100px;
+    width: 275px;
+    padding: 10px;
+    margin-right: 60px;
+    background-color: lightgray;
+}
+
+#englishBtn {
+    background-color: whitesmoke;
+    position: absolute;
+    cursor: pointer;
+    border: 1px solid gray;
+    height: 40px;
+    right: 15px;
+    width: 90px;
+    top: 15px;
+    font-size: 14px;
+    z-index: 2;
+    background-color: lightgray;
+    color: orange;
+    border-color: orange;
+    text-decoration: none;
+}
+
+.memberIconDiv {
+    height: 25px;
+    text-align: center;
+    line-height: 24px;
+    margin: auto;
+    width: 25px;
+    background-color:orange;
+    border-radius: 50%;
+    color: white;
+    
+}
+
+#memberIconFlex {
+    position: absolute;
+    height: 55px;
+    width: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    top: 15px;
+    left: 5px;
+    overflow: hidden;
+    align-content: flex-start;
+}
+#norwegianBtn {
+    background-color: whitesmoke;
+    border: 1px solid gray;
+    cursor: pointer;
+    position: absolute;
+    height: 40px;
+    width: 90px;
+    right: 15px;
+    top: 69px;
+    font-size: 14px;
+    z-index: 2;
+    background-color: lightgray;
+    color: black;
+    text-decoration: none;
+}
+
+#norwegianBtn:hover{
+    border-color: orange;
+    color: orange;
 }

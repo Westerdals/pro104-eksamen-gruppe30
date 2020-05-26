@@ -110,7 +110,12 @@ function revealArchive() {
         archive.style.height = "630px";
         archive.style.opacity = "1";
         revealSettingsBtn.style.right = "170px";
-        revealArchiveBtn.innerHTML = "VIEW TASKS TABLE";
+
+        if(revealArchiveBtn.innerHTML === "VIEW ARCHIVE"){
+            revealArchiveBtn.innerHTML = "VIEW TASKS TABLE";
+        } else {
+            revealArchiveBtn.innerHTML = "VIS OPPGAVETAVLE";
+        }
 
         if (tasksTable.style.height != "0px" || tasksTable.style.height != "") {
             hideSection(tasksTable);
@@ -120,8 +125,13 @@ function revealArchive() {
         hideSection(archive);
         tasksTable.style.height = "630px";
         tasksTable.style.opacity = "1";
-        revealArchiveBtn.innerHTML = "VIEW ARCHIVE";
         revealSettingsBtn.style.right = "130px";
+
+        if(revealArchiveBtn.innerHTML === "VIEW TASKS TABLE"){
+            revealArchiveBtn.innerHTML = "VIEW ARCHIVE";
+        } else {
+            revealArchiveBtn.innerHTML = "VIS ARKIV";
+        }
     }
 }
 
@@ -260,12 +270,15 @@ function revealAddDeadlineForm(){
     }
 }
 
-function expandTask(object){
 
-    if (object.style.height != "400px") {
-        object.style.height = "400px";
+function expandTask(task){
+    if (task.parentElement.style.height != "400px") {
+        task.parentElement.style.height = "400px";
+        task.firstChild.src = "images/shrink.png"
+        task.firstChild.src.alt = "shrink task";
     } else {
-        object.style.height = "200px";
+        task.parentElement.style.height = "200px";
+        task.firstChild.src = "images/expand.png"
     }
 }
 

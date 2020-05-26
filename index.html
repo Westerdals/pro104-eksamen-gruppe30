@@ -3,9 +3,9 @@
 
 <head>
     <title>Task Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <!-- jQuery plugin tags starts here -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -19,8 +19,9 @@
     </script>
     <!-- jQuery plugin tags ends here -->
     <link rel="icon" type="image/ico" href="images/to-do-favicon.ico">
-    <link rel="stylesheet" type="text/css" href="task-manager.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="settings.css">
+    <link rel="stylesheet" type="text/css" href="mediaqueries.css">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
@@ -31,7 +32,7 @@
     <div id="mainContainer">
 
         <header id="header">
-            <h1>Task Manager</h1>
+            <h1 id="websiteName">Task Manager</h1>
             <button class="headerButton" id="addTaskRevealBtn" onclick="revealAddTaskSection()">+ NEW TASK</button>
             <button class="headerButton" id="addMemberRevealBtn" onclick="revealAddMemberSection()">+ NEW TEAM
                 MEMBER</button>
@@ -117,12 +118,18 @@
             <section>
                 <div class="headerSection" id="settingsSection">
                     <div id="adjustTextSection">
-                        <label id="fontLabel">CHANGE FONT SIZE</label>
+                        <label id="fontLabel">CHANGE TEXT SIZE</label>
                         <button id="adjustTextBiggerBtn" type="button"
-                            onclick="adjustText('xxx-large', 'x-large');">LARGE</button>
+                            onclick="adjustText('xx-large', 'x-large');">LARGE</button>
                         <br>
                         <button id="adjustTextStandardBtn" type="button"
                             onclick="adjustText('large', 'medium');">STANDARD</button>
+                    </div>
+                    <div id="languageSection">
+                        <label id="languageLabel">CHANGE LANGUAGE</label>
+                        <button id="englishBtn">ENGLISH</button>
+                        <br>
+                        <a href="index-no.html"><button id="norwegianBtn">NORSK</button></a>
                     </div>
                 </div>
             </section>
@@ -151,10 +158,10 @@
         </main>
 
     </div>
-    <script src="drag-and-drop.js"></script>
-    <script src="task-manager.js"></script>
-    <script src="layout.js"></script>
-
+    <script src="script/drag-and-drop.js"></script>
+    <script src="script/index.js"></script>
+    <script src="script/layout.js"></script>
+    <script src="script/renderTasks.js"></script>
 </body>
 
 
