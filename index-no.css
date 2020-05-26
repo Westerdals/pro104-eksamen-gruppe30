@@ -26,6 +26,7 @@
 #taskNameForm{
     width: 283px;
 }
+
 #deleteTaskBtn:hover{
     cursor: pointer;
 }
@@ -79,7 +80,7 @@
 }
 
 #revealSettingsBtn {
-    right: 110px;
+    right: 12%;
 }
 
 /*                                              MEDIA QUERIES                                                         */

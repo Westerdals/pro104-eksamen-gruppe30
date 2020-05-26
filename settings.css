@@ -39,7 +39,11 @@
 }
 
 #revealSettingsBtn {
+<<<<<<< HEAD
     right:  10%;
+=======
+    right: 12%;
+>>>>>>> 7e507c8585427e8b8245d36d93cd27ad37411868
     background-color: whitesmoke;
     transition: right 0.2s ease-in-out;
 }
