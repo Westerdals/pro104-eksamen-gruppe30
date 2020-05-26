@@ -87,15 +87,15 @@
 
 @media (max-width: 1142px) {
     .taskObject{ 
-      width: 55%;
-      left: 20%;
+        width: 55%;
+        left: 20%;
     }
     #taskIcon{
         left: 42%;
     }
-  }
+}
 
-  @media (max-width: 874px) {
+@media (max-width: 874px) {
     #taskIcon{
         left: 38%;
     }
@@ -103,9 +103,9 @@
         position: absolute;
         width: 52px;
     }
-  }
+}
 
-  @media (max-width: 715px) {
+@media (max-width: 715px) {
     #taskIcon{
         left: 35%;
     }
@@ -121,9 +121,13 @@
     }
     .taskObject{ 
         top: 20px;
-      }
-    
-  }
+    }
+
+}
+
+/*
+Media query for mobile device
+*/
 
 @media (max-width: 414px){
     #mainContainer{
@@ -151,7 +155,7 @@
         width: 500px;
         left: 500px;
     }
-    
+
     #finishedTasks{
         right: 0;
         width: 500px;
@@ -162,17 +166,17 @@
         position: absolute;
         text-align: center;
     }
-    
+
     #unstartedHeading{
         
         left: 30px;
     }
-    
+
     #ongoingHeading{
         left: 550px;
         
     }
-    
+
     #finishedHeading{
         left: 1050px;
     }
@@ -189,7 +193,7 @@
     }
     #revealArchiveBtn{
         top: 10px;
-        left: 250px;
+        left: 240px;
     }
     #revealMembersBtn{
         background-color: lightgray;
@@ -252,12 +256,12 @@
         top: 35px;
         left: 230px;
     }
-    
+
     #addIconRevealBtn{
         top: 70px;
         left: 230px;
     }
-    
+
     #addDeadlineRevealBtn{
         top: 105px;
         left: 230px;
@@ -287,7 +291,7 @@
     }
     #revealSettingsBtn {
         top: 50px;
-        left: 265px;
+        left: 241px;
     }
     #adjustTextSection {
         height: 100px;
@@ -305,4 +309,4 @@
         right: 15px;
         top: 89px;
     }
-  }
+}

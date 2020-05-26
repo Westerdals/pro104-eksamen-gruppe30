@@ -39,7 +39,7 @@
 }
 
 #revealSettingsBtn {
-    right:  20%;
+    right:  10%;
     background-color: whitesmoke;
     transition: right 0.2s ease-in-out;
 }
@@ -71,10 +71,14 @@
     }
   }
 
+/*
+Media query for mobile device
+*/
+
   @media (max-width: 414px) {
     #revealSettingsBtn {
         top: 50px;
-        left: 265px;
+        left: 253px;
     }
     #adjustTextSection {
         height: 100px;

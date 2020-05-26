@@ -1,3 +1,7 @@
+/*
+Function is rendering the created task from localStorage.
+*/
+
 function renderTaskList() {
     document.getElementById("pickedIcon").src="icons/default.png";
     var taskChecklist = document.getElementById("taskChecklist");
@@ -39,7 +43,7 @@ function renderTaskList() {
         for(var i = 0; i < task.taskMembers.length; i++) {
             taskMemberDiv += `<div class="memberIconDiv">${task.taskMembers[i].memberName.charAt(0)}</div>`;
         } 
-    taskElement.innerHTML = `<div id="${taskId}" class="taskObject" draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondragleave="dragLeave(event)" ondrop="dropNames(event, 'task');">
+    taskElement.innerHTML = `<div id="${taskId}" class="taskObject" draggable="true" ondragstart="dragStartTasks(event)" ondragover="allowMoveNames(event)" ondrop="dropNames(event, 'task');">
                                     <img id="taskIcon" src="${taskIcon}">
                                     ${expandTaskBtnDiv}
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'task')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
@@ -54,6 +58,11 @@ function renderTaskList() {
 
     }
 }
+
+/*
+Function is using the move(taskId, localStorageKey, newLocalStorageKey) function to render the task
+in the ongoingTask div.
+*/
 
 function renderTaskOngoingList() {
     document.getElementById("pickedIcon").src="icons/default.png";
@@ -93,7 +102,7 @@ function renderTaskOngoingList() {
                 taskMemberDiv += `<div class="memberIconDiv">${task.taskMembers[i].memberName.charAt(0)}</div>`;
             }
             taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
-                                    draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondragleave="dragLeave(event)" ondrop="dropNames(event)">
+                                    draggable="true" ondragstart="dragStartTasks(event)" ondragover="allowMoveNames(event)" ondrop="dropNames(event)">
                                     ${expandTaskBtnDiv}
                                     <img id="taskIcon" src="${taskIcon}">
                                     ${expandTaskBtnDiv}
@@ -109,6 +118,12 @@ function renderTaskOngoingList() {
             ongoingTasks.appendChild(taskElement);
         }
 }
+
+
+/*
+Function is using the move(taskId, localStorageKey, newLocalStorageKey) function to render the task
+in the ongoingTask div.
+*/
 
 function renderTaskFinishedList() {
 
@@ -151,7 +166,7 @@ function renderTaskFinishedList() {
         }
 
         taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
-                                 draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondrop="dropNames(event)">
+                                 draggable="true" ondragstart="dragStartTasks(event)" ondragover="allowMoveNames(event)" ondrop="dropNames(event)">
                                 <img id="taskIcon" src="${taskIcon}">
                                 ${expandTaskBtnDiv}
                                 <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; contentEditable="true" oninput="changeName(${taskId}, event, 'finishedTask');" class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
@@ -167,6 +182,11 @@ function renderTaskFinishedList() {
         finishedTasks.appendChild(taskElement);
     }
 }
+
+/*
+Function is triggered by the archiveTask(taskId) function which moves the taskId's object from finishedTask
+localStorage to the archive localStorage.
+*/
 
 function renderArchiveList(){
     const archiveList = JSON.parse(localStorage.getItem("archive")) || [];
@@ -197,7 +217,7 @@ function renderArchiveList(){
         }
 
         archiveElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
-                                    draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
+                                    draggable="true" ondragstart="dragStartTasks(event)" ondragover="allowMoveNames(event)">
                                     <img id="taskIcon" src="${taskIcon}">
                                     ${expandTaskBtnDiv}
                                     <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
