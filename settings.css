@@ -39,7 +39,7 @@
 }
 
 #revealSettingsBtn {
-    right: 130px;
+    right:  20%;
     background-color: whitesmoke;
     transition: right 0.2s ease-in-out;
 }
@@ -58,3 +58,10 @@
     margin-right: 60px;
     background-color: lightgray;
 }
+
+@media (max-width: 715px) {
+    #revealSettingsBtn {
+        top: 135px;
+        left: 5px;
+    }
+  }
