@@ -71,14 +71,14 @@ function createTask(event) {
 }
 
 function createMember(event) {
-
     if(document.getElementById("memberName").value == "") {
         console.log("Feil");
         document.getElementById("missingInputTeamMember").style.visibility = "visible";
-        //setTimeout("document.getElementById('missingInputTeamMember').style.visibility = 'hidden'", 5000);
+        setTimeout("document.getElementById('missingInputTeamMember').style.visibility = 'hidden'", 5000);
         return false;
     }
     else {
+        console.log("run");
         event.preventDefault();
 
         const memberName = document.querySelector("[name='memberName']").value;
