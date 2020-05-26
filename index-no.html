@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="no">
 
 <head>
     <title>Task Manager</title>
@@ -21,7 +21,7 @@
     <link rel="icon" type="image/ico" href="images/to-do-favicon.ico">
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="settings.css">
-    <link rel="stylesheet" type="text/css" href="mediaqueries.css">
+    <link rel="stylesheet" type="text/css" href="norwegian.css">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
@@ -33,13 +33,13 @@
 
         <header id="header">
             <h1 id="websiteName">Task Manager</h1>
-            <button class="headerButton" id="addTaskRevealBtn" onclick="revealAddTaskSection()">+ NEW TASK</button>
-            <button class="headerButton" id="addMemberRevealBtn" onclick="revealAddMemberSection()">+ NEW TEAM
-                MEMBER</button>
-            <button class="headerButton" id="revealMembersBtn" onclick="revealMembersSection()">VIEW TEAM
-                MEMBERS</button>
-            <button class="headerButton" id="revealArchiveBtn" onclick="revealArchive()">VIEW ARCHIVE</button>
-            <button class="headerButton" id="revealSettingsBtn" onclick="revealSettings()">SETTINGS</button>
+            <button class="headerButton" id="addTaskRevealBtn" onclick="revealAddTaskSection()">+ NY OPPGAVE</button>
+            <button class="headerButton" id="addMemberRevealBtn" onclick="revealAddMemberSection()">+ NYTT
+                TEAMMEDLEM</button>
+            <button class="headerButton" id="revealMembersBtn" onclick="revealMembersSection()">VIS
+                TEAMMEDLEMMER</button>
+            <button class="headerButton" id="revealArchiveBtn" onclick="revealArchive()">VIS ARKIV</button>
+            <button class="headerButton" id="revealSettingsBtn" onclick="revealSettings()">INNSTILLINGER</button>
         </header>
 
         <aside>
@@ -48,27 +48,26 @@
                     <form onsubmit="createTask(event)">
 
                         <div id="taskNameForm" onmouseover="hideAdditionForms()">
-                            <label id="taskNameLabel" for="taskName">WHAT DO YOU<br>NEED TO GET<br>DONE?</label><br>
+                            <label id="taskNameLabel" for="taskName">HVA VIL DU HA<br>UNNAGJORT?</label><br>
                             <input class="input" type="text" id="taskName" name="taskName"
-                                placeholder="Write down a task..." size="32"><br><br>
+                                placeholder="Skriv ned en oppgave..." size="34"><br><br>
                         </div>
 
                         <div id=additionButtons>
                             <button class="additionBtn" type="button" id="addDescriptionRevealBtn"
-                                onmouseover="revealAddDescriptionForm()">+ DESCRIPTION</button>
+                                onmouseover="revealAddDescriptionForm()">+ BESKRIVELSE</button>
                             <button class="additionBtn" type="button" id="addChecklistRevealBtn"
-                                onmouseover="revealAddChecklistForm()">+ CHECKLIST</button>
+                                onmouseover="revealAddChecklistForm()">+ SJEKKLISTE</button>
                             <button class="additionBtn" type="button" id="addIconRevealBtn"
                                 onmouseover="revealAddIconForm()">+
-                                ICON</button>
-                            <button class="additionBtn" type="button" id="addDeadlineRevealBtn" onmouseover="revealAddDeadlineForm()">+ DEADLINE</button>
-                            
+                                IKON</button>
+                            <button class="additionBtn" type="button" id="addDeadlineRevealBtn" onmouseover="revealAddDeadlineForm()">+ FRIST</button>
                         </div>
 
                         <div class="additionForm" id="taskDescriptionForm">
-                            <label id="taskDescriptionLabel" for="taskDescription">DESCRIBE THE TASK</label>
-                            <textarea id="taskDescription" name="taskDescription" placeholder="Write here..." maxlength="140"
-                                onkeyup="countCharacters()"></textarea>
+                            <label id="taskDescriptionLabel" for="taskDescription">BESKRIV OPPGAVEN</label>
+                            <textarea id="taskDescription" name="taskDescription" placeholder="Skriv her..."
+                                maxlength="140" onkeyup="countCharacters()"></textarea>
                             <div id="counting">
                                 <span id="currentCount">0 </span>
                                 <span>/ 140</span>
@@ -76,11 +75,11 @@
                         </div>
 
                         <div class="additionForm" id="taskChecklistForm">
-                            <label id="taskChecklistLabel" for="taskChecklistInput">ADD A CHECKLIST</label>
+                            <label id="taskChecklistLabel" for="taskChecklistInput">LEGG TIL EN SJEKKLISTE</label>
                             <input class="input" type="text" id="taskChecklistInput" name="taskChecklistInput"
-                                placeholder="Write a checkpoint..." size="30">
+                                placeholder="Skriv inn et punkt i sjekklisten..." size="30">
                             <button class="button" id="createChecklistBtn" type="button"
-                                onclick="createChecklistPoint()">ADD TO CHECKLIST</button>
+                                onclick="createChecklistPoint()">LEGG TIL I SJEKKLISTEN</button>
                             <ul id="taskChecklist" name="checkList"></ul>
                         </div>
 
@@ -91,13 +90,13 @@
                         </div>
                         
                         <div class="additionForm" id="taskDeadlineForm">
-                            <label id="taskDeadlineLabel" for="taskDeadlineInput">SET DUE DATE</label>
+                            <label id="taskDeadlineLabel" for="taskDeadlineInput">SETT FRISTEN</label>
                             <input class="input" type="text" id="taskDeadlineInput" name="taskDeadlineInput"
-                                placeholder="Click here...">
+                                placeholder="Velg dato...">
                         </div>
 
-                        <input id="taskSubmitBtn" class="button" type="submit" value="GET IT DONE!">
-                    -->
+                        <input id="taskSubmitBtn" class="button" type="submit" value="FÅ DET GJORT!">
+                        -->
                     </form>
                 </div>
             </section>
@@ -106,10 +105,10 @@
                 <div class="headerSection" id="addMemberSection">
                     <form onsubmit="createMember(event)">
                         <div id="addMemberForm">
-                            <label id="memberLabel" for="memberName">ADD A TEAM MEMBER</label><br>
-                            <input class="input" type="text" id="memberName" name="memberName" placeholder="John Doe"
-                                size="32"><br>
-                            <input id="memberSubmitBtn" class="button" type="submit" value="ADD">
+                            <label id="memberLabel" for="memberName">LEGG TIL ET TEAMMEDLEM</label><br>
+                            <input class="input" type="text" id="memberName" name="memberName"
+                                placeholder="Ola Nordmann" size="32"><br>
+                            <input id="memberSubmitBtn" class="button" type="submit" value="LEGG TIL">
                         </div>
                     </form>
                 </div>
@@ -118,18 +117,18 @@
             <section>
                 <div class="headerSection" id="settingsSection">
                     <div id="adjustTextSection">
-                        <label id="fontLabel">CHANGE TEXT SIZE</label>
+                        <label id="fontLabel">ENDRE TEKSTSTØRRELSE</label>
                         <button id="adjustTextBiggerBtn" type="button"
-                            onclick="adjustText('xx-large', 'x-large');">LARGE</button>
+                            onclick="adjustText('xx-large', 'x-large');">STOR</button>
                         <br>
                         <button id="adjustTextStandardBtn" type="button"
                             onclick="adjustText('large', 'medium');">STANDARD</button>
                     </div>
                     <div id="languageSection">
-                        <label id="languageLabel">CHANGE LANGUAGE</label>
-                        <button id="englishBtn">ENGLISH</button>
+                        <label id="languageLabel">ENDRE SPRÅK</label>
+                        <a href="index.html"><button id="englishBtn">ENGLISH</button></a>
                         <br>
-                        <a href="index-no.html"><button id="norwegianBtn">NORSK</button></a>
+                        <button id="norwegianBtn">NORSK</button>
                     </div>
                 </div>
             </section>
@@ -142,16 +141,19 @@
         <main>
             <div id="tasksTable">
                 <div id=tasksHeadings>
-                    <h2 class="tasksHeading" id="unstartedHeading">UNSTARTED</h2>
-                    <h2 class="tasksHeading" id="ongoingHeading">ONGOING</h2>
-                    <h2 class="tasksHeading" id="finishedHeading">FINISHED</h2>
+                    <h2 class="tasksHeading" id="unstartedHeading">IKKE STARTET</h2>
+                    <h2 class="tasksHeading" id="ongoingHeading">PÅBEGYNT</h2>
+                    <h2 class="tasksHeading" id="finishedHeading">FERDIG</h2>
                 </div>
-                <div class="tasks" id="unstartedTasks" ondrop="dropUnstarted(event)" ondragover="allowMoveTasks(event)"></div>
-                <div class="tasks" id="ongoingTasks" ondrop="dropOngoing(event)" ondragover="allowMoveTasks(event)"></div>
-                <div class="tasks" id="finishedTasks" ondrop="dropFinished(event)" ondragover="allowMoveTasks(event)"></div>
+                <div class="tasks" id="unstartedTasks" ondrop="dropUnstarted(event)" ondragover="allowMoveTasks(event)">
+                </div>
+                <div class="tasks" id="ongoingTasks" ondrop="dropOngoing(event)" ondragover="allowMoveTasks(event)">
+                </div>
+                <div class="tasks" id="finishedTasks" ondrop="dropFinished(event)" ondragover="allowMoveTasks(event)">
+                </div>
             </div>
             <div id="archive">
-                <h2>ARCHIVE</h2>
+                <h2>ARKIV</h2>
             </div>
 
 
@@ -162,6 +164,7 @@
     <script src="script/index.js"></script>
     <script src="script/layout.js"></script>
     <script src="script/renderTasks.js"></script>
+
 </body>
 
 

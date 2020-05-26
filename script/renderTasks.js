@@ -1,97 +1,4 @@
-var textSizeDescription = "";
-var textSizeHeader = "";
-
-function loadSettings (){
-    if (window.localStorage.length == 0) {
-        console.log("Standard settings loaded");
-        var savedTextSize = "medium";
-        var savedTextSizeHeader = "large" ;
-        var textSize = {savedTextSize, savedTextSizeHeader}
-        window.localStorage.setItem('settings', JSON.stringify(textSize));
-        
-    }
-    var savedSettings = JSON.parse(localStorage.getItem('settings')) || [];
-    textSizeDescription = savedSettings.savedTextSize;
-    textSizeHeader = savedSettings.savedTextSizeHeader;
-}
-
-function adjustText(header, description) {
-    textSizeDescription = description;
-    textSizeHeader = header;
-    var savedSettings = JSON.parse(localStorage.getItem('settings')) || [];
-    var savedTextSize = description;
-    var savedTextSizeHeader = header;
-    var textSize = {savedTextSize, savedTextSizeHeader};
-    window.localStorage.setItem('settings', JSON.stringify(textSize));
-
-    renderTaskList();
-    renderTaskOngoingList();
-    renderTaskFinishedList();
-    renderArchiveList();
-}
-
-function createTask(event) {
-    event.preventDefault();
-    document.getElementById("currentCount").innerHTML = "0 ";
-    const taskList = JSON.parse(localStorage.getItem('task')) || [];
-    const taskName = document.querySelector("[name='taskName']").value;
-    const taskDescription = document.querySelector("[name='taskDescription']").value;
-    const taskIcon = document.getElementById("pickedIcon").src;
-    const taskMembers = [];
-    const taskChecklistUl = document.getElementsByClassName("checkListLi");
-    var taskCheckListArray = [];
-
-    for(var i = 0; i < taskChecklistUl.length; i++) {
-        var taskChecklist = {
-            checkPointName : taskChecklistUl[i].innerHTML,
-            checked : false
-        };
-        taskCheckListArray.push(taskChecklist);
-
-    }
-    console.log(taskChecklistUl)
-    
-    let taskId = Math.floor(Math.random() * 1000);
-    const task = { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers};
-    taskList.push(task);
-    window.localStorage.setItem('task', JSON.stringify(taskList));
-
-    event.target.reset();
-    hideSection(addTaskSection);
-    renderTaskList();
-}
-
-function createMember(event) {
-    event.preventDefault();
-
-    const memberName = document.querySelector("[name='memberName']").value;
-    const memberList = JSON.parse(localStorage.getItem('member')) || [];
-
-    let memberId = Math.floor(Math.random() * 1000);
-
-    const member = {memberId, memberName };
-    
-    memberList.push(member);
-
-    window.localStorage.setItem('member', JSON.stringify(memberList));
-
-    event.target.reset();
-    revealMembersSection();
-    renderMemberList();
-}
-
-function checklistStatus (taskId, indexCheckbox, status, tasklistKey) {
-    const taskList = JSON.parse(window.localStorage.getItem(tasklistKey)) || [];
-    for(var i = 0; i < taskList.length; i++){
-        if(taskList[i].taskId == taskId) {
-            taskList[i].taskCheckListArray[indexCheckbox].checked = status;
-        }
-    }
-    window.localStorage.setItem(tasklistKey, JSON.stringify(taskList));
-}
-
 function renderTaskList() {
-
     document.getElementById("pickedIcon").src="icons/default.png";
     var taskChecklist = document.getElementById("taskChecklist");
     while(taskChecklist.firstChild) taskChecklist.removeChild(taskChecklist.firstChild);
@@ -101,13 +8,18 @@ function renderTaskList() {
 
     for (const task of taskList) {
         const taskElement = document.createElement("div");
+<<<<<<< HEAD:task-manager.js
         const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers} = task;
         var expandTaskBtnDiv = "";
+=======
+        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput} = task;
+>>>>>>> a09efa6a6dd67c76557f115e6daad72bc56bfdc2:script/renderTasks.js
         var taskChecklistDiv = "";
         var taskProgressBarDiv = "";
         var taskMemberDiv = "";
-        var taskProgress = 0
+        var taskProgress = 0;
         var finishedCheckpoint = 0;
+        var expandTaskBtnDiv = "";
 
         if(taskCheckListArray.length > 0) {
             taskChecklistDiv += `<div id="checkList">`;
@@ -118,91 +30,68 @@ function renderTaskList() {
                     finishedCheckpoint++
                 }
                 if (taskCheckListArray[i].checked == false) {
+<<<<<<< HEAD:task-manager.js
                     taskChecklistDiv += `<div id="fullCheckpoint"><input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task'); renderTaskList();"; type="checkbox">
+=======
+                    taskChecklistDiv += `<div id="fullCheckpoint"><input name="${taskCheckListArray[i].checkPointName}" onclick="checklistStatus(${taskId}, ${i}, true, 'task');"; type="checkbox">
+>>>>>>> a09efa6a6dd67c76557f115e6daad72bc56bfdc2:script/renderTasks.js
                     <label contentEditable="true" oninput="changeCheckpoint(${taskId}, ${i}, event, 'task');" for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label></div>`
                 }
             }
             taskChecklistDiv += `</div>`;
             taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
+<<<<<<< HEAD:task-manager.js
             taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`;
             expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="expandTask(this)"><img src="images/expand.png" style="height:30px;" alt="expand task"></button>`;
+=======
+            taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
+            expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="expandTask(this)"><img src="images/expand.png" style="height:30px;" alt="expand task"></button>`;
+
+>>>>>>> a09efa6a6dd67c76557f115e6daad72bc56bfdc2:script/renderTasks.js
         }
 
         for(var i = 0; i < task.taskMembers.length; i++) {
-            taskMemberDiv += `<p>${task.taskMembers[i].memberName}</p>`;
+            taskMemberDiv += `<div class="memberIconDiv">${task.taskMembers[i].memberName.charAt(0)}</div>`;
         } 
     taskElement.innerHTML = `<div id="${taskId}" class="taskObject" draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondragleave="dragLeave(event)" ondrop="dropNames(event, 'task');">
                                     <img id="taskIcon" src="${taskIcon}">
+                                    ${expandTaskBtnDiv}
+                                    <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'task')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div id="taskHeading"><h4 contentEditable="true" oninput="changeName(${taskId}, event, 'task');" style="font-size: ${textSizeHeader}" class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                     ${taskChecklistDiv}
                                     ${taskProgressBarDiv}
+<<<<<<< HEAD:task-manager.js
                                     <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'task');" class="taskDescriptionPara adjustText">${taskDescription}</p>
                                     ${expandTaskBtnDiv}
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'task')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div id="taskMemberDiv">${taskMemberDiv}</div>
                                     </div>`;
     unstartedTasks.appendChild(taskElement);    
+=======
+                                    <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'task');" class="taskDescriptionPara adjustText" ondrop="dropNames(event, 'task');">${taskDescription}</p>
+                                    <div id="memberIconFlex">${taskMemberDiv}</div>
+                                    <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput}</div>
+                                    </div>`;
+    unstartedTasks.appendChild(taskElement);
+
+>>>>>>> a09efa6a6dd67c76557f115e6daad72bc56bfdc2:script/renderTasks.js
     }
-}
-
-function changeName(taskId, event, localStorageKey) {
-    var taskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
-    for(const task of taskList) {
-        if(task.taskId === taskId) {
-            task.taskName = event.target.innerText;
-            window.localStorage.setItem(localStorageKey, JSON.stringify(taskList));
-        }
-    }
-}
-
-function changeDescription(taskId, event, localStorageKey) {
-    var taskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
-    for(const task of taskList) {
-        if(task.taskId === taskId) {
-            task.taskDescription = event.target.innerText;
-            window.localStorage.setItem(localStorageKey, JSON.stringify(taskList));
-        }
-    }
-
-}
-
-function changeCheckpoint(taskId, checkPointIndex, event, localStorageKey) {
-    var taskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
-    for(const task of taskList) {
-        if(task.taskId === taskId) {
-            task.taskCheckListArray[checkPointIndex].checkPointName = event.target.innerText;
-            window.localStorage.setItem(localStorageKey, JSON.stringify(taskList));
-        }
-    }
-}
-
-function deleteTask(taskId, localStorageKey) {
-    var taskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
-	for(var i = 0; i < taskList.length; i++){
-		if(taskList[i].taskId == taskId){
-			taskList.splice(i, 1);
-		}
-	}
-	window.localStorage.setItem(localStorageKey, JSON.stringify(taskList));
-    renderTaskList();
-    renderTaskOngoingList();
-    renderArchiveList();
-    renderTaskFinishedList();
 }
 
 function renderTaskOngoingList() {
-
-
     document.getElementById("pickedIcon").src="icons/default.png";
     const ongoingList = JSON.parse(window.localStorage.getItem("ongoingTask")) || [];
     const ongoingTasks = document.getElementById("ongoingTasks");
-
 
     ongoingTasks.innerHTML = "";
 
         for(const task of ongoingList) {
             const taskElement = document.createElement("div");
+<<<<<<< HEAD:task-manager.js
             const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers } = task;
+=======
+            const { taskId, taskName, taskDescription, taskIcon, memberName, memberId, taskCheckListArray, taskDeadlineInput } = task;
+>>>>>>> a09efa6a6dd67c76557f115e6daad72bc56bfdc2:script/renderTasks.js
             var taskChecklistDiv = "";
             var taskProgressBarDiv = "";
             var taskProgress = 0
@@ -228,11 +117,11 @@ function renderTaskOngoingList() {
                 expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="expandTask(this)"><img src="images/expand.png" style="height:30px;" alt="expand task"></button>`;
             }
             for(var i = 0; i < task.taskMembers.length; i++) {
-                taskMemberDiv += `<p>${task.taskMembers[i].memberName}</p>`;
+                taskMemberDiv += `<div class="memberIconDiv">${task.taskMembers[i].memberName.charAt(0)}</div>`;
             }
-
             taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                     draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)" ondragleave="dragLeave(event)" ondrop="dropNames(event)">
+                                    ${expandTaskBtnDiv}
                                     <img id="taskIcon" src="${taskIcon}">
                                     ${expandTaskBtnDiv}
                                     <div id="taskHeading"><h4 contentEditable="true" oninput="changeName(${taskId}, event, 'ongoingTask');" style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
@@ -240,12 +129,12 @@ function renderTaskOngoingList() {
                                     ${taskProgressBarDiv}
                                     <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'ongoingTask');" class="taskDescriptionPara adjustText">${taskDescription}</p>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'ongoingTask')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
-                                    <div id="taskMemberDiv">${taskMemberDiv}</div>
+                                    <div id="memberIconFlex">${taskMemberDiv}</div>
+                                    <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput}</div>
                                     </div>
                                     </div>`;
             ongoingTasks.appendChild(taskElement);
         }
-
 }
 
 function renderTaskFinishedList() {
@@ -258,10 +147,11 @@ function renderTaskFinishedList() {
 
     for (const task of finishedList) {
         const taskElement = document.createElement("div");
-        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers } = task;
+        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput } = task;
         var taskChecklistDiv = "";
         var taskProgressBarDiv = "";
         var taskProgress = 0;
+        var expandTaskBtnDiv = "";
         var taskMemberDiv = "";
         var expandTaskBtnDiv = "";
         var finishedCheckpoint = 0;
@@ -284,7 +174,7 @@ function renderTaskFinishedList() {
             expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="expandTask(this)"><img src="images/expand.png" style="height:30px;" alt="expand task"></button>`;
         }
         for(var i = 0; i < task.taskMembers.length; i++) {
-            taskMemberDiv += `<p>${task.taskMembers[i].memberName}</p>`;
+            taskMemberDiv += `<div class="memberIconDiv">${task.taskMembers[i].memberName.charAt(0)}</div>`;
         }
 
         taskElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
@@ -297,7 +187,8 @@ function renderTaskFinishedList() {
                                 <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'finishedTask');" class="taskDescriptionPara adjustText">${taskDescription}</p>
                                 <button id="archiveTaskBtn" type="button" onclick="archiveTask(${taskId})" onmouseover="this.firstChild.src = 'images/filled-archive.png'" onmouseout="this.firstChild.src = 'images/archive.png'"><img src="images/archive.png" id="trashcan" style="height:28px;" alt="delete task"></button>
                                 <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'finishedTask')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
-                                <div id="taskMemberDiv">${taskMemberDiv}</div>
+                                <div id="memberIconFlex">${taskMemberDiv}</div>
+                                <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput}</div>
                                 </div>
                                 </div>`;
         finishedTasks.appendChild(taskElement);
@@ -313,9 +204,10 @@ function renderArchiveList(){
 
     for(const ar of archiveList){
         let archiveElement = document.createElement("div");
-        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers } = ar;
+        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput } = ar;
         var taskChecklistDiv = "";
         var taskMemberDiv = "";
+        var expandTaskBtnDiv = "";
         for(var i = 0; i < taskCheckListArray.length; i++) {
             if (taskCheckListArray[i].checked == true) {
                 taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" disabled="disabled" checked>
@@ -325,23 +217,27 @@ function renderArchiveList(){
                 taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" disabled="disabled" type="checkbox">
                 <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
             }
+            expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="expandTask(this)"><img src="images/expand.png" style="height:30px;" alt="expand task"></button>`;
         }
         for(var i = 0; i < ar.taskMembers.length; i++) {
-            taskMemberDiv += `<p>${ar.taskMembers[i].memberName}</p>`;
+            taskMemberDiv += `<div class="memberIconDiv">${ar.taskMembers[i].memberName.charAt(0)}</div>`;
         }
 
         archiveElement.innerHTML = `<div id="${taskId}" class="taskObject" onclick="expandTask(this)"
                                     draggable="true" ondragstart="drag(event)" ondragover="allowMoveNames(event)">
                                     <img id="taskIcon" src="${taskIcon}">
+                                    ${expandTaskBtnDiv}
                                     <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                     <div id="checkList">${taskChecklistDiv}</div>
                                     <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="taskDescriptionPara adjustText">${taskDescription}</p>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId}, 'archive'); renderArchiveList();" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
-                                    <div id="taskMemberDiv">${taskMemberDiv}</div>
+                                    <div id="memberIconFlex">${taskMemberDiv}</div>
+                                    <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput}</div>
                                     </div>
                                     </div>`;
         archive.appendChild(archiveElement);
     }
+<<<<<<< HEAD:task-manager.js
 }
 
 function archiveTask(taskId) {
@@ -449,4 +345,6 @@ function createIconButtons(){
 
 function countCharacters(){
     document.getElementById("currentCount").innerHTML = taskDescription.value.length;
+=======
+>>>>>>> a09efa6a6dd67c76557f115e6daad72bc56bfdc2:script/renderTasks.js
 }
