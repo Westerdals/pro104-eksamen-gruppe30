@@ -26,6 +26,7 @@
 #taskNameForm{
     width: 283px;
 }
+
 #deleteTaskBtn:hover{
     cursor: pointer;
 }
