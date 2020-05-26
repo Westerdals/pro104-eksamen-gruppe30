@@ -53,6 +53,7 @@ dragstart handler for the member.
 function dragStartNames(ev){
     let nameDrag = ev.target.id;
     ev.dataTransfer.setData("text/plain", nameDrag);
+    ev.dataTransfer.effectAllowed = "copy";
 }
 
 /*
@@ -61,7 +62,6 @@ drop handler for the member.
 
 function dropNames(event, localStorageKey){
     event.preventDefault();
-
     let memberId = event.dataTransfer.getData("text/plain");
 
     let taskId = event.target.parentElement.id;
@@ -77,6 +77,7 @@ dragover handler for the member.
 
 function allowMoveNames(ev) {
   ev.preventDefault();
+  ev.dataTransfer.dropEffect = "copy"
 }
 
 
@@ -86,6 +87,7 @@ dragover handler for the task.
 
 function allowMoveTasks(ev) {
     ev.preventDefault();
+    ev.dataTransfer.dropEffect = "copy"
 
 }
   
@@ -95,8 +97,8 @@ dragstart handler for the task.
 
 function dragStartTasks(ev) {
     taskId = ev.target.id;
-    
     ev.dataTransfer.setData("text/plain", taskId);
+    ev.dataTransfer.effectAllowed = "copy";
 }
 
 
