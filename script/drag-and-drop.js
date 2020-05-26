@@ -5,9 +5,7 @@ targeted taskId.
 */
 
 function moveMembersToTask(memberId, taskId, localStorageKey) {
-  console.log(localStorageKey);
   var taskList = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
-  console.log(taskList);
   var memberList = JSON.parse(window.localStorage.getItem("member")) || [];
   for(var i = 0; i < memberList.length; i++) {
     if(memberList[i].memberId == memberId) {
@@ -62,10 +60,16 @@ drop handler for the member.
 function dropNames(event, localStorageKey){
     event.preventDefault();
     let memberId = event.dataTransfer.getData("text/plain");
-
     let taskId = event.target.parentElement.id;
-    console.log(localStorageKey);
-
+    console.log(taskId);
+    if(taskId === ""){
+      console.log(taskId);
+      taskId = event.target.id;
+    }
+    if(isNaN(taskId)) {
+      console.log("grr");
+      taskId = event.target.parentElement.parentElement.id;
+    }
     moveMembersToTask(memberId, taskId, localStorageKey);
     
 }
