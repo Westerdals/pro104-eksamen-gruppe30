@@ -81,3 +81,234 @@
 #revealSettingsBtn {
     right: 110px;
 }
+
+/*                                              MEDIA QUERIES                                                         */
+
+
+@media (max-width: 1142px) {
+    .taskObject{ 
+      width: 55%;
+      left: 20%;
+    }
+    #taskIcon{
+        left: 42%;
+    }
+  }
+
+  @media (max-width: 874px) {
+    #taskIcon{
+        left: 38%;
+    }
+    #memberIconFlex {
+        position: absolute;
+        width: 52px;
+    }
+  }
+
+  @media (max-width: 715px) {
+    #taskIcon{
+        left: 35%;
+    }
+    #tasksHeadings{
+        top: 70px;
+    }
+    .headerSection{
+        top: 170px;
+    }
+    #revealArchiveBtn{
+        top: 135px;
+        left: 105px;
+    }
+    .taskObject{ 
+        top: 20px;
+      }
+    
+  }
+
+@media (max-width: 414px){
+    #mainContainer{
+        overflow-x: auto;
+    }
+    .headerSection{
+        top: 170px;
+        height: 50px;
+    }
+    #archive{
+        position: relative;
+        z-index: 3;
+        top: 170px;
+    }
+
+    #unstartedTasks{
+        border-right: 1px solid black;
+        height: 100vh;
+        width: 500px;
+        left: 0px;
+        overflow: scroll;
+    }
+    #ongoingTasks{
+        border-right: 1px solid black;
+        height: 100vh;
+        width: 500px;
+        left: 500px;
+        overflow: scroll;
+    }
+    
+    #finishedTasks{
+        right: 0;
+        width: 500px;
+        left: 1000px;
+        overflow: scroll;
+    }
+    .tasksHeading{
+        width: 100%;
+        position: absolute;
+        text-align: center;
+    }
+    
+    #unstartedHeading{
+        
+        left: 30px;
+    }
+    
+    #ongoingHeading{
+        left: 550px;
+        
+    }
+    
+    #finishedHeading{
+        left: 1050px;
+    }
+    .taskObject{
+        position: relative;
+        width: 200px;
+        height: 200px;
+    }
+    .tasks{
+        position: absolute;
+        width: 200px;
+        left: -1000px;
+        
+    }
+    #tasksTable{
+        overflow: scroll;
+    }
+    #revealArchiveBtn{
+        top: 10px;
+        left: 250px;
+    }
+    #revealMembersBtn{
+        background-color: lightgray;
+        left: 0;
+        top: 135px;
+        width: 95.8%;
+    }
+    #addTaskRevealBtn{
+        background-color: lightgray;
+        width: 38%;
+    }
+    #addMemberRevealBtn{
+        left: 150px;
+        width: 55.5%;
+        background-color: lightgray;
+    }
+    .memberIconDiv {
+        height: 25px;
+        text-align: center;
+        line-height: 24px;
+        margin: auto;
+        width: 25px;
+        background-color:orange;
+        border-radius: 50%;
+        color: white;
+        
+    }
+    #memberIconFlex {
+        position: absolute;
+        width: 52px;
+    }
+    #taskNameForm{
+        color:black;
+        float: left;
+        height: 200px;
+        width: 200px;
+    }
+    .input{
+        width: 170px;
+    }
+    .additionForm{
+        left: 0;
+        height: 0px;
+        width: 200px;
+    }
+    #taskDescription{
+
+        width: 200px;
+        height: 110px;
+    }
+    #counting{
+        position: absolute;
+        top: 156px;
+        left: 15px;
+    }
+    #createChecklistBtn{
+        top: 150px;
+    }
+    #addChecklistRevealBtn{
+        top: 35px;
+        left: 230px;
+    }
+    
+    #addIconRevealBtn{
+        top: 70px;
+        left: 230px;
+    }
+    
+    #addDeadlineRevealBtn{
+        top: 105px;
+        left: 230px;
+    }
+    .additionBtn{
+        width: 172px;
+        height: 30px;
+        left: 230px;
+    }
+    #languageSection {
+        left: 185px;
+        height: 100px;
+        width: 154px;
+        top: -120px;
+    }
+    #englishBtn {
+        height: 20px;
+        right: 15px;
+        width: 90px;
+        top: 60px;
+    }
+    #norwegianBtn {
+        height: 20px;
+        width: 90px;
+        right: 15px;
+        top: 89px;
+    }
+    #revealSettingsBtn {
+        top: 50px;
+        left: 265px;
+    }
+    #adjustTextSection {
+        height: 100px;
+        width: 154px;
+    }
+    #adjustTextBiggerBtn {
+        height: 20px;
+        right: 15px;
+        width: 90px;
+        top: 60px;
+    }
+    #adjustTextStandardBtn {
+        height: 20px;
+        width: 90px;
+        right: 15px;
+        top: 89px;
+    }
+  }

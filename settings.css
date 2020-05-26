@@ -59,6 +59,11 @@
     background-color: lightgray;
 }
 
+
+
+/*                                              MEDIA QUERIES                                                         */
+
+
 @media (max-width: 715px) {
     #revealSettingsBtn {
         top: 135px;
@@ -70,5 +75,21 @@
     #revealSettingsBtn {
         top: 50px;
         left: 265px;
+    }
+    #adjustTextSection {
+        height: 100px;
+        width: 154px;
+    }
+    #adjustTextBiggerBtn {
+        height: 20px;
+        right: 15px;
+        width: 90px;
+        top: 60px;
+    }
+    #adjustTextStandardBtn {
+        height: 20px;
+        width: 90px;
+        right: 15px;
+        top: 89px;
     }
   }

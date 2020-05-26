@@ -710,6 +710,11 @@ textarea::placeholder{
     text-decoration: none;
 }
 
+
+/*                                              MEDIA QUERIES                                                         */
+
+
+
 @media (max-width: 1142px) {
     .taskObject{ 
       width: 55%;
@@ -769,18 +774,21 @@ textarea::placeholder{
         height: 100vh;
         width: 500px;
         left: 0px;
+        overflow: scroll;
     }
     #ongoingTasks{
         border-right: 1px solid black;
         height: 100vh;
         width: 500px;
         left: 500px;
+        overflow: scroll;
     }
     
     #finishedTasks{
         right: 0;
         width: 500px;
         left: 1000px;
+        overflow: scroll;
     }
     .tasksHeading{
         width: 100%;
@@ -810,7 +818,10 @@ textarea::placeholder{
         position: absolute;
         width: 200px;
         left: -1000px;
-        overflow-y: scroll;
+        
+    }
+    #tasksTable{
+        overflow: scroll;
     }
     #revealArchiveBtn{
         top: 10px;
@@ -888,12 +899,27 @@ textarea::placeholder{
         left: 230px;
     }
     .additionBtn{
-        position: absolute;
-        background-color: lightgray;
         width: 172px;
         height: 30px;
         left: 230px;
     }
-    
+    #languageSection {
+        left: 185px;
+        height: 100px;
+        width: 154px;
+        top: -120px;
+    }
+    #englishBtn {
+        height: 20px;
+        right: 15px;
+        width: 90px;
+        top: 60px;
+    }
+    #norwegianBtn {
+        height: 20px;
+        width: 90px;
+        right: 15px;
+        top: 89px;
+    }
     
   }
