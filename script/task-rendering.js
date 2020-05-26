@@ -137,7 +137,7 @@ function renderTaskOngoingList() {
             for(var i = 0; i < task.taskMembers.length; i++) {
                 taskMemberDiv += `<div class="memberIconDiv">${task.taskMembers[i].memberName.charAt(0)}</div>`;
             }
-            taskElement.innerHTML = `<div id="${taskId}" class="taskObject" style="height:${taskHeight}" onclick="expandTask(this)"
+            taskElement.innerHTML = `<div id="${taskId}" class="taskObject" style="height:${taskHeight}" ondrop="dropNames(event, 'ongoingTasks');"
                                     draggable="true" ondragstart="dragStartNames(event)" ondragover="allowMoveNames(event)" ondrop="dropNames(event)">
                                     ${expandTaskBtnDiv}
                                     <img id="taskIcon" src="${taskIcon}">
@@ -194,7 +194,7 @@ function renderTaskFinishedList() {
             taskChecklistDiv += `</div>`;
             taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
             taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 100%; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
-            expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'ongoingTask')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="show checkpoints"></button>`;
+            expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'finishedTask')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="show checkpoints"></button>`;
         }
         for(var i = 0; i < task.taskMembers.length; i++) {
             taskMemberDiv += `<div class="memberIconDiv">${task.taskMembers[i].memberName.charAt(0)}</div>`;
@@ -236,17 +236,24 @@ function renderArchiveList(){
         var taskChecklistDiv = "";
         var taskMemberDiv = "";
         var expandTaskBtnDiv = "";
+        var taskProgressBarDiv = "";
+        var taskProgress = 0;
+        var finishedCheckpoint = 0;
         for(var i = 0; i < taskCheckListArray.length; i++) {
             if (taskCheckListArray[i].checked == true) {
                 taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" type="checkbox" disabled="disabled" checked>
                 <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
+                finishedCheckpoint++
             }
             if (taskCheckListArray[i].checked == false) {
                 taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" disabled="disabled" type="checkbox">
                 <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
             }
             expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'ongoingTask')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="show checkpoints"></button>`;
+            taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
+            taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 100%; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
         }
+        
         for(var i = 0; i < ar.taskMembers.length; i++) {
             taskMemberDiv += `<div class="memberIconDiv">${ar.taskMembers[i].memberName.charAt(0)}</div>`;
         }
@@ -257,6 +264,7 @@ function renderArchiveList(){
                                     ${expandTaskBtnDiv}
                                     <div id="taskHeading"><h4 style="font-size: ${textSizeHeader}; class="adjustHeader">${taskName.charAt(0).toUpperCase() + taskName.slice(1)}</h4></div>
                                     <div id="checkList">${taskChecklistDiv}</div>
+                                    ${taskProgressBarDiv}
                                     <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="taskDescriptionPara adjustText">${taskDescription}</p>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId}, 'archive'); renderArchiveList();" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div id="memberIconGrid">${taskMemberDiv}</div>
