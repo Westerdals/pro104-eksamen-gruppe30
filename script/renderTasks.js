@@ -10,7 +10,7 @@ function renderTaskList() {
 
     for (const task of taskList) {
         const taskElement = document.createElement("div");
-        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers} = task;
+        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput} = task;
         var taskChecklistDiv = "";
         var taskProgressBarDiv = "";
         var taskMemberDiv = "";
@@ -49,6 +49,7 @@ function renderTaskList() {
                                     ${taskProgressBarDiv}
                                     <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'task');" class="taskDescriptionPara adjustText" ondrop="dropNames(event, 'task');">${taskDescription}</p>
                                     <div id="memberIconFlex">${taskMemberDiv}</div>
+                                    <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput}</div>
                                     </div>`;
     unstartedTasks.appendChild(taskElement);
 
@@ -64,7 +65,7 @@ function renderTaskOngoingList() {
 
         for(const task of ongoingList) {
             const taskElement = document.createElement("div");
-            const { taskId, taskName, taskDescription, taskIcon, memberName, memberId, taskCheckListArray } = task;
+            const { taskId, taskName, taskDescription, taskIcon, memberName, memberId, taskCheckListArray, taskDeadlineInput } = task;
             var taskChecklistDiv = "";
             var taskProgressBarDiv = "";
             var taskProgress = 0
@@ -102,6 +103,7 @@ function renderTaskOngoingList() {
                                     <p style="font-size: ${textSizeDescription};" contentEditable="true" oninput="changeDescription(${taskId}, event, 'ongoingTask');" class="taskDescriptionPara adjustText">${taskDescription}</p>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'ongoingTask')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div id="memberIconFlex">${taskMemberDiv}</div>
+                                    <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput}</div>
                                     </div>
                                     </div>`;
             ongoingTasks.appendChild(taskElement);
@@ -118,7 +120,7 @@ function renderTaskFinishedList() {
 
     for (const task of finishedList) {
         const taskElement = document.createElement("div");
-        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers } = task;
+        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput } = task;
         var taskChecklistDiv = "";
         var taskProgressBarDiv = "";
         var taskProgress = 0;
@@ -158,6 +160,7 @@ function renderTaskFinishedList() {
                                 <button id="archiveTaskBtn" type="button" onclick="archiveTask(${taskId})" onmouseover="this.firstChild.src = 'images/filled-archive.png'" onmouseout="this.firstChild.src = 'images/archive.png'"><img src="images/archive.png" id="trashcan" style="height:28px;" alt="delete task"></button>
                                 <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId},'finishedTask')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                 <div id="memberIconFlex">${taskMemberDiv}</div>
+                                <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput}</div>
                                 </div>
                                 </div>`;
         finishedTasks.appendChild(taskElement);
@@ -173,7 +176,7 @@ function renderArchiveList(){
 
     for(const ar of archiveList){
         let archiveElement = document.createElement("div");
-        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers } = ar;
+        const { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput } = ar;
         var taskChecklistDiv = "";
         var taskMemberDiv = "";
         var expandTaskBtnDiv = "";
@@ -201,6 +204,7 @@ function renderArchiveList(){
                                     <p style="font-size: ${textSizeDescription};" id="taskDescriptionPara" class="taskDescriptionPara adjustText">${taskDescription}</p>
                                     <button id="deleteTaskBtn" type="button" onclick="deleteTask(${taskId}, 'archive'); renderArchiveList();" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:30px;" alt="delete task"></button>
                                     <div id="memberIconFlex">${taskMemberDiv}</div>
+                                    <div id="taskDeadlineDiv">Due Date: ${taskDeadlineInput}</div>
                                     </div>
                                     </div>`;
         archive.appendChild(archiveElement);

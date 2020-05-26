@@ -37,6 +37,7 @@ function createTask(event) {
     const taskName = document.querySelector("[name='taskName']").value;
     const taskDescription = document.querySelector("[name='taskDescription']").value;
     const taskIcon = document.getElementById("pickedIcon").src;
+    const taskDeadlineInput = document.querySelector("[name='taskDeadlineInput']").value;
     const taskMembers = [];
     const taskChecklistUl = document.getElementsByClassName("checkListLi");
     var taskCheckListArray = [];
@@ -52,7 +53,7 @@ function createTask(event) {
     console.log(taskChecklistUl)
     
     let taskId = Math.floor(Math.random() * 1000);
-    const task = { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers};
+    const task = { taskId, taskName, taskDescription, taskIcon, taskCheckListArray, taskMembers, taskDeadlineInput};
     taskList.push(task);
     window.localStorage.setItem('task', JSON.stringify(taskList));
 
