@@ -360,9 +360,9 @@ textarea::placeholder{
 
 #archive{
     position: relative;
-    z-index: 3;
+    z-index: 1;
     top: 140px;
-    height: 0px;
+    height: 100vh;
     width: 100%;
     opacity: 0;
     transition: opacity 0.2s ease-in-out, height 0.3s ease-in-out;
@@ -374,7 +374,7 @@ textarea::placeholder{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    grid-row-gap: 20px;
+    grid-row-gap: 10px;
     grid-column-gap: 20px;
     overflow: auto;
 }

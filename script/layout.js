@@ -105,7 +105,7 @@ function revealArchive() {
     var revealSettingsBtn = document.getElementById("revealSettingsBtn");
 
     if (archive.style.height == "0px" || archive.style.height == "") {
-        archive.style.height = "630px";
+        archive.style.height = "100vh";
         archive.style.opacity = "1";
         revealSettingsBtn.style.right = "15%";
 
@@ -121,7 +121,7 @@ function revealArchive() {
 
     } else {
         hideSection(archive);
-        tasksTable.style.height = "630px";
+        tasksTable.style.height = "100vh";
         tasksTable.style.opacity = "1";
         revealSettingsBtn.style.right = "12%";
 
