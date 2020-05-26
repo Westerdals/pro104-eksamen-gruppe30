@@ -63,7 +63,6 @@
 
 /*                                              MEDIA QUERIES                                                         */
 
-
 @media (max-width: 715px) {
     #revealSettingsBtn {
         top: 135px;
@@ -75,7 +74,7 @@
 Media query for mobile device
 */
 
-  @media (max-width: 414px) {
+  @media (max-width: 500px) {
     #revealSettingsBtn {
         top: 50px;
         left: 253px;
@@ -97,3 +96,12 @@ Media query for mobile device
         top: 89px;
     }
   }
+
+  @media screen and (orientation:landscape)
+and (min-device-width: 800px) 
+and (max-device-width: 900px) {
+    #revealSettingsBtn {
+        top: 100px;
+        left: 493px;
+    }
+}

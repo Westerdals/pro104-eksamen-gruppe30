@@ -1,5 +1,7 @@
 /*
-Function takes in the targets id's as parameters, puts the information about these id's and place them into the ongoingList array.
+Function takes in the targets id's and localStorageKey as parameters, 
+puts the information about the memberId and puts it in a new object. The object is then pushed into the 
+targeted taskId.
 */
 
 function moveMembersToTask(memberId, taskId, localStorageKey) {
@@ -42,10 +44,18 @@ function move(taskId, localStorageKey, newLocalStorageKey) {
 
 }
 
+/*
+dragstart handler for the member.
+*/
+
 function dragStartNames(ev){
     let nameDrag = ev.target.id;
     ev.dataTransfer.setData("text/plain", nameDrag);
 }
+
+/*
+drop handler for the member.
+*/
 
 function dropNames(event, localStorageKey){
     event.preventDefault();
@@ -64,27 +74,37 @@ function dropNames(event, localStorageKey){
     
 }
 
-function dragLeave(ev){
-  ev.preventDefault();
-
-
-}
-
-function allowMoveTasks(ev) {
-    ev.preventDefault();
-
-  }
+/*
+dragover handler for the member.
+*/
   
   function allowMoveNames(ev) {
     ev.preventDefault();
   }
 
-  function drag(ev) {
-    taskId = ev.target.id;
-    
-    ev.dataTransfer.setData("text/plain", taskId);
+/*
+dragstart handler for the task.
+*/
+
+  function allowMoveTasks(ev) {
+    ev.preventDefault();
+
   }
 
+/*
+dragstart handler for the task.
+*/
+
+  function dragStartNames(ev) {
+    taskId = ev.target.id;
+    ev.dataTransfer.setData("text/plain", taskId);
+}
+
+
+
+/*
+drop handlers for the unstartedTasks, ongoingTasks and finishedTasks divs.
+*/
   function dropUnstarted(ev) {
     ev.preventDefault();    
 

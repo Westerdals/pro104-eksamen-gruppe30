@@ -30,6 +30,10 @@ function adjustText(header, description) {
     renderArchiveList();
 }
 
+/*
+Function creates a task and saves it to localStorage. Triggers the renderTaskList function and prints it out.
+*/
+
 function createTask(event) {
     event.preventDefault();
     document.getElementById("currentCount").innerHTML = "0 ";
@@ -69,6 +73,10 @@ function createTask(event) {
     hideSection(addTaskSection);
     renderTaskList();
 }
+
+/*
+Function creates a member and saves it to localStorage. Triggers the renderMemberList function and prints it out.
+*/
 
 function createMember(event) {
     if(document.getElementById("memberName").value == "") {
@@ -182,6 +190,10 @@ function deleteMember(memberId) {
 
 }
 
+/*
+Function is rendering the created member and all the other existing members from the localStorage 'member'.
+*/
+
 function renderMemberList() {
 
     const memberList = JSON.parse(window.localStorage.getItem("member")) || [];
@@ -197,7 +209,7 @@ function renderMemberList() {
             const {memberId, memberName } = member;
             counter++;
             memberElement.innerHTML = `<div class="memberObject" id="${memberId}" class="grabbable"
-                                      draggable="true" ondragstart="dragStartNames(event)" ondragleave="dragLeave(event)">
+                                      draggable="true" ondragstart="dragStartNames(event)">
                                       <button id="deleteMemberBtn" type="button" onclick="deleteMember('${memberId}')" onmouseover="this.firstChild.src = 'images/filled-trashcan.png'" onmouseout="this.firstChild.src = 'images/trashcan.png'"><img src="images/trashcan.png" id="trashcan" style="height:20px;" alt="delete task"></button>
                                       <img id="memberImg" src="images/member.png" alt="member" width="45" height="45">
                                       <h4 id="memberNameHeading">${memberName}</h4>

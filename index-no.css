@@ -85,6 +85,13 @@
 
 /*                                              MEDIA QUERIES                                                         */
 
+@media (max-width: 1395px) {
+    #expandTaskBtn{
+        position: absolute;
+        top: 95px;
+        left: 2px;
+    }
+}
 
 @media (max-width: 1142px) {
     .taskObject{ 
@@ -118,10 +125,13 @@
     }
     #revealArchiveBtn{
         top: 135px;
-        left: 105px;
+        left: 125px;
     }
     .taskObject{ 
         top: 20px;
+    }
+    #archive{
+        top: 170px;
     }
 
 }
@@ -130,7 +140,7 @@
 Media query for mobile device
 */
 
-@media (max-width: 414px){
+@media (max-width: 500px){
     #mainContainer{
         overflow-x: auto;
     }
@@ -309,5 +319,41 @@ Media query for mobile device
         width: 90px;
         right: 15px;
         top: 89px;
+    }
+    .taskDescriptionPara{
+        top: 110px;
+        height: 80px;
+        width: 92%;
+    }
+    #taskIconForm{
+        left: 2%;
+    }
+    #taskIcon{
+        left: 42%;
+    }
+    #progressBarDiv{
+        width: 200px;
+        top: 220px;
+    }
+    #checkList{
+        position: absolute;
+        top: 250px;
+        width: 100px;
+        left: 0;
+        overflow-y: auto;
+    }
+    #expandTaskBtn{
+        position: absolute;
+        top: 95px;
+        left: 2px;
+    }
+}
+
+@media screen and (orientation:landscape)
+and (min-device-width: 800px) 
+and (max-device-width: 900px) {
+    #revealSettingsBtn {
+        top: 100px;
+        left: 493px;
     }
 }
