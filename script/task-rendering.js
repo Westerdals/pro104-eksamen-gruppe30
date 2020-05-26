@@ -4,13 +4,14 @@ function changeHeight(task, taskId, localStorageKey) {
 
     if (task.parentElement.style.height != "400px") {
         task.parentElement.style.height = "400px";
-        task.firstChild.src = "images/shrink.png"
-        task.firstChild.src.alt = "shrink task";
+        task.firstChild.src = "images/checkpoints-open.png"
+        task.firstChild.src.alt = "close checkpoints";
         newHeight = "400px";
     } else {
-        task.parentElement.style.height = "200px";
-        task.firstChild.src = "images/expand.png"
-        newHeight = "200px"
+        task.parentElement.style.height = "230px";
+        task.firstChild.src = "images/checkpoints-closed.png"
+        task.firstChild.src.alt = "show checkpoints";
+        newHeight = "230px"
     }
     for(const task of taskList) {
         if(task.taskId === taskId) {
@@ -22,9 +23,9 @@ function changeHeight(task, taskId, localStorageKey) {
 
 function renderExpandImg (task){
     if(task == "400px") {
-        return "images/shrink.png"
+        return "images/checkpoints-open.png"
     }
-    else {return "images/expand.png"}
+    else {return "images/checkpoints-closed.png"}
 }
 
 function renderTaskList() {
@@ -60,7 +61,7 @@ function renderTaskList() {
             }
             taskChecklistDiv += `</div>`;
             taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${100/taskCheckListArray.length * finishedCheckpoint}%; height: 20px; background-color: lightgreen;"></div></div>`
-            expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'task')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="expand task"></button>`;
+            expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'ongoingTask')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="show checkpoints"></button>`;
 
         }
         taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
@@ -116,7 +117,7 @@ function renderTaskOngoingList() {
                 taskChecklistDiv += `</div>`;
                 taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
                 taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
-                expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'ongoingTask')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="expand task"></button>`;
+                expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'ongoingTask')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="show checkpoints"></button>`;
             }
             for(var i = 0; i < task.taskMembers.length; i++) {
                 taskMemberDiv += `<div class="memberIconDiv">${task.taskMembers[i].memberName.charAt(0)}</div>`;
@@ -173,7 +174,7 @@ function renderTaskFinishedList() {
             taskChecklistDiv += `</div>`;
             taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
             taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
-            expandTaskBtnDiv = `<button id="expandTaskBtnFinishedList" type="button" onclick="changeHeight(this, ${taskId}, 'finishedTask')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="expand task"></button>`;
+            expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'ongoingTask')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="show checkpoints"></button>`;
         }
         for(var i = 0; i < task.taskMembers.length; i++) {
             taskMemberDiv += `<div class="memberIconDiv">${task.taskMembers[i].memberName.charAt(0)}</div>`;
@@ -219,7 +220,7 @@ function renderArchiveList(){
                 taskChecklistDiv += `<input name="${taskCheckListArray[i].checkPointName}" disabled="disabled" type="checkbox">
                 <label for="${taskCheckListArray[i].checkPointName}"> ${taskCheckListArray[i].checkPointName}</label>`
             }
-            expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'archive')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="expand task"></button>`;
+            expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'ongoingTask')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="show checkpoints"></button>`;
         }
         for(var i = 0; i < ar.taskMembers.length; i++) {
             taskMemberDiv += `<div class="memberIconDiv">${ar.taskMembers[i].memberName.charAt(0)}</div>`;
