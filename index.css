@@ -451,7 +451,6 @@ textarea::placeholder{
 .taskObject{
     position: relative;
     width: 89%;
-    height: 200px;
     padding: 10px;
     margin-top: 30px;
     border: 1px solid gray;
@@ -721,6 +720,39 @@ textarea::placeholder{
 #norwegianBtn:hover{
     border-color: orange;
     color: orange;
+}
+
+.missingInput {
+    position: relative;
+    border-radius: 50%;
+    width: 27px;
+    height: 27px;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 23px;
+    line-height: 30px;
+    margin: auto;
+    background-color: red;
+    color: white;
+}
+
+#missingInputName {
+    right: -45%;
+    top: -34%;
+    visibility: hidden;
+}
+
+#missingInputCheckpoint {
+    right: -44%;
+    top: 0%;
+    visibility: hidden;
+
+}
+
+#missingInputTeamMember {
+    right: -44%;
+    top: -37%;
+    visibility: hidden;
 }
 
 

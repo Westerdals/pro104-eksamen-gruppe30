@@ -328,6 +328,13 @@ Media query for mobile device
         width: 200px;
         top: 220px;
     }
+    #checkList{
+        position: absolute;
+        top: 250px;
+        width: 100px;
+        left: 0;
+        overflow-y: auto;
+    }
 }
 
 @media screen and (orientation:landscape)
