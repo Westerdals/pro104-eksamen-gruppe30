@@ -74,7 +74,7 @@
 Media query for mobile device
 */
 
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     #revealSettingsBtn {
         top: 50px;
         left: 253px;

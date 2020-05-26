@@ -70,7 +70,7 @@ function renderTaskList() {
                 }
             }
             taskChecklistDiv += `</div>`;
-            taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${100/taskCheckListArray.length * finishedCheckpoint}%; height: 20px; background-color: lightgreen;"></div></div>`
+            taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 100%; width: ${100/taskCheckListArray.length * finishedCheckpoint}%; height: 20px; background-color: lightgreen;"></div></div>`
             expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'task')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="show checkpoints"></button>`;
 
         }
@@ -131,7 +131,7 @@ function renderTaskOngoingList() {
                 }
                 taskChecklistDiv += `</div>`;
                 taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
-                taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
+                taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 100%; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
                 expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'ongoingTask')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="show checkpoints"></button>`;
             }
             for(var i = 0; i < task.taskMembers.length; i++) {
@@ -193,7 +193,7 @@ function renderTaskFinishedList() {
             }
             taskChecklistDiv += `</div>`;
             taskProgress = 100/taskCheckListArray.length * finishedCheckpoint;
-            taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 380px; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
+            taskProgressBarDiv = ` <div id="progressBarDiv"><div id="progressBar" style="max-width: 100%; width: ${taskProgress}%; height: 20px; background-color: lightgreen;"></div></div>`
             expandTaskBtnDiv = `<button id="expandTaskBtn" type="button" onclick="changeHeight(this, ${taskId}, 'ongoingTask')"><img src="${renderExpandImg(taskHeight)}" style="height:30px;" alt="show checkpoints"></button>`;
         }
         for(var i = 0; i < task.taskMembers.length; i++) {

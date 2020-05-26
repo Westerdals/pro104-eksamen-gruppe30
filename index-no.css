@@ -85,6 +85,13 @@
 
 /*                                              MEDIA QUERIES                                                         */
 
+@media (max-width: 1395px) {
+    #expandTaskBtn{
+        position: absolute;
+        top: 95px;
+        left: 2px;
+    }
+}
 
 @media (max-width: 1142px) {
     .taskObject{ 
@@ -133,7 +140,7 @@
 Media query for mobile device
 */
 
-@media (max-width: 450px){
+@media (max-width: 500px){
     #mainContainer{
         overflow-x: auto;
     }
@@ -334,6 +341,11 @@ Media query for mobile device
         width: 100px;
         left: 0;
         overflow-y: auto;
+    }
+    #expandTaskBtn{
+        position: absolute;
+        top: 95px;
+        left: 2px;
     }
 }
 
