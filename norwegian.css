@@ -144,21 +144,18 @@
         height: 100vh;
         width: 500px;
         left: 0px;
-        overflow: scroll;
     }
     #ongoingTasks{
         border-right: 1px solid black;
         height: 100vh;
         width: 500px;
         left: 500px;
-        overflow: scroll;
     }
     
     #finishedTasks{
         right: 0;
         width: 500px;
         left: 1000px;
-        overflow: scroll;
     }
     .tasksHeading{
         width: 100%;
@@ -189,9 +186,6 @@
         width: 200px;
         left: -1000px;
         
-    }
-    #tasksTable{
-        overflow: scroll;
     }
     #revealArchiveBtn{
         top: 10px;

@@ -11,6 +11,7 @@ body{
     border: 0px solid black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     overflow: hidden;
+    overflow-y: scroll;
 }
 
 button:focus, input:focus, textarea:focus, select:focus{
@@ -774,21 +775,18 @@ textarea::placeholder{
         height: 100vh;
         width: 500px;
         left: 0px;
-        overflow: scroll;
     }
     #ongoingTasks{
         border-right: 1px solid black;
         height: 100vh;
         width: 500px;
         left: 500px;
-        overflow: scroll;
     }
     
     #finishedTasks{
         right: 0;
         width: 500px;
         left: 1000px;
-        overflow: scroll;
     }
     .tasksHeading{
         width: 100%;
@@ -819,9 +817,6 @@ textarea::placeholder{
         width: 200px;
         left: -1000px;
         
-    }
-    #tasksTable{
-        overflow: scroll;
     }
     #revealArchiveBtn{
         top: 10px;
