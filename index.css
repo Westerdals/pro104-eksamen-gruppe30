@@ -167,7 +167,7 @@ header{
 
 #taskDescription{
     position: absolute;
-    z-index: 3;
+    z-index: 2;
     display: none;
     top: 40px;
     left: 12px;
@@ -324,6 +324,7 @@ label{
     position: absolute;
     padding-top: 5px;
     cursor: pointer;
+    text-align: center;
     top: 70px;
     height: 75px;
     width: 95.5%;
@@ -360,6 +361,7 @@ textarea::placeholder{
 
 #archive{
     position: relative;
+    text-align: center;
     z-index: 1;
     top: 140px;
     height: 100vh;
@@ -423,7 +425,6 @@ textarea::placeholder{
 }
 
 #ongoingTasks{
-    text-align: center;
     left: 33.3%;
     border-right: 1px solid black;
     border-left: 1px solid black;
@@ -466,16 +467,24 @@ textarea::placeholder{
     cursor: grabbing;
 }
 
-
 #checkList{
     position: absolute;
     top: 250px;
-    width: 379px;
-    overflow: auto;
+    width: 95%;
+    height: 150px;
+    overflow-y: scroll;
 }
 
 #fullCheckpoint{
     float: left;
+    display: flex;
+    padding: 5px;
+    width: 95%;
+}
+
+#checkList {
+    display: flex;
+    flex-direction: column;
 }
 
 #progressBarDiv{
@@ -698,29 +707,29 @@ textarea::placeholder{
 }
 
 .memberIconDiv {
-    height: 25px;
+    height: 30px;
     text-align: center;
-    line-height: 24px;
+    line-height: 29px;
     margin: auto;
-    width: 25px;
+    width: 35px;
     background-color:orange;
-    border-radius: 50%;
+    border-radius: 30%;
     color: white;
 }
 
 #memberIconGrid {
     position: absolute;
-    height: 25px;
+    height: 30px;
     width: 96.5%;
     top: 183px;
     left: 10px;
     overflow: hidden;
     padding-bottom: 5px;
-    padding-left: 2px;
+    padding-left: 5px;
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(10px,1fr));
     grid-auto-columns: minmax(10px,1fr);
-    grid-column-gap: 20px;
+    grid-column-gap: 30px;
     grid-auto-flow: column;
     overflow-x: auto;
 }
